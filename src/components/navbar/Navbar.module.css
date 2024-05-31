@@ -1,0 +1,14 @@
+.NavBar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: var(--nav-bar);
+    color: var(--text-color);
+}
+
+.SubNav{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
