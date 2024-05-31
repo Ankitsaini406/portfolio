@@ -1,6 +1,5 @@
 import Navlist from "./Navlist";
 import style from "./Navbar.module.css"
-import ThemeSwitcher from "../theme/ThemeSwitcher";
 
 const Navbar = () => {
 
@@ -9,7 +8,6 @@ const Navbar = () => {
       <div>
         <h1>Devloper</h1>
       </div>
-      <ThemeSwitcher />
       <Navlist />
     </div>
   );

@@ -6,12 +6,12 @@ import DarkModeIcon from "@mui/icons-material/DarkMode";
 import { useEffect, useState } from "react";
 
 const ThemeSwitcher = () => {
-    const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     setMounted(true);
-  },[]);
+  }, []);
 
   if (!mounted) {
     return null;
@@ -20,13 +20,12 @@ const ThemeSwitcher = () => {
   return (
     <>
       {theme === "light" ? (
-        <button onClick={() => setTheme("dark")}>
-          <DarkModeIcon />
-        </button>
+        <DarkModeIcon onClick={() => setTheme("dark")} />
       ) : (
-        <button onClick={() => setTheme("light")}>
-          <LightModeIcon />
-        </button>
+        <LightModeIcon
+          onClick={() => setTheme("light")}
+          style={{ color: "yellow" }}
+        />
       )}
     </>
   );

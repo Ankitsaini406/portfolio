@@ -17,7 +17,7 @@ const ThemeProviders = ({
   if (!mounted) {
     return <>{children}</>;
   }
-  return <ThemeProvider >{children}</ThemeProvider>;
+  return <ThemeProvider enableSystem={true}>{children}</ThemeProvider>;
 };
 
 export default ThemeProviders;
