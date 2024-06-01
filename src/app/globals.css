@@ -1,6 +1,7 @@
 :root {
     --nav-bar: #E43D12;
     --white-color: #EBE9E1;
+    --black-color: #000;
 }
 
 [data-theme="light"] {
@@ -9,7 +10,7 @@
 }
 
 [data-theme="dark"] {
-    --bg-color: #333;
+    --bg-color: var(--black-color);
     --text-color: #fff;
 }
 

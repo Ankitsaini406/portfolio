@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 1rem;
-    background-color: var(--nav-bar);
+    /* background-color: var(--nav-bar); */
     color: var(--text-color);
 }
 

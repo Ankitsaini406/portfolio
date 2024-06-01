@@ -1,0 +1,13 @@
+.backgroundImage{
+    /* width: 20%;
+    height: 20%;
+    position: absolute; 
+     background-color: red; */
+
+}
+
+.backgroungColor{
+    background: rgba(255, 255, 255, 0.01);
+backdrop-filter: blur(10px);
+-webkit-backdrop-filter: blur(10px);
+}
