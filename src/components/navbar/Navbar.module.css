@@ -1,10 +1,14 @@
 .NavBar{
+    position: sticky;
+    top: 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 1rem;
     /* background-color: var(--nav-bar); */
     color: var(--text-color);
+    z-index: 2;
+    /* mix-blend-mode: difference; */
 }
 
 .SubNav{

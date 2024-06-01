@@ -1,13 +1,38 @@
-.backgroundImage{
-    /* width: 20%;
-    height: 20%;
-    position: absolute; 
-     background-color: red; */
-
+.prallex{
+    min-height: 100vh;
 }
 
 .backgroungColor{
     background: rgba(255, 255, 255, 0.01);
 backdrop-filter: blur(10px);
 -webkit-backdrop-filter: blur(10px);
+}
+
+.heroImagebox{
+    position: relative;
+    width: 100%;
+    /* max-width: 100%; */
+    aspect-ratio: 2.3/1;
+    margin: 2rem auto;
+    z-index: -1;
+    overflow-x: hidden;
+    overflow-y: auto;
+    perspective: 1px;
+}
+
+.heroText{
+    position: absolute;
+    font-weight: bold;
+    z-index: 1;
+    inset: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    transform: translateZ(-1px);
+}
+
+.divColor{
+    height: 100vh;
+    width: 100%;
+    background-color: yellow;
+    margin-bottom: 1rem;
 }
