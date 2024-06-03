@@ -4,7 +4,7 @@ import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
 import ThemeProviders from "@/components/theme/ThemeProviders";
 import style from "./page.module.css";
-import Template from "./template";
+import Introduction from "@/components/intro/Intro";
 
 export const metadata: Metadata = {
   title: "Portfolio",
@@ -19,11 +19,13 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${style.backgroungColor}`}>
+        <Introduction>
           <ThemeProviders>
-            <Navbar />
-            <Template>{children}</Template>
-            <Footer />
+              <Navbar />
+              {children}
+              <Footer />
           </ThemeProviders>
+        </Introduction>
       </body>
     </html>
   );
