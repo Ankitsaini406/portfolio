@@ -5,6 +5,9 @@ import Footer from "@/components/footer/Footer";
 import ThemeProviders from "@/components/theme/ThemeProviders";
 import style from "./page.module.css";
 import Introduction from "@/components/intro/Intro";
+import { Inter } from 'next/font/google'
+
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: "Portfolio",
@@ -18,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body>
+      <body className={inter.className}>
         <Introduction>
           <ThemeProviders>
               <Navbar />
