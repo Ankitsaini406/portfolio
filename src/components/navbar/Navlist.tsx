@@ -19,7 +19,7 @@ const Navlist = ()=> {
         {
             List.map((list) => {
                 return (
-                    <Link key={list.title} href={list.path}>{list.title}</Link>
+                    <Link className={style.navlink} key={list.title} href={list.path}>{list.title}</Link>
                 )
             })
         }
