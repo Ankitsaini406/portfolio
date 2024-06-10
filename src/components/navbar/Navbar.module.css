@@ -6,13 +6,33 @@
     justify-content: space-between;
     padding: 1rem;
     /* background-color: var(--nav-bar); */
-    color: var(--text-color);
+    color: var(--main-color);
     z-index: 2;
     /* mix-blend-mode: difference; */
+
+    .navlink {
+        color: var(--main-color);
+    }
+}
+
+.navMask {
+    color: var(--text-color);
+    background-color: var(--main-color);
+    clip-path: polygon(0px 0px, 100% 0px, 100% 100%, 0% 100%);
+    transition: background-color .3s cubic-bezier(.83, 0, .17, 1);
+
+    .navlink{
+        color: var(--text-color);
+    }
 }
 
 .SubNav{
     display: flex;
     align-items: center;
     gap: 1rem;
+}
+
+.navlink{
+    font-weight: bold;
+    font-size: calc(15px + var(--font-size));
 }

@@ -2,8 +2,7 @@ import Link from "next/link";
 import style from "./Navbar.module.css"
 import ThemeSwitcher from "../theme/ThemeSwitcher";
 
-const Navlist = ( )=> {
-
+const Navlist = ()=> {
     const List = [
         {
           title: "Home",
@@ -24,7 +23,7 @@ const Navlist = ( )=> {
                 )
             })
         }
-        <ThemeSwitcher />
+        {/* <ThemeSwitcher /> */}
       </div>
     )
 }

@@ -1,11 +1,37 @@
 .Intropage{
     position: absolute;
     z-index: 5;
-    background-color: lightblue;
+    /* background-color: lightblue; */
     height: 100dvh;
     width: 100%;
+    overflow: hidden;
 }
 
-.text{
-    font: 3rem bold;
+.text {
+    font: 6rem bold;
+}
+
+.cricule{
+    overflow: hidden;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-direction: column-reverse;
+}
+
+.criculeColor{
+    width: 5px;
+    background-color: var(--main-color);
+    bottom: 0;
+}
+
+.criculeNumber {
+    position: absolute;
+    display: contents;
+    margin: 0;
+    color: var(--main-color);
+    font-weight: bold;
+    font-size: x-large;
 }
