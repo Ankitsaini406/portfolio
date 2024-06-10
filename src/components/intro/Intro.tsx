@@ -58,11 +58,10 @@ const Introduction = ({ children }: { children: React.ReactNode }) => {
     <div ref={comp}>
       <div id="intro-slider" className={style.Intropage}>
         <div className={style.cricule}>
-          <div className={style.criculeColor} style={{ height: `${percent}%` }}>
+          <div className={style.criculeColor} style={{ height: `${percent}%` }} />
             <p id="percent" className={style.criculeNumber}>
               {`${percent.toFixed()}`}
             </p>
-          </div>
         </div>
       </div>
       <div id="children">{children}</div>
