@@ -1,10 +1,12 @@
 :root {
-    --nav-bar: #E43D12;
+    --main-color: #E43D12;
     --white-color: #EBE9E1;
     --black-color: #000;
+    --font-size: 0.390625vw;
+    --text-color: #ECE9E1;
 }
 
-[data-theme="light"] {
+/* [data-theme="light"] {
     --bg-color: var(--white-color);
     --text-color: #333;
 }
@@ -12,6 +14,17 @@
 [data-theme="dark"] {
     --bg-color: var(--black-color);
     --text-color: #fff;
+} */
+
+::-webkit-scrollbar{
+    width: 6px;
+    border-left: 1px solid #e6ecf8;
+    border-radius: 25px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--main-color);
+    border-radius: 25px;
 }
 
 html,
@@ -20,7 +33,7 @@ body {
     padding: 0;
     box-sizing: border-box;
     background-color: var(--bg-color);
-    color: var(--text-color);
+    /* color: var(--text-color); */
 }
 
 h1,
@@ -38,5 +51,5 @@ span {
     padding: 0;
     list-style: none;
     text-decoration: none;
-    color: var(--text-color);
+    /* color: var(--text-color); */
 }
