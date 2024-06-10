@@ -15,7 +15,7 @@
     "@mui/material": "^5.15.19",
     "framer-motion": "^11.2.10",
     "gsap": "^3.12.5",
-    "next": "14.2.3",
+    "next": "^14.2.3",
     "next-themes": "^0.3.0",
     "react": "^18",
     "react-dom": "^18"
