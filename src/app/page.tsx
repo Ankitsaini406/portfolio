@@ -1,13 +1,16 @@
-import Image from "next/image";
+
 import styles from "./page.module.css";
-import Introduction from "@/components/intro/Intro";
 
 export default function Home() {
   return (
     <main className={styles.bodyFlex}>
-      {/* <Introduction> */}
-        <h1>Welcome</h1>
-      {/* </Introduction> */}
+       <div>
+       <h1>Hi Ankit is here</h1>
+        <h1>Web Devloper</h1>
+        <h1>App Devloper</h1>
+       </div>
+       <div className={styles.heroImage}>
+       </div>
     </main>
   );
 }

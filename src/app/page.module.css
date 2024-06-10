@@ -1,5 +1,13 @@
 .bodyFlex{
-    /* display: flex; */
+    display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
+    gap: 2rem;
+    height: 100vh;
+}
+
+.heroImage {
+    width: 20%;
+    height: 20%;
+    border: 1px solid;
 }
