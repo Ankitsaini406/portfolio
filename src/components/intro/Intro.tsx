@@ -14,7 +14,6 @@ const Introduction = ({ children }: { children: React.ReactNode }) => {
     setInterval(() => {
       setValue((val) => val + 1);
     }, 40);
-    
   }, []);
 
   useEffect(() => {
