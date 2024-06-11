@@ -1,0 +1,31 @@
+.bodyFlex{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 2rem;
+    height: 100vh;
+    /* background: linear-gradient(45deg, red 0%, yellow 100%); */
+    /* filter: blur(10px); */
+}
+
+.heroImage {
+    width: 20%;
+    height: 20%;
+    border: 1px solid;
+}
+
+.typingText{
+    border-right: 5px solid var(--main-color);
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 3s infinite alternate-reverse, cursor .4s step-end infinite alternate;
+}
+
+@keyframes cursor {
+    50% { border-color: transparent }
+}
+
+@keyframes typing {
+    0% { width: 0 }
+}
