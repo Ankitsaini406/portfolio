@@ -4,8 +4,6 @@ import { IoLogoJavascript } from "react-icons/io5";
 import { RiFlutterFill, RiNextjsFill } from "react-icons/ri";
 import { SiMysql } from "react-icons/si";
 import { TbApi } from "react-icons/tb";
-import { DiResponsive } from "react-icons/di";
-import { blue } from "@mui/material/colors";
 
 
 const Hero = () => {
