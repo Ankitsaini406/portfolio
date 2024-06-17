@@ -1,4 +1,4 @@
-import Hero from "./hero/page";
+import Hero from "../components/hero/page";
 import Timeline from "./[timeline]/timeline";
 
 export default function Home() {
