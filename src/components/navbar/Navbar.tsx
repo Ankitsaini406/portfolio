@@ -31,7 +31,7 @@ const Navbar = () => {
           }}
         >
           <div className={style.NavBarName}>
-            <h1>Devloper</h1>
+            <h1>Developer</h1>
           </div>
           <Navlist />
         </div>

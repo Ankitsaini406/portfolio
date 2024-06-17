@@ -1,7 +1,7 @@
 .aboutpage{
     display: flex;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 2rem auto 0 auto;
     height: 100vh;
     gap: 2rem;
 }
@@ -56,4 +56,19 @@
 .abouttext{
     line-height: 22px;
     width: 700px;
+}
+
+.hovereffect:hover {
+    display: inline-flex;
+    cursor: pointer;
+    animation: hello .5s linear infinite;
+}
+
+@keyframes hello {
+    0%,100% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(45deg);
+    }
 }

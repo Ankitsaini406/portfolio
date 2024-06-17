@@ -13,8 +13,8 @@ const Hero = () => {
                 <div className={styles.introtext}>
                     <h1>I&apos;m</h1>
                     <ul className={styles.alltext}>
-                        <li><span className={styles.typingText}>Web Devloper</span></li>
-                        <li><span className={styles.typingText}>App Devloper</span></li>
+                        <li><span className={styles.typingText}>Web Developer</span></li>
+                        <li><span className={styles.typingText}>App Developer</span></li>
                     </ul>
                 </div>
                 <div className={styles.skills}>
