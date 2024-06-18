@@ -41,6 +41,22 @@
     font-size: calc(20px + var(--font-size));
 }
 
-@media screen {
-    
+@media (width <= 770px) {
+    .mobile {
+        display: block;
+    }
+
+    .desktop {
+        display: none;
+    }
+}
+
+@media (width > 770px) {
+    .mobile {
+        display: none;
+    }
+
+    .desktop {
+        display: block;
+    }
 }

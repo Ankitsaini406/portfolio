@@ -26,13 +26,13 @@ const Navlist = ({ open, isopen }: { open: any, isopen: any }) => {
         {
           List.map((list) => {
             return (
-              <Link className={style.navlink} key={list.title} href={list.path}>{list.title}</Link>
+              <Link className={`${style.navlink} ${style.desktop}`} key={list.title} href={list.path}>{list.title}</Link>
             )
           })
         }
         {/* <ThemeSwitcher /> */}
       </div>
-      {isopen ? <RxCross1 className={style.menu} onClick={open} /> : <IoIosMenu className={style.menu} onClick={open} />}
+      {isopen ? <RxCross1 className={`${style.menu} ${style.mobile}`} onClick={open} /> : <IoIosMenu className={`${style.menu} ${style.mobile}`} onClick={open} />}
       {
         isopen && (
           <div className={style.SubNav}>
