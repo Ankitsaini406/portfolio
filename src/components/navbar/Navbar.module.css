@@ -36,3 +36,7 @@
     font-weight: bold;
     font-size: calc(15px + var(--font-size));
 }
+
+.menu {
+    font-size: calc(20px + var(--font-size));
+}

@@ -8,19 +8,8 @@
 .textBox {
     padding: 2rem;
     margin: 0 1rem;
+    border-radius: 10px;
     box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.2);
-}
-
-@keyframes scrollView {
-    from {
-        opacity: 0;
-        scale: 0.5;
-    }
-
-    to {
-        opacity: 1;
-        scale: 1;
-    }
 }
 
 .timeline {
@@ -64,6 +53,18 @@
 
     & li {
         list-style-type: disc;
+    }
+}
+
+@keyframes scrollView {
+    from {
+        opacity: 0;
+        scale: 0.5;
+    }
+
+    to {
+        opacity: 1;
+        scale: 1;
     }
 }
 

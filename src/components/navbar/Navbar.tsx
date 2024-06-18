@@ -31,14 +31,14 @@ const Navbar = () => {
           }}
         >
           <div className={style.NavBarName}>
-            <h1>Developer</h1>
+            <h1>@ Ankit</h1>
           </div>
           <Navlist />
         </div>
       ) : (
         <div className={style.NavBar}>
           <div className={style.NavBarName}>
-            <h1>Devloper</h1>
+            <h1>@ Ankit</h1>
           </div>
           <Navlist />
         </div>

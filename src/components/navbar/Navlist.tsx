@@ -1,5 +1,6 @@
 import Link from "next/link";
 import style from "./Navbar.module.css"
+import { IoIosMenu } from "react-icons/io";
 import ThemeSwitcher from "../theme/ThemeSwitcher";
 
 const Navlist = ()=> {
@@ -27,6 +28,7 @@ const Navlist = ()=> {
                 )
             })
         }
+        <IoIosMenu className={style.menu}/>
         {/* <ThemeSwitcher /> */}
       </div>
     )
