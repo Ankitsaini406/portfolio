@@ -40,3 +40,7 @@
 .menu {
     font-size: calc(20px + var(--font-size));
 }
+
+@media screen {
+    
+}

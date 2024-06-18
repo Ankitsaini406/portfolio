@@ -6,6 +6,7 @@ import { useState } from "react";
 
 const Navbar = () => {
   const [changeNav, setChangeNav] = useState(false);
+  const [openNav, setOpenNav] = useState(false);
 
   const changeNavColor = () => {
     if (window.scrollY > 50) {
@@ -14,6 +15,13 @@ const Navbar = () => {
       setChangeNav(false);
     }
   };
+
+  const openNavBar = () => {
+    setOpenNav(!openNav);
+    console.log(openNav)
+  }
+
+  console.log(openNav)
 
   if (typeof window != "undefined") {
     window.addEventListener("scroll", changeNavColor);
@@ -33,14 +41,14 @@ const Navbar = () => {
           <div className={style.NavBarName}>
             <h1>@ Ankit</h1>
           </div>
-          <Navlist />
+          <Navlist open = {openNavBar} isopen = {openNav}/>
         </div>
       ) : (
         <div className={style.NavBar}>
           <div className={style.NavBarName}>
             <h1>@ Ankit</h1>
           </div>
-          <Navlist />
+          <Navlist open = {openNavBar} isopen = {openNav}/>
         </div>
       )}
     </>

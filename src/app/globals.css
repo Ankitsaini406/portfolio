@@ -5,6 +5,11 @@
     --font-size: 0.390625vw;
     --text-color: #ECE9E1;
     --light-gray: lightgray;
+
+    --mobile-sm: 325px;
+    --mobile-weight: 430px;
+    --tablet-weight: 770px;
+    --desctop-weight: 1024px;
 }
 
 /* [data-theme="light"] {

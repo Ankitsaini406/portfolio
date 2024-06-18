@@ -61,7 +61,7 @@
 
 .abouttext{
     line-height: 22px;
-    width: 700px;
+    width: clamp(200px, 58vw, 700px);
     font-size: calc(12px + var(--font-size));
 }
 
