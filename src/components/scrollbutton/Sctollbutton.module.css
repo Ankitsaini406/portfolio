@@ -1,0 +1,14 @@
+.scrollbutton{
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    padding: 10px;
+    border-radius: 50%;
+    mix-blend-mode: difference;
+    border: 0;
+    cursor: pointer;
+
+    &:hover {
+        scale: 1.2;
+    }
+}

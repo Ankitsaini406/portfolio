@@ -6,6 +6,7 @@ import ThemeProviders from "@/components/theme/ThemeProviders";
 import style from "./page.module.css";
 import Introduction from "@/components/intro/Intro";
 import { Inter } from 'next/font/google'
+import ScrollButton from "@/components/scrollbutton/Scrollbutton";
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -25,6 +26,7 @@ export default function RootLayout({
         <Introduction>
           <ThemeProviders>
               <Navbar />
+              <ScrollButton />
               {children}
               <Footer />
           </ThemeProviders>

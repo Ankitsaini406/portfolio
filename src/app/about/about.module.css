@@ -12,6 +12,13 @@
     width: 300px;
     height: 490px;
     overflow: hidden;
+    border-radius: 10px;
+}
+
+.ImgContainer:hover {
+    box-shadow: 0px 0px 20px;
+    cursor: pointer;
+    transition: box-shadow .3s linear;
 }
 
 .Imgbox{
@@ -27,7 +34,6 @@
     object-position: center center;
     object-fit: cover;
     image-rendering: auto;
-    border: 1px solid;
     border-radius: 10px;
 }
 
