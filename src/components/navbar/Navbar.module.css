@@ -39,6 +39,7 @@
 
 .menu {
     font-size: calc(20px + var(--font-size));
+    z-index: 2;
 }
 
 @media (width <= 770px) {
@@ -48,6 +49,31 @@
 
     .desktop {
         display: none;
+    }
+    
+    .SubNav{
+        height: 100vh;
+        width: 50%;
+        background-color: black;
+        position: absolute;
+        flex-direction: column;
+        top: 0;
+        right: -500px;
+        padding: 3rem 0 0 0;
+    }
+
+    .subactive{
+        right: 0;
+        animation: openmenu .3s linear;
+    }
+
+    @keyframes openmenu {
+        from {
+            right: -500px;
+        }
+        to {
+            right: 0;
+        }
     }
 }
 
