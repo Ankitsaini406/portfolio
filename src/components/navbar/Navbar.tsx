@@ -18,10 +18,7 @@ const Navbar = () => {
 
   const openNavBar = () => {
     setOpenNav(!openNav);
-    console.log(openNav)
   }
-
-  console.log(openNav)
 
   if (typeof window != "undefined") {
     window.addEventListener("scroll", changeNavColor);

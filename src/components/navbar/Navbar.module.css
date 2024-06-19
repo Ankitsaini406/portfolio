@@ -51,29 +51,31 @@
         display: none;
     }
     
-    .SubNav{
-        height: 100vh;
-        width: 50%;
+    .SubNavmobile{
+        height: 100%;
+        width: 500px;
         background-color: black;
-        position: absolute;
+        position: fixed;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
         flex-direction: column;
         top: 0;
-        right: -500px;
+        right: 0;
         padding: 3rem 0 0 0;
+        clip-path: circle(100px at 90% 10%);
+        -webkit-clip-path: circle(100px at 90% 10%);
+        transition: all .5s ease-out;
     }
 
     .subactive{
         right: 0;
-        animation: openmenu .3s linear;
+        clip-path: circle(1100px at 90% 10%);
+        -webkit-clip-path: circle(1100px at 90% 10%);
     }
 
-    @keyframes openmenu {
-        from {
-            right: -500px;
-        }
-        to {
-            right: 0;
-        }
+    .subclose {
+        right: -100%;
     }
 }
 

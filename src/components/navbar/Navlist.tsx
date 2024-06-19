@@ -34,8 +34,8 @@ const Navlist = ({ open, isopen }: { open: any, isopen: any }) => {
       </div>
       {isopen ? <RxCross1 className={`${style.menu} ${style.mobile}`} onClick={open} /> : <IoIosMenu className={`${style.menu} ${style.mobile}`} onClick={open} />}
       {
-        isopen && (
-          <div className={`${style.SubNav} ${isopen ? style.subactive : ''}`}>
+        isopen ? (
+          <div className={`${style.SubNavmobile} ${style.subactive}`}>
         {
           List.map((list) => {
             return (
@@ -45,7 +45,16 @@ const Navlist = ({ open, isopen }: { open: any, isopen: any }) => {
         }
         {/* <ThemeSwitcher /> */}
       </div>
-        )
+        ) : <div className={`${style.SubNavmobile} ${style.subclose}`}>
+        {
+          List.map((list) => {
+            return (
+              <Link className={style.navlink} key={list.title} href={list.path}>{list.title}</Link>
+            )
+          })
+        }
+        {/* <ThemeSwitcher /> */}
+      </div>
       }
     </>
   )
