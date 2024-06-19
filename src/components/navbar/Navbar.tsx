@@ -29,11 +29,11 @@ const Navbar = () => {
       {changeNav ? (
         <div
           className={`${style.NavBar} ${style.navMask}`}
-          style={{
-            clipPath: changeNav
-              ? "polygon(0px 0px, 100% 0px, 100% 100%, 0px 100%)"
-              : "polygon(0px 0px, 100% 0px, 100% 0px, 0px 0px)",
-          }}
+          // style={{
+          //   clipPath: changeNav
+          //     ? "polygon(0px 0px, 100% 0px, 100% 100%, 0px 100%)"
+          //     : "polygon(0px 0px, 100% 0px, 100% 0px, 0px 0px)",
+          // }}
         >
           <div className={style.NavBarName}>
             <h1>@ Ankit</h1>

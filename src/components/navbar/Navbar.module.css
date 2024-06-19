@@ -18,8 +18,9 @@
 .navMask {
     color: var(--text-color);
     background-color: var(--main-color);
-    clip-path: polygon(0px 0px, 100% 0px, 100% 100%, 0% 100%);
-    transition: background-color .3s cubic-bezier(.83, 0, .17, 1);
+    /* clip-path: polygon(0px 0px, 100% 0px, 100% 100%, 0% 100%); */
+    /* transition: background-color .3s cubic-bezier(.83, 0, .17, 1); */
+    transition: all .3s cubic-bezier(.83, 0, .17, 1);
 
     .navlink{
         color: var(--text-color);

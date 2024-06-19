@@ -4,21 +4,22 @@ import { IoIosMenu } from "react-icons/io";
 import { RxCross1 } from "react-icons/rx";
 import ThemeSwitcher from "../theme/ThemeSwitcher";
 
+const List = [
+  {
+    title: "Home",
+    path: "/",
+  },
+  {
+    title: "About",
+    path: "/about",
+  },
+  {
+    title: "Projects",
+    path: "/projects",
+  }
+];
+
 const Navlist = ({ open, isopen }: { open: any, isopen: any }) => {
-  const List = [
-    {
-      title: "Home",
-      path: "/",
-    },
-    {
-      title: "About",
-      path: "/about",
-    },
-    {
-      title: "Projects",
-      path: "/projects",
-    }
-  ];
 
   return (
     <>
@@ -35,17 +36,17 @@ const Navlist = ({ open, isopen }: { open: any, isopen: any }) => {
       {isopen ? <RxCross1 className={`${style.menu} ${style.mobile}`} onClick={open} /> : <IoIosMenu className={`${style.menu} ${style.mobile}`} onClick={open} />}
       {
         isopen ? (
-          <div className={`${style.SubNavmobile} ${style.subactive}`}>
+          <div className={`${style.mobile} ${style.SubNavmobile} ${style.subactive}`}>
         {
           List.map((list) => {
             return (
-              <Link className={style.navlink} key={list.title} href={list.path}>{list.title}</Link>
+              <Link onClick={open} className={style.navlink} key={list.title} href={list.path}>{list.title}</Link>
             )
           })
         }
         {/* <ThemeSwitcher /> */}
       </div>
-        ) : <div className={`${style.SubNavmobile} ${style.subclose}`}>
+        ) : <div className={`${style.mobile} ${style.SubNavmobile} ${style.subclose}`}>
         {
           List.map((list) => {
             return (
