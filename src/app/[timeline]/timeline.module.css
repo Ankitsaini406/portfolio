@@ -19,6 +19,7 @@
 
 .timeline::after {
     content: "";
+    display: block;
     position: absolute;
     width: 6px;
     height: 100%;
@@ -81,6 +82,7 @@
 
     .timelineArrow {
         border-right: 15px solid var(--main-color);
+        border-left: 0px solid var(--main-color);
         left: 0px;
     }
 }
@@ -92,4 +94,47 @@
 .name{
     font-size: calc(20px + var(--font-size));
     text-transform: uppercase;
+}
+
+@media (width <= 770px) {
+
+    .heading{
+        font-size: calc(25px + var(--font-size));
+    }
+
+    .timelineBox {
+        margin: 0 0 3em 0;
+    }
+
+    .textBox {
+        margin: 1rem;
+    }
+
+    .timeline {
+        margin: 2rem 0;
+    }
+
+    .container {
+        width: 100%;
+    }
+
+    .timeline::after {
+        display: none;
+        /* right: 9%; */
+    }
+
+    .container:nth-child(odd) {
+        left: 0;
+    
+        .timelineArrow {
+            display: none;
+        }
+    }
+    
+    .container:nth-child(even) {
+        left: 0;
+        .timelineArrow {
+            display: none;
+        }
+    }
 }
