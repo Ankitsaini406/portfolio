@@ -38,7 +38,7 @@
     border: 1px solid;
 }
 
-.alltext {
+.alltext,.imtext {
     margin-left: 15px;
     height: 35px;
     line-height: 36px;
@@ -91,5 +91,22 @@
 }
 
 @media (width <= 770px) {
+    .bodyFlex{
+        flex-direction: column-reverse;
+    }
 
+    .alltext,.imtext {
+        height: clamp(10px, 20px ,30px);
+        line-height: clamp(10px, 20px ,30px);
+
+        & li {
+            font-size: clamp(10px, 20px ,30px);
+        }
+    }
+
+    @keyframes slide {
+        100% {
+            top: -70px;
+        }
+    }
 }

@@ -11,7 +11,7 @@ const Hero = () => {
         <div className={styles.bodyFlex}>
             <div className={styles.herotext}>
                 <div className={styles.introtext}>
-                    <h1>I&apos;m</h1>
+                    <h1 className={styles.imtext}>I&apos;m</h1>
                     <ul className={styles.alltext}>
                         <li><span className={styles.typingText}>Web Developer</span></li>
                         <li><span className={styles.typingText}>App Developer</span></li>
