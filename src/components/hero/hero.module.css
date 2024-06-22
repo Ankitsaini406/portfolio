@@ -89,3 +89,11 @@
         margin: 0 -35px 0 35px;
     }
 }
+
+@media (width <= 770px) {
+
+}
+
+@media (width > 770px) {
+    
+}
