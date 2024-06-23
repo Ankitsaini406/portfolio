@@ -89,3 +89,9 @@
         display: block;
     }
 }
+
+@media (width <= 430px) {
+    .SubNavmobile{
+        width: 100%;
+    }
+}

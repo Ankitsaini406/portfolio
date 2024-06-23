@@ -4,6 +4,9 @@
     margin: 2rem auto 0 auto;
     height: 100vh;
     gap: 2rem;
+    justify-content: flex-start;
+    padding: 0 1rem;
+
 }
 
 .ImgContainer{
@@ -77,5 +80,54 @@
     }
     50% {
         transform: rotate(45deg);
+    }
+}
+
+@media (width <= 770px) {
+    .aboutpage{
+        gap: 0rem;
+        justify-content: space-evenly;
+    }
+
+    
+    .lighttext{
+        font-size: clamp(25px, 30px, 35px);
+    }
+
+    .ImgContainer{
+        width: 250px;
+        height: 400px;
+    }
+}
+
+@media (width <= 430px) {
+    .aboutpage{
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .ImgContainer{
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+    }
+
+    .lighttext{
+        font-size: clamp(15px, 20px, 25px);
+    }
+
+    .aboutbox{
+        padding: 0 10px;
+    }
+
+    .titlebox{
+        width: 100%;
+        justify-content: center;
+        padding: 1rem 0;
+    }
+
+    .abouttext{
+        width: 100%;
     }
 }

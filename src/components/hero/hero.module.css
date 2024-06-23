@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    gap: 2rem;
+    /* gap: 2rem; */
     height: 100vh;
     /* background: linear-gradient(45deg, red 0%, yellow 100%);
     filter: blur(10px); */
