@@ -14,9 +14,9 @@ const Footer = () => {
     return (
         <div className={style.footerbox}>
             <div className={style.footertext}>
-                <h1>Let&apos;s talk about your project:</h1>
+                <h1 className={style.footerlet}>Let&apos;s talk about your project:</h1>
             </div>
-            <div className={style.footertext}>
+            <div >
                 <a style={{ color: 'white' }} target='_blank' rel="noopener noreferrer" href='mailto:as.ankitsaini406@gmail.com'>as.ankitsaini406@gmail.com</a>
             </div>
             <div className={style.footertext}>

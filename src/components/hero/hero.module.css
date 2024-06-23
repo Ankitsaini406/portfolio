@@ -104,6 +104,10 @@
         }
     }
 
+    .skills{
+        gap: .5rem;
+    }
+
     @keyframes slide {
         100% {
             top: -70px;

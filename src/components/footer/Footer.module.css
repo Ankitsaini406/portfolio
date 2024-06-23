@@ -15,3 +15,14 @@
     display: flex;
     gap: 1rem;
 }
+
+.footerlet{
+    font-size: calc(25px + var(--font-size));
+}
+
+@media (width <= 770px) {
+    .footerlet{
+        font-size: clamp(10px, 20px, 30px);
+        /* font-size: clamp(15px, calc(20px + var(--font-siize)), 39px); */
+    }
+}
