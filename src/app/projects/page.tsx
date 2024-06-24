@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import style from './projects.module.css'
 
 const Projects = () => {
@@ -6,7 +7,7 @@ const Projects = () => {
             <div className={style.projectbox}>
                 <div className={style.imagecontainor}>
                     <div className={style.imagebox}>
-                        
+                    {/* <Image className={style.projectimg} width={1000} height={1000} src='' alt='Project'></Image> */}
                     </div>
                 </div>
                 <div className={style.projectdetails}>
@@ -17,7 +18,7 @@ const Projects = () => {
             <div className={style.projectbox}>
                 <div className={style.imagecontainor}>
                     <div className={style.imagebox}>
-                        
+                    {/* <Image className={style.projectimg} width={1000} height={1000} src='' alt='Project'></Image> */}
                     </div>
                 </div>
                 <div className={style.projectdetails}>
@@ -28,7 +29,7 @@ const Projects = () => {
             <div className={style.projectbox}>
                 <div className={style.imagecontainor}>
                     <div className={style.imagebox}>
-                        
+                    {/* <Image className={style.projectimg} width={1000} height={1000} src='' alt='Project'></Image> */}
                     </div>
                 </div>
                 <div className={style.projectdetails}>
@@ -39,7 +40,7 @@ const Projects = () => {
             <div className={style.projectbox}>
                 <div className={style.imagecontainor}>
                     <div className={style.imagebox}>
-                        
+                    {/* <Image className={style.projectimg} width={1000} height={1000} src='' alt='Project'></Image> */}
                     </div>
                 </div>
                 <div className={style.projectdetails}>
