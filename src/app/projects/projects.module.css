@@ -1,0 +1,25 @@
+.project{
+    max-width: 1200px;
+    margin: 1em auto;
+}
+
+.projectbox{
+    padding: 1em;
+    border-radius: 10px;
+    border: 1px solid;
+    display: flex;
+    gap: 1em;
+    margin: 0 0 1em 0;
+    box-shadow: 0 0 10px 1px;
+}
+
+.imagecontainor{
+    width: 25%;
+    height: 300px;
+    border: 1px solid;
+    border-radius: 10px;
+}
+
+@media (width <= 770px) {
+
+}
