@@ -7,7 +7,7 @@
     padding: 1em;
     border-radius: 10px;
     border: 1px solid;
-    display: flex;
+    display: block;
     gap: 1em;
     margin: 0 0 1em 0;
     /* box-shadow: 0 0 10px 1px; */
@@ -15,13 +15,14 @@
 
 .imagecontainor{
     position: relative;
-    min-width: 200px;
-    width: 300px;
-    aspect-ratio: 1/1;
+    width: 240px;
+    aspect-ratio: 1 / 1;
     border: 1px solid;
     border-radius: 10px;
     cursor: pointer;
     overflow: hidden;
+    float: left;
+    margin: 0 2em 1em 0;
 }
 
 .imagebox{
@@ -38,6 +39,12 @@
     image-rendering: auto;
 }
 
+.projectdetails{
+    /* min-width: 400px; */
+    /* width: 840px; */
+    text-align: justify;
+}
+
 .projecttext::first-letter{
     initial-letter: 2;
     color: var(--black-color);
@@ -49,8 +56,10 @@
     }
 }
 
-@media (width <= 770px) {
-    .imagecontainor{
-        width: 250px;
+@media (width <= 430px) {
+    .projectbox{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }
