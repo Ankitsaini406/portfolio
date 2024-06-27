@@ -1,15 +1,34 @@
-import mongoose from "mongoose";
+import mongoose, { Document, Model, Schema } from "mongoose";
 
-const timelineModel = new mongoose.Schema({
-    name: String,
-    jobtitle: String,
-    joinDate: String,
-    endDate: String,
-    work: String
-}, {
-    bufferCommands: false,
+interface ITimeline extends Document {
+    name: string;
+    jobtitle: string;
+    joinDate: string;
+    endDate: string;
+    work: string;
+    createdAt: Date;
+}
+
+const TimelineSchema: Schema<ITimeline> = new Schema({
+    name: {
+        type: String,
+    },
+    jobtitle: {
+        type: String,
+    },
+    joinDate: {
+        type: String,
+    },
+    endDate: {
+        type: String,
+    },
+    work: {
+        type: String,
+    },
 });
 
-const Timelines = mongoose.models.timelines || mongoose.model('timelines', timelineModel);
+const TimelineModel: Model<ITimeline> = mongoose.models.timelines || mongoose.model<ITimeline>("timelines", TimelineSchema);
 
-export default Timelines;
+export default TimelineModel;
+
+// const Timelines = mongoose.models.timelines || mongoose.model('timelines', timelineModel);
