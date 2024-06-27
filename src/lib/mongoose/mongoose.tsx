@@ -1,5 +1,5 @@
 import mongoose, { Mongoose } from "mongoose"
-import { Mongo_URL } from '@/lib/db';
+import { Mongo_URL } from './db';
 
 if (!Mongo_URL) {
     throw new Error('Please add your Mongo URI to .env');
