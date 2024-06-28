@@ -1,52 +1,22 @@
-"use client"
 
-import Timelinedetial from "@/lib/timeline";
-import React, { useEffect, useState } from "react";
-import style from "./timeline.module.css";
+export async function gettimeline() {
 
-const Timeline = () => {
+    let timeline = [];
 
-    const [timelines, setTimelines] = useState<Timelinedetial[]>([]);
-
-    useEffect(() => {
-        const fetchTimelines = async () => {
-            const res = await fetch('/api/timeline');
-            const data = await res.json();
-            if (data.success) {
-                setTimelines(data.data);
-            } else {
-                console.error(data.error);
-            }
-        };
-        fetchTimelines();
-    }, []);
-
-    return (
-        <div className={style.timelineBox}>
-            <h1 className={style.heading}>Working Expirence</h1>
-            <div className={style.timeline}>
-
-                {
-                    timelines.map((value) => {
-                        return (
-                            <div key={value.name} className={style.container}>
-                                <div className={style.textBox}>
-                                    <h2 className={style.name}>{value.name}</h2>
-                                    <h4>{value.jobtitle}</h4>
-                                    <h6>{value.joinDate} | {value.endDate}</h6>
-                                    <p className={style.work}>
-                                        {value.work}
-                                    </p>
-                                    <span className={style.timelineArrow}></span>
-                                </div>
-                            </div>
-                        )
-                    })
-                }
-
-            </div>
-        </div>
-    )
+    const res = await fetch('http://localhost:3000/api/timeline', { method: 'GET' });
+    const result = await res.json();
+    if (result.success) {
+        timeline.push(result.data)
+        // timeline.forEach(function (item) {
+        //     console.log(item);
+        // });
+    } else {
+        console.error(result.error);
+    }
+    // await wait(2000);
+    return timeline;
 }
 
-export default Timeline;
+export async function wait(ms: any) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
