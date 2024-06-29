@@ -1,21 +1,26 @@
+"use client"
 
-export async function gettimeline() {
+import Timelinedetial from "@/lib/timeline";
+import React, { useEffect, useState } from "react";
 
-    let timeline = [];
+export async function Gettimeline() {
+    const [timelines, setTimelines] = useState<Timelinedetial[]>([]);
 
-    const res = await fetch('http://localhost:3000/api/timeline', { method: 'GET' });
-    const result = await res.json();
-    if (result.success) {
-        timeline.push(result.data)
-        // timeline.forEach(function (item) {
-        //     console.log(item);
-        // });
-    } else {
-        console.error(result.error);
-    }
-    // await wait(2000);
-    return timeline;
-}
+    useEffect(() => {
+        const fetchTimelines = async () => {
+            const res = await fetch('/api/timeline');
+            const data = await res.json();
+            if (data.success) {
+                setTimelines(data.data);
+            } else {
+                console.error(data.error);
+            }
+        };
+        fetchTimelines();
+    }, []);
+    
+    return timelines;
+};
 
 export async function wait(ms: any) {
     return new Promise(resolve => setTimeout(resolve, ms));
