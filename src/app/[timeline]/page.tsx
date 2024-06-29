@@ -1,25 +1,11 @@
-"use client"
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import style from "./timeline.module.css";
-import Timelinedetial from "@/lib/timeline";
+import { GET } from "../api/timeline/route";
 
-const Timeline = () => {
+const Timeline = async () => {
 
-    const [timelines, setTimelines] = useState<Timelinedetial[]>([]);
-
-    useEffect(() => {
-        const fetchTimelines = async () => {
-            const res = await fetch('/api/timeline');
-            const data = await res.json();
-            if (data.success) {
-                setTimelines(data.data);
-            } else {
-                console.error(data.error);
-            }
-        };
-        fetchTimelines();
-    }, []);
+    const timelines = await GET();
 
     return (
         <div className={style.timelineBox}>
@@ -27,7 +13,8 @@ const Timeline = () => {
             <div className={style.timeline}>
 
                 {
-                    timelines.map((value: any) => {
+                    timelines instanceof Array ?
+                    timelines.map((value) => {
                         return ( 
                         <div key={value.name} className={style.container}>
                                 <div className={style.textBox}>
@@ -41,7 +28,7 @@ const Timeline = () => {
                                 </div>
                             </div>
                         )
-                    })
+                    }): <p>NO data</p>
                 } 
 
             </div>
