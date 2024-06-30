@@ -1,6 +1,6 @@
 import mongoose, { Document, Model, Schema } from "mongoose";
 
-interface ITimeline extends Document {
+type ITimeline = {
     name: string;
     jobtitle: string;
     joinDate: string;

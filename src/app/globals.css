@@ -5,6 +5,7 @@
     --font-size: 0.390625vw;
     --text-color: #ECE9E1;
     --light-gray: lightgray;
+    --trans-color: rgba(255, 255, 255, 0);
 
     --mobile-sm: 325px;
     --mobile-weight: 430px;
