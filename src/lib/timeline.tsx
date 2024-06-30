@@ -1,4 +1,4 @@
-interface Timelinedetial {
+type Timelinedetial = {
     name: string;
     jobtitle: string;
     joinDate: string;
