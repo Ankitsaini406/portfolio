@@ -16,7 +16,11 @@ const List = [
   {
     title: "Projects",
     path: "/projects",
-  }
+  },
+  {
+    title: "Login",
+    path: "/login",
+  },
 ];
 
 const Navlist = ({ open, isopen }: { open: any, isopen: any }) => {
