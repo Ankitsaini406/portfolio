@@ -23,7 +23,7 @@ const Navlist = ({ open, isopen }: { open: any, isopen: any }) => {
 
   return (
     <>
-      <div className={`{style.SubNav}`}>
+      <div className={style.SubNav}>
         {
           List.map((list) => {
             return (
@@ -36,7 +36,6 @@ const Navlist = ({ open, isopen }: { open: any, isopen: any }) => {
       {isopen ? <RxCross1 className={`${style.menu} ${style.mobile}`} onClick={open} /> : <IoIosMenu className={`${style.menu} ${style.mobile}`} onClick={open} />}
       {
         isopen ? (
-          <div className={style.overlay}>
           <div className={`${style.mobile} ${style.SubNavmobile} ${style.subactive}`}>
         {
           List.map((list) => {
@@ -47,7 +46,6 @@ const Navlist = ({ open, isopen }: { open: any, isopen: any }) => {
         }
         {/* <ThemeSwitcher /> */}
       </div>
-        </div>
         ) : <div className={`${style.mobile} ${style.SubNavmobile} ${style.subclose}`}>
         {
           List.map((list) => {
