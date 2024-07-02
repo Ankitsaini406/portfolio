@@ -1,6 +1,10 @@
+import style from './login.module.css';
+
 const Loginpage = () => {
     return (
-        <h1>Login</h1>
+        <div className={style.login}>
+            <h1>Login</h1>
+        </div>
     )
 }
 
