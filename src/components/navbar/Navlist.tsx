@@ -17,10 +17,6 @@ const List = [
     title: "Projects",
     path: "/projects",
   },
-  {
-    title: "Login",
-    path: "/login",
-  },
 ];
 
 const Navlist = ({ open, isopen }: { open: any, isopen: any }) => {
@@ -35,6 +31,7 @@ const Navlist = ({ open, isopen }: { open: any, isopen: any }) => {
             )
           })
         }
+        <Link className={`${style.navlink} ${style.desktop}`} href={'/login'} >Log in</Link>
         {/* <ThemeSwitcher /> */}
       </div>
       {isopen ? <RxCross1 className={`${style.menu} ${style.mobile}`} onClick={open} /> : <IoIosMenu className={`${style.menu} ${style.mobile}`} onClick={open} />}
@@ -48,6 +45,7 @@ const Navlist = ({ open, isopen }: { open: any, isopen: any }) => {
             )
           })
         }
+        <Link onClick={open} className={style.navlink} href={'/login'} >Log in</Link>
         {/* <ThemeSwitcher /> */}
       </div>
         ) : <div className={`${style.mobile} ${style.SubNavmobile} ${style.subclose}`}>
@@ -58,6 +56,7 @@ const Navlist = ({ open, isopen }: { open: any, isopen: any }) => {
             )
           })
         }
+        <Link className={style.navlink} href={'/login'} >Log in</Link>
         {/* <ThemeSwitcher /> */}
       </div>
       }
