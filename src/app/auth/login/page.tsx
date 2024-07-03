@@ -1,7 +1,7 @@
 import style from '../auth.module.css'
 
 
-const Login = () => {
+const LoginPage = () => {
     return (
         <div className={style.loginpage}>
             <h1>Login Page</h1>
@@ -9,4 +9,4 @@ const Login = () => {
     )
 }
 
-export default Login;
+export default LoginPage;

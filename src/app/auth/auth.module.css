@@ -8,6 +8,7 @@
     /* padding: 1em; */
     display: flex;
     overflow: hidden;
+    position: relative;
 }
 
 .login {
@@ -15,27 +16,59 @@
     background-color: var(--main-color);
     color: var(--text-color);
     border-radius: 10px;
-    transition: all 1s linear;
+    /* transition: all 1s linear; */
 }
 
-.loginpage{
+/* .loginpage{
     height: 100%;
     background-color: var(--text-color);
     color: var(--main-color);
     transition: all 1s linear;
-}
+} */
 
 .signup{
     width: 50%;
     background-color: var(--main-color);
     color: var(--text-color);
     border-radius: 10px;
-    transition: all 1s linear;
+    position: absolute;
+    right: 0;
+    height: 100%;
+    /* transition: all 1s linear; */
 }
 
-.signuppage{
+/* .signuppage{
     height: 100%;
     background-color: var(--text-color);
     color: var(--main-color);
     transition: all 1s linear;
+} */
+
+.active {
+    height: 100%;
+    background-color: var(--text-color);
+    color: var(--main-color);
+    position: absolute;
+    top: 0;
+    width: 50%;
 }
+
+/* .togleright {
+    transform: translateX(0%);
+    transition: transform 1s linear;
+}
+
+.active .togleright{
+    transform: translateX(-100%);
+    transition: transform 1s linear;
+}
+
+.togleleft {
+    transform: translateX(0%);
+    transition: transform 1s linear;
+}
+
+.active .togleleft {
+    transform: translateX(100%);
+    transition: transform 1s linear;
+} */
