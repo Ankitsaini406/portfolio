@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import style from "../auth.module.css";
-import Signuppage from "../signup/page";
-import Login from "./Login";
+import style from "./auth.module.css";
+import Signuppage from "./signup/page";
+import Login from "./login/page";
 
-const Loginpage = () => {
+const AuthPage = () => {
     const [change, setColor] = useState(false);
 
     const colorChange = () => {
@@ -25,4 +25,4 @@ const Loginpage = () => {
     );
 };
 
-export default Loginpage;
+export default AuthPage;
