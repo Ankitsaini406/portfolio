@@ -27,7 +27,6 @@
 } */
 
 .signup{
-    padding: 2em 0em;
     width: 50%;
     background-color: var(--main-color);
     color: var(--text-color);
@@ -75,7 +74,7 @@
     transition: transform 1s linear;
 } */
 
-.loginpage{
+.loginpage, .signuppage{
     padding: 2em 0em;
 }
 
