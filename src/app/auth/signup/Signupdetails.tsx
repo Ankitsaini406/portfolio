@@ -1,3 +1,4 @@
+import style from '../auth.module.css';
 
 type SignupDetailsProps = {
     colorChange: () => void;
@@ -5,10 +6,10 @@ type SignupDetailsProps = {
 
 const SignupDetails: React.FC<SignupDetailsProps> = ({colorChange}) => {
     return (
-        <div>
+        <div className={style.signupdetails}>
             <h1>Hello !</h1>
-            <p>Register with your personal details to use all of site features</p>
-            <button onClick={colorChange}>Sign Up</button>
+            <p className={style.text}>Register with your personal details to use all of site features</p>
+            <button className={style.changebutton} onClick={colorChange}>Sign Up</button>
         </div>
     )
 }
