@@ -9,7 +9,7 @@ const SignupDetails: React.FC<SignupDetailsProps> = ({colorChange}) => {
         <div className={style.signupdetails}>
             <h1>Hello !</h1>
             <p className={style.text}>Register with your personal details to use all of site features</p>
-            <button className={style.changebutton} onClick={colorChange}>Sign Up</button>
+            <button className={style.changebutton} onClick={colorChange}>Sign&nbsp;Up</button>
         </div>
     )
 }

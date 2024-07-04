@@ -12,7 +12,7 @@ const Signuppage = () => {
                 <input className={style.logininput} placeholder='Phone Number' type="number" />
                 <input className={style.logininput} placeholder='Password' type="password" />
                 <input className={style.logininput} placeholder='Re-Password' type="password" />
-                <button className={style.loginbutton}>Sign Up</button>
+                <button className={style.loginbutton}>Sign&nbsp;Up</button>
                 <p>Or</p>
                 <div className={style.icon}>
                 <GitHubIcon className={style.socialIcon}/>
