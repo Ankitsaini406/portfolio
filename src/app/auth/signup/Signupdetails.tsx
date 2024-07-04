@@ -6,8 +6,9 @@ type SignupDetailsProps = {
 const SignupDetails: React.FC<SignupDetailsProps> = ({colorChange}) => {
     return (
         <div>
-            <h1>Signup Details</h1>
-            <button onClick={colorChange}>Sign Button</button>
+            <h1>Hello !</h1>
+            <p>Register with your personal details to use all of site features</p>
+            <button onClick={colorChange}>Sign Up</button>
         </div>
     )
 }
