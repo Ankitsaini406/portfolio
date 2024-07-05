@@ -1,6 +1,6 @@
 .authpage {
     max-width: 1000px;
-    height: 70vh;
+    min-height: 70vh;
     margin: 2em auto;
     text-align: center;
     border-radius: 10px;

@@ -7,6 +7,7 @@ import style from "./page.module.css";
 import Introduction from "@/components/intro/Intro";
 import { Inter } from 'next/font/google'
 import ScrollButton from "@/components/scrollbutton/Scrollbutton";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -28,6 +29,7 @@ export default function RootLayout({
               <Navbar />
               <ScrollButton />
               {children}
+              <Toaster />
               <Footer />
           </ThemeProviders>
         </Introduction>
