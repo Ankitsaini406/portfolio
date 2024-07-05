@@ -17,6 +17,7 @@ const Signuppage = () => {
             phonenumber : event.target.phonenumber.value,
             password: event.target.password.value,
             re_password: event.target.re_password.value,
+            isAdmin : false,
         };
 
         try {
