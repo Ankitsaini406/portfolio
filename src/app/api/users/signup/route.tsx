@@ -3,6 +3,7 @@ import { z } from "zod";
 import UserModel from "@/lib/model/userModel";
 import connectToDatabase from "@/lib/mongoose/mongoose";
 import { userRegistrationSchema } from "@/lib/validation/uservalidation";
+import bcrypt from 'bcryptjs';
 
 export async function POST(req: Request) {
     try {
@@ -20,11 +21,14 @@ export async function POST(req: Request) {
             );
         }
 
+        // Hash the password
+        const hashedPassword = await bcrypt.hash(password, 10);
+
         const newUser = new UserModel({
             name,
             email,
             phonenumber,
-            password,
+            password : hashedPassword,
             re_password,
             isAdmin,
         });

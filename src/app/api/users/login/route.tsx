@@ -24,7 +24,7 @@ export async function POST(req: Request){
 
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
-            return NextResponse.json({ status: 401, meaasge: `Password is not match` });
+            return NextResponse.json({ status: 401, meaasge: `Password is not match ${isMatch}`, data: [password, user.password] });
         }
 
         if (secret !== undefined) {
