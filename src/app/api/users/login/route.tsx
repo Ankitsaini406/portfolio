@@ -29,7 +29,7 @@ export async function POST(req: Request){
 
         if (secret !== undefined) {
             const token = jwt.sign({ userId: user._id}, secret, {expiresIn: '1h' });
-            return NextResponse.json({ status: 200, data: token});
+            return NextResponse.json({ status: 200, token: token});
         }
     } catch (error) {
         console.error(error);

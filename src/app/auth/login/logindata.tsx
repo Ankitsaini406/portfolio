@@ -29,11 +29,11 @@ export default async function handleLogin(event: any) {
         toast.success('Login successful!', { duration: 5000 });
 
         // Store token in local storage or cokkies
-        setCookie(null, 'token', data.data, {
+        setCookie(null, 'token', data.token, {
             maxAge: 30 * 24 * 60 * 60,
             path: '/',
         });
-        localStorage.setItem('token', data.data);
+        localStorage.setItem('token', data.token);
 
         // Redirect after successful registration
         setTimeout(() => {
