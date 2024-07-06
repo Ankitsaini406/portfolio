@@ -18,7 +18,7 @@ export default async function handleSubmit(event: any) {
     try {
         userRegistrationSchema.parse(formData);
 
-        const response = await fetch('/api/users', {
+        const response = await fetch('/api/users/signup', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -36,7 +36,7 @@ export default async function handleSubmit(event: any) {
 
             // Redirect after successful registration
             setTimeout(() => {
-                window.location.href = '/'; // Replace with your desired route
+                window.location.href = '/auth';
             }, 1000);
         } else {
             const errorData = await response.json();

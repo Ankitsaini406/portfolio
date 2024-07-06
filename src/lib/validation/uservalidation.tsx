@@ -12,3 +12,8 @@ export const userRegistrationSchema = z.object({
 });
 
 type TUserRegistrationSchema = z.infer<typeof userRegistrationSchema>;
+
+export const userLoginSchema = z.object({
+    email: z.string().email("Invalid email"),
+    password: z.string().min(3, "Paswword must be at least 8 charactres"),
+});

@@ -2,8 +2,12 @@ import style from '../auth.module.css'
 import GitHubIcon from '@mui/icons-material/GitHub';
 import GoogleIcon from '@mui/icons-material/Google';
 import handleSubmit from './submitdata';
+import crypto from 'crypto';
 
 const Signuppage = () => {
+
+// const secret = crypto.randomBytes(64).toString('hex');
+// console.log(secret);
 
     return (
         <div className={style.signuppage}>
