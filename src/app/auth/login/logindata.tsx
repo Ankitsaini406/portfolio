@@ -1,5 +1,4 @@
-import UserModel from "@/lib/model/userModel";
-import connectToDatabase from "@/lib/mongoose/mongoose";
+import { setCookie } from "nookies";
 import toast from "react-hot-toast";
 
 
@@ -24,13 +23,17 @@ export default async function handleLogin(event: any) {
         const data = await res.json();
 
         if (!res.ok) {
-            toast.error(data.meaasge, { duration: 5000 });
+            toast.error(data.message, { duration: 5000 });
             return;
         }
         toast.success('Login successful!', { duration: 5000 });
 
         // Store token in local storage or cokkies
-        localStorage.setItem('token', data.token);
+        setCookie(null, 'token', data.data, {
+            maxAge: 30 * 24 * 60 * 60,
+            path: '/',
+        });
+        localStorage.setItem('token', data.data);
 
         // Redirect after successful registration
         setTimeout(() => {
