@@ -24,7 +24,6 @@ const List = [
 ];
 
 const Navlist = ({ open, isopen }: { open: any, isopen: boolean }) => {
-
   return (
     <>
       <div className={style.SubNav}>
@@ -43,11 +42,11 @@ const Navlist = ({ open, isopen }: { open: any, isopen: boolean }) => {
   )
 }
 
-export const ModileNav = ({isopen, open} : {isopen: boolean, open : any}) => {
+export const ModileNav = ({ isopen, open }: { isopen: boolean, open: any }) => {
   return (
     <>
-    {isopen ? <RxCross1 className={`${style.menu} ${style.mobile}`} onClick={open} /> : <IoIosMenu className={`${style.menu} ${style.mobile}`} onClick={open} />}
-          {
+      {isopen ? <RxCross1 className={`${style.menu} ${style.mobile}`} onClick={open} /> : <IoIosMenu className={`${style.menu} ${style.mobile}`} onClick={open} />}
+      {
         isopen ? (
           <div className={`${style.mobile} ${style.SubNavmobile} ${style.subactive}`}>
             {
