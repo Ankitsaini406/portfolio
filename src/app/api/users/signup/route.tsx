@@ -4,6 +4,9 @@ import UserModel from "@/lib/model/userModel";
 import connectToDatabase from "@/lib/mongoose/mongoose";
 import { userRegistrationSchema } from "@/lib/validation/uservalidation";
 import bcrypt from 'bcryptjs';
+import { NextApiRequest } from "next";
+import jwt from 'jsonwebtoken';
+import { secret } from "@/lib/mongoose/db";
 
 export async function POST(req: Request) {
     try {
@@ -28,7 +31,7 @@ export async function POST(req: Request) {
             name,
             email,
             phonenumber,
-            password : hashedPassword,
+            password: hashedPassword,
             re_password,
             isAdmin,
         });
@@ -50,24 +53,29 @@ export async function POST(req: Request) {
     }
 }
 
-// const body: any = await req.json();
-// await connectToDatabase();
+export async function GET(req: NextApiRequest) {
+    if (req.method !== 'GET') {
+        return NextResponse.json({ status: 405, message: 'Method Not Allowed' });
+    }
 
-// try {
+    const token = req.cookies.token;
 
-    // const { name, email, password } = userRegistrationSchema.parse(req.body);
+    if (!token) {
+        return NextResponse.json({ status: 401, message: 'Unauthorized' });
+    }
 
-    // const existingUser = await UserModel.findOne({ email });
-    // if (existingUser) {
-//         console.log(`user exsit : ${res.status}`);
-    //   return res.ok;
-    // }
+    try {
+        await connectToDatabase();
+        const decoded: any = jwt.verify(token, secret!);
+        const user = await UserModel.findById(decoded.userId).lean();
 
-//     const validationData = await userRegistrationSchema.parse(body);
-//     console.log(`user data : ${validationData}`);
-//     return NextResponse.json({message: "User register successfully", data: validationData});
-// } catch (error) {
-//     console.log(`User registration error: ${error}`);
-//     return NextResponse.json({message: error});
-// }
-// }
+        if (!user) {
+            return NextResponse.json({ status: 404, message: 'User not found' });
+        }
+
+        NextResponse.json({ status: 200, data: user });
+    } catch (error) {
+        console.error(error);
+        NextResponse.json({ status: 500, message: 'Internal Server Error' });
+    }
+};
