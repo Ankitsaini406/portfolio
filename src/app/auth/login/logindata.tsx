@@ -38,9 +38,9 @@ export default async function handleLogin(event: any) {
         localStorage.setItem('token', data.token);
 
         // Redirect after successful registration
-        // setTimeout(() => {
-        //     window.location.href = '/';
-        // }, 1000);
+        setTimeout(() => {
+            window.location.href = '/';
+        }, 1000);
 
     } catch (error: any) {
         toast.error(error.response?.data?.message || `Login failed. Please try again.`);

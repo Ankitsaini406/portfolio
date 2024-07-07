@@ -23,7 +23,7 @@ const List = [
   },
 ];
 
-const Navlist = ({ open, isopen }: { open: any, isopen: any }) => {
+const Navlist = ({ open, isopen }: { open: any, isopen: boolean }) => {
 
   return (
     <>
@@ -38,34 +38,42 @@ const Navlist = ({ open, isopen }: { open: any, isopen: any }) => {
         <Link className={`${style.navlink} ${style.desktop}`} href={'/auth'} >Log in</Link>
         {/* <ThemeSwitcher /> */}
       </div>
-      {isopen ? <RxCross1 className={`${style.menu} ${style.mobile}`} onClick={open} /> : <IoIosMenu className={`${style.menu} ${style.mobile}`} onClick={open} />}
-      {
+      <ModileNav isopen={isopen} open={open} />
+    </>
+  )
+}
+
+export const ModileNav = ({isopen, open} : {isopen: boolean, open : any}) => {
+  return (
+    <>
+    {isopen ? <RxCross1 className={`${style.menu} ${style.mobile}`} onClick={open} /> : <IoIosMenu className={`${style.menu} ${style.mobile}`} onClick={open} />}
+          {
         isopen ? (
           <div className={`${style.mobile} ${style.SubNavmobile} ${style.subactive}`}>
-        {
-          List.map((list) => {
-            return (
-              <Link onClick={open} className={style.navlink} key={list.title} href={list.path}>{list.title}</Link>
-            )
-          })
-        }
-        <Link onClick={open} className={style.navlink} href={'/auth'} >Log in</Link>
-        {/* <ThemeSwitcher /> */}
-      </div>
+            {
+              List.map((list) => {
+                return (
+                  <Link onClick={open} className={style.navlink} key={list.title} href={list.path}>{list.title}</Link>
+                )
+              })
+            }
+            <Link onClick={open} className={style.navlink} href={'/auth'} >Log in</Link>
+            {/* <ThemeSwitcher /> */}
+          </div>
         ) : <div className={`${style.mobile} ${style.SubNavmobile} ${style.subclose}`}>
-        {
-          List.map((list) => {
-            return (
-              <Link className={style.navlink} key={list.title} href={list.path}>{list.title}</Link>
-            )
-          })
-        }
-        <Link className={style.navlink} href={'/auth'} >Log in</Link>
-        {/* <ThemeSwitcher /> */}
-      </div>
+          {
+            List.map((list) => {
+              return (
+                <Link className={style.navlink} key={list.title} href={list.path}>{list.title}</Link>
+              )
+            })
+          }
+          <Link className={style.navlink} href={'/auth'} >Log in</Link>
+          {/* <ThemeSwitcher /> */}
+        </div>
       }
     </>
   )
 }
 
-export default Navlist
+export default Navlist;

@@ -20,9 +20,7 @@ const Navbar = () => {
     setOpenNav(!openNav);
   }
 
-  if (typeof window != "undefined") {
     window.addEventListener("scroll", changeNavColor);
-  }
 
   return (
     <>
