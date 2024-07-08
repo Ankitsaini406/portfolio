@@ -5,10 +5,11 @@ import { NextResponse } from "next/server";
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { secret } from "@/lib/mongoose/db";
+import { setCookie } from "nookies";
 
-export async function POST(req: Request){
-    if (req.method !== 'POST'){
-        return NextResponse.json({ status: 405 , message: `Request is not match = ${req}`});
+export async function POST(req: Request) {
+    if (req.method !== 'POST') {
+        return NextResponse.json({ status: 405, message: `Request is not match = ${req}` });
     }
 
     try {
@@ -19,17 +20,25 @@ export async function POST(req: Request){
 
         const user = await UserModel.findOne({ email });
         if (!user) {
-            return NextResponse.json({status: 401, message: 'Invaild credentials'}); // Unauthorized
+            return NextResponse.json({ status: 401, message: 'Invaild credentials' }); // Unauthorized
         }
 
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
-            return NextResponse.json({ status: 401, meaasge: `Password is not match ${isMatch}`});
+            return NextResponse.json({ status: 401, meaasge: `Password is not match ${isMatch}` });
         }
 
         if (secret !== undefined) {
-            const token = jwt.sign({ userId: user._id}, secret, {expiresIn: '1h' });
-            return NextResponse.json({ status: 200, token: token});
+            const token = jwt.sign({ userId: user._id }, secret, /*{expiresIn: '1h' }*/);
+            const response = NextResponse.json({ status: 200, token: token });
+
+            // Set cookie in response headers
+            setCookie({ res: response }, 'cookie', token, {
+                maxAge: 30 * 24 * 60 * 60,
+                path: '/auth',
+            });
+
+            return response;
         }
     } catch (error) {
         console.error(error);

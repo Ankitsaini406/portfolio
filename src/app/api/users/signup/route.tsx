@@ -1,14 +1,14 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import UserModel from "@/lib/model/userModel";
 import connectToDatabase from "@/lib/mongoose/mongoose";
 import { userRegistrationSchema } from "@/lib/validation/uservalidation";
 import bcrypt from 'bcryptjs';
-import { NextApiRequest } from "next";
 import jwt from 'jsonwebtoken';
 import { secret } from "@/lib/mongoose/db";
+import { cookies } from "next/headers";
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
     try {
         const body = await req.json();
         const { name, email, phonenumber, password, re_password, isAdmin } =
@@ -53,15 +53,12 @@ export async function POST(req: Request) {
     }
 }
 
-export async function GET(req: NextApiRequest) {
-    if (req.method !== 'GET') {
-        return NextResponse.json({ status: 405, message: 'Method Not Allowed' });
-    }
-
-    const token = req.cookies.token;
+export async function GET(req: NextRequest) {
+    const cookieStore = cookies();
+    const token = cookieStore.get("token")?.value;
 
     if (!token) {
-        return NextResponse.json({ status: 401, message: 'Unauthorized' });
+        return NextResponse.json({ status: 401, message: `Unauthorized: ${token} : No token found` });
     }
 
     try {
@@ -73,9 +70,9 @@ export async function GET(req: NextApiRequest) {
             return NextResponse.json({ status: 404, message: 'User not found' });
         }
 
-        NextResponse.json({ status: 200, data: user });
+        return NextResponse.json({ status: 200, data: user });
     } catch (error) {
-        console.error(error);
-        NextResponse.json({ status: 500, message: 'Internal Server Error' });
+        console.error(`There is error in catch : ${error}`);
+        return NextResponse.json({ status: 500, message: `Internal Server Error: ${error}` });
     }
-};
+}

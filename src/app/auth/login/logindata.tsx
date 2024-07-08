@@ -1,3 +1,4 @@
+import { getSession } from "@/lib/cookies/actions";
 import { setCookie } from "nookies";
 import toast from "react-hot-toast";
 
@@ -22,25 +23,23 @@ export default async function handleLogin(event: any) {
 
         const data = await res.json();
 
-        console.log(`This is data : ${data}`);
-
         if (!res.ok) {
             toast.error(data.message, { duration: 5000 });
             return;
         }
-        toast.success('Login successful!', { duration: 5000 });
 
+        const userCookie = data.token;
         // Store token in local storage or cokkies
-        setCookie(null, 'token', data.token, {
+        setCookie(null, 'token', userCookie, {
             maxAge: 30 * 24 * 60 * 60,
             path: '/',
         });
-        localStorage.setItem('token', data.token);
+        localStorage.setItem('token', userCookie);
 
-        // Redirect after successful registration
-        setTimeout(() => {
-            window.location.href = '/';
-        }, 1000);
+        if (userCookie) {
+            toast.success('Login successful!', { duration: 5000 });
+            getSession();
+        }
 
     } catch (error: any) {
         toast.error(error.response?.data?.message || `Login failed. Please try again.`);
