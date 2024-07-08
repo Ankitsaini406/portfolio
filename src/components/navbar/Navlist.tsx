@@ -17,10 +17,6 @@ const List = [
     title: "Projects",
     path: "/projects",
   },
-  {
-    title: "Profile",
-    path: "/profile",
-  },
 ];
 
 const Navlist = ({ open, isopen }: { open: any, isopen: boolean }) => {
@@ -34,6 +30,7 @@ const Navlist = ({ open, isopen }: { open: any, isopen: boolean }) => {
             )
           })
         }
+        <Link className={style.navlink} href={'/profile'} >Profile</Link>
         <Link className={`${style.navlink} ${style.desktop}`} href={'/auth'} >Log in</Link>
         {/* <ThemeSwitcher /> */}
       </div>
@@ -56,6 +53,7 @@ export const ModileNav = ({ isopen, open }: { isopen: boolean, open: any }) => {
                 )
               })
             }
+            <Link onClick={open} className={style.navlink} href={'/profile'} >Profile</Link>
             <Link onClick={open} className={style.navlink} href={'/auth'} >Log in</Link>
             {/* <ThemeSwitcher /> */}
           </div>
@@ -67,6 +65,7 @@ export const ModileNav = ({ isopen, open }: { isopen: boolean, open: any }) => {
               )
             })
           }
+          <Link className={style.navlink} href={'/profile'} >Profile</Link>
           <Link className={style.navlink} href={'/auth'} >Log in</Link>
           {/* <ThemeSwitcher /> */}
         </div>
