@@ -1,7 +1,7 @@
-import Hero from "../components/hero/page";
-import Timeline from "./[timeline]/page";
+import Hero from "@/components/hero/page";
+import Timeline from "@/app/[timeline]/page";
 
-export default function Home() {
+export default async function Home () {
   return (
     <main >
       <Hero />

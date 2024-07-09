@@ -9,14 +9,17 @@ export type SessionUser = {
     isAdmin?: boolean,
 }
 
-export const getSession = async (): Promise<SessionUser | null> => {
-    const res = await fetch('/api/users/signup', {
+export default async function getSession(): Promise<SessionUser | null> {
+    const res = await fetch('http://localhost:3000/api/users/signup', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
         },
         credentials: 'include', // This ensures cookies are sent with the request
     });
+
+    console.log('Request Headers:', res.headers);
+    console.log('Response Status:', res.status);
 
     if (res.status === 401) {
         // Handle unauthorized access
@@ -26,8 +29,15 @@ export const getSession = async (): Promise<SessionUser | null> => {
 
     const data = await res.json();
 
+    // Properly log the data
+    console.log('this is console log data:', data);
+
+    if (data.data === undefined) {
+        return null;
+    }
+
     const sessionData: SessionUser = {
-        _id: data.data.userId,
+        _id: data.data._id,
         name: data.data.name,
         email: data.data.email,
         phonenumber: data.data.phonenumber,
@@ -36,12 +46,9 @@ export const getSession = async (): Promise<SessionUser | null> => {
         isAdmin: data.data.isAdmin,
     };
 
-    // Redirect after successful registration
-    setTimeout(() => {
-        window.location.href = '/';
-    }, 1000);
     return sessionData;
 }
+
 
 export const login = async () => {}
 

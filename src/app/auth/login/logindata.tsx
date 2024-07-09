@@ -1,4 +1,4 @@
-import { getSession } from "@/lib/cookies/actions";
+import getSession from "@/lib/cookies/actions";
 import { setCookie } from "nookies";
 import toast from "react-hot-toast";
 
@@ -39,6 +39,11 @@ export default async function handleLogin(event: any) {
         if (userCookie) {
             toast.success('Login successful!', { duration: 5000 });
             getSession();
+
+            // Redirect after successful registration
+            setTimeout(() => {
+                window.location.href = '/';
+            },);
         }
 
     } catch (error: any) {
