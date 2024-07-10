@@ -19,7 +19,15 @@ const List = [
   },
 ];
 
-const Navlist = ({ open, isopen }: { open: any, isopen: boolean }) => {
+const Navlist = ({ open, isopen, sessionUser, loading }: { open: any, isopen: boolean, sessionUser: any, loading: boolean }) => {
+
+  if (loading) {
+    return <div>Loading....</div>
+  }
+
+  if (!sessionUser) {
+    return <div>No session found.</div>
+  }
   return (
     <>
       <div className={style.SubNav}>
@@ -30,16 +38,16 @@ const Navlist = ({ open, isopen }: { open: any, isopen: boolean }) => {
             )
           })
         }
-        <Link className={style.navlink} href={'/profile'} >Profile</Link>
-        <Link className={`${style.navlink} ${style.desktop}`} href={'/auth'} >Log in</Link>
+        {sessionUser ? <Link className={style.navlink} href={'/profile'} >Profile</Link>: null}
+        {sessionUser ? <Link className={`${style.navlink} ${style.desktop}`} href={'/logout'} >Log out</Link> :<Link className={`${style.navlink} ${style.desktop}`} href={'/auth'} >Log in</Link>}
         {/* <ThemeSwitcher /> */}
       </div>
-      <ModileNav isopen={isopen} open={open} />
+      <ModileNav isopen={isopen} open={open} sessionUser={sessionUser} />
     </>
   )
 }
 
-export const ModileNav = ({ isopen, open }: { isopen: boolean, open: any }) => {
+export const ModileNav = ({ isopen, open,sessionUser }: { isopen: boolean, open: any, sessionUser:any }) => {
   return (
     <>
       {isopen ? <RxCross1 className={`${style.menu} ${style.mobile}`} onClick={open} /> : <IoIosMenu className={`${style.menu} ${style.mobile}`} onClick={open} />}
@@ -53,7 +61,7 @@ export const ModileNav = ({ isopen, open }: { isopen: boolean, open: any }) => {
                 )
               })
             }
-            <Link onClick={open} className={style.navlink} href={'/profile'} >Profile</Link>
+            {sessionUser ? <Link className={style.navlink} href={'/profile'} >Profile</Link>: null}
             <Link onClick={open} className={style.navlink} href={'/auth'} >Log in</Link>
             {/* <ThemeSwitcher /> */}
           </div>
@@ -65,7 +73,7 @@ export const ModileNav = ({ isopen, open }: { isopen: boolean, open: any }) => {
               )
             })
           }
-          <Link className={style.navlink} href={'/profile'} >Profile</Link>
+          {sessionUser ? <Link className={style.navlink} href={'/profile'} >Profile</Link>: null}
           <Link className={style.navlink} href={'/auth'} >Log in</Link>
           {/* <ThemeSwitcher /> */}
         </div>

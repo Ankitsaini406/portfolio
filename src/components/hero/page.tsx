@@ -4,13 +4,9 @@ import { IoLogoJavascript } from "react-icons/io5";
 import { RiFlutterFill, RiNextjsFill } from "react-icons/ri";
 import { SiMysql } from "react-icons/si";
 import { TbApi } from "react-icons/tb";
-import getSession from "@/lib/cookies/actions";
-
 
 export default async function Hero (){
-    const session = await getSession();
 
-    console.log(`This is :`, session);
     return (
         <div className={styles.bodyFlex}>
             <div className={styles.herotext}>
