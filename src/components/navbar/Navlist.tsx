@@ -27,29 +27,40 @@ const Navlist = ({ open, isopen, sessionUser, loading }: { open: any, isopen: bo
   }
 
   if (!sessionUser) {
-    return <div>No session found.</div>
+    return (
+      <>
+      <CommanNav sessionUser={sessionUser}/>
+        <ModileNav isopen={isopen} open={open} sessionUser={sessionUser} />
+      </>
+    )
   }
 
   return (
     <>
-      <div className={style.SubNav}>
-        {
-          List.map((list) => {
-            return (
-              <Link className={`${style.navlink} ${style.desktop}`} key={list.title} href={list.path}>{list.title}</Link>
-            )
-          })
-        }
-        {sessionUser ? <Link className={`${style.navlink} ${style.desktop}`} href={'/profile'} >Profile</Link>: null}
-        {sessionUser ? <Link className={`${style.navlink} ${style.desktop}`} href={'/logout'} >Log out</Link> :<Link className={`${style.navlink} ${style.desktop}`} href={'/auth'} >Log in</Link>}
-        {/* <ThemeSwitcher /> */}
-      </div>
+      <CommanNav sessionUser={sessionUser}/>
       <ModileNav isopen={isopen} open={open} sessionUser={sessionUser} />
     </>
   )
 }
 
-export const ModileNav = ({ isopen, open,sessionUser }: { isopen: boolean, open: any, sessionUser:any }) => {
+export const CommanNav = ({sessionUser}: {sessionUser: any}) => {
+  return (
+    <div className={style.SubNav}>
+    {
+      List.map((list) => {
+        return (
+          <Link className={`${style.navlink} ${style.desktop}`} key={list.title} href={list.path}>{list.title}</Link>
+        )
+      })
+    }
+    {sessionUser ? <Link className={`${style.navlink} ${style.desktop}`} href={'/profile'} >Profile</Link> : <Link className={`${style.navlink} ${style.desktop}`} href={'/auth'} >Profile</Link>}
+    {sessionUser ? <Link className={`${style.navlink} ${style.desktop}`} href={'/logout'} >Log out</Link> : <Link className={`${style.navlink} ${style.desktop}`} href={'/auth'} >Log in</Link>}
+    {/* <ThemeSwitcher /> */}
+  </div>
+  )
+}
+
+export const ModileNav = ({ isopen, open, sessionUser }: { isopen: boolean, open: any, sessionUser: any }) => {
   return (
     <>
       {isopen ? <RxCross1 className={`${style.menu} ${style.mobile}`} onClick={open} /> : <IoIosMenu className={`${style.menu} ${style.mobile}`} onClick={open} />}
@@ -63,8 +74,8 @@ export const ModileNav = ({ isopen, open,sessionUser }: { isopen: boolean, open:
                 )
               })
             }
-            {sessionUser ? <Link className={style.navlink} href={'/profile'} >Profile</Link>: null}
-            <Link onClick={open} className={style.navlink} href={'/auth'} >Log in</Link>
+            {sessionUser ? <Link onClick={open} className={style.navlink} href={'/profile'} >Profile</Link> : <Link onClick={open} className={style.navlink} href={'/auth'} >Profile</Link>}
+            {sessionUser? <Link onClick={open} className={style.navlink} href={'/logout'} >Log out</Link> :<Link onClick={open} className={style.navlink} href={'/auth'} >Log in</Link>}
             {/* <ThemeSwitcher /> */}
           </div>
         ) : <div className={`${style.mobile} ${style.SubNavmobile} ${style.subclose}`}>
@@ -75,8 +86,8 @@ export const ModileNav = ({ isopen, open,sessionUser }: { isopen: boolean, open:
               )
             })
           }
-          {/* {sessionUser ? <Link className={style.navlink} href={'/profile'} >Profile</Link>: null} */}
-          <Link className={style.navlink} href={'/auth'} >Log in</Link>
+          {sessionUser ? <Link onClick={open} className={style.navlink} href={'/profile'} >Profile</Link>: <Link onClick={open} className={style.navlink} href={'/auth'} >Profile</Link>}
+          {sessionUser? <Link onClick={open} className={style.navlink} href={'/logout'} >Log out</Link> :<Link onClick={open} className={style.navlink} href={'/auth'} >Log in</Link>}
           {/* <ThemeSwitcher /> */}
         </div>
       }
