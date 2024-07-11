@@ -43,6 +43,29 @@
     z-index: 2;
 }
 
+.lodingbox{
+    display: flex;
+    gap: 1em;
+}
+
+.lodingdiv{
+    width: 80px;
+    height: 20px;
+    border-radius: 5px;
+    background: linear-gradient(90deg, var(--main-color) 0%, var(--text-color) 50%, var(--main-color) 100%);
+    background-size: 200% 100%;
+    animation: shimmering 1.5s linear infinite;
+}
+
+@keyframes shimmering {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
 @media (width <= 770px) {
     .mobile {
         display: block;

@@ -1,16 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react";
-
-export type SessionUser = {
-    _id?: string,
-    name?: string,
-    email?: string,
-    phonenumber?: string,
-    password?: string,
-    re_password?: string,
-    isAdmin?: boolean,
-};
+import { SessionUser } from "../types";
 
 const getUserSession = async (): Promise<SessionUser | null> => {
     const res = await fetch('http://localhost:3000/api/users/signup', {
