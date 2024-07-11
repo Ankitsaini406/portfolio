@@ -1,3 +1,4 @@
+import { destroyCookie } from "nookies";
 
 export type SessionUser = {
     _id?: string,
@@ -50,6 +51,23 @@ export default async function getSession(): Promise<SessionUser | null> {
 }
 
 
-export const login = async () => {}
+export const login = async () => { }
 
-export const logout = async () => { }
+export const logout = async () => {
+    const cookies = document.cookie.split(";");
+
+    cookies.forEach(cookie => {
+        const eqPos = cookie.indexOf("=");
+        const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/`;
+    });
+
+    destroyCookie(null, 'token');
+    destroyCookie(null, 'perf_dv6Tr4n');
+    localStorage.clear();
+    sessionStorage.clear();
+
+    setTimeout(() => {
+        window.location.href = '/';
+    },);
+}

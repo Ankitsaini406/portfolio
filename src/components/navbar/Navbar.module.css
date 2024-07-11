@@ -74,7 +74,11 @@
     .desktop {
         display: none;
     }
-    
+
+    .lodingbox{
+        display: none;
+    }
+
     .SubNavmobile{
         height: 100%;
         width: 500px;
