@@ -12,9 +12,6 @@ const getUserSession = async (): Promise<SessionUser | null> => {
         credentials: 'include', // This ensures cookies are sent with the request
     });
 
-    console.log('Request Headers:', res.headers);
-    console.log('Response Status:', res.status);
-
     if (res.status === 401) {
         // Handle unauthorized access
         console.error('Unauthorized: No token found or invalid token');

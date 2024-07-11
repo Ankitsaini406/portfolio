@@ -1,4 +1,5 @@
 import { destroyCookie } from "nookies";
+import toast from "react-hot-toast";
 
 export type SessionUser = {
     _id?: string,
@@ -19,19 +20,16 @@ export default async function getSession(): Promise<SessionUser | null> {
         credentials: 'include', // This ensures cookies are sent with the request
     });
 
-    console.log('Request Headers:', res.headers);
-    console.log('Response Status:', res.status);
-
     if (res.status === 401) {
         // Handle unauthorized access
-        console.error('Unauthorized: No token found or invalid token');
+        toast.error('Unauthorized: No token found or invalid token');
         return null;
     }
 
     const data = await res.json();
 
     // Properly log the data
-    console.log('this is console log data:', data);
+    toast.success(`Congratulations ${data.data.name}`);
 
     if (data.data === undefined) {
         return null;

@@ -156,3 +156,17 @@
         width: 80%;
     }
 }
+
+.lableName {
+    position: relative;
+    width: 55%;
+}
+
+.passicon {
+    position: absolute;
+    display: block;
+    top: 8px;
+    right: 5px;
+    color: var(--black-color);
+    background: var(--white-color);
+}

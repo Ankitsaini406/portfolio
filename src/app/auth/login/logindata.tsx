@@ -26,24 +26,24 @@ export default async function handleLogin(event: any) {
         if (!res.ok) {
             toast.error(data.message, { duration: 5000 });
             return;
-        }
+        } else {
+            const userCookie = data.token;
+            // Store token in local storage or cokkies
+            setCookie(null, 'token', userCookie, {
+                maxAge: 30 * 24 * 60 * 60,
+                path: '/',
+            });
+            localStorage.setItem('token', userCookie);
 
-        const userCookie = data.token;
-        // Store token in local storage or cokkies
-        setCookie(null, 'token', userCookie, {
-            maxAge: 30 * 24 * 60 * 60,
-            path: '/',
-        });
-        localStorage.setItem('token', userCookie);
+            if (userCookie) {
+                toast.success('Login successful!', { duration: 5000 });
+                getSession();
 
-        if (userCookie) {
-            toast.success('Login successful!', { duration: 5000 });
-            getSession();
-
-            // Redirect after successful registration
-            setTimeout(() => {
-                window.location.href = '/';
-            },);
+                // Redirect after successful registration
+                setTimeout(() => {
+                    window.location.href = '/';
+                },);
+            }
         }
 
     } catch (error: any) {

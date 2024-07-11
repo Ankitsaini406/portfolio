@@ -28,7 +28,6 @@ export default async function handleSubmit(event: any) {
 
         if (response.ok) {
             const data = await response.json();
-            console.log('User registered successfully:', data);
 
             toast.success('User successfully created!', {
                 duration: 5000,
@@ -40,7 +39,6 @@ export default async function handleSubmit(event: any) {
             }, 1000);
         } else {
             const errorData = await response.json();
-            console.error('Error registering user:', errorData);
 
             toast.error('Error registering user!', {
                 duration: 5000,
