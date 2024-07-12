@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import style from './projects.module.css'
 import { GET } from '../api/projects/route';
-import ProjectModel from '@/lib/model/project';
 
 const Projects = async () => {
 
