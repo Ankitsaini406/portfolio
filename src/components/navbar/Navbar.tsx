@@ -40,14 +40,14 @@ const Navbar = () => {
           <div className={style.NavBarName}>
             <h1>@ Ankit</h1>
           </div>
-          <Navlist open={openNavBar} isopen={openNav} sessionUser={sessionUser} loading={loading} />
+          <Navlist open={openNavBar} isopen={openNav} sessionUser={sessionUser} loading={loading} isAdmin={sessionUser?.isAdmin} />
         </div>
       ) : (
         <div className={style.NavBar}>
           <div className={style.NavBarName}>
             <h1>@ Ankit</h1>
           </div>
-          <Navlist open={openNavBar} isopen={openNav} sessionUser={sessionUser} loading={loading} />
+          <Navlist open={openNavBar} isopen={openNav} sessionUser={sessionUser} loading={loading} isAdmin={sessionUser?.isAdmin}/>
         </div>
       )}
     </>

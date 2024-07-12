@@ -28,20 +28,20 @@ const handleFunction = (event: any, open: any) => {
   // You can add any other function calls here
 };
 
-const Navlist = ({ open, isopen, sessionUser, loading }: { open: any, isopen: boolean, sessionUser: any, loading: boolean }) => {
+const Navlist = ({ open, isopen, sessionUser, loading, isAdmin }: { open: any, isopen: boolean, sessionUser: any, loading: boolean, isAdmin: any }) => {
   if (loading) {
     return <Loading />;
   }
 
   return (
     <>
-      <CommanNav sessionUser={sessionUser} />
-      <ModileNav isopen={isopen} open={open} sessionUser={sessionUser} />
+      <CommanNav sessionUser={sessionUser} isAdmin={isAdmin} />
+      <ModileNav isopen={isopen} open={open} sessionUser={sessionUser} isAdmin={isAdmin} />
     </>
   );
 };
 
-export const CommanNav = ({ sessionUser }: { sessionUser: any }) => {
+export const CommanNav = ({ sessionUser, isAdmin }: { sessionUser: any, isAdmin: any }) => {
   return (
     <div className={style.SubNav}>
       {List.map((list) => {
@@ -60,6 +60,7 @@ export const CommanNav = ({ sessionUser }: { sessionUser: any }) => {
           Profile
         </Link>
       )}
+      {isAdmin ? <Link className={`${style.navlink} ${style.desktop}`} href={'/admin'}>Admin</Link> : null}
       {sessionUser ? (
         <Link onClick={() => logout()} className={`${style.navlink} ${style.desktop}`} href={'/'}>
           Log out
@@ -74,7 +75,7 @@ export const CommanNav = ({ sessionUser }: { sessionUser: any }) => {
   );
 };
 
-export const ModileNav = ({ isopen, open, sessionUser }: { isopen: boolean, open: any, sessionUser: any }) => {
+export const ModileNav = ({ isopen, open, sessionUser, isAdmin }: { isopen: boolean, open: any, sessionUser: any, isAdmin: any }) => {
   return (
     <>
       {isopen ? (
@@ -100,6 +101,7 @@ export const ModileNav = ({ isopen, open, sessionUser }: { isopen: boolean, open
               Profile
             </Link>
           )}
+          {/* {isAdmin ? <Link className={`${style.navlink} ${style.desktop}`} href={'/admin'}>Admin</Link> : null} */}
           {sessionUser ? (
             <Link onClick={(event) => handleFunction(event, open)} className={style.navlink} href={'/'}>
               Log out
@@ -129,6 +131,7 @@ export const ModileNav = ({ isopen, open, sessionUser }: { isopen: boolean, open
               Profile
             </Link>
           )}
+          {/* {isAdmin ? <Link className={`${style.navlink} ${style.desktop}`} href={'/admin'}>Admin</Link> : null} */}
           {sessionUser ? (
             <Link onClick={(event) => handleFunction(event, open)} className={style.navlink} href={'/'}>
               Log out
