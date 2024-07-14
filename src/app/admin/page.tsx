@@ -1,11 +1,11 @@
-"use client";
+"use client"
 
-import { useEffect, useState } from 'react';
-import style from './admin.module.css';
+import React from 'react';
 import UserDetails from './UserDetails';
+import style from './admin.module.css';
 import useUsers from '@/lib/hook/useUsers';
 
-export default function Admin() {
+const Admin = () => {
     const { users, loading, error, deleteUser } = useUsers();
 
     if (loading) {
@@ -24,8 +24,10 @@ export default function Admin() {
                 <button className={style.button}>Timelines</button>
             </div>
             <div className={style.admindetails}>
-                <UserDetails users={users} onDeleteUser={deleteUser}/>
+                <UserDetails users={users} onDelete={deleteUser} />
             </div>
         </div>
     );
-}
+};
+
+export default Admin;

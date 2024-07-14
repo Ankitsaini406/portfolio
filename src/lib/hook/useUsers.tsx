@@ -9,8 +9,9 @@ const useUsers = () => {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const response = await fetch('http://localhost:3000/api/users/allusers');
+                const response = await fetch('http://localhost:3000/api/users/allusers', {cache: 'no-cache'});
                 const result = await response.json();
+
                 if (result.status === 200) {
                     setUsers(result.data);
                 } else {
@@ -34,12 +35,11 @@ const useUsers = () => {
 
             if (response.ok) {
                 toast.success('User deleted successfully');
-                setUsers(users.filter((user: any) => user._id !== id));
+                setUsers(users.filter((user) => user._id !== id));
             } else {
                 toast.error('Failed to delete user');
             }
         } catch (error) {
-            console.log('This is error :', error);
             toast.error('Failed to delete user');
         }
     };
