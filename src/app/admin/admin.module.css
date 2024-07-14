@@ -55,7 +55,7 @@
     border: 1px solid;
     border-radius: 10px;
     width: clamp(300px, 70%, 1000px);
-    overflow: scroll;
+    overflow: auto;
 }
 
 .contacttable {
@@ -93,5 +93,6 @@
     border-radius: 6px;
     padding: 0.5em;
     color: var(--main-color);
+    cursor: pointer;
     /* box-shadow: 3px 3px 3px 0px var(--black-color), -3px -3px 3px var(--white-color); */
 }

@@ -1,10 +1,20 @@
-import style from './admin.module.css'
-import { GET } from '../api/users/allusers/route'
+"use client";
+
+import { useEffect, useState } from 'react';
+import style from './admin.module.css';
 import UserDetails from './UserDetails';
+import useUsers from '@/lib/hook/useUsers';
 
-export default async function Admin() {
+export default function Admin() {
+    const { users, loading, error, deleteUser } = useUsers();
 
-    const users = await GET();
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
 
     return (
         <div className={style.adminpage}>
@@ -14,8 +24,8 @@ export default async function Admin() {
                 <button className={style.button}>Timelines</button>
             </div>
             <div className={style.admindetails}>
-                <UserDetails users={users} />
+                <UserDetails users={users} onDeleteUser={deleteUser}/>
             </div>
         </div>
-    )
+    );
 }
