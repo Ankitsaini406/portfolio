@@ -47,7 +47,7 @@
     transition: width .3s;
 }
 
-.button:active::after {
+.active::after{
     width: 100%;
 }
 
