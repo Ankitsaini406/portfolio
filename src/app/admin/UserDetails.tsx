@@ -21,7 +21,7 @@ const UserDetails = ({ users, onDelete }: { users: any[], onDelete: (id: string)
                 </tr>
             </thead>
             <tbody>
-                {Array.isArray(users) ? (
+                {
                     users.map((user) => (
                         <tr key={user._id}>
                             <td>{user.name}</td>
@@ -36,11 +36,7 @@ const UserDetails = ({ users, onDelete }: { users: any[], onDelete: (id: string)
                             <td>{user.isAdmin ? <p>Admin</p> : <p>User</p>}</td>
                         </tr>
                     ))
-                ) : (
-                    <tr>
-                        <td colSpan={6}>No User Found!</td>
-                    </tr>
-                )}
+                }
             </tbody>
         </table>
     );
