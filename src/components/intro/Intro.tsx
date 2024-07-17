@@ -2,7 +2,7 @@
 
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import style from "./intro.module.css";
+import style from "@/styles/intro.module.css";
 
 const Introduction = ({ children }: { children: React.ReactNode }) => {
   const comp = useRef(null);

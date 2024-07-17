@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './admin.module.css';
+import style from '@/styles/admin.module.css';
 
 const UserDetails = ({ users, onDelete }: { users: any[], onDelete: (id: string) => void }) => {
 

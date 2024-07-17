@@ -1,4 +1,4 @@
-import style from './Navbar.module.css';
+import style from '@/styles/Navbar.module.css';
 
 const Loading = () => {
     return (

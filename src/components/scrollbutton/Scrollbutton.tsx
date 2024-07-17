@@ -3,7 +3,7 @@
 import { Variants, motion, useAnimationControls, useScroll } from "framer-motion";
 import { useEffect } from "react";
 import { FaArrowUp } from "react-icons/fa6";
-import style from './Sctollbutton.module.css';
+import style from '@/styles/Scrollbutton.module.css';
 
 const ScrollToTopContainerVariants: Variants = {
     hide: { opacity: 0, y: 100 },

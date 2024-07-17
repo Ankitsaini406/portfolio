@@ -1,4 +1,4 @@
-import style from '../auth.module.css';
+import style from '@/styles/auth.module.css';
 
 type LoginDetailsProps = {
     colorChange: () => void;

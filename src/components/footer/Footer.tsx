@@ -1,4 +1,4 @@
-import style from './Footer.module.css'
+import style from '@/styles/Footer.module.css'
 import { FaLinkedinIn } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa";
 import { color } from 'framer-motion';

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import style from "./Navbar.module.css";
+import style from '@/styles/Navbar.module.css';
 import { IoIosMenu } from "react-icons/io";
 import { RxCross1 } from "react-icons/rx";
 import ThemeSwitcher from "../theme/ThemeSwitcher";

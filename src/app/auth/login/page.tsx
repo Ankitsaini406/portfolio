@@ -1,7 +1,7 @@
 "use client"
 
 import Link from 'next/link';
-import style from '../auth.module.css'
+import style from '@/styles/auth.module.css';
 import handleLogin from './logindata';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';

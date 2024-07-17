@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import style from './about.module.css'
+import style from '@/styles/about.module.css'
 import { FaCode } from "react-icons/fa6";
 
 const About = () => {

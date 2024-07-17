@@ -1,4 +1,4 @@
-import styles from "./hero.module.css";
+import styles from "@/styles/hero.module.css";
 import { FaHtml5, FaCss3Alt, FaReact, FaShopify, FaPhp } from "react-icons/fa";
 import { IoLogoJavascript } from "react-icons/io5";
 import { RiFlutterFill, RiNextjsFill } from "react-icons/ri";

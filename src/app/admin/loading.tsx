@@ -1,4 +1,4 @@
-import style from './admin.module.css';
+import style from '@/styles/admin.module.css';
 
 const Loading = ({ activeButton , setActiveButton}: { activeButton: any, setActiveButton: any}) => {
 

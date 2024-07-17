@@ -1,7 +1,7 @@
 "use client";
 
 import Navlist from "./Navlist";
-import style from "./Navbar.module.css";
+import style from '@/styles/Navbar.module.css';
 import { useState } from "react";
 import useUserSession from "@/lib/hook/useUserdata";
 

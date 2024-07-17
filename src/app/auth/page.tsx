@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import style from "./auth.module.css";
+import style from '@/styles/auth.module.css';
 import Signuppage from "./signup/page";
 import LoginPage from "./login/page";
 import LoginDetails from "./login/Logindetails";

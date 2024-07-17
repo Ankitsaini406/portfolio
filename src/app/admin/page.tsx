@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import UserDetails from './UserDetails';
-import style from './admin.module.css';
+import style from '@/styles/admin.module.css';
 import useUsers from '@/lib/hook/useUsers';
 import ProjectDetails from './ProjectDetails';
 import TimelineDetails from './TimelineDetails';
@@ -47,9 +47,14 @@ const Admin = () => {
                     Timelines
                 </button>
             </div>
-            <div className={style.admindetails}>{
-                activeButton === 'Users' ?
-                    <UserDetails users={users} onDelete={deleteUser} /> : activeButton === 'Projects' ? <ProjectDetails /> : <TimelineDetails />}
+            <div className={style.admindetails}>
+                {activeButton === 'Users' ? (
+                    <UserDetails users={users} onDelete={deleteUser} />
+                ) : activeButton === 'Projects' ? (
+                    <ProjectDetails />
+                ) : (
+                    <TimelineDetails />
+                )}
             </div>
         </div>
     );

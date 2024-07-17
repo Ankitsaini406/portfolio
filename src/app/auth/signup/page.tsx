@@ -1,6 +1,6 @@
 "use client"
 
-import style from '../auth.module.css'
+import style from '@/styles/auth.module.css';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import GoogleIcon from '@mui/icons-material/Google';
 import handleSubmit from './submitdata';

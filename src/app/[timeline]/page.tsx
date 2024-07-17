@@ -1,6 +1,6 @@
 
 import React from "react";
-import style from "./timeline.module.css";
+import style from "@/styles/timeline.module.css";
 import { GET } from "../api/timeline/route";
 
 const Timeline = async () => {
