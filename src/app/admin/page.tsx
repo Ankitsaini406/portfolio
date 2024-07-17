@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useState } from 'react';
 import UserDetails from './UserDetails';
@@ -7,7 +7,7 @@ import useUsers from '@/lib/hook/useUsers';
 import ProjectDetails from './ProjectDetails';
 import TimelineDetails from './TimelineDetails';
 import Loading from './loading';
-import Error from './error';
+import ErrorComponent from './error';
 
 const Admin = () => {
     const { users, loading, error, deleteUser } = useUsers();
@@ -18,7 +18,7 @@ const Admin = () => {
     }
 
     if (error) {
-        return <Error activeButton={activeButton} error={error} setActiveButton={setActiveButton} />;
+        return <div>Error : ${error}</div>
     }
 
     const handleButtonClick = (buttonName: string) => {

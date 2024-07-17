@@ -3,7 +3,7 @@
 import React from 'react';
 import style from '@/styles/admin.module.css';
 
-const Error = ({ activeButton, error, setActiveButton } : {activeButton: any, error: any, setActiveButton: any}) => {
+const ErrorComponent = ({ activeButton, error, setActiveButton } : {activeButton: any, error: any, setActiveButton: any}) => {
     return (
         <div className={style.adminpage}>
             <div className={style.adminitem}>
@@ -35,4 +35,4 @@ const Error = ({ activeButton, error, setActiveButton } : {activeButton: any, er
     );
 };
 
-export default Error;
+export default ErrorComponent;

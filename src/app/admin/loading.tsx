@@ -1,3 +1,5 @@
+"use client";
+
 import style from '@/styles/admin.module.css';
 
 const Loading = ({ activeButton , setActiveButton}: { activeButton: any, setActiveButton: any}) => {
