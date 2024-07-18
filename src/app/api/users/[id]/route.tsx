@@ -4,8 +4,9 @@ import connectToDatabase from '@/lib/mongoose/mongoose';
 import { NextRequest, NextResponse } from 'next/server';
 import { ObjectId } from "mongodb";
 
-export async function GET(req: NextApiRequest,) {
-    const { id } = req.query;
+export async function GET(req: NextRequest, content: any) {
+    const { searchParams } = new URL(req.url);
+    const id = content.params.id;
 
     await connectToDatabase();
 
@@ -21,13 +22,15 @@ export async function GET(req: NextApiRequest,) {
     }
 }
 
-export async function PUT(req: NextApiRequest) {
-    const { id } = req.query;
+export async function PUT(req: NextRequest, content: any) {
+    const { searchParams } = new URL(req.url);
+    const id = content.params.id;
 
     await connectToDatabase();
 
     try {
-        const updatedUser = await UserModel.findByIdAndUpdate(id, req.body, { new: true });
+        const body = await req.json();
+        const updatedUser = await UserModel.findByIdAndUpdate(id, body, { new: true });
         if (!updatedUser) {
             return NextResponse.json({ status: 404, message: 'User not found' });
         }

@@ -1,26 +1,11 @@
 import React from 'react';
 
-interface UserProps {
-    user: {
-        name: string;
-        email: string;
-        // other user properties
-    } | null;
-}
-
-const UserProfile: React.FC<UserProps> = ({ user }) => {
-    if (!user) {
-        return (
-            <div>
-                <p>User data is not available.</p>
-            </div>
-        );
-    }
+const UserProfile = () => {
 
     return (
         <div>
-            <h1>Welcome, {user.name}</h1>
-            <p>Email: {user.email}</p>
+            <h1>Welcome, User</h1>
+            <p></p>
             {/* other user details */}
         </div>
     );
