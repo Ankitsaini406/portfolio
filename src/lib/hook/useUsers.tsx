@@ -9,7 +9,7 @@ const useUsers = () => {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const response = await fetch('http://localhost:3000/api/users/allusers');
+                const response = await fetch('/api/users/allusers');
                 const result = await response.json();
                 if (result.status === 200) {
                     setUsers(result.data);
@@ -28,7 +28,7 @@ const useUsers = () => {
 
     const deleteUser = async (id: string) => {
         try {
-            const response = await fetch(`http://localhost:3000/api/users/${id}`, {
+            const response = await fetch(`/api/users/${id}`, {
                 method: 'DELETE',
             });
 
