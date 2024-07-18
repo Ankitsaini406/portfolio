@@ -2,7 +2,7 @@ import ProjectModel from "@/lib/model/project";
 import connectToDatabase from "@/lib/mongoose/mongoose";
 import { NextResponse } from "next/server";
 
-export default async function GET() {
+export async function GET() {
     await connectToDatabase();
 
     try {
