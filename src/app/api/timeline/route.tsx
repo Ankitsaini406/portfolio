@@ -2,7 +2,7 @@ import TimelineModel from "@/lib/model/timeline";
 import connectToDatabase from "@/lib/mongoose/mongoose";
 import { NextResponse } from "next/server";
 
-export async function GET() {
+export default async function GET() {
     await connectToDatabase();
 
     try {
