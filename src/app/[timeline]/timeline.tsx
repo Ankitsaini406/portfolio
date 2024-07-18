@@ -1,6 +1,6 @@
 "use client"
 
-import Timelinedetial from "@/lib/timeline";
+import { Timelinedetial } from "@/lib/types/allTypes";
 import React, { useEffect, useState } from "react";
 
 export async function Gettimeline() {

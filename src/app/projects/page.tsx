@@ -1,10 +1,26 @@
+"use client";
+
 import Image from 'next/image';
 import style from '@/styles/projects.module.css'
-import { GET } from '../api/projects/route';
+import { useEffect, useState } from 'react';
+import { Projectsdetial } from '@/lib/types/allTypes';
 
-const Projects = async () => {
+const Projects = () => {
 
-    const projects = await GET()
+    const [projects, setProjects] = useState<Projectsdetial[]>([]);
+
+    useEffect(() => {
+        const fetchProjects = async () => {
+            const res = await fetch('/api/projects');
+            const data = await res.json();
+            if (data.success) {
+                setProjects(data.data);
+            } else {
+                console.error(data.error);
+            }
+        };
+        fetchProjects();
+    }, []);
 
     return (
         <div className={style.project}>
