@@ -31,14 +31,15 @@ const handleFunction = (event: any, open: any) => {
 const Navlist = ({ open, isopen, sessionUser, loading, isAdmin }: { open: any, isopen: boolean, sessionUser: any, loading: boolean, isAdmin: any }) => {
   if (loading) {
     return <Loading />;
-  }
+  } else {
 
-  return (
-    <>
-      <CommanNav sessionUser={sessionUser} isAdmin={isAdmin} />
-      <ModileNav isopen={isopen} open={open} sessionUser={sessionUser} isAdmin={isAdmin} />
-    </>
-  );
+    return (
+      <>
+        <CommanNav sessionUser={sessionUser} isAdmin={isAdmin} />
+        <ModileNav isopen={isopen} open={open} sessionUser={sessionUser} isAdmin={isAdmin} />
+      </>
+    );
+  }
 };
 
 export const CommanNav = ({ sessionUser, isAdmin }: { sessionUser: any, isAdmin: any }) => {
