@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import style from './projects.module.css'
+import style from '@/styles/projects.module.css'
 import { GET } from '../api/projects/route';
 
 const Projects = async () => {
