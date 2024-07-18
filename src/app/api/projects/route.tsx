@@ -8,7 +8,7 @@ export async function GET() {
 
     try {
         const projects = await ProjectModel.find({});
-        return projects;
+        // return projects;
         return NextResponse.json({status: 200, success: true, data: projects});
     } catch (error) {
         return NextResponse.json({status: 500, success: false, error: `Failed to fetch timelines : ${error}`});
