@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { SessionUser } from "../types";
 
 const getUserSession = async (): Promise<SessionUser | null> => {
-    const res = await fetch('http://localhost:3000/api/users/signup', {
+    const res = await fetch('/api/users/signup', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
