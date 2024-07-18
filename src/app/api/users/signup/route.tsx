@@ -7,6 +7,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { secret } from "@/lib/mongoose/db";
 import { cookies } from "next/headers";
+import { withCORS } from "@/lib/mongoose/setheadet";
 
 export async function POST(req: NextRequest) {
     try {
@@ -18,10 +19,11 @@ export async function POST(req: NextRequest) {
 
         const existingUser = await UserModel.findOne({ email });
         if (existingUser) {
-            return NextResponse.json(
+            const response = NextResponse.json(
                 { message: "User already exists", daata: existingUser },
                 { status: 409 }
             );
+            return withCORS(response);
         }
 
         // Hash the password
@@ -37,19 +39,22 @@ export async function POST(req: NextRequest) {
         });
         await newUser.save();
 
-        return NextResponse.json(
+        const response = NextResponse.json(
             { message: "User registered successfully", data: newUser },
             { status: 201 }
         );
+        return withCORS(response);
     } catch (error) {
         if (error instanceof z.ZodError) {
-            return NextResponse.json({ message: error.errors }, { status: 400 });
+            const response = NextResponse.json({ message: error.errors }, { status: 400 });
+            return withCORS(response);
         }
         console.error(error);
-        return NextResponse.json(
+        const response = NextResponse.json(
             { message: "Internal Server Error", data: error },
             { status: 500 }
         );
+        return withCORS(response);
     }
 }
 
@@ -58,7 +63,8 @@ export async function GET(req: NextRequest) {
     const token = cookieStore.get("token")?.value;
 
     if (!token) {
-        return NextResponse.json({ status: 401, message: `Unauthorized: ${token} : No token found` });
+        const response = NextResponse.json({ status: 401, message: `Unauthorized: ${token} : No token found` });
+        return withCORS(response);
     }
 
     try {
@@ -67,12 +73,15 @@ export async function GET(req: NextRequest) {
         const user = await UserModel.findById(decoded.userId).lean();
 
         if (!user) {
-            return NextResponse.json({ status: 404, message: 'User not found' });
+            const response = NextResponse.json({ status: 404, message: 'User not found' });
+            return withCORS(response);
         }
 
-        return NextResponse.json({ status: 200, data: user });
+        const response = NextResponse.json({ status: 200, data: user });
+        return withCORS(response);
     } catch (error) {
         console.error(`There is error in catch : ${error}`);
-        return NextResponse.json({ status: 500, message: `Internal Server Error: ${error}` });
+        const response = NextResponse.json({ status: 500, message: `Internal Server Error: ${error}` });
+        return withCORS(response);
     }
 }

@@ -6,10 +6,12 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { secret } from "@/lib/mongoose/db";
 import { setCookie } from "nookies";
+import { withCORS } from "@/lib/mongoose/setheadet";
 
 export async function POST(req: Request) {
     if (req.method !== 'POST') {
-        return NextResponse.json({ status: 405, message: `Request is not match = ${req}` });
+        const response = NextResponse.json({ status: 405, message: `Request is not match = ${req}` });
+        return withCORS(response);
     }
 
     try {
@@ -20,12 +22,14 @@ export async function POST(req: Request) {
 
         const user = await UserModel.findOne({ email });
         if (!user) {
-            return NextResponse.json({ status: 401, message: 'Invaild credentials' }); // Unauthorized
+            const response = NextResponse.json({ status: 401, message: 'Invaild credentials' }); // Unauthorized
+            return withCORS(response);
         }
 
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
-            return NextResponse.json({ status: 401, meaasge: `Password is not match ${isMatch}` });
+            const response = NextResponse.json({ status: 401, meaasge: `Password is not match ${isMatch}` });
+            return withCORS(response);
         }
 
         if (secret !== undefined) {
@@ -38,10 +42,11 @@ export async function POST(req: Request) {
                 path: '/auth',
             });
 
-            return response;
+            return withCORS(response);
         }
     } catch (error) {
         console.error(error);
-        NextResponse.json({ status: 500, message: `Internal Server Error` });
+        const response = NextResponse.json({ status: 500, message: `Internal Server Error` });
+        return withCORS(response);
     }
 }

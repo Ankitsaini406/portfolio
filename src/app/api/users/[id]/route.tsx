@@ -3,6 +3,7 @@ import UserModel from '@/lib/model/userModel';
 import connectToDatabase from '@/lib/mongoose/mongoose';
 import { NextRequest, NextResponse } from 'next/server';
 import { ObjectId } from "mongodb";
+import { withCORS } from '@/lib/mongoose/setheadet';
 
 export async function GET(req: NextRequest, content: any) {
     const { searchParams } = new URL(req.url);
@@ -13,12 +14,15 @@ export async function GET(req: NextRequest, content: any) {
     try {
         const user = await UserModel.findById(id);
         if (!user) {
-            return NextResponse.json({ status: 404, message: 'User not found' });
+            const response = NextResponse.json({ status: 404, message: 'User not found' });
+            return withCORS(response);
         }
-        return NextResponse.json({ status: 200, data: user });
+        const response = NextResponse.json({ status: 200, data: user });
+        return withCORS(response);
     } catch (error) {
         console.error(error);
-        return NextResponse.json({ status: 500, message: 'Internal Server Error' });
+        const response = NextResponse.json({ status: 500, message: 'Internal Server Error' });
+        return withCORS(response);
     }
 }
 
@@ -32,12 +36,15 @@ export async function PUT(req: NextRequest, content: any) {
         const body = await req.json();
         const updatedUser = await UserModel.findByIdAndUpdate(id, body, { new: true });
         if (!updatedUser) {
-            return NextResponse.json({ status: 404, message: 'User not found' });
+            const response = NextResponse.json({ status: 404, message: 'User not found' });
+            return withCORS(response);
         }
-        return NextResponse.json({ status: 200, data: updatedUser });
+        const response = NextResponse.json({ status: 200, data: updatedUser });
+        return withCORS(response);
     } catch (error) {
         console.error(error);
-        return NextResponse.json({ status: 500, message: 'Internal Server Error' });
+        const response = NextResponse.json({ status: 500, message: 'Internal Server Error' });
+        return withCORS(response);
     }
 }
 
@@ -47,21 +54,26 @@ export async function DELETE(req: NextRequest, content: any) {
     const id = content.params.id;
 
     if (!id) {
-        return NextResponse.json({ status: 400, message: 'Invalid user ID' });
+        const response = NextResponse.json({ status: 400, message: 'Invalid user ID' });
+        return withCORS(response);
     }
 
     if (!ObjectId.isValid(id)) {
-        return NextResponse.json({ status: 400, message: 'Invalid Object user ID' });
+        const response = NextResponse.json({ status: 400, message: 'Invalid Object user ID' });
+        return withCORS(response);
     }
 
     try {
         const deletedUser = await UserModel.findByIdAndDelete(id);
         if (!deletedUser) {
-            return NextResponse.json({ status: 404, message: 'User not found' });
+            const response = NextResponse.json({ status: 404, message: 'User not found' });
+            return withCORS(response);
         }
-        return NextResponse.json({ status: 200, message: 'User deleted successfully' });
+        const response = NextResponse.json({ status: 200, message: 'User deleted successfully' });
+        return withCORS(response);
     } catch (error) {
-        return NextResponse.json({ status: 500, message: 'Internal Server Error' });
+        const response = NextResponse.json({ status: 500, message: 'Internal Server Error' });
+        return withCORS(response);
     }
 }
 

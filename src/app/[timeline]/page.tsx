@@ -1,11 +1,27 @@
+"use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import style from "@/styles/timeline.module.css";
 import { GET } from "../api/timeline/route";
+import { Gettimeline } from "./timeline";
+import Timelinedetial from "@/lib/timeline";
 
-const Timeline = async () => {
+const Timeline = () => {
 
-    const timelines = await GET();
+    const [timelines, setTimelines] = useState<Timelinedetial[]>([]);
+
+    useEffect(() => {
+        const fetchTimelines = async () => {
+            const res = await fetch('/api/timeline');
+            const data = await res.json();
+            if (data.success) {
+                setTimelines(data.data);
+            } else {
+                console.error(data.error);
+            }
+        };
+        fetchTimelines();
+    }, []);
 
     return (
         <div className={style.timelineBox}>
