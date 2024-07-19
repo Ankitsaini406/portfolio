@@ -1,9 +1,9 @@
-.project{
+.project {
     max-width: 1200px;
     margin: 2em auto;
 }
 
-.projectbox{
+.projectbox {
     padding: 1em;
     border-radius: 10px;
     border: 1px solid;
@@ -13,7 +13,7 @@
     /* box-shadow: 0 0 10px 1px; */
 }
 
-.imagecontainor{
+.imagecontainor {
     position: relative;
     width: 210px;
     aspect-ratio: 1 / 1;
@@ -25,12 +25,12 @@
     margin: 0 2em 1em 0;
 }
 
-.imagebox{
+.imagebox {
     position: absolute;
     inset: 0px;
 }
 
-.projectimg{
+.projectimg {
     display: block;
     width: 100%;
     height: 100%;
@@ -39,19 +39,19 @@
     image-rendering: auto;
 }
 
-.projectdetails{
+.projectdetails {
     /* min-width: 400px; */
     /* width: 840px; */
     text-align: justify;
 }
 
-.projecttext::first-letter{
+.projecttext::first-letter {
     initial-letter: 2;
     color: var(--black-color);
     margin: 0 0.5em 0 0;
 }
 
-.lodingbox{
+.lodingbox {
     display: flex;
     height: 80dvh;
     width: 100%;
@@ -59,36 +59,40 @@
     justify-content: center;
 }
 
-.lodingdiv{
-    border: 16px solid #f3f3f3;
+.lodingdiv {
     border-radius: 50%;
-    border: 16px solid var(--main-color);
-    border-top: 16px solid var(--text-color);
+    border: 10px solid var(--main-color);
+    border-top: 10px solid var(--text-color);
     width: 120px;
     height: 120px;
     animation: spin 2s linear infinite;
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
 
 
-@media (width <= 1200px) {
-    .project{
+@media (width <=1200px) {
+    .project {
         margin: 2em 1em;
     }
 }
 
-@media (width <= 430px) {
-    .projectbox{
+@media (width <=430px) {
+    .projectbox {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    .imagecontainor{
+    .imagecontainor {
         margin: 0 0 1em 0;
     }
 }

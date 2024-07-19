@@ -3,23 +3,40 @@
 import React, { useEffect, useState } from "react";
 import style from "@/styles/timeline.module.css";
 import { Timelinedetial } from "@/lib/types/allTypes";
+import Loading from "./loading";
 
 const Timeline = () => {
 
     const [timelines, setTimelines] = useState<Timelinedetial[]>([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchTimelines = async () => {
-            const res = await fetch('/api/timeline');
-            const data = await res.json();
-            if (data.success) {
-                setTimelines(data.data);
-            } else {
-                console.error(data.error);
+            try {
+                const res = await fetch('/api/timeline');
+                const data = await res.json();
+                if (data.success) {
+                    setTimelines(data.data);
+                } else {
+                    console.error(data.error);
+                }
+            } catch (error) {
+                return (
+                    <div>
+                        <h1>{`Error : ${error}`}</h1>
+                    </div>
+                )
+            } 
+            finally {
+                setLoading(false);
             }
         };
         fetchTimelines();
     }, []);
+
+    if (loading) {
+        return <Loading />
+    }
 
     return (
         <div className={style.timelineBox}>
