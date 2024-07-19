@@ -2,8 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 import style from "@/styles/timeline.module.css";
-import { GET } from "../api/timeline/route";
-import { Gettimeline } from "./timeline";
 import { Timelinedetial } from "@/lib/types/allTypes";
 
 const Timeline = () => {
