@@ -42,7 +42,7 @@ const ProjectDetails = () => {
                 />
             </div>
             <input
-                name="title"
+                name="name"
                 className={style.inputbox}
                 type="text"
                 placeholder="Project Title"

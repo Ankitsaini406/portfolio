@@ -55,7 +55,7 @@ const Projects = () => {
                                 </div>
                                 <div className={style.projectdetails}>
                                     <h1 className={style.projectname}>{value.name}</h1>
-                                    <p className={style.projecttext}>{value.discription}</p>
+                                    <p className={style.projecttext}>{value.description}</p>
                                 </div>
                             </div>
                         )

@@ -5,7 +5,7 @@ type TProject = {
     name: string;
     image: string;
     imageBase64: string;
-    discription: string;
+    description: string;
 }
 
 const ProjectSchema: Schema<TProject> = new Schema({
@@ -18,7 +18,7 @@ const ProjectSchema: Schema<TProject> = new Schema({
     imageBase64: {
         type: String,
     },
-    discription: {
+    description: {
         type: String,
     },
 });

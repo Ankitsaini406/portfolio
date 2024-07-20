@@ -2,7 +2,6 @@ import ProjectModel from "@/lib/model/project";
 import connectToDatabase from "@/lib/database/mongoose";
 import { withCORS } from "@/lib/database/setheadet";
 import { NextRequest, NextResponse } from "next/server";
-import { promises as fs } from 'fs';
 
 export async function GET() {
     await connectToDatabase();
@@ -20,32 +19,31 @@ export async function GET() {
 export async function POST(req: NextRequest) {
     await connectToDatabase();
 
+    const formData = await req.formData();
+    const name = formData.get('name') as string;
+    const description = formData.get('description') as string;
+    const file = formData.get('file') as File;
+
+    if (!name || !description || !file) {
+        return NextResponse.json({ success: false, error: 'Missing required fields' });
+    }
+
     try {
-        const formData = await req.formData();
-        const file = formData.get('file') as File;
-        const title = formData.get('title') as string;
-        const description = formData.get('description') as string;
-
-        if (!file) {
-            return withCORS(NextResponse.json({ success: false, error: 'No file uploaded' }));
-        }
-
         const arrayBuffer = await file.arrayBuffer();
         const buffer = Buffer.from(arrayBuffer);
-
         const imageBase64 = buffer.toString('base64');
 
-        const newImage = new ProjectModel({
+        const newProject = new ProjectModel({
+            name,
+            description,
             image: file.name,
             imageBase64,
-            title,
-            description,
         });
 
-        await newImage.save();
+        await newProject.save();
 
-        return withCORS(NextResponse.json({ success: true, data: newImage }));
+        return NextResponse.json({ success: true, data: newProject });
     } catch (error) {
-        return withCORS(NextResponse.json({ success: false, error: `Failed to upload image: ${error}` }));
+        return NextResponse.json({ success: false, error: `Failed to upload project: ${error}` });
     }
 }
