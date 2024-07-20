@@ -1,6 +1,6 @@
 import TimelineModel from "@/lib/model/timeline";
-import connectToDatabase from "@/lib/mongoose/mongoose";
-import { withCORS } from "@/lib/mongoose/setheadet";
+import connectToDatabase from "@/lib/database/mongoose";
+import { withCORS } from "@/lib/database/setheadet";
 import { NextResponse } from "next/server";
 
 export async function GET() {

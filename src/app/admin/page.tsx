@@ -4,8 +4,8 @@ import React, { useState } from 'react';
 import UserDetails from './UserDetails';
 import style from '@/styles/admin.module.css';
 import useUsers from '@/lib/hook/useUsers';
-import ProjectDetails from './ProjectDetails';
-import TimelineDetails from './TimelineDetails';
+import ProjectDetails from '../../components/admin/project/ProjectDetails';
+import TimelineDetails from '../../components/admin/timeline/TimelineDetails';
 import Loading from './loading';
 import ErrorComponent from './error';
 

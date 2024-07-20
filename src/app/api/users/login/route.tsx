@@ -1,12 +1,12 @@
 import UserModel from "@/lib/model/userModel";
-import connectToDatabase from "@/lib/mongoose/mongoose";
+import connectToDatabase from "@/lib/database/mongoose";
 import { userLoginSchema } from "@/lib/validation/uservalidation";
 import { NextResponse } from "next/server";
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import { secret } from "@/lib/mongoose/db";
+import { secret } from "@/lib/database/db";
 import { setCookie } from "nookies";
-import { withCORS } from "@/lib/mongoose/setheadet";
+import { withCORS } from "@/lib/database/setheadet";
 
 export async function POST(req: Request) {
     if (req.method !== 'POST') {

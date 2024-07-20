@@ -1,9 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import UserModel from '@/lib/model/userModel';
-import connectToDatabase from '@/lib/mongoose/mongoose';
+import connectToDatabase from '@/lib/database/mongoose';
 import { NextRequest, NextResponse } from 'next/server';
 import { ObjectId } from "mongodb";
-import { withCORS } from '@/lib/mongoose/setheadet';
+import { withCORS } from '@/lib/database/setheadet';
 
 export async function GET(req: NextRequest, content: any) {
     const { searchParams } = new URL(req.url);

@@ -33,7 +33,7 @@ async function connectToDatabase(): Promise<Mongoose> {
                 return mongoose;
             }).catch ((error) => {
                 console.error(`Failed to connect to the database after multiple attempts`, error);
-                throw new Error(`Failed to connect to the database`);
+                throw new Error(`Failed to connect to the database : ${error}`);
             });
     }
     cached.conn = await cached.promise;

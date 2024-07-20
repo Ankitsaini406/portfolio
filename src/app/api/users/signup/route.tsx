@@ -1,13 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import UserModel from "@/lib/model/userModel";
-import connectToDatabase from "@/lib/mongoose/mongoose";
+import connectToDatabase from "@/lib/database/mongoose";
 import { userRegistrationSchema } from "@/lib/validation/uservalidation";
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import { secret } from "@/lib/mongoose/db";
+import { secret } from "@/lib/database/db";
 import { cookies } from "next/headers";
-import { withCORS } from "@/lib/mongoose/setheadet";
+import { withCORS } from "@/lib/database/setheadet";
 
 export async function POST(req: NextRequest) {
     try {
