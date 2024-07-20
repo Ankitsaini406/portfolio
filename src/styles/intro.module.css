@@ -35,3 +35,13 @@
     font-weight: bold;
     font-size: x-large;
 }
+
+.template {
+    min-height: 72dvh;
+}
+
+@media (width >= 2560px) {
+    .template {
+        min-height: 90dvh;
+    }
+}
