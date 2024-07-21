@@ -1,4 +1,5 @@
 export type Timelinedetial = {
+    _id: string;
     name: string;
     jobtitle: string;
     joinDate: string;
@@ -7,7 +8,9 @@ export type Timelinedetial = {
     }
 
 export type Projectsdetial = {
+    _id: string;
     name: string;
     image: string;
-    discription: string;
+    imageBase64: string;
+    description: string;
     }
