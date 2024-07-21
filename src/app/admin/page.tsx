@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import UserDetails from './UserDetails';
+import UserDetails from '../../components/admin/users/UserDetails';
 import style from '@/styles/admin.module.css';
 import useUsers from '@/lib/hook/useUsers';
 import ProjectDetails from '../../components/admin/project/ProjectDetails';
