@@ -50,7 +50,7 @@ const Projects = () => {
                         <div key={project._id} className={style.projectbox}>
                             <div className={style.imagecontainor}>
                                 <div className={style.imagebox}>
-                                    {/* <Image className={style.projectimg} width={1000} height={1000} src={project.image.startsWith('https://') ? project.image : `${process.env.NEXT_PUBLIC_BASE_URL}${project.image}`} alt={project.name}></Image> */}
+                                    <Image className={style.projectimg} width={1000} height={1000} src={`/projects/${project.image}`} alt={project.name}></Image>
                                 </div>
                             </div>
                             <div className={style.projectdetails}>

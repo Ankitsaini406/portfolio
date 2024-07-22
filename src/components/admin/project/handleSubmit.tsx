@@ -1,19 +1,10 @@
-// import { projectRegistrationSchema } from "@/lib/validation/projectvalidation";
-import { z } from 'zod';
-import toast from "react-hot-toast";
+import toast from 'react-hot-toast';
 
 export async function handleSubmit(event: any) {
     event.preventDefault();
 
     // Create a new FormData object
     const formData = new FormData(event.target as HTMLFormElement);
-
-    // const dataToValidate = {
-    //     title: event.target.title.value,
-    //     description: event.target.description.value,
-    // };
-
-    // projectRegistrationSchema.parse(dataToValidate);
 
     try {
         const response = await fetch('/api/projects', {
@@ -38,6 +29,6 @@ export async function handleSubmit(event: any) {
             });
         }
     } catch (error) {
-            toast.error(`An unexpected error occurred. Please try again. ${error}`, { duration: 5000 });
+        toast.error(`An unexpected error occurred. Please try again. ${error}`, { duration: 5000 });
     }
 }
