@@ -63,6 +63,7 @@
     cursor: pointer;
     border: 1px solid var(--white-color);
     text-transform: uppercase;
+    color: var(--black-color);
 
     &:hover {
         box-shadow: 0px 0px 10px 3px var(--text-color);
@@ -132,7 +133,7 @@
     top: 8px;
     right: 5px;
     color: var(--black-color);
-    background: var(--white-color);
+    /* background: var(--white-color); */
 }
 
 @media (width <= 770px) {

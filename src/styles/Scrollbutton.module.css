@@ -7,8 +7,12 @@
     mix-blend-mode: difference;
     border: 0;
     cursor: pointer;
+    scale: 1;
+    transition: scale 0.3s ease-in-out;
+    color: var(--black-color);
+}
 
-    &:hover {
-        scale: 1.2;
-    }
+.scrollbutton:hover {
+    scale: 1.2;
+    transition: scale 0.3s ease-in-out;
 }
