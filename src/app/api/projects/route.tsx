@@ -10,7 +10,7 @@ export async function GET() {
     await connectToDatabase();
 
     try {
-        const projects = await ProjectModel.find({});
+        const projects = await ProjectModel.find({}).sort({ createdAt: -1 });;
         const response = NextResponse.json({status: 200, success: true, data: projects});
         return withCORS(response);
     } catch (error) {
