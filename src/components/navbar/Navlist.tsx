@@ -12,6 +12,10 @@ const List = [
     path: "/",
   },
   {
+    title: "Timeline",
+    path: "#timelineSection"
+  },
+  {
     title: "About",
     path: "/about",
   },

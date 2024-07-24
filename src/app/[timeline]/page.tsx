@@ -39,7 +39,7 @@ const Timeline = () => {
     }
 
     return (
-        <div className={style.timelineBox}>
+        <div className={style.timelineBox} id="timelineSection">
             <h1 className={style.heading}>Working Expirence</h1>
             <div className={style.timeline}>
 
