@@ -7,6 +7,7 @@ import Introduction from "@/components/intro/Intro";
 import { Inter } from 'next/font/google'
 import ScrollButton from "@/components/scrollbutton/Scrollbutton";
 import { Toaster } from "react-hot-toast";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -28,6 +29,7 @@ export default function RootLayout({
               <Navbar />
               <ScrollButton />
               {children}
+              <SpeedInsights />
               <Toaster />
               <Footer />
           </ThemeProviders>

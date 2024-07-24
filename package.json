@@ -13,6 +13,7 @@
     "@emotion/styled": "^11.11.5",
     "@mui/icons-material": "^5.15.19",
     "@mui/material": "^5.15.19",
+    "@vercel/speed-insights": "^1.0.12",
     "bcryptjs": "^2.4.3",
     "formidable": "^3.5.1",
     "framer-motion": "^11.2.10",
