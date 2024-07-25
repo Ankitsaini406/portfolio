@@ -9,8 +9,9 @@
     cursor: pointer;
     scale: 1;
     transition: scale 0.3s ease-in-out;
-    color: var(--black-color);
+    /* color: var(--black-color); */
     z-index: 999;
+    /* background-color: var(--black-color); */
 }
 
 .scrollbutton:hover {

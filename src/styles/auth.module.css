@@ -107,6 +107,7 @@
     text-transform: uppercase;
     color: var(--main-color);
     margin: 3em 0em;
+    background-color: var(--white-color);
 
     &:hover {
         border: 1px solid var(--main-color);
