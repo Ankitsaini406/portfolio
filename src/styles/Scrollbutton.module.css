@@ -10,6 +10,7 @@
     scale: 1;
     transition: scale 0.3s ease-in-out;
     color: var(--black-color);
+    z-index: 999;
 }
 
 .scrollbutton:hover {
