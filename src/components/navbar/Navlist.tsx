@@ -12,10 +12,6 @@ const List = [
     path: "/",
   },
   {
-    title: "Timeline",
-    path: "#timelineSection"
-  },
-  {
     title: "About",
     path: "/about",
   },
@@ -32,20 +28,20 @@ const handleFunction = (event: any, open: any) => {
   // You can add any other function calls here
 };
 
-const Navlist = ({ open, isopen, sessionUser, loading, isAdmin }: { open: any, isopen: boolean, sessionUser: any, loading: boolean, isAdmin: any }) => {
+const Navlist = ({ open, isopen, sessionUser, loading, isAdmin, isHomePage }: { open: any, isopen: boolean, sessionUser: any, loading: boolean, isAdmin: any, isHomePage: any }) => {
   if (loading) {
     return <Loading />;
   }
 
   return (
     <>
-      <CommanNav sessionUser={sessionUser} isAdmin={isAdmin} />
-      <ModileNav isopen={isopen} open={open} sessionUser={sessionUser} isAdmin={isAdmin} />
+      <CommanNav sessionUser={sessionUser} isAdmin={isAdmin} isHomePage={isHomePage} />
+      <ModileNav isopen={isopen} open={open} sessionUser={sessionUser} isAdmin={isAdmin} isHomePage={isHomePage} />
     </>
   );
 };
 
-export const CommanNav = ({ sessionUser, isAdmin }: { sessionUser: any, isAdmin: any }) => {
+export const CommanNav = ({ sessionUser, isAdmin, isHomePage }: { sessionUser: any, isAdmin: any, isHomePage: any }) => {
   return (
     <div className={style.SubNav}>
       {List.map((list) => {
@@ -55,6 +51,11 @@ export const CommanNav = ({ sessionUser, isAdmin }: { sessionUser: any, isAdmin:
           </Link>
         );
       })}
+      {isHomePage && (
+        <Link className={`${style.navlink} ${style.desktop}`} href="#timelineSection">
+          Timeline
+        </Link>
+      )}
       {sessionUser ? (
         <Link className={`${style.navlink} ${style.desktop}`} href={'/profile'}>
           Profile
@@ -79,7 +80,7 @@ export const CommanNav = ({ sessionUser, isAdmin }: { sessionUser: any, isAdmin:
   );
 };
 
-export const ModileNav = ({ isopen, open, sessionUser, isAdmin }: { isopen: boolean, open: any, sessionUser: any, isAdmin: any }) => {
+export const ModileNav = ({ isopen, open, sessionUser, isAdmin, isHomePage }: { isopen: boolean, open: any, sessionUser: any, isAdmin: any, isHomePage: any }) => {
   return (
     <>
       {isopen ? (
@@ -96,6 +97,11 @@ export const ModileNav = ({ isopen, open, sessionUser, isAdmin }: { isopen: bool
               </Link>
             );
           })}
+          {isHomePage && (
+            <Link onClick={open} className={style.navlink} href="#timelineSection">
+              Timeline
+            </Link>
+          )}
           {sessionUser ? (
             <Link onClick={open} className={style.navlink} href={'/profile'}>
               Profile
@@ -126,6 +132,11 @@ export const ModileNav = ({ isopen, open, sessionUser, isAdmin }: { isopen: bool
               </Link>
             );
           })}
+          {isHomePage && (
+            <Link onClick={open} className={style.navlink} href="#timelineSection">
+              Timeline
+            </Link>
+          )}
           {sessionUser ? (
             <Link onClick={open} className={style.navlink} href={'/profile'}>
               Profile
