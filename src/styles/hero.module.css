@@ -14,12 +14,12 @@
     align-items: center;
 }
 
-.herotext{
+.herotext {
     display: flex;
     flex-direction: column;
 }
 
-.skills{
+.skills {
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -32,13 +32,60 @@
     }
 }
 
-.heroImage {
+/* .heroImage {
     width: 20%;
     height: 20%;
-    border: 1px solid;
+    background-color: var(--main-color);
+    animation: changehero 5s ease-in-out infinite;
+} */
+
+.infinity {
+    position: relative;
+    width: 212px;
+    height: 100px;
+    box-sizing: content-box;
 }
 
-.alltext,.imtext {
+.infinity:before,
+.infinity:after {
+    content: "";
+    box-sizing: content-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 50px 50px 0 50px;
+    transform: rotate(-45deg);
+    border: 20px solid;
+    /* Transparent border to act as a base */
+    /* background: linear-gradient(90deg, var(--main-color), var(--text-color)); */
+    background-clip: padding-box;
+    /* Clip the background to the padding-box to allow shadow */
+    transition: box-shadow 0.3s ease;
+    /* Smooth transition for shadow effect */
+    z-index: 1;
+    /* Ensure the shadow appears on top */
+}
+
+.infinity:hover:before,
+.infinity:hover:after {
+    box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.3);
+    /* Apply shadow on hover */
+}
+
+.infinity:after {
+    left: 54%;
+    right: 0;
+    border-radius: 50px 50px 50px 0;
+    transform: rotate(45deg);
+    z-index: 1;
+    /* Ensure the shadow appears on top */
+}
+
+
+.alltext,
+.imtext {
     margin-left: 15px;
     height: 35px;
     line-height: 36px;
@@ -90,21 +137,22 @@
     }
 }
 
-@media (width <= 770px) {
-    .bodyFlex{
+@media (width <=770px) {
+    .bodyFlex {
         flex-direction: column-reverse;
     }
 
-    .alltext,.imtext {
-        height: clamp(10px, 20px ,30px);
-        line-height: clamp(10px, 20px ,30px);
+    .alltext,
+    .imtext {
+        height: clamp(10px, 20px, 30px);
+        line-height: clamp(10px, 20px, 30px);
 
         & li {
-            font-size: clamp(10px, 20px ,30px);
+            font-size: clamp(10px, 20px, 30px);
         }
     }
 
-    .skills{
+    .skills {
         gap: .5rem;
     }
 

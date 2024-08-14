@@ -21,7 +21,7 @@ export default async function Hero (){
                     <FaHtml5 /> <FaCss3Alt style={{ color: 'blue ' }} /> <IoLogoJavascript style={{ color: 'yellow ', backgroundColor: 'black' }} /> <RiFlutterFill style={{ color: 'skyblue' }} /> <FaReact style={{ color: 'skyblue' }} /> <RiNextjsFill style={{ color: 'black' }} /> <SiMysql /> <TbApi /> <FaShopify style={{ color: 'green' }} /> <FaPhp />
                 </div>
             </div>
-            <div className={styles.heroImage}></div>
+            <div className={styles.infinity}></div>
         </div>
     );
 };
