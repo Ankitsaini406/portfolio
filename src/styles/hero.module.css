@@ -32,13 +32,6 @@
     }
 }
 
-/* .heroImage {
-    width: 20%;
-    height: 20%;
-    background-color: var(--main-color);
-    animation: changehero 5s ease-in-out infinite;
-} */
-
 .infinity {
     position: relative;
     width: 212px;
@@ -58,20 +51,14 @@
     border-radius: 50px 50px 0 50px;
     transform: rotate(-45deg);
     border: 20px solid;
-    /* Transparent border to act as a base */
-    /* background: linear-gradient(90deg, var(--main-color), var(--text-color)); */
     background-clip: padding-box;
-    /* Clip the background to the padding-box to allow shadow */
     transition: box-shadow 0.3s ease;
-    /* Smooth transition for shadow effect */
     z-index: 1;
-    /* Ensure the shadow appears on top */
 }
 
 .infinity:hover:before,
 .infinity:hover:after {
     box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.3);
-    /* Apply shadow on hover */
 }
 
 .infinity:after {
@@ -80,9 +67,7 @@
     border-radius: 50px 50px 50px 0;
     transform: rotate(45deg);
     z-index: 1;
-    /* Ensure the shadow appears on top */
 }
-
 
 .alltext,
 .imtext {
