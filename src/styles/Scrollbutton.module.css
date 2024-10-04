@@ -4,7 +4,7 @@
     right: 10px;
     padding: 10px;
     border-radius: 50%;
-    mix-blend-mode: difference;
+    /* mix-blend-mode: difference; */
     border: 0;
     cursor: pointer;
     scale: 1;
@@ -12,6 +12,8 @@
     /* color: var(--black-color); */
     z-index: 999;
     /* background-color: var(--black-color); */
+    background-color: var(--main-color);
+    color: var(--white-color);
 }
 
 .scrollbutton:hover {
