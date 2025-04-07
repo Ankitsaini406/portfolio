@@ -1,64 +1,54 @@
-:root {
-    --main-color: #E43D12;
-    --white-color: #fff;
-    --black-color: #000;
-    --font-size: 0.390625vw;
-    --text-color: #ECE9E1;
-    --light-gray: lightgray;
-    --trans-color: rgba(255, 255, 255, 0);
+@import "tailwindcss";
 
-    --mobile-sm: 325px;
-    --mobile-weight: 430px;
-    --tablet-weight: 770px;
-    --desktop-weight: 1024px;
+@theme {
+  --color-*: initial;
+  --color-white: #fff;
+  --color-purple: #3f3cbb;
+  --color-midnight: #121063;
+  --color-tahiti: #3ab7bf;
+  --color-bermuda: #78dcca;
 }
 
-/* [data-theme="light"] {
-    --bg-color: var(--white-color);
-    --text-color: #333;
+@layer base {
+  :root {
+    /* Modern Stylish Color Palette */
+    --primary: #121826;
+    --primary-dark: #0d111b;
+    --primary-light: #1e2433;
+    --secondary: #a1a9bd;
+    --secondary-light: #d0d7e9;
+    --accent: #ff6b6b;
+    --accent-dark: #d65151;
+    --accent-light: #ff9292;
+    --white: #ffffff;
+    --black: #000000;
+  }
 }
 
-[data-theme="dark"] {
-    --bg-color: var(--black-color);
-    --text-color: #fff;
-} */
-
-::-webkit-scrollbar{
-    width: 6px;
-    height: 6px;
-    border-left: 1px solid #e6ecf8;
-    border-radius: 25px;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
 }
 
-::-webkit-scrollbar-thumb {
-    background-color: var(--main-color);
-    border-radius: 25px;
-}
-
-html,
 body {
-    margin: 0 auto;
-    padding: 0;
-    box-sizing: border-box;
-    background-color: var(--text-color);
-    color: var(--main-color);
-    scroll-behavior: smooth;
+  background: var(--primary);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-a,
-li,
-ul,
-button,
-span {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    text-decoration: none;
-    /* color: var(--text-color); */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
 }

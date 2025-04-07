@@ -58,8 +58,8 @@ export async function POST(req: NextRequest) {
     }
 }
 
-export async function GET(req: NextRequest) {
-    const cookieStore = cookies();
+export async function GET() {
+    const cookieStore = await cookies();
     const token = cookieStore.get("token")?.value;
 
     if (!token) {
@@ -69,7 +69,13 @@ export async function GET(req: NextRequest) {
 
     try {
         await connectToDatabase();
-        const decoded: any = jwt.verify(token, secret!);
+        interface DecodedToken {
+            userId: string;
+            iat?: number;
+            exp?: number;
+        }
+
+        const decoded: DecodedToken = jwt.verify(token, secret!) as DecodedToken;
         const user = await UserModel.findById(decoded.userId).lean();
 
         if (!user) {
