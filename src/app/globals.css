@@ -3,26 +3,18 @@
 @theme {
   --color-*: initial;
   --color-white: #fff;
+  --color-primary: #121826;
+  --color-primary-dark: #0d111b;
+  --color-primary-light: #1e2433;
+  --color-secondary: #a1a9bd;
+  --color-secondary-light: #d0d7e9;
+  --color-accent: #ff6b6b;
+  --color-accent-dark: #d65151;
+  --color-accent-light: #ff9292;
   --color-purple: #3f3cbb;
   --color-midnight: #121063;
   --color-tahiti: #3ab7bf;
   --color-bermuda: #78dcca;
-}
-
-@layer base {
-  :root {
-    /* Modern Stylish Color Palette */
-    --primary: #121826;
-    --primary-dark: #0d111b;
-    --primary-light: #1e2433;
-    --secondary: #a1a9bd;
-    --secondary-light: #d0d7e9;
-    --accent: #ff6b6b;
-    --accent-dark: #d65151;
-    --accent-light: #ff9292;
-    --white: #ffffff;
-    --black: #000000;
-  }
 }
 
 @media (prefers-color-scheme: dark) {
