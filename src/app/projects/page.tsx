@@ -2,8 +2,8 @@
 
 import Image from 'next/image';
 import style from '@/styles/projects.module.css'
-import { Projectsdetial } from '@/lib/types/allTypes';
-import { projects } from '@/data/projects';
+import { Projectsdetial } from '@/lib/types/types';
+import { projects } from '@/lib/data/projects';
 
 export default function Projects() {
 

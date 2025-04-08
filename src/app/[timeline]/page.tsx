@@ -1,4 +1,4 @@
-import { timelines } from "@/data/timelines";
+import { timelines } from "@/lib/data/timelines";
 
 export default function Timeline() {
 
