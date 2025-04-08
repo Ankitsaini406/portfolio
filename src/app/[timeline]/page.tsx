@@ -1,39 +1,6 @@
-"use client";
+import { timelines } from "@/data/timelines";
 
-import React, { useEffect, useState } from "react";
-import { Timelinedetial } from "@/lib/types/allTypes";
-import Loading from "./loading";
-
-const Timeline = () => {
-    const [timelines, setTimelines] = useState<Timelinedetial[]>([]);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        const fetchTimelines = async () => {
-            try {
-                const res = await fetch("/api/timeline");
-                const data = await res.json();
-                if (data.success) {
-                    setTimelines(data.data);
-                } else {
-                    console.error(data.error);
-                }
-            } catch (error) {
-                return (
-                    <div>
-                        <h1>{`Error: ${error}`}</h1>
-                    </div>
-                );
-            } finally {
-                setLoading(false);
-            }
-        };
-        fetchTimelines();
-    }, []);
-
-    if (loading) {
-        return <Loading />;
-    }
+export default function Timeline() {
 
     return (
         <div className="w-full text-center mb-24" id="timelineSection">
@@ -52,10 +19,10 @@ const Timeline = () => {
                                 }`}
                         >
                             <div
-                                className={`relative bg-white p-6 rounded-lg shadow-lg transition-transform duration-500 ease-in-out hover:scale-105 ${index % 2 === 0 ? "md:ml-auto" : "md:mr-auto"
+                                className={`relative  p-6 rounded-lg shadow-lg transition-transform duration-500 ease-in-out hover:scale-105 ${index % 2 === 0 ? "md:ml-auto" : "md:mr-auto"
                                     }`}
                             >
-                                <h2 className="text-xl font-semibold text-gray-900 uppercase">
+                                <h2 className="text-xl text-accent font-semibold text-gray-900 uppercase">
                                     {value.name}
                                 </h2>
                                 <h4 className="text-md text-gray-700">{value.jobtitle}</h4>
@@ -81,5 +48,3 @@ const Timeline = () => {
         </div>
     );
 };
-
-export default Timeline;

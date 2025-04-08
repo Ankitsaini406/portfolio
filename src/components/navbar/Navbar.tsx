@@ -3,12 +3,10 @@
 import Navlist from "./Navlist";
 import style from '@/styles/Navbar.module.css';
 import { useState } from "react";
-import useUserSession from "@/lib/hook/useUserdata";
 
 const Navbar = () => {
   const [changeNav, setChangeNav] = useState(false);
   const [openNav, setOpenNav] = useState(false);
-  const [sessionUser, loading] = useUserSession();
 
   const changeNavColor = () => {
     if (window.scrollY > 50) {
@@ -40,14 +38,14 @@ const Navbar = () => {
           <div className={style.NavBarName}>
             <h1>@ Ankit</h1>
           </div>
-          <Navlist open={openNavBar} isopen={openNav} sessionUser={sessionUser} loading={loading} isAdmin={sessionUser?.isAdmin} />
+          <Navlist open={openNavBar} isopen={openNav} />
         </div>
       ) : (
         <div className={style.NavBar}>
           <div className={style.NavBarName}>
             <h1>@ Ankit</h1>
           </div>
-          <Navlist open={openNavBar} isopen={openNav} sessionUser={sessionUser} loading={loading} isAdmin={sessionUser?.isAdmin}/>
+          <Navlist open={openNavBar} isopen={openNav} />
         </div>
       )}
     </>

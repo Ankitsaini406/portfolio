@@ -2,12 +2,12 @@ import Image from 'next/image';
 import style from '@/styles/about.module.css'
 import { FaCode } from "react-icons/fa6";
 
-const About = () => {
+export default function About() {
     return (
-        <div className={style.aboutpage}>
+        <div className={style.aboutpage} id="about">
             <div className={style.ImgContainer}>
                 <div className={style.Imgbox}>
-                    <Image className={style.myImg} width={1000} height={1000} src='/images/myimage.jpg' alt='My Hero'></Image>
+                    <Image className={style.myImg} width={1000} height={1000} src='/images/myimage.jpg' alt='Ankit Saini'></Image>
                 </div>
             </div>
             <div className={style.aboutbox}>
@@ -24,5 +24,3 @@ const About = () => {
         </div>
     )
 }
-
-export default About;
