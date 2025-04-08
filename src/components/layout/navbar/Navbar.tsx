@@ -1,55 +1,19 @@
 "use client";
 
-import Navlist from "./Navlist";
-import style from '@/styles/Navbar.module.css';
 import { useState } from "react";
+import Navlist from "./Navlist";
 
-const Navbar = () => {
-  const [changeNav, setChangeNav] = useState(false);
+export default function Navbar() {
   const [openNav, setOpenNav] = useState(false);
-
-  const changeNavColor = () => {
-    if (window.scrollY > 50) {
-      setChangeNav(true);
-    } else {
-      setChangeNav(false);
-    }
-  };
 
   const openNavBar = () => {
     setOpenNav(!openNav);
-  }
-
-  if (typeof window != "undefined") {
-    window.addEventListener("scroll", changeNavColor);
-  }
+  };
 
   return (
-    <>
-      {changeNav ? (
-        <div
-          className={`${style.NavBar} ${style.navMask}`}
-        // style={{
-        //   clipPath: changeNav
-        //     ? "polygon(0px 0px, 100% 0px, 100% 100%, 0px 100%)"
-        //     : "polygon(0px 0px, 100% 0px, 100% 0px, 0px 0px)",
-        // }}
-        >
-          <div className={style.NavBarName}>
-            <h1>@ Ankit</h1>
-          </div>
-          <Navlist open={openNavBar} isopen={openNav} />
-        </div>
-      ) : (
-        <div className={style.NavBar}>
-          <div className={style.NavBarName}>
-            <h1>@ Ankit</h1>
-          </div>
-          <Navlist open={openNavBar} isopen={openNav} />
-        </div>
-      )}
-    </>
+    <div className={`sticky top-0 flex items-center justify-between p-4 text-[var(--main-color)] z-20 transition-all duration-300`}>
+      <div className="font-bold text-lg">@ Ankit</div>
+      <Navlist open={openNavBar} isopen={openNav} />
+    </div>
   );
-};
-
-export default Navbar;
+}
