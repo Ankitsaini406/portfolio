@@ -1,7 +1,7 @@
 import style from '@/styles/Footer.module.css'
 import { FaLinkedinIn } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa";
-import { color } from 'framer-motion';
+import Link from 'next/link';
 
 const Footer = () => {
 
@@ -20,7 +20,7 @@ const Footer = () => {
                 <a style={{ color: 'white' }} target='_blank' rel="noopener noreferrer" href='mailto:as.ankitsaini406@gmail.com'>as.ankitsaini406@gmail.com</a>
             </div>
             <div className={style.footertext}>
-                <a href='https://www.linkedin.com/in/ankit-saini-509a8a18b/'><FaLinkedinIn color='white' /></a> <a target='_blank' rel="noopener noreferrer" href='https://github.com/Ankitsaini406'><FaGithub color='white' /></a>
+                <Link href='https://www.linkedin.com/in/web-ankit-saini/'><FaLinkedinIn color='white' /></Link> <Link target='_blank' rel="noopener noreferrer" href='https://github.com/Ankitsaini406'><FaGithub color='white' /></Link>
             </div>
         </div>
     )
