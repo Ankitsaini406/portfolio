@@ -2,6 +2,7 @@ import Link from "next/link";
 
 export default function Navbar() {
   const List = [
+    { title: "Home", path: "#home" },
     { title: "Timeline", path: "#timelineSection" },
     { title: "Projects", path: "#projects" },
     { title: "About", path: "#about" },

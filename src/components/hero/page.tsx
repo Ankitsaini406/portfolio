@@ -10,7 +10,7 @@ import { TbApi } from "react-icons/tb";
 export default function Hero() {
 
     return (
-        <div className="relative min-h-screen flex items-center justify-center px-6 py-20 overflow-hidden bg-primary text-foreground">
+        <div className="relative min-h-screen flex items-center justify-center px-6 py-20 overflow-hidden bg-primary text-foreground" id="home">
             <div className="absolute inset-0 overflow-hidden">
                 <>
                     <motion.div
