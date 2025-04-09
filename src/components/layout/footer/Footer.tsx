@@ -1,29 +1,45 @@
-import style from '@/styles/Footer.module.css'
 import { FaLinkedinIn } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa";
 import Link from 'next/link';
 
 const Footer = () => {
-
-    // const openInNewTab = (url: string) => {
-    //     if (typeof window != "undefined") {
-    //         window.open(url, '_blank', 'noopener,noreferrer');
-    //     }
-    // };
-
     return (
-        <div className={style.footerbox}>
-            <div className={style.footertext}>
-                <h1 className={style.footerlet}>Let&apos;s talk about your project:</h1>
+        <div className="bg-black rounded-t-[25px] flex flex-col items-center gap-8 py-8 mt-4">
+            <div className="flex flex-col items-center text-white text-center">
+                <h1 className="text-[calc(25px+var(--font-size))] sm:text-[clamp(10px,20px,30px)]">
+                    Let&apos;s talk about your project:
+                </h1>
             </div>
-            <div >
-                <a style={{ color: 'white' }} target='_blank' rel="noopener noreferrer" href='mailto:as.ankitsaini406@gmail.com'>as.ankitsaini406@gmail.com</a>
+            <div>
+                <a
+                    className="text-white text-lg hover:underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="mailto:as.ankitsaini406@gmail.com"
+                >
+                    as.ankitsaini406@gmail.com
+                </a>
             </div>
-            <div className={style.footertext}>
-                <Link href='https://www.linkedin.com/in/web-ankit-saini/'><FaLinkedinIn color='white' /></Link> <Link target='_blank' rel="noopener noreferrer" href='https://github.com/Ankitsaini406'><FaGithub color='white' /></Link>
+            <div className="flex gap-4">
+                <Link
+                    href="https://www.linkedin.com/in/web-ankit-saini/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white text-xl hover:text-gray-400 transition"
+                >
+                    <FaLinkedinIn />
+                </Link>
+                <Link
+                    href="https://github.com/Ankitsaini406"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white text-xl hover:text-gray-400 transition"
+                >
+                    <FaGithub />
+                </Link>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default Footer
+export default Footer;

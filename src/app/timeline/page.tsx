@@ -3,7 +3,7 @@ import { timelines } from "@/lib/data/timelines";
 export default function Timeline() {
 
     return (
-        <div className="w-full text-center mb-24" id="timelineSection">
+        <div className="w-full py-20 text-center mb-24" id="timelineSection">
             <h1 className="text-4xl md:text-5xl font-bold text-main mb-10">
                 Working Experience
             </h1>
