@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import Navbar from "@/components/layout/navbar/Navbar";
-import Footer from "@/components/layout/footer/Footer";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 // import ThemeProviders from "@/components/theme/ThemeProviders";
-import ScrollButton from "@/components/scrollbutton/Scrollbutton";
+import ScrollButton from "@/components/Scrollbutton";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import SmoothScroll from "@/lib/SmoothScroll";
 import "./globals.css";
