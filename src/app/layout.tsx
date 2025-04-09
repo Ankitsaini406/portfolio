@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/layout/navbar/Navbar";
 import Footer from "@/components/layout/footer/Footer";
-import ThemeProviders from "@/components/theme/ThemeProviders";
+// import ThemeProviders from "@/components/theme/ThemeProviders";
 import ScrollButton from "@/components/scrollbutton/Scrollbutton";
 import { Toaster } from "react-hot-toast";
 import { SpeedInsights } from "@vercel/speed-insights/next"
@@ -19,9 +19,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="!scroll-smooth">
       <body>
-        <ThemeProviders>
+        {/* <ThemeProviders> */}
           <SmoothScroll>
             <Navbar />
             <ScrollButton />
@@ -30,7 +30,7 @@ export default function RootLayout({
             <Toaster />
             <Footer />
           </SmoothScroll>
-        </ThemeProviders>
+        {/* </ThemeProviders> */}
       </body>
     </html>
   );
