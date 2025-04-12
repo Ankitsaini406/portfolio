@@ -10,7 +10,7 @@ export default function Navbar() {
 
   return (
     <div
-      className="fixed top-4 left-1/2 -translate-x-1/2 flex w-max border-2 rounded-full p-4 gap-5 text-[var(--main-color)] z-20 
+      className="fixed top-4 left-1/2 -translate-x-1/2 flex w-max border-2 rounded-full p-2 px-4 gap-5 text-[var(--main-color)] z-20 
       bg-white/20 backdrop-blur-lg border-white/30 shadow-lg transition-all duration-300"
     >
       {/* <div className="font-bold text-lg">@ Ankit</div> */}
@@ -19,7 +19,7 @@ export default function Navbar() {
           <Link
             key={list.title}
             href={list.path}
-            className="font-bold text-lg text-[var(--main-color)] hover:text-[var(--text-color)] transition-all"
+            className="font-bold text-lg text-[var(--main-color)] hover:text-[var(--text-color)] transition-all "
           >
             {list.title}
           </Link>

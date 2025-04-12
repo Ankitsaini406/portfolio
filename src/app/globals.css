@@ -1,71 +1,44 @@
 @import "tailwindcss";
 
 @theme {
-  --color-*: initial;
-  --color-white: #fff;
+  --color-white: #ffffff;
 
-  /* Primary Colors */
-  --color-primary: #1a1f36;
-  --color-primary-dark: #121826;
-  --color-primary-light: #2d334d;
+  /* Base Colors */
+  --color-background: #0f0f1a;
+  --color-foreground: #f1f1f1;
 
-  /* Secondary Colors */
-  --color-secondary: #5468ff;
-  --color-secondary-light: #a0b1ff;
-  --color-secondary-dark: #3f51b5;
+  /* Primary and Accent */
+  --color-primary: #6c63ff; /* Soft violet */
+  --color-primary-background: #1c1b2e;
 
-  /* Accent Colors */
-  --color-accent: #ff6b6b;
-  --color-accent-light: #ffa7a7;
-  --color-accent-dark: #c0392b;
+  --color-accent: #e65ec2; /* Vibrant pink */
+  --color-accent-light: #ffb5ef;
+  --color-accent-dark: #ae2896;
 
-  /* Additional Colors */
-  --color-purple: #6c5ce7;
-  --color-midnight: #1e1e2f;
-  --color-tahiti: #3ab7bf;
-  --color-bermuda: #78dcca;
+  /* Secondary */
+  --color-secondary: #38bdf8; /* Light blue */
+  --color-secondary-light: #7dd3fc;
+  --color-secondary-dark: #0ea5e9;
 
-  /* Background & Text */
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  /* Other */
+  --color-footer: #161624;
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans, 'Inter', sans-serif);
+  --font-mono: var(--font-geist-mono, 'Courier New', monospace);
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  box-sizing: border-box;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --color-background: #0f0f1a;
+    --color-foreground: #f1f1f1;
   }
-}
-
-@theme inline {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-body {
-  background: var(--color-background);
-  color: var(--color-foreground);
-  font-family: Arial, Helvetica, sans-serif;
-  box-sizing: border-box;
-}
-
-html.lenis,
-html.lenis body {
-  height: auto;
-}
-
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
-.lenis.lenis-smooth iframe {
-  pointer-events: none;
 }

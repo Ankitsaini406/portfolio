@@ -3,7 +3,7 @@ import { timelines } from "@/lib/data/timelines";
 export default function Timeline() {
 
     return (
-        <div className="w-full py-20 text-center mb-24" id="timelineSection">
+        <div className="w-full py-20 text-center mb-24 bg-primary-background text-primary" id="timelineSection">
             <h1 className="text-4xl md:text-5xl font-bold text-main mb-10">
                 Working Experience
             </h1>
@@ -19,10 +19,10 @@ export default function Timeline() {
                                 }`}
                         >
                             <div
-                                className={`relative  p-6 rounded-lg shadow-lg transition-transform duration-500 ease-in-out hover:scale-105 ${index % 2 === 0 ? "md:ml-auto" : "md:mr-auto"
+                                className={`relative border p-6 rounded-lg shadow-lg transition-transform duration-500 ease-in-out hover:scale-105 ${index % 2 === 0 ? "md:ml-auto" : "md:mr-auto"
                                     }`}
                             >
-                                <h2 className="text-xl text-accent font-semibold text-gray-900 uppercase">
+                                <h2 className="text-xl text-primary font-semibold text-gray-900 uppercase">
                                     {value.name}
                                 </h2>
                                 <h4 className="text-md text-gray-700">{value.jobtitle}</h4>
