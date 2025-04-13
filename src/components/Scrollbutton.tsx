@@ -31,14 +31,15 @@ const ScrollButton = () => {
 
     return (
         <motion.button
-            className="fixed bottom-4 right-4 p-3 rounded-full z-[999] bg-[var(--main-color)] text-[var(--white-color)] transition-transform duration-300 hover:scale-110"
+            className="fixed bottom-4 right-4 p-3 rounded-full z-[999] transition-transform duration-300 hover:scale-110 cursor-pointer"
             variants={ScrollToTopContainerVariants}
             initial="hide"
             animate={controls}
             onClick={scrollToTop}
         >
-            <FaArrowUp className="text-lg" />
+            <FaArrowUp className="text-white text-lg" />
         </motion.button>
+
     );
 };
 

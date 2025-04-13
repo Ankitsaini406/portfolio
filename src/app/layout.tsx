@@ -6,6 +6,7 @@ import ScrollButton from "@/components/Scrollbutton";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import SmoothScroll from "@/lib/SmoothScroll";
 import "./globals.css";
+// import CustomCursor from "@/components/CustomCursor";
 
 export const metadata: Metadata = {
   title: "Portfolio",
@@ -24,6 +25,7 @@ export default function RootLayout({
           <SmoothScroll>
             <Navbar />
             <ScrollButton />
+            {/* <CustomCursor /> */}
             {children}
             <SpeedInsights />
             <Footer />
