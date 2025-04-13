@@ -42,19 +42,18 @@ export default function CustomCursor({ isHoverd }: CustomCursorProps) {
 
     const lerp = (x: number, y: number, a: number): number => x * (1 - a) + y * a;
 
-    const animate = () => {
-
-        const { x, y } = delayMouse.current;
-        delayMouse.current = {
-            x: lerp(x, mouse.current.x, 0.75),
-            y: lerp(y, mouse.current.y, 0.75)
-        }
-
-        moveCircle(mouse.current.x, mouse.current.y)
-        window.requestAnimationFrame(animate);
-    }
-
     useEffect(() => {
+        const animate = () => {
+            const { x, y } = delayMouse.current;
+            delayMouse.current = {
+                x: lerp(x, mouse.current.x, 0.75),
+                y: lerp(y, mouse.current.y, 0.75)
+            }
+
+            moveCircle(mouse.current.x, mouse.current.y)
+            window.requestAnimationFrame(animate);
+        };
+
         animate();
         window.addEventListener('mousemove', mangeMouseMove);
         return () => window.removeEventListener('mousemove', mangeMouseMove);
