@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 export default function Timeline() {
 
     return (
-        <div className="w-full py-20 text-center mb-24 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white" id="timelineSection">
+        <div className="w-full py-20 text-center mb-24 bg-gray-900 text-white" id="timelineSection">
             <motion.h1
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -32,10 +32,10 @@ export default function Timeline() {
                                 className={`relative border p-6 rounded-lg shadow-lg transition-transform duration-500 ease-in-out hover:scale-105 ${index % 2 === 0 ? "md:ml-auto" : "md:mr-auto"}`}
                                 whileHover={{ scale: 1.05 }}
                             >
-                                <h2 className="text-xl font-semibold text-gray-900 dark:text-white uppercase">
+                                <h2 className="text-xl font-semibold text-white uppercase">
                                     {value.name}
                                 </h2>
-                                <h4 className="text-md text-gray-700 dark:text-gray-400">{value.jobtitle}</h4>
+                                <h4 className="text-md text-gray-400">{value.jobtitle}</h4>
                                 <h6 className="text-sm text-gray-500">
                                     {value.joinDate} | {value.endDate}
                                 </h6>
@@ -44,7 +44,7 @@ export default function Timeline() {
                         </motion.div>
                     ))
                 ) : (
-                    <p className="text-gray-500 dark:text-gray-400">No data available</p>
+                    <p className="text-gray-400">No data available</p>
                 )}
             </div>
         </div>
