@@ -58,7 +58,7 @@ export default function Footer() {
                     </text>
                 </svg>
 
-            <div className="bg-gray-900 overflow-hidden">
+            <div className="bg-gray-950 overflow-hidden">
                 <motion.div style={{y}} className="flex flex-col items-center gap-8 py-8 mt-4">
                 <div>
                     <a
