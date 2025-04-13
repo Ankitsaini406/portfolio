@@ -18,32 +18,9 @@ import { TbApi } from "react-icons/tb";
 export default function Hero() {
     return (
         <div
-            className="relative min-h-screen flex items-center justify-center px-6 py-20 overflow-hidden bg-background text-foreground"
+            className="relative min-h-screen flex items-center justify-center px-6 py-20 overflow-hidden bg-background text-background"
             id="home"
         >
-            {/* Glowing Background Effects */}
-            <div className="absolute inset-0 overflow-hidden">
-                <>
-                    <motion.div
-                        className="absolute top-20 left-10 w-64 h-64 rounded-full bg-accent-light blur-3xl opacity-70"
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 1 }}
-                    />
-                    <motion.div
-                        className="absolute bottom-20 right-10 w-80 h-80 rounded-full bg-secondary blur-3xl opacity-70"
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 1, delay: 0.2 }}
-                    />
-                    <motion.div
-                        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-accent-dark blur-3xl opacity-50"
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 1, delay: 0.4 }}
-                    />
-                </>
-            </div>
 
             {/* Main Content */}
             <div className="container mx-auto grid md:grid-cols-2 gap-12 items-center z-10">
@@ -74,17 +51,11 @@ export default function Hero() {
                         animate={{ opacity: 1 }}
                         transition={{ duration: 1, delay: 0.5 }}
                     >
-                        <motion.button className="px-6 py-3 bg-accent text-foreground rounded-lg font-medium hover:bg-accent-dark transition-all shadow-lg hover:shadow-accent/30 hover:-translate-y-1">
-                            View Projects
-                        </motion.button>
-                        <motion.button className="px-6 py-3 border-2 border-secondary-light/30 text-foreground rounded-lg font-medium hover:bg-foreground/10 transition-all hover:-translate-y-1">
-                            Contact Me
-                        </motion.button>
                     </motion.div>
                 </motion.div>
 
                 {/* Tech Stack Card */}
-                <div className="relative">
+                <div className="relative border rounded-2xl">
                     <motion.div
                         className="glass-card rounded-2xl p-8 shadow-xl"
                         initial={{ opacity: 0, scale: 0.8 }}

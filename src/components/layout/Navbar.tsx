@@ -10,8 +10,8 @@ export default function Navbar() {
 
   return (
     <div
-      className="fixed top-4 left-1/2 -translate-x-1/2 flex w-max border-2 rounded-full p-2 px-4 gap-5 text-[var(--main-color)] z-20 
-      bg-white/20 backdrop-blur-lg border-white/30 shadow-lg transition-all duration-300"
+      className="fixed top-4 left-1/2 -translate-x-1/2 flex w-max border rounded-full p-2 px-4 gap-5 text-[var(--main-color)] z-20 
+      bg-white/20 backdrop-blur-lg border-white/20 shadow-lg transition-all duration-300"
     >
       {/* <div className="font-bold text-lg">@ Ankit</div> */}
       <div className="flex items-center gap-6">
