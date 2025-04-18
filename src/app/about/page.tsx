@@ -20,7 +20,7 @@ export default function About() {
     return (
         <section
             id="about"
-            className="relative w-full py-24 px-4 sm:px-6 lg:px-8 bg-black text-white"
+            className="w-full py-24 px-4 sm:px-6 lg:px-8 bg-black text-white"
         >
             <motion.div
                 initial={{ opacity: 0, y: 40 }}

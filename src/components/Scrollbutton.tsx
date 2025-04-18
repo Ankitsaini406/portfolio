@@ -31,7 +31,7 @@ const ScrollButton = () => {
 
     return (
         <motion.button
-            className="fixed bottom-4 right-4 p-3 rounded-full z-[999] transition-transform duration-300 hover:scale-110 cursor-pointer"
+            className="fixed bottom-4 right-4 p-3 rounded-full z-[999] transition-transform duration-300 hover:scale-110 cursor-pointer mix-blend-difference bg-red-600"
             variants={ScrollToTopContainerVariants}
             initial="hide"
             animate={controls}
