@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 export default function Timeline() {
 
     return (
-        <div className="w-full py-20 text-center mb-24 bg-gray-900 text-white mix-blend-difference" id="timelineSection">
+        <div className="w-full py-20 text-center bg-gray-900 text-white mix-blend-difference z-10" id="timelineSection">
             <motion.h1
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}

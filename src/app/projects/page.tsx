@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 
 export default function Projects() {
     return (
-        <div className="max-w-[1200px] mx-auto py-20 px-4" id="projects">
+        <div className="max-w-[1200px] mx-auto py-20 px-4 mix-blend-difference z-10 text-white" id="projects">
             <motion.h2
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -15,7 +15,7 @@ export default function Projects() {
                 viewport={{ once: true }}
                 className="text-3xl font-bold text-center mb-12 text-white"
             >
-                My Projects
+                Projects
             </motion.h2>
             {projects.map((project: Projectsdetial) => (
                 <motion.div
