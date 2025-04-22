@@ -1,30 +1,18 @@
-"use client";
 
 import { motion } from "framer-motion";
-import {
-    FaHtml5,
-    FaCss3Alt,
-    FaReact,
-    FaShopify,
-    FaPhp,
-    FaGithub,
-    FaCode,
-} from "react-icons/fa";
+import { FaHtml5, FaCss3Alt, FaReact, FaShopify, FaPhp, FaGithub, FaCode } from "react-icons/fa";
 import { IoLogoJavascript } from "react-icons/io5";
 import { RiFlutterFill, RiNextjsFill } from "react-icons/ri";
 import { SiMysql, SiTypescript, SiTailwindcss } from "react-icons/si";
 import { TbApi } from "react-icons/tb";
-import CustomCursor from "../CustomCursor";
-import { useState } from "react";
 
 export default function Hero() {
-    const [isHoverd, setHoverd] = useState(false);
+
     return (
         <div
             className="relative min-h-screen flex items-center justify-center px-6 py-20 overflow-hidden bg-background text-background"
             id="home"
         >
-            <CustomCursor isHoverd={isHoverd} />
 
             {/* Main Content */}
             <div className="container mx-auto grid md:grid-cols-2 gap-12 items-center z-10">
@@ -34,8 +22,6 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1 }}
-                    onMouseEnter={() => {setHoverd(true)}}
-                    onMouseLeave={() => setHoverd(false)}
                 >
                     <h2 className="text-xl md:text-2xl font-medium text-secondary">
                         Hello, I&apos;m a
