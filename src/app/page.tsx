@@ -1,7 +1,8 @@
-import Hero from "@/components/hero/page";
-import Timeline from "@/app/timeline/page";
-import About from "./about/page";
+import Hero from "@/components/hero/hero";
+import Timeline from "./timeline/page";
 import Projects from "./projects/page";
+import About from "./about/page";
+
 
 export default async function Home() {
   return (

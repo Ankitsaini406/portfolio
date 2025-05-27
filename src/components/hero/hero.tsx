@@ -1,3 +1,4 @@
+"use client";
 
 import { motion } from "framer-motion";
 import { FaHtml5, FaCss3Alt, FaReact, FaShopify, FaPhp, FaGithub, FaCode } from "react-icons/fa";
