@@ -19,7 +19,7 @@ export default function Navbar() {
           <Link
             key={list.title}
             href={list.path}
-            className="font-bold text-lg text-[var(--main-color)] hover:text-[var(--text-color)] transition-all "
+            className="font-bold text-lg text-(--main-color) hover:text-(--text-color) transition-all "
           >
             {list.title}
           </Link>
