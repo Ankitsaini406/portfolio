@@ -8,9 +8,10 @@ export type Timelinedetial = {
     }
 
 export type Projectsdetial = {
-    _id: string;
+    id: string;
     name: string;
     image: string;
+    link: string;
     imageBase64: string;
     description: string;
     }
