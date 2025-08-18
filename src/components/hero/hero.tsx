@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import gsap from "gsap";
+import { useEffect, useRef } from "react";
 import { FaHtml5, FaCss3Alt, FaReact, FaShopify, FaPhp, FaGithub, FaCode } from "react-icons/fa";
 import { IoLogoJavascript } from "react-icons/io5";
 import { RiFlutterFill, RiNextjsFill } from "react-icons/ri";
@@ -8,57 +9,80 @@ import { SiMysql, SiTypescript, SiTailwindcss } from "react-icons/si";
 import { TbApi } from "react-icons/tb";
 
 export default function Hero() {
+    const lineRef = useRef<HTMLSpanElement>(null);
+    const line1Ref = useRef<HTMLSpanElement>(null);
+    const line2Ref = useRef<HTMLSpanElement>(null);
+    const subtitleRef = useRef<HTMLParagraphElement>(null);
+
+    useEffect(() => {
+        const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+        tl.fromTo(
+            lineRef.current,
+            { y: 50, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.8 }
+        )
+            .fromTo(
+                line1Ref.current,
+                { y: 50, opacity: 0 },
+                { y: 0, opacity: 1, duration: 0.8 }
+            )
+            .fromTo(
+                line2Ref.current,
+                { y: 50, opacity: 0 },
+                { y: 0, opacity: 1, duration: 0.8 },
+                "-=0.5"
+            )
+            .fromTo(
+                subtitleRef.current,
+                { y: 20, opacity: 0 },
+                { y: 0, opacity: 1, duration: 0.8 },
+                "-=0.3"
+            );
+    }, []); 3
+
+    useEffect(() => {
+        // Add a custom cursor effect
+        const cursor = document.createElement("div");
+        cursor.className = "fixed w-4 h-4 bg-accent rounded-full pointer-events-none z-50";
+        document.body.appendChild(cursor);
+
+        document.addEventListener("mousemove", (e) => {
+            gsap.to(cursor, { x: e.clientX - 8, y: e.clientY - 8, duration: 0.2 });
+        });
+    }, []);
 
     return (
-        <div
-            className="relative min-h-screen flex items-center justify-center px-6 py-20 overflow-hidden bg-background text-background"
-            id="home"
-        >
-
+        <div className="relative min-h-screen flex items-center justify-center px-6 py-20 overflow-hidden bg-background text-background" id="home">
             {/* Main Content */}
             <div className="container mx-auto grid md:grid-cols-2 gap-12 items-center z-10">
                 {/* Text Content */}
-                <motion.div
-                    className="flex flex-col items-center md:items-start text-center md:text-left space-y-6"
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1 }}
-                >
+                <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-6">
                     <h2 className="text-xl md:text-2xl font-medium text-secondary">
-                        Hello, I&apos;m a
+                        <span ref={lineRef} className="block">Hello, I&apos;m a</span>
                     </h2>
-                    <h1 className="text-5xl md:text-7xl font-bold text-foreground">
-                        <span className="block">Full-Stack</span>
-                        <span className="block mt-2">Developer</span>
+                    <h1 className="text-5xl md:text-7xl font-bold text-foreground overflow-hidden">
+                        <span ref={line1Ref} className="block">Full-Stack</span>
+                        <span ref={line2Ref} className="block mt-2">Developer</span>
                     </h1>
-                    <p className="text-2xl md:text-3xl font-light text-secondary-light">
+                    <p ref={subtitleRef} className="text-2xl md:text-3xl font-light text-secondary-light">
                         <span className="text-accent">{"<"}</span>
                         <span className="text-foreground font-medium">
                             Crafting digital experiences
                         </span>
                         <span className="text-accent">{"/>"}</span>
                     </p>
-                    <motion.div
-                        className="flex gap-6 mt-8"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 1, delay: 0.5 }}
-                    >
-                    </motion.div>
-                </motion.div>
+                </div>
 
                 {/* Tech Stack Card */}
                 <div className="relative border rounded-2xl">
-                    <motion.div
+                    <div
                         className="glass-card rounded-2xl p-8 shadow-xl"
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 1, delay: 0.3 }}
                     >
                         <h3 className="text-2xl font-bold text-foreground mb-6">
                             Tech Stack
                         </h3>
-                        <motion.div className="grid grid-cols-5 gap-6">
+                        <div className="grid grid-cols-5 gap-6">
                             <TechIcon icon={<FaHtml5 />} name="HTML5" color="text-[#E34F26]" />
                             <TechIcon icon={<FaCss3Alt />} name="CSS3" color="text-[#1572B6]" />
                             <TechIcon icon={<IoLogoJavascript />} name="JavaScript" color="text-[#F7DF1E]" />
@@ -73,8 +97,8 @@ export default function Hero() {
                             <TechIcon icon={<FaShopify />} name="Shopify" color="text-[#7AB55C]" />
                             <TechIcon icon={<FaGithub />} name="GitHub" color="text-foreground" />
                             <TechIcon icon={<FaCode />} name="Clean Code" color="text-secondary-light" />
-                        </motion.div>
-                    </motion.div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -87,18 +111,28 @@ interface TechIconProps {
     color: string;
 }
 
-const TechIcon = ({ icon, name, color }: TechIconProps) => (
-    <motion.div
-        className="flex flex-col items-center justify-center gap-2"
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5 }}
-    >
-        <div
-            className={`text-3xl ${color} hover:scale-110 transition-all duration-300`}
-        >
-            {icon}
+const TechIcon = ({ icon, name, color }: TechIconProps) => {
+    const iconRef = useRef<HTMLDivElement>(null);
+
+    const handleHover = () => {
+        gsap.to(iconRef.current, { scale: 1.2, duration: 0.3 });
+    };
+
+    const handleHoverExit = () => {
+        gsap.to(iconRef.current, { scale: 1, duration: 0.3 });
+    };
+
+    return (
+        <div className="flex flex-col items-center justify-center gap-2">
+            <div
+                ref={iconRef}
+                className={`text-3xl ${color} cursor-pointer`}
+                onMouseEnter={handleHover}
+                onMouseLeave={handleHoverExit}
+            >
+                {icon}
+            </div>
+            <span className="text-xs text-foreground/60">{name}</span>
         </div>
-        <span className="text-xs text-white/60">{name}</span>
-    </motion.div>
-);
+    );
+};
