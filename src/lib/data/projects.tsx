@@ -42,7 +42,7 @@ export const projects = [
     {
         id: "6",
         name: "Eduengine",
-        image: "eduengine.png",
+        image: "eduengine.webp",
         link: "https://eduengine.in/",
         imageBase64: "",
         description: "Eduengine is a technology-focused website that publishes articles, guides, and resources about emerging tech trends, software development, and digital innovations. It is designed with performance, SEO optimization, and user-friendly navigation to engage tech enthusiasts and professionals."

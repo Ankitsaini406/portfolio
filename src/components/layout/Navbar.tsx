@@ -25,14 +25,14 @@ export default function Navbar() {
         duration: 0.5,
         stagger: 0.1,
         ease: "power2.out",
-        delay: 0.5 // Delay after page load
+        delay: 0.5, // Delay after page load
       });
     }
   }, []);
   return (
     <div
       ref={navRef}
-      className="fixed top-6 left-1/2 -translate-x-1/2 flex w-max p-1.5 z-50 transition-all duration-500 bg-blend-difference"
+      className="fixed top-6 left-1/2 -translate-x-1/2 flex w-max p-1.5 z-50 transition-all duration-500 bg-white/70 backdrop-blur-[3px] border border-white/50 shadow-md rounded-full"
     >
       <div className="flex items-center gap-1 px-1">
         {List.map((list) => (
@@ -49,13 +49,13 @@ export default function Navbar() {
             </span>
 
             {/* Hover indicator */}
-            <span
-              className="absolute inset-0 rounded-full pointer-events-none"
-            />
+            <span className="absolute inset-0 rounded-full pointer-events-none" />
 
             {/* Active indicator (shows on route match) */}
-            <span className="absolute bottom-1 left-1/2 -translate-x-1/2 h-0.5 w-2 bg-red-600 rounded-full opacity-0
-                            group-hover:opacity-100 group-hover:w-6 transition-all duration-300" />
+            <span
+              className="absolute bottom-1 left-1/2 -translate-x-1/2 h-0.5 w-2 bg-red-600 rounded-full opacity-0
+                            group-hover:opacity-100 group-hover:w-6 transition-all duration-300"
+            />
           </Link>
         ))}
       </div>
