@@ -6,8 +6,8 @@ import SmoothScroll from "@/lib/SmoothScroll";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Portfolio",
-  description: "Home page",
+  title: "Ankit Saini",
+  description: "Ankit Saini Portfolio",
 };
 
 export default function RootLayout({
