@@ -8,6 +8,21 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Ankit Saini",
   description: "Ankit Saini Portfolio",
+  manifest: "/manifest.json",
+  themeColor: "#000000",
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/icons/apple-touch-icon.png',
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Ankit Saini",
+  },
+  alternates: {
+    canonical: '/',
+  }
 };
 
 export default function RootLayout({
@@ -18,12 +33,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth!">
       <body>
-          <SmoothScroll>
-            <Navbar />
-            <ScrollButton />
-            {children}
-            <Footer />
-          </SmoothScroll>
+        <SmoothScroll>
+          <Navbar />
+          <ScrollButton />
+          {children}
+          <Footer />
+        </SmoothScroll>
       </body>
     </html>
   );
