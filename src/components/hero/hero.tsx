@@ -39,7 +39,7 @@ export default function Hero() {
                 { y: 0, opacity: 1, duration: 0.8 },
                 "-=0.3"
             );
-    }, []); 3
+    }, []);
 
     useEffect(() => {
         // Add a custom cursor effect
