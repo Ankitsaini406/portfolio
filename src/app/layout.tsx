@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ScrollButton from "@/components/Scrollbutton";
-import SmoothScroll from "@/lib/SmoothScroll";
 import "./globals.css";
+import GoogleAnalytics from "@/analytics/GTag";
+import ChildLayOut from "./ChildLayout";
 
 export const metadata: Metadata = {
   title: "Ankit Saini",
@@ -31,14 +32,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth!">
-      <body>
-        <SmoothScroll>
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <GoogleAnalytics />
+      </head>
+      <body suppressHydrationWarning>
+        <ChildLayOut>
           <Navbar />
           <ScrollButton />
           {children}
           <Footer />
-        </SmoothScroll>
+        </ChildLayOut>
       </body>
     </html>
   );
