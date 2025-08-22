@@ -12,9 +12,9 @@ export default function Navbar() {
 
   const List = [
     { title: "Home", path: "#home" },
-    { title: "Timeline", path: "#timelineSection" },
-    { title: "Projects", path: "#projects" },
-    { title: "About", path: "#about" },
+    { title: "Timeline", path: "/timeline" },
+    { title: "Projects", path: "/projects" },
+    { title: "About", path: "/about" },
   ];
 
   useEffect(() => {
@@ -86,9 +86,9 @@ export default function Navbar() {
         ref={navRef}
         className="fixed top-6 left-1/2 -translate-x-1/2 hidden md:flex w-max p-1.5 z-50 transition-all duration-500 bg-white/70 backdrop-blur-[3px] border border-white/50 shadow-md rounded-full"
       >
-        <div className="relative h-10 w-10 aspect-square">
+        <Link href="/" className="relative h-10 w-10 aspect-square">
           <Image src='/logo.png' alt="Logo" fill className="rounded-full" />
-        </div>
+        </Link>
         <div className="flex items-center gap-1 px-1">
           {List.map((list) => (
             <Link
