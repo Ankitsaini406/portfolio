@@ -34,5 +34,5 @@ export const timelines = [
         "joinDate": "July 2022",
         "endDate": "February 2023",
         "work": "Woking in HTML and CSS, creating Flutter app and web app, creating a database in MySql and Firebase, connecting the database to the web app and app, and making API in MySql and connecting to the Flutter app, all contribute to a comprehensive digital development project."
-    }
+    },
 ];
