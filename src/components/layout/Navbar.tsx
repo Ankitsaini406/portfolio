@@ -11,7 +11,7 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const List = [
-    { title: "Home", path: "#home" },
+    { title: "Home", path: "/" },
     { title: "Timeline", path: "/timeline" },
     { title: "Projects", path: "/projects" },
     { title: "About", path: "/about" },
