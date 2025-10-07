@@ -52,7 +52,7 @@ export default function SplashScreen({
         Ankit Saini
       </h1>
       <p ref={subTextRef} className="text-lg opacity-80">
-        Frontend Developer & Designer
+        Frontend & Backend Developer
       </p>
     </div>
   );

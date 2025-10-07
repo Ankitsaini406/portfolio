@@ -68,7 +68,7 @@ export default function Hero() {
                     <p ref={subtitleRef} className="text-2xl md:text-3xl font-light">
                         <span className="text-accent">{"<"}</span>
                         <span className="text-foreground font-medium">
-                            Crafting digital experiences
+                            Crafting Digital Experiences
                         </span>
                         <span className="text-accent">{"/>"}</span>
                     </p>
