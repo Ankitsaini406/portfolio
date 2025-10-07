@@ -34,6 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
+          <title>Ankit Portfolio</title>
         <GoogleAnalytics />
       </head>
       <body>
