@@ -31,7 +31,7 @@ const ModernTimelineCard = ({ value, index }: ModernTimelineCard) => (
             <h3 className="text-xl font-bold text-[var(--color-foreground)]">{value.name}</h3>
             <p className="text-sm text-[var(--color-secondary)] font-medium mt-1">{value.jobtitle}</p>
           </div>
-          <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-[var(--color-accent-light)] text-[var(--color-foreground)]">
+          <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-foreground text-background">
             <span className="text-lg font-bold">{value.name.charAt(0)}</span>
           </div>
         </div>
@@ -131,17 +131,17 @@ export default function Timeline() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative w-full py-32 overflow-hidden" id="timelineSection">
+    <section ref={sectionRef} className="relative w-full py-32" id="timelineSection">
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-[var(--color-accent-light)] rounded-full blur-3xl opacity-40" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-[var(--color-accent-light)] rounded-full blur-3xl opacity-40" />
+        <div className="absolute top-20 left-10 w-72 h-72 bg-accent/40 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/40 rounded-full blur-3xl" />
       </div>
 
       <div ref={titleRef} className="relative text-center mb-20">
         <span className="text-xs font-mono uppercase tracking-[0.3em] text-[var(--color-secondary)]">
           Career Journey
         </span>
-        <h1 className="text-5xl md:text-7xl font-bold mt-4 bg-gradient-to-r from-[var(--color-foreground)] via-[var(--color-secondary)] to-[var(--color-foreground)] bg-clip-text text-transparent">
+        <h1 className="text-5xl md:text-7xl font-bold mt-4">
           Working Experience
         </h1>
         <div className="w-24 h-[2px] bg-gradient-to-r from-transparent via-[var(--color-foreground)] to-transparent mx-auto mt-6" />

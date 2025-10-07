@@ -76,7 +76,7 @@ const ScrollButton = () => {
       ref={buttonRef}
       onClick={scrollToTop}
       aria-label="Scroll to top"
-      className="fixed bottom-6 right-6 w-14 h-14 rounded-full z-50 cursor-pointer opacity-0 scale-90 translate-y-24 group backdrop-blur-lg shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-500"
+      className="fixed bottom-6 bg-foreground text-background right-6 w-14 h-14 rounded-full z-50 cursor-pointer opacity-0 scale-90 translate-y-24 group backdrop-blur-lg shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-500"
       style={{ transform: "translateY(100px) scale(0.9)", opacity: 0 }}
     >
       {/* Rotating gradient ring */}
