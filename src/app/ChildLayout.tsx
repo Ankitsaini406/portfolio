@@ -1,13 +1,19 @@
+"use client";
+
+import React, { useState } from "react";
+import SplashScreen from "./SplashScreen";
 
 export default function ChildLayOut({
-    children,
+  children,
 }: {
-    children: React.ReactNode;
+  children: React.ReactNode;
 }) {
+  const [loading, setLoading] = useState(true);
 
-    return (
-        <>
-            {children}
-        </>
-    );
+  return (
+    <>
+      {loading && <SplashScreen onComplete={() => setLoading(false)} />}
+      {!loading && children}
+    </>
+  );
 }

@@ -53,7 +53,7 @@ export default function Hero() {
     }, []);
 
     return (
-        <div className="relative min-h-screen flex items-center justify-center px-6 py-20 overflow-hidden text-background bg-white/70 backdrop-blur-[3px] z-10" id="home">
+        <div className="relative min-h-screen flex items-center justify-center px-6 py-20 overflow-hidden backdrop-blur-[3px] z-10" id="home">
             {/* Main Content */}
             <div className="container mx-auto grid md:grid-cols-2 gap-12 items-center z-10">
                 {/* Text Content */}
@@ -65,7 +65,7 @@ export default function Hero() {
                         <span ref={line1Ref} className="block">Full-Stack</span>
                         <span ref={line2Ref} className="block mt-2">Developer</span>
                     </h1>
-                    <p ref={subtitleRef} className="text-2xl md:text-3xl font-light text-secondary-light">
+                    <p ref={subtitleRef} className="text-2xl md:text-3xl font-light">
                         <span className="text-accent">{"<"}</span>
                         <span className="text-foreground font-medium">
                             Crafting digital experiences
@@ -75,11 +75,11 @@ export default function Hero() {
                 </div>
 
                 {/* Tech Stack Card */}
-                <div className="relative border rounded-2xl">
+                <div className="relative border border-accent rounded-2xl">
                     <div
                         className="glass-card rounded-2xl p-8 shadow-xl"
                     >
-                        <h3 className="text-2xl font-bold text-foreground mb-6">
+                        <h3 className="text-2xl font-bold mb-6">
                             Tech Stack
                         </h3>
                         <div className="grid grid-cols-5 gap-6">
@@ -132,7 +132,7 @@ const TechIcon = ({ icon, name, color }: TechIconProps) => {
             >
                 {icon}
             </div>
-            <span className="text-xs text-foreground/60">{name}</span>
+            <span className="text-xs">{name}</span>
         </div>
     );
 };

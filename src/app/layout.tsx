@@ -32,11 +32,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="scroll-smooth">
       <head>
         <GoogleAnalytics />
       </head>
-      <body suppressHydrationWarning>
+      <body>
         <ChildLayOut>
           <Navbar />
           <ScrollButton />

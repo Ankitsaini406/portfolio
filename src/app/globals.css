@@ -1,36 +1,52 @@
 @import "tailwindcss";
 
 @theme {
-  /* Base Colors */
-  --color-background: #ffffff;  /* Pure white */
-  --color-foreground: #0a0a0a;  /* Deep black (softer than #000) */
+  /* Light Theme (default) */
+  --color-background: #ffffff;
+  --color-foreground: #0a0a0a;
 
-  /* Primary Colors */
   --color-primary: #ffffff;
-  --color-primary-bg: #f8f8f8;  /* Slightly off-white for depth */
+  --color-primary-bg: #f8f8f8;
 
-  /* Accent Colors */
-  --color-accent: #1a1a1a;      /* Rich black */
-  --color-accent-light: #f0f0f0; /* Very light gray */
-  --color-accent-dark: #000000;  /* True black */
+  --color-accent: #1a1a1a;
+  --color-accent-light: #f0f0f0;
+  --color-accent-dark: #000000;
 
-  /* Secondary Colors */
-  --color-secondary: #4a4a4a;   /* Medium gray */
-  --color-secondary-light: #e5e5e5; /* Light gray */
-  --color-secondary-dark: #262626;  /* Dark gray */
+  --color-secondary: #4a4a4a;
+  --color-secondary-light: #e5e5e5;
+  --color-secondary-dark: #262626;
 
-  /* Footer */
-  --color-footer: #f5f5f5;      /* Slightly darker than primary-bg */
-
-  /* Fonts */
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: 'Roboto Mono', monospace;
+  --color-footer: #f5f5f5;
 }
 
+/* Default (light) theme) */
+:root {
+    --color-background: #ffffff;
+    --color-foreground: #0a0a0a;
+    --color-primary: #ffffff;
+    --color-primary-bg: #f8f8f8;
+    --color-accent: #1a1a1a;
+    --color-footer: #f5f5f5;
+    --font-sans: 'Inter', sans-serif;
+}
+
+/* Dark theme triggered by .dark class on html */
+html.dark {
+    --color-background: #0a0a0a;
+    --color-foreground: #f5f5f5;
+    --color-primary: #1a1a1a;
+    --color-primary-bg: #121212;
+    --color-accent: #f8f8f8;
+    --color-footer: #141414;
+}
+
+
+/* Base body styles */
 body {
   background-color: var(--color-background);
   color: var(--color-foreground);
-  font-family: var(--font-sans);
-  transition: background-color 0.3s ease, color 0.3s ease;
   line-height: 1.6;
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease;
 }

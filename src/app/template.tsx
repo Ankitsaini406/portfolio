@@ -20,7 +20,7 @@ const Template = ({ children }: { children: React.ReactNode }) => {
     }, []);
 
     return (
-        <div ref={templateRef} className="template">
+        <div ref={templateRef}>
             {children}
         </div>
     );

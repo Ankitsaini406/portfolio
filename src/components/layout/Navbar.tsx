@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import Image from "next/image";
+import ThemeSwitcher from "@/components/ThemeSwitcher";
 
 export default function Navbar() {
   const navRef = useRef<HTMLDivElement>(null);
@@ -11,7 +12,6 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const List = [
-    { title: "Home", path: "/" },
     { title: "Timeline", path: "/timeline" },
     { title: "Projects", path: "/projects" },
     { title: "About", path: "/about" },
@@ -84,7 +84,7 @@ export default function Navbar() {
       {/* Desktop Navbar */}
       <div
         ref={navRef}
-        className="fixed top-6 left-1/2 -translate-x-1/2 hidden md:flex w-max p-1.5 z-50 transition-all duration-500 bg-white/70 backdrop-blur-[3px] border border-white/50 shadow-md rounded-full"
+        className="fixed top-6 left-1/2 -translate-x-1/2 hidden md:flex w-max p-1.5 z-50 transition-all duration-500 backdrop-blur-[3px] border shadow-md rounded-full"
       >
         <Link href="/" className="relative h-10 w-10 aspect-square">
           <Image src='/logo.png' alt="Logo" fill className="rounded-full" />
@@ -114,39 +114,44 @@ export default function Navbar() {
               />
             </Link>
           ))}
+            <ThemeSwitcher />
         </div>
       </div>
 
       {/* Mobile Navbar */}
-      <div className="fixed top-4 md:hidden z-50 flex w-full px-5 justify-between items-center bg-white/70 backdrop-blur-[3px] border border-white/50 shadow-md rounded-full">
+      <div className="fixed top-4 md:hidden z-50 flex w-full px-5 justify-between items-center backdrop-blur-[3px] border shadow-md rounded-full">
         <div className="relative h-15 aspect-square">
           <Image src='/logo.png' alt="Logo" fill className="rounded-full" />
         </div>
         {/* Hamburger Menu Button */}
-        <button
-          onClick={toggleMobileMenu}
-          className="w-12 h-12 flex flex-col justify-center items-center"
-          aria-label="Toggle menu"
-        >
-          <span
-            className={`bg-black block h-0.5 w-6 transition-all duration-300 ease-out ${isMobileMenuOpen ? "rotate-45 translate-y-1.5" : "-translate-y-0.5"
-              }`}
-          ></span>
-          <span
-            className={`bg-black block h-0.5 w-6 transition-all duration-300 ease-out ${isMobileMenuOpen ? "opacity-0" : "opacity-100 my-1"
-              }`}
-          ></span>
-          <span
-            className={`bg-black block h-0.5 w-6 transition-all duration-300 ease-out ${isMobileMenuOpen ? "-rotate-45 -translate-y-1.5" : "translate-y-0.5"
-              }`}
-          ></span>
-        </button>
+          <button
+              onClick={toggleMobileMenu}
+              className="w-12 h-12 flex flex-col justify-center items-center bg-transparent"
+              aria-label="Toggle menu"
+          >
+  <span
+      className={`block h-0.5 w-6 bg-foreground transition-all duration-300 ease-out ${
+          isMobileMenuOpen ? "rotate-45 translate-y-1.5" : "-translate-y-0.5"
+      }`}
+  ></span>
+              <span
+                  className={`block h-0.5 w-6 bg-foreground transition-all duration-300 ease-out ${
+                      isMobileMenuOpen ? "opacity-0" : "opacity-100 my-1"
+                  }`}
+              ></span>
+              <span
+                  className={`block h-0.5 w-6 bg-foreground transition-all duration-300 ease-out ${
+                      isMobileMenuOpen ? "-rotate-45 -translate-y-1.5" : "translate-y-0.5"
+                  }`}
+              ></span>
+          </button>
+
       </div>
 
       {/* Mobile Menu Overlay */}
       <div
         ref={mobileMenuRef}
-        className={`fixed inset-0 bg-black/80 backdrop-blur-md z-40 md:hidden flex flex-col items-center justify-center ${isMobileMenuOpen ? "pointer-events-auto" : "pointer-events-none"
+        className={`fixed inset-0 backdrop-blur-md z-40 md:hidden flex flex-col items-center justify-center ${isMobileMenuOpen ? "pointer-events-auto" : "pointer-events-none"
           }`}
         style={{ opacity: 0 }}
       >
@@ -159,7 +164,7 @@ export default function Navbar() {
             <Link
               key={list.title}
               href={list.path}
-              className="relative px-8 py-4 rounded-full group text-white text-xl font-medium"
+              className="relative px-8 py-4 rounded-full group text-xl font-medium"
               onClick={handleLinkClick}
               style={{ opacity: 0, transform: "translateY(-10px)" }}
             >
@@ -174,6 +179,7 @@ export default function Navbar() {
               />
             </Link>
           ))}
+            <ThemeSwitcher />
         </div>
       </div>
     </>
