@@ -1,93 +1,51 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { Projectsdetial } from "@/lib/types/types";
 import { projects } from "@/lib/data/projects";
 import { BiLink } from "react-icons/bi";
 import Link from "next/link";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 export default function Projects() {
-    const sectionRef = useRef<HTMLDivElement>(null);
-    const scrollRef = useRef<HTMLDivElement>(null);
-
     const sortedProjects = [...projects].sort(
         (a, b) => Number(b.id) - Number(a.id)
     );
 
-    useEffect(() => {
-        const ctx = gsap.context(() => {
-            // Calculate total scrollable width
-            const projects = scrollRef.current?.children;
-            if (!projects) return;
-
-            const totalScrollWidth = Array.from(projects).reduce((total, project) => {
-                return total + project.scrollWidth;
-            }, 0);
-
-            const movementDistance = -(totalScrollWidth - window.innerWidth);
-
-            gsap.fromTo(sectionRef.current, {
-                x: 0
-            }, {
-                x: movementDistance,
-                ease: "none",
-                scrollTrigger: {
-                    trigger: scrollRef.current,
-                    start: "top top",
-                    end: `+=${totalScrollWidth}`,
-                    scrub: true, // Use boolean for smoother default
-                    pin: true,
-                    anticipatePin: 1 // Makes pinning smoother
-                }
-            });
-        }, sectionRef); // Use the component's root ref for cleanup
-
-        return () => ctx.revert(); // Proper cleanup
-    }, []);
-
     return (
         <section
             id="projects"
-            ref={sectionRef}
-            className="relative h-[100vh] w-fit flex flex-row items-center gap-16 px-24"
+            className="relative w-full min-h-screen py-20 px-6 md:px-12"
         >
             {/* Title */}
-            <div className="absolute top-16 left-1/2 -translate-x-1/2 text-center z-10">
-                <h2 className="text-5xl md:text-6xl font-extrabold uppercase tracking-tight">
+            <div className="text-center mb-16">
+                <h2 className="text-4xl md:text-6xl font-extrabold uppercase tracking-tight">
                     My Projects
                 </h2>
-                <p className="text-gray-400 mt-2 text-sm md:text-base">
+                <p className="text-gray-400 mt-3 text-sm md:text-base">
                     Scroll to explore my work
                 </p>
             </div>
 
-            {/* Horizontal Scroll Area */}
-            <div
-                ref={scrollRef}
-                className="relative h-[100vh] w-[800vw] flex flex-row items-center gap-16 px-24"
-            >
+            {/* Project Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
                 {sortedProjects.map((project: Projectsdetial) => (
                     <article
                         key={project.id}
-                        className="project-card relative w-[500px] flex-shrink-0"
+                        className="group border border-white/10 rounded-2xl overflow-hidden shadow-xl transition-all duration-500 hover:shadow-2xl hover:border-white/30"
                     >
                         {/* Image */}
-                        <div className="relative w-full h-64 overflow-hidden">
+                        <div className="relative w-full h-56 overflow-hidden">
                             <Image
                                 src={`/projects/${project.image}`}
                                 alt={project.name}
                                 fill
-                                className="object-cover transition-transform duration-700 group-hover:scale-110 grayscale hover:grayscale-0"
+                                sizes="cover"
+                                className="object-cover transition-transform duration-700 group-hover:scale-110 "
                             />
                         </div>
 
                         {/* Content */}
-                        <div className="p-6 flex flex-col justify-between h-[240px]">
+                        <div className="p-6 flex flex-col justify-between h-[220px]">
                             <div>
                                 <h3 className="text-2xl font-semibold mb-2 uppercase tracking-wider">
                                     {project.name}
