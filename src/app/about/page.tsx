@@ -146,7 +146,7 @@ export default function About() {
                         {techStack.map((tech) => (
                             <div
                                 key={tech.name}
-                                className="flex items-center gap-2 bg-card border border-border px-4 py-2 rounded-xl hover:border-primary/50 transition-all duration-300 group cursor-pointer"
+                                className="flex items-center gap-2 bg-card border border-border px-4 py-2 backdrop-blur-lg shadow-sm hover:shadow-md rounded-xl hover:border-primary/50 transition-all duration-300 group cursor-pointer"
                             >
                                 <tech.icon className="text-lg group-hover:scale-110 transition-transform duration-300" />
                                 <span className="text-sm font-medium transition-colors duration-300">

@@ -53,7 +53,7 @@ export default function Hero() {
     }, []);
 
     return (
-        <div className="relative min-h-screen flex items-center justify-center px-6 py-20 overflow-hidden backdrop-blur-[3px] z-10" id="home">
+        <div className="relative min-h-screen flex items-center justify-center px-6 my-10 overflow-hidden backdrop-blur-[3px] z-10" id="home">
             {/* Main Content */}
             <div className="container mx-auto grid md:grid-cols-2 gap-12 items-center z-10">
                 {/* Text Content */}

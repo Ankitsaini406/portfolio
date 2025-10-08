@@ -131,7 +131,7 @@ export default function Timeline() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative w-full py-32" id="timelineSection">
+    <section ref={sectionRef} className="relative w-full " id="timelineSection">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-accent/40 rounded-full blur-3xl" />
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/40 rounded-full blur-3xl" />
