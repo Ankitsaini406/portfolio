@@ -39,12 +39,12 @@ export default function Footer() {
             // Floating animation for social icons
             gsap.to(socialRef.current?.children || [],
                 {
-                    y: -5,
+
                     duration: 2,
                     repeat: -1,
                     yoyo: true,
                     stagger: 0.2,
-                    ease: "sine.inOut"
+                    ease: "power3.out"
                 }
             );
 

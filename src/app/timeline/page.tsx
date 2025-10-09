@@ -29,7 +29,7 @@ const ModernTimelineCard = ({ value, index }: ModernTimelineCard) => (
         <div className="flex items-start justify-between mb-4">
           <div>
             <h3 className="text-xl font-bold text-[var(--color-foreground)]">{value.name}</h3>
-            <p className="text-sm text-[var(--color-secondary)] font-medium mt-1">{value.jobtitle}</p>
+            <p className="text-sm text-secondary font-medium mt-1">{value.jobtitle}</p>
           </div>
           <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-foreground text-background">
             <span className="text-lg font-bold">{value.name.charAt(0)}</span>

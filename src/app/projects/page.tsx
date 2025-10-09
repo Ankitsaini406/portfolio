@@ -50,7 +50,7 @@ export default function Projects() {
                                 <h3 className="text-2xl font-semibold mb-2 uppercase tracking-wider">
                                     {project.name}
                                 </h3>
-                                <p className="text-gray-400 text-sm line-clamp-3 leading-relaxed">
+                                <p className="text-secondary text-sm line-clamp-3 leading-relaxed">
                                     {project.description}
                                 </p>
                             </div>
@@ -60,7 +60,7 @@ export default function Projects() {
                                     href={project.link}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="mt-4 inline-flex items-center gap-2 text-sm text-white/80 hover:text-white transition-colors"
+                                    className="mt-4 inline-flex items-center gap-2 text-sm hover:text-foreground/50 transition-colors"
                                 >
                                     View Project <BiLink className="text-lg" />
                                 </Link>
