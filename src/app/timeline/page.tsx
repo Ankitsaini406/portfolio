@@ -21,14 +21,14 @@ type ModernTimelineCard = {
 
 const ModernTimelineCard = ({ value, index }: ModernTimelineCard) => (
   <div className="timeline-item relative">
-    <div className="lg:hidden absolute left-0 top-8 w-3 h-3 rounded-full bg-[var(--color-accent)]" />
+    <div className="lg:hidden absolute left-0 top-8 w-3 h-3 rounded-full bg-accent" />
 
     <div className="ml-8 lg:ml-0 group relative backdrop-blur-sm">
-      <div className="absolute inset-0 rounded-2xl bg-[var(--color-primary-bg)]/50 border border-[var(--color-secondary-light)]" />
-      <div className="relative p-6 lg:p-8 rounded-2xl border border-[var(--color-secondary-light)] hover:border-[var(--color-foreground)] transition-all duration-300">
+      <div className="absolute inset-0 rounded-2xl bg-primary-bg/50 border border-secondary-light" />
+      <div className="relative p-6 lg:p-8 rounded-2xl border border-secondary-light hover:border-foreground transition-all duration-300">
         <div className="flex items-start justify-between mb-4">
           <div>
-            <h3 className="text-xl font-bold text-[var(--color-foreground)]">{value.name}</h3>
+            <h3 className="text-xl font-bold text-foreground">{value.name}</h3>
             <p className="text-sm text-secondary font-medium mt-1">{value.jobtitle}</p>
           </div>
           <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-foreground text-background">
@@ -36,7 +36,7 @@ const ModernTimelineCard = ({ value, index }: ModernTimelineCard) => (
           </div>
         </div>
 
-        <div className="flex items-center gap-2 mb-3 text-xs text-[var(--color-secondary)]">
+        <div className="flex items-center gap-2 mb-3 text-xs text-secondary">
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
               strokeLinecap="round"
@@ -48,20 +48,20 @@ const ModernTimelineCard = ({ value, index }: ModernTimelineCard) => (
           <span>{value.joinDate} — {value.endDate}</span>
         </div>
 
-        <p className="text-[var(--color-secondary)] text-sm leading-relaxed mb-4">{value.work}</p>
+        <p className="text-secondary text-sm leading-relaxed mb-4">{value.work}</p>
 
         <div className="flex flex-wrap gap-2">
           {getSkillsForJob(value.jobtitle).map((skill, i) => (
             <span
               key={i}
-              className="text-xs px-3 py-1 rounded-full border border-[var(--color-secondary-light)] text-[var(--color-foreground)]"
+              className="text-xs px-3 py-1 rounded-full border border-secondary-light text-foreground"
             >
               {skill}
             </span>
           ))}
         </div>
 
-        <div className="absolute -top-4 -right-4 w-12 h-12 rounded-full flex items-center justify-center font-mono text-sm shadow-lg bg-[var(--color-background)] text-[var(--color-foreground)] border border-[var(--color-secondary-light)]">
+        <div className="absolute -top-4 -right-4 w-12 h-12 rounded-full flex items-center justify-center font-mono text-sm shadow-lg bg-background text-foreground border border-secondary-light">
           {String(index + 1).padStart(2, '0')}
         </div>
       </div>
@@ -87,8 +87,8 @@ export default function Timeline() {
           ease: 'power2.inOut',
           scrollTrigger: {
             trigger: timelineRef.current,
-            start: 'top 80%',
-            end: 'bottom 20%',
+            start: 'top 100%',
+            end: 'bottom 50%',
             scrub: 1,
           },
         },
@@ -138,22 +138,22 @@ export default function Timeline() {
       </div>
 
       <div ref={titleRef} className="relative text-center mb-20">
-        <span className="text-xs font-mono uppercase tracking-[0.3em] text-[var(--color-secondary)]">
+        <span className="text-xs font-mono uppercase tracking-[0.3em] text-secondary">
           Career Journey
         </span>
         <h1 className="text-5xl md:text-7xl font-bold mt-4">
           Working Experience
         </h1>
-        <div className="w-24 h-[2px] bg-gradient-to-r from-transparent via-[var(--color-foreground)] to-transparent mx-auto mt-6" />
+        <div className="w-24 h-[2px] bg-gradient-to-r from-transparent via-foreground to-transparent mx-auto mt-6" />
       </div>
 
       <div ref={timelineRef} className="relative max-w-7xl mx-auto px-4">
-        <div className="absolute left-1/2 transform -translate-x-1/2 w-[2px] h-full bg-[var(--color-secondary-light)] hidden lg:block">
-          <div className="timeline-line absolute top-0 left-0 w-full bg-gradient-to-b from-[var(--color-accent-light)] via-[var(--color-foreground)] to-[var(--color-accent-light)]" />
+        <div className="absolute left-1/2 transform -translate-x-1/2 w-[2px] h-full bg-light hidden lg:block">
+          <div className="timeline-line absolute top-0 left-0 w-full bg-gradient-to-b from-accent-light via-foreground to-accent-light" />
         </div>
 
-        <div className="absolute left-4 top-0 w-[2px] h-full bg-[var(--color-secondary-light)] lg:hidden">
-          <div className="timeline-line absolute top-0 left-0 w-full bg-gradient-to-b from-[var(--color-accent-light)] via-[var(--color-foreground)] to-[var(--color-accent-light)]" />
+        <div className="absolute left-4 top-0 w-[2px] h-full bg-secondary-light lg:hidden">
+          <div className="timeline-line absolute top-0 left-0 w-full bg-gradient-to-b from-accent-light via-foreground to-accent-light" />
         </div>
 
         <div className="space-y-12 lg:space-y-20">
@@ -166,8 +166,8 @@ export default function Timeline() {
             >
               <div className="timeline-dot absolute left-1/2 transform -translate-x-1/2 z-10 hidden lg:block">
                 <div className="relative">
-                  <div className="w-6 h-6 bg-[var(--color-background)] border-4 border-[var(--color-foreground)] rounded-full shadow-xl" />
-                  <div className="absolute inset-0 w-6 h-6 bg-[var(--color-foreground)] rounded-full animate-ping opacity-20" />
+                  <div className="w-6 h-6 bg-background border-4 border-foreground rounded-full shadow-xl" />
+                  <div className="absolute inset-0 w-6 h-6 bg-foreground rounded-full animate-ping opacity-20" />
                 </div>
               </div>
 
