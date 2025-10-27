@@ -10,7 +10,6 @@ export const metadata: Metadata = {
   title: "Ankit Saini",
   description: "Ankit Saini Portfolio",
   manifest: "/manifest.json",
-  themeColor: "#000000",
   icons: {
     icon: '/favicon.ico',
     shortcut: '/favicon.ico',
