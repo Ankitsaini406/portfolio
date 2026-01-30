@@ -68,27 +68,27 @@ export default function NotFound() {
 
                     {/* Typographic 404 */}
                     <div className="md:col-span-5 flex flex-col items-start md:items-end">
-                        <h1 className="glitch-text text-[10rem] md:text-[14rem] font-black leading-none tracking-tighter text-(--color-foreground) opacity-10">
+                        <h1 className="glitch-text text-[10rem] md:text-[14rem] font-black leading-none tracking-tighter text-foreground opacity-10">
                             404
                         </h1>
-                        <div className="h-[2px] w-24 bg-primary mt-4 reveal" />
+                        <div className="h-0.5 w-24 bg-primary mt-4 reveal" />
                     </div>
 
                     {/* Content */}
                     <div className="md:col-span-7 space-y-8">
                         <div className="space-y-4">
-                            <h2 className="reveal text-4xl md:text-6xl font-black tracking-tight text-(--color-foreground)">
+                            <h2 className="reveal text-4xl md:text-6xl font-black tracking-tight text-foreground">
                                 LOST IN <br />
                                 <span className="text-primary italic font-light">SPACE.</span>
                             </h2>
-                            <p className="reveal text-lg text-(--color-secondary) max-w-md leading-relaxed">
+                            <p className="reveal text-lg text-secondary max-w-md leading-relaxed">
                                 The architecture you are looking for does not exist or has been moved to a new coordinate.
                             </p>
                         </div>
 
                         {/* Navigation Grid */}
                         <div className="reveal grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <Link href="/" className="group flex items-center justify-between p-5 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-primary/40 transition-all">
+                            <Link href="/" className="group flex items-center justify-between p-5 rounded-2xl bg-white/3 border border-white/5 hover:border-primary/40 transition-all">
                                 <div className="flex items-center gap-3">
                                     <FiHome className="text-primary" />
                                     <span className="text-sm font-bold uppercase tracking-widest">Return Home</span>
@@ -96,7 +96,7 @@ export default function NotFound() {
                                 <FiArrowLeft className="rotate-180 opacity-0 group-hover:opacity-100 transition-all" />
                             </Link>
 
-                            <Link href="/#projects" className="group flex items-center justify-between p-5 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-primary/40 transition-all">
+                            <Link href="/#projects" className="group flex items-center justify-between p-5 rounded-2xl bg-white/3 border border-white/5 hover:border-primary/40 transition-all">
                                 <div className="flex items-center gap-3">
                                     <FiGrid className="text-primary" />
                                     <span className="text-sm font-bold uppercase tracking-widest">Projects</span>
@@ -107,11 +107,11 @@ export default function NotFound() {
 
                         {/* Redirect Bar */}
                         <div className="reveal space-y-3 pt-8">
-                            <div className="flex justify-between items-end text-[10px] font-mono uppercase tracking-[0.2em] text-(--color-secondary)/60">
+                            <div className="flex justify-between items-end text-[10px] font-mono uppercase tracking-[0.2em] text-secondary/60">
                                 <span>Auto-Redirecting</span>
                                 <span>00:0{timeLeft}</span>
                             </div>
-                            <div className="w-full h-[1px] bg-white/10 overflow-hidden">
+                            <div className="w-full h-px bg-white/10 overflow-hidden">
                                 <div
                                     className="h-full bg-primary transition-all duration-1000 ease-linear"
                                     style={{ width: `${(timeLeft / 10) * 100}%` }}

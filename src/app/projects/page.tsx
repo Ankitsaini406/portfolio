@@ -45,7 +45,7 @@ export default function Projects() {
                         </div>
 
                         {/* Content */}
-                        <div className="p-6 flex flex-col justify-between h-[220px]">
+                        <div className="p-6 flex flex-col justify-between h-55">
                             <div>
                                 <h3 className="text-2xl font-semibold mb-2 uppercase tracking-wider">
                                     {project.name}

@@ -13,8 +13,9 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Ankit Saini | Full-Stack Engineer",
-  description: "Architecting scalable digital solutions and high-performance web applications.",
+  title: "Ankit Saini | Full-Stack Developer & UI/UX Architect",
+  description: "Specializing in high-performance Next.js applications, GSAP animations, and scalable backend systems with AWS and Firebase.",
+  keywords: ["Full-Stack Developer", "Next.js Portfolio", "React Developer India", "GSAP Animations"],
   manifest: "/manifest.json",
   icons: {
     icon: '/favicon.ico',
@@ -25,6 +26,11 @@ export const metadata: Metadata = {
     statusBarStyle: "default",
     title: "Ankit Saini",
   },
+  openGraph: {
+    title: "Ankit Saini | Engineering Digital Experiences",
+    description: "Explore my latest projects in Web and Mobile development.",
+    images: ["/icons/apple-touch-icon.png"], // This shows up when you share your link on LinkedIn/Twitter
+  },
 };
 
 export default function RootLayout({
@@ -32,16 +38,35 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Ankit Saini",
+    "jobTitle": "Full-Stack Developer",
+    "url": "https://ankitsaini.vercel.app/",
+    "sameAs": [
+      "https://github.com/Ankitsaini406",
+      "https://www.linkedin.com/in/web-ankit-saini/"
+    ],
+    "knowsAbout": ["React", "Next.js", "Node.js", "GSAP", "AWS", "Flutter", "Firebase"],
+    "image": "https://ankitsaini.vercel.app/icons/apple-touch-icon.png"
+  };
+
   return (
     <html lang="en" className="scroll-smooth antialiased">
       <head>
         <GoogleAnalytics />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
-      <body className="bg-(--color-background) text-(--color-foreground) selection:bg-primary/30">
+      <body className="bg-(--color-background) text-foreground) selection:bg-primary/50">
         <ChildLayOut>
           <Navbar />
           <ScrollButton />
-          <main id="main-content">
+          <main>
             {children}
           </main>
           <Footer />

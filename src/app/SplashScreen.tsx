@@ -81,7 +81,7 @@ export default function SplashScreen({
           {name.split("").map((char, i) => (
             <span
               key={i}
-              className="char text-5xl md:text-8xl font-black tracking-tighter text-(--color-foreground) inline-block"
+              className="char text-5xl md:text-8xl font-black tracking-tighter text-foreground inline-block"
               style={{ whiteSpace: char === " " ? "pre" : "normal" }}
             >
               {char}
@@ -92,11 +92,11 @@ export default function SplashScreen({
         {/* Minimalist Progress Line */}
         <div 
           ref={lineRef} 
-          className="w-full h-[1px] bg-(--color-accent) mt-4 mb-6 opacity-50" 
+          className="w-full h-px bg-accent mt-4 mb-6 opacity-50" 
         />
 
         {/* Subtext */}
-        <p className="subtext opacity-0 translate-y-4 text-xs md:text-sm font-mono uppercase tracking-[0.5em] text-(--color-secondary)">
+        <p className="subtext opacity-0 translate-y-4 text-xs md:text-sm font-mono uppercase tracking-[0.5em] text-secondary">
           Full-Stack Systems Engineer
         </p>
       </div>

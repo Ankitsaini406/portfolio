@@ -3,94 +3,154 @@
 import { useEffect, useRef, useState } from "react";
 import { FaArrowUp } from "react-icons/fa6";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const ScrollButton = () => {
   const buttonRef = useRef<HTMLButtonElement>(null);
-  const ringRef = useRef<HTMLDivElement>(null);
+  const progressRef = useRef<SVGCircleElement>(null);
+  const arrowRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
-  // Scroll to top animation
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+  // SVG Configuration
+  const radius = 20;
+  const circumference = 2 * Math.PI * radius;
 
-    if (buttonRef.current) {
-      gsap.fromTo(
-        buttonRef.current,
-        { scale: 1 },
-        { scale: 0.9, yoyo: true, repeat: 1, duration: 0.3, ease: "power2.inOut" }
-      );
-    }
-  };
-
-  // Visibility based on scroll position
+  // 1. Scroll Progress Logic & Visibility
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY || document.documentElement.scrollTop;
-      setIsVisible(scrollTop > 300);
+    // Set initial state
+    if (progressRef.current) {
+      progressRef.current.style.strokeDasharray = `${circumference} ${circumference}`;
+      progressRef.current.style.strokeDashoffset = `${circumference}`;
+    }
+
+    const updateProgress = () => {
+      const scrollTotal = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollCurrent = window.scrollY;
+      
+      // Calculate visibility
+      if (scrollCurrent > 300) {
+        if (!isVisible) setIsVisible(true);
+      } else {
+        if (isVisible) setIsVisible(false);
+      }
+
+      // Calculate Progress Offset
+      if (progressRef.current && scrollTotal > 0) {
+        const progress = scrollCurrent / scrollTotal;
+        const dashoffset = circumference - progress * circumference;
+        
+        // Use GSAP for smooth stroke update
+        gsap.to(progressRef.current, {
+          strokeDashoffset: dashoffset,
+          duration: 0.1,
+          ease: "none"
+        });
+      }
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    window.addEventListener("scroll", updateProgress, { passive: true });
+    return () => window.removeEventListener("scroll", updateProgress);
+  }, [circumference, isVisible]);
 
-  // Show / hide animation
+  // 2. Button Entrance/Exit Animation
   useEffect(() => {
     const btn = buttonRef.current;
     if (!btn) return;
 
-    gsap.killTweensOf(btn);
     if (isVisible) {
       gsap.to(btn, {
         y: 0,
         opacity: 1,
         scale: 1,
         duration: 0.6,
-        ease: "back.out(1.7)",
+        ease: "power4.out",
       });
     } else {
       gsap.to(btn, {
-        y: 100,
+        y: 60,
         opacity: 0,
-        scale: 0.8,
+        scale: 0.5,
         duration: 0.4,
-        ease: "power2.inOut",
+        ease: "power3.in",
       });
     }
   }, [isVisible]);
 
-  // Continuous rotation of gradient ring
-  useEffect(() => {
-    if (ringRef.current) {
-      gsap.to(ringRef.current, {
-        rotate: 360,
-        duration: 6,
-        repeat: -1,
-        ease: "linear",
-      });
-    }
-  }, []);
+  // 3. Hover Animation (Arrow Loop)
+  const handleMouseEnter = () => {
+    if (!arrowRef.current) return;
+    
+    // Animate current arrow up and out, then reset from bottom
+    const tl = gsap.timeline();
+    
+    tl.to(arrowRef.current, {
+      y: "-150%",
+      duration: 0.3,
+      ease: "power2.in"
+    })
+    .set(arrowRef.current, { y: "150%" }) // Instant jump to bottom
+    .to(arrowRef.current, {
+      y: "0%",
+      duration: 0.3,
+      ease: "power2.out"
+    });
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    handleMouseEnter(); // Trigger animation on click too
+  };
 
   return (
     <button
       ref={buttonRef}
       onClick={scrollToTop}
+      onMouseEnter={handleMouseEnter}
       aria-label="Scroll to top"
-      className="fixed bottom-6 bg-foreground text-background right-6 w-14 h-14 rounded-full z-50 cursor-pointer opacity-0 scale-90 translate-y-24 group backdrop-blur-lg shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-500"
-      style={{ transform: "translateY(100px) scale(0.9)", opacity: 0 }}
+      className="fixed bottom-8 right-8 w-12 h-12 md:w-14 md:h-14 z-50 group flex items-center justify-center cursor-pointer mix-blend-difference"
+      style={{ transform: "translateY(60px)", opacity: 0 }}
     >
-      {/* Rotating gradient ring */}
-      <div
-        ref={ringRef}
-        className="absolute inset-0 rounded-full p-0.5 blur-[1px]"
-      ></div>
+      {/* Container for SVG and Icon */}
+      <div className="relative w-full h-full flex items-center justify-center rounded-full bg-(--color-background) shadow-2xl transition-transform duration-300 group-hover:scale-110">
+        
+        {/* Progress Ring SVG */}
+        <svg 
+          className="absolute inset-0 w-full h-full -rotate-90 pointer-events-none"
+          viewBox="0 0 44 44"
+        >
+          {/* Track Circle (faint) */}
+          <circle
+            cx="22"
+            cy="22"
+            r={radius}
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            className="text-color-secondary opacity-20"
+          />
+          {/* Progress Circle (fills up) */}
+          <circle
+            ref={progressRef}
+            cx="22"
+            cy="22"
+            r={radius}
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            className="text-foreground transition-all"
+            strokeLinecap="round"
+          />
+        </svg>
 
+        {/* The Arrow Icon */}
+        <div className="relative overflow-hidden w-full h-full flex items-center justify-center rounded-full">
+            <div ref={arrowRef} className="text-foreground text-sm md:text-base">
+                <FaArrowUp />
+            </div>
+        </div>
 
-      {/* Icon */}
-      <div className="relative flex items-center justify-center w-full h-full">
-        <FaArrowUp
-          className="text-lg transition-colors duration-300 group-hover:scale-110"
-        />
       </div>
     </button>
   );

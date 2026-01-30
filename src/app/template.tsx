@@ -48,7 +48,7 @@ const Template = ({ children }: { children: React.ReactNode }) => {
             */}
             <div
                 ref={overlayRef}
-                className="fixed inset-0 z-50 bg-(--color-foreground) pointer-events-none"
+                className="fixed inset-0 z-50 bg-foreground pointer-events-none"
             />
 
             {/* Content Wrapper */}
