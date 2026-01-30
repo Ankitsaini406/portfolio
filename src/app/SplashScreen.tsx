@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useEffect, useRef } from "react";
@@ -10,35 +9,60 @@ export default function SplashScreen({
   onComplete: () => void;
 }) {
   const splashRef = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLHeadingElement>(null);
-  const subTextRef = useRef<HTMLParagraphElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const lineRef = useRef<HTMLDivElement>(null);
+
+  const name = "ANKIT SAINI";
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      const tl = gsap.timeline({
+        onComplete: onComplete,
+      });
 
-      // Animate text from bottom to top, one by one
-      tl.fromTo(
-        textRef.current,
-        { y: 50, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1 }
-      )
-        .fromTo(
-          subTextRef.current,
-          { y: 30, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.8 },
-          "-=0.5"
-        )
-        // Hold for a second
-        .to({}, { duration: 0.5 })
-        // Fade out the entire splash
-        .to(splashRef.current, {
-          opacity: 0,
-          duration: 1,
-          ease: "power2.inOut",
-          onComplete,
-        });
-    });
+      // 1. Initial State: Hide content
+      gsap.set(".char", { y: 100, opacity: 0 });
+      gsap.set(lineRef.current, { scaleX: 0 });
+
+      tl.to(lineRef.current, {
+        scaleX: 1,
+        duration: 1.2,
+        ease: "expo.inOut",
+      })
+      .to(".char", {
+        y: 0,
+        opacity: 1,
+        stagger: 0.05,
+        duration: 1,
+        ease: "expo.out",
+      }, "-=0.4")
+      .to(".subtext", {
+        opacity: 0.4,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.out",
+      }, "-=0.6")
+      // Brief pause for impact
+      .to({}, { duration: 0.8 })
+      // Exit Animation: The "Wipe"
+      .to(".char", {
+        y: -100,
+        opacity: 0,
+        stagger: 0.03,
+        duration: 0.8,
+        ease: "expo.in",
+      })
+      .to(lineRef.current, {
+        scaleX: 0,
+        duration: 0.8,
+        ease: "expo.inOut",
+      }, "-=0.5")
+      .to(splashRef.current, {
+        opacity: 0,
+        duration: 0.6,
+        ease: "none",
+      });
+    }, splashRef);
 
     return () => ctx.revert();
   }, [onComplete]);
@@ -46,14 +70,36 @@ export default function SplashScreen({
   return (
     <div
       ref={splashRef}
-      className="fixed inset-0 flex flex-col items-center justify-center z-[9999]"
+      className="fixed inset-0 flex items-center justify-center z-(--z-index-max) bg-(--color-background) overflow-hidden"
     >
-      <h1 ref={textRef} className="text-5xl font-bold tracking-wide mb-3">
-        Ankit Saini
-      </h1>
-      <p ref={subTextRef} className="text-lg opacity-80">
-        Frontend & Backend Developer
-      </p>
+      {/* Background Texture */}
+      <div className="absolute inset-0 opacity-[0.02] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] pointer-events-none" />
+
+      <div ref={containerRef} className="relative flex flex-col items-center">
+        {/* Name Reveal */}
+        <div className="flex overflow-hidden pb-2">
+          {name.split("").map((char, i) => (
+            <span
+              key={i}
+              className="char text-5xl md:text-8xl font-black tracking-tighter text-(--color-foreground) inline-block"
+              style={{ whiteSpace: char === " " ? "pre" : "normal" }}
+            >
+              {char}
+            </span>
+          ))}
+        </div>
+
+        {/* Minimalist Progress Line */}
+        <div 
+          ref={lineRef} 
+          className="w-full h-[1px] bg-(--color-accent) mt-4 mb-6 opacity-50" 
+        />
+
+        {/* Subtext */}
+        <p className="subtext opacity-0 translate-y-4 text-xs md:text-sm font-mono uppercase tracking-[0.5em] text-(--color-secondary)">
+          Full-Stack Systems Engineer
+        </p>
+      </div>
     </div>
   );
 }

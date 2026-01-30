@@ -1,208 +1,189 @@
-'use client';
+"use client";
 
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { timelines } from '@/lib/data/timelines';
+import { useLayoutEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { timelines } from "@/lib/data/timelines";
+import { FaLaptopCode, FaServer, FaMobileAlt, FaLayerGroup } from "react-icons/fa";
 
-// Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
 
-type ModernTimelineCard = {
-  value: {
-    name: string;
-    jobtitle: string;
-    joinDate: string;
-    endDate: string;
-    work: string;
-  };
-  index: number;
+const getRoleIcon = (title: string) => {
+  const t = title.toLowerCase();
+  if (t.includes("mobile") || t.includes("flutter")) return <FaMobileAlt />;
+  if (t.includes("backend") || t.includes("node")) return <FaServer />;
+  if (t.includes("lead") || t.includes("senior")) return <FaLayerGroup />;
+  return <FaLaptopCode />;
 };
 
-const ModernTimelineCard = ({ value, index }: ModernTimelineCard) => (
-  <div className="timeline-item relative">
-    <div className="lg:hidden absolute left-0 top-8 w-3 h-3 rounded-full bg-accent" />
-
-    <div className="ml-8 lg:ml-0 group relative backdrop-blur-sm">
-      <div className="absolute inset-0 rounded-2xl bg-primary-bg/50 border border-secondary-light" />
-      <div className="relative p-6 lg:p-8 rounded-2xl border border-secondary-light hover:border-foreground transition-all duration-300">
-        <div className="flex items-start justify-between mb-4">
-          <div>
-            <h3 className="text-xl font-bold text-foreground">{value.name}</h3>
-            <p className="text-sm text-secondary font-medium mt-1">{value.jobtitle}</p>
-          </div>
-          <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-foreground text-background">
-            <span className="text-lg font-bold">{value.name.charAt(0)}</span>
-          </div>
-        </div>
-
-        <div className="flex items-center gap-2 mb-3 text-xs text-secondary">
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-            />
-          </svg>
-          <span>{value.joinDate} — {value.endDate}</span>
-        </div>
-
-        <p className="text-secondary text-sm leading-relaxed mb-4">{value.work}</p>
-
-        <div className="flex flex-wrap gap-2">
-          {getSkillsForJob(value.jobtitle).map((skill, i) => (
-            <span
-              key={i}
-              className="text-xs px-3 py-1 rounded-full border border-secondary-light text-foreground"
-            >
-              {skill}
-            </span>
-          ))}
-        </div>
-
-        <div className="absolute -top-4 -right-4 w-12 h-12 rounded-full flex items-center justify-center font-mono text-sm shadow-lg bg-background text-foreground border border-secondary-light">
-          {String(index + 1).padStart(2, '0')}
-        </div>
-      </div>
-    </div>
-  </div>
-);
-
 export default function Timeline() {
-  const sectionRef = useRef(null);
-  const titleRef = useRef(null);
-  const timelineRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo(titleRef.current, { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out' });
-
-      gsap.fromTo(
-        '.timeline-line',
-        { height: 0 },
+      
+      // 1. Initial Setup (Prevent FOUC - Flash of Unstyled Content)
+      gsap.set(".timeline-card", { opacity: 0, y: 50, filter: "blur(10px)" });
+      gsap.set(".timeline-date", { opacity: 0, x: -20 });
+      gsap.set(".timeline-number", { opacity: 0, scale: 0.5 });
+      
+      // 2. Animate the Center Line (Draws down as you scroll)
+      gsap.fromTo(".center-line", 
+        { scaleY: 0 }, 
         {
-          height: '100%',
-          duration: 2,
-          ease: 'power2.inOut',
+          scaleY: 1,
+          transformOrigin: "top",
+          ease: "none",
           scrollTrigger: {
-            trigger: timelineRef.current,
-            start: 'top 100%',
-            end: 'bottom 50%',
-            scrub: 1,
-          },
-        },
+            trigger: containerRef.current,
+            start: "top center",
+            end: "bottom center",
+            scrub: 1, // Smooth scrubbing
+          }
+        }
       );
 
-      gsap.utils.toArray('.timeline-item').forEach((item, index) => {
-        const direction = index % 2 === 0 ? -100 : 100;
-        gsap.fromTo(
-          item as Element,
-          { opacity: 0, x: window.innerWidth >= 1024 ? direction : -50, scale: 0.8 },
-          {
-            opacity: 1,
-            x: 0,
-            scale: 1,
-            duration: 0.8,
-            ease: 'power2.out',
-            scrollTrigger: {
-              trigger: item as Element,
-              start: 'top 85%',
-              end: 'bottom 15%',
-              toggleActions: 'play none none reverse',
-            },
-          },
-        );
+      // 3. Loop through each row to animate items
+      const rows = gsap.utils.toArray(".timeline-row");
+      
+      rows.forEach((row: any) => {
+        const card = row.querySelector(".timeline-card");
+        const date = row.querySelector(".timeline-date");
+        const number = row.querySelector(".timeline-number");
+        const dot = row.querySelector(".timeline-dot");
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: row,
+            start: "top 80%", // Starts when top of row hits 80% of viewport height
+            end: "bottom 20%",
+            toggleActions: "play none none reverse", // Play on enter, reverse on leave
+          }
+        });
+
+        // The sequence
+        tl.to(dot, { scale: 1.5, duration: 0.3, ease: "back.out(1.7)" })
+          .to(dot, { scale: 1, duration: 0.3 }) // Pulse effect
+          .to([card, date, number], { 
+            opacity: 1, 
+            y: 0, 
+            x: 0, 
+            scale: 1, 
+            filter: "blur(0px)",
+            duration: 0.8, 
+            stagger: 0.1,
+            ease: "power3.out" 
+          }, "-=0.4");
       });
 
-      gsap.to(sectionRef.current, {
-        yPercent: -10,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: true,
-        },
-      });
-    }, sectionRef);
+    }, containerRef);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative w-full " id="timelineSection">
+    <section ref={containerRef} className="relative w-full py-20 md:py-32 bg-[var(--color-background)] overflow-hidden">
+      
+      {/* Background Decor */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-accent/40 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/40 rounded-full blur-3xl" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1px] h-full bg-[var(--color-secondary)]/10" />
       </div>
 
-      <div ref={titleRef} className="relative text-center mb-20">
-        <span className="text-xs font-mono uppercase tracking-[0.3em] text-secondary">
-          Career Journey
-        </span>
-        <h1 className="text-5xl md:text-7xl font-bold mt-4">
-          Working Experience
-        </h1>
-        <div className="w-24 h-[2px] bg-gradient-to-r from-transparent via-foreground to-transparent mx-auto mt-6" />
-      </div>
-
-      <div ref={timelineRef} className="relative max-w-7xl mx-auto px-4">
-        <div className="absolute left-1/2 transform -translate-x-1/2 w-[2px] h-full bg-light hidden lg:block">
-          <div className="timeline-line absolute top-0 left-0 w-full bg-gradient-to-b from-accent-light via-foreground to-accent-light" />
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
+        
+        {/* Header */}
+        <div className="text-center mb-24 max-w-3xl mx-auto">
+            <span className="font-mono text-sm tracking-widest text-[var(--color-secondary)] uppercase">Professional Journey</span>
+            <h2 className="text-5xl md:text-7xl font-bold mt-4 text-[var(--color-foreground)]">Experience.</h2>
         </div>
 
-        <div className="absolute left-4 top-0 w-[2px] h-full bg-secondary-light lg:hidden">
-          <div className="timeline-line absolute top-0 left-0 w-full bg-gradient-to-b from-accent-light via-foreground to-accent-light" />
-        </div>
-
-        <div className="space-y-12 lg:space-y-20">
-          {timelines.map((value, index) => (
-            <div
-              key={`${value.name}-${index}`}
-              className={`relative flex flex-col lg:flex-row items-center ${
-                index % 2 === 0 ? 'lg:flex-row-reverse' : ''
-              }`}
-            >
-              <div className="timeline-dot absolute left-1/2 transform -translate-x-1/2 z-10 hidden lg:block">
-                <div className="relative">
-                  <div className="w-6 h-6 bg-background border-4 border-foreground rounded-full shadow-xl" />
-                  <div className="absolute inset-0 w-6 h-6 bg-foreground rounded-full animate-ping opacity-20" />
-                </div>
-              </div>
-
-              <div className="hidden lg:block lg:w-1/2" />
-              <div className={`w-full lg:w-1/2 ${index % 2 === 0 ? 'lg:pr-12' : 'lg:pl-12'}`}>
-                <ModernTimelineCard value={value} index={index} />
-              </div>
+        {/* Timeline Grid */}
+        <div className="relative">
+            
+            {/* The Active Line (Absolute Positioned in Center) */}
+            <div className="absolute left-[20px] md:left-1/2 top-0 bottom-0 w-[2px] -translate-x-1/2 z-0">
+                <div className="center-line w-full h-full bg-gradient-to-b from-[var(--color-secondary)] via-[var(--color-foreground)] to-[var(--color-secondary)]" />
             </div>
-          ))}
-        </div>
-      </div>
 
-      <div className="relative mt-24 text-center">
-        <p className="text-[var(--color-secondary)] font-mono text-sm">
-          • {getUniqueCompanies()} Companies • Full Stack Development
-        </p>
+            {/* Rows */}
+            <div className="flex flex-col gap-16 md:gap-32">
+                {timelines.map((item, index) => {
+                    const isEven = index % 2 === 0;
+
+                    return (
+                        <div 
+                            key={index} 
+                            className={`timeline-row relative flex flex-col md:flex-row items-start ${isEven ? 'md:flex-row-reverse' : ''}`}
+                        >
+                            
+                            {/* 1. Empty Side / Date Side */}
+                            <div className={`w-full md:w-1/2 pl-12 md:px-12 flex flex-col ${isEven ? 'md:items-start text-left' : 'md:items-end md:text-right'}`}>
+                                <div className="timeline-date hidden md:block">
+                                    <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-secondary)] opacity-70">
+                                        {item.joinDate} — {item.endDate}
+                                    </span>
+                                    <div className="text-6xl font-black text-[var(--color-secondary)]/5 mt-2">
+                                        {String(index + 1).padStart(2, "0")}
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* 2. The Dot (Center Anchor) */}
+                            <div className="absolute left-[20px] md:left-1/2 -translate-x-1/2 top-0 w-10 h-10 flex items-center justify-center z-20">
+                                <div className="timeline-dot w-4 h-4 rounded-full bg-[var(--color-background)] border-2 border-[var(--color-foreground)] shadow-[0_0_20px_rgba(0,0,0,0.1)]" />
+                            </div>
+
+                            {/* 3. Content Side */}
+                            <div className={`w-full md:w-1/2 pl-12 md:px-12 mt-2 md:mt-0`}>
+                                
+                                {/* Mobile Date (Visible only on mobile) */}
+                                <div className="timeline-date md:hidden mb-2">
+                                    <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-secondary)]">
+                                        {item.joinDate} — {item.endDate}
+                                    </span>
+                                </div>
+
+                                {/* The Card */}
+                                <div className="timeline-card bg-[var(--color-primary-bg)] border border-[var(--grid-color)] p-6 md:p-8 rounded-2xl shadow-sm hover:shadow-xl transition-shadow duration-500 backdrop-blur-sm">
+                                    <div className="flex items-center gap-4 mb-4">
+                                        <div className="w-10 h-10 rounded-full bg-[var(--color-secondary)]/10 flex items-center justify-center text-[var(--color-foreground)]">
+                                            {getRoleIcon(item.jobtitle)}
+                                        </div>
+                                        <div>
+                                            <h3 className="text-xl md:text-2xl font-bold text-[var(--color-foreground)]">{item.jobtitle}</h3>
+                                            <p className="text-sm font-medium text-[var(--color-secondary)]">@ {item.name}</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <p className="text-[var(--color-secondary)] leading-relaxed mb-6 text-sm md:text-base">
+                                        {item.work}
+                                    </p>
+
+                                    <div className="flex flex-wrap gap-2">
+                                        {getSkillsForJob(item.jobtitle).map((tech, i) => (
+                                            <span key={i} className="px-3 py-1 text-[10px] font-mono border border-[var(--grid-color)] rounded-md text-[var(--color-secondary)]">
+                                                {tech}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    )
+                })}
+            </div>
+        </div>
       </div>
     </section>
   );
 }
 
-interface SkillsMap {
-  [jobtitle: string]: string[];
-}
-
+// --- Utils ---
 function getSkillsForJob(jobtitle: string): string[] {
-  const skillsMap: SkillsMap = {
-    'Full Stack Developer': ['React', 'Node.js', 'PostgreSQL', 'Next.js'],
-    'SDE-HTML': ['HTML5', 'CSS3', 'Shopify', 'Flutter', 'Responsive Design'],
-    'Flutter Devloper': ['Flutter', 'Dart', 'MySQL', 'Laravel', 'API Development'],
-    'Junior Devloper': ['HTML', 'CSS', 'Flutter', 'Firebase', 'MySQL'],
-  };
-  return skillsMap[jobtitle] || ['Development'];
-}
-
-function getUniqueCompanies() {
-  return new Set(timelines.map((t) => t.name)).size;
+    const t = jobtitle.toLowerCase();
+    if (t.includes('senior') || t.includes('lead')) return ['Architecture', 'Leadership', 'Scalability'];
+    if (t.includes('flutter')) return ['Flutter', 'Dart', 'iOS', 'Android'];
+    if (t.includes('full stack')) return ['React', 'Next.js', 'Node.js', 'DB'];
+    return ['Development', 'UI/UX', 'API'];
 }

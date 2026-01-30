@@ -3,14 +3,14 @@ export const timelines = [
     {
         "name": "Eduengine",
         "jobtitle": "Full Stack Developer",
-        "joinDate": "October 2024",
+        "joinDate": "January 2025",
         "endDate": "Present",
         "work": "Designing and implementing educational platforms with interactive features. Working across the entire stack including frontend development with React, backend services with Node.js, and database management. Creating responsive designs, implementing authentication systems, and optimizing application performance for better user experience."
     },
     {
         "name": "Webraintech",
         "jobtitle": "Full Stack Developer",
-        "joinDate": "October 2024",
+        "joinDate": "September 2024",
         "endDate": "Present",
         "work": "Developing and maintaining full-stack web applications using modern technologies including React, Next.js, Node.js, and PostgreSQL. Building responsive user interfaces, implementing RESTful APIs, and optimizing database performance. Collaborating with cross-functional teams to deliver scalable solutions while following best practices in code quality and testing."
     },

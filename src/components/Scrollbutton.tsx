@@ -82,7 +82,7 @@ const ScrollButton = () => {
       {/* Rotating gradient ring */}
       <div
         ref={ringRef}
-        className="absolute inset-0 rounded-full p-[2px] blur-[1px]"
+        className="absolute inset-0 rounded-full p-0.5 blur-[1px]"
       ></div>
 
 
