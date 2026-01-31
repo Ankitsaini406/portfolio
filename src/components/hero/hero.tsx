@@ -1,18 +1,17 @@
 "use client";
 
+import { useExperienceYears } from "@/hooks/useExperienceYears";
+import { TECH_STACK } from "@/lib/data/tech-stack";
 import gsap from "gsap";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
-import {
-    FaReact, FaGithub, FaArrowRight, FaLinkedinIn
-} from "react-icons/fa";
+import { FaGithub, FaArrowRight, FaLinkedinIn } from "react-icons/fa";
 import { IoMail } from "react-icons/io5";
-import { RiFlutterFill, RiNextjsFill } from "react-icons/ri";
-import { SiTypescript, SiTailwindcss, SiPostgresql } from "react-icons/si";
 
 export default function Hero() {
     const containerRef = useRef<HTMLDivElement>(null);
     const marqueeRef = useRef<HTMLDivElement>(null);
+    const experienceYears = useExperienceYears("2022-07-01");
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -124,7 +123,7 @@ export default function Hero() {
                     {/* Senior Level Stats */}
                     <div className="hero-text mt-12 w-full grid grid-cols-3 gap-4 md:gap-8 border-t lg:border-t-0 lg:border-l border-secondary/20 pt-8 lg:pt-0 lg:pl-6">
                         <div className="hero-stat flex flex-col items-center lg:items-start">
-                            <p className="text-2xl md:text-3xl font-bold text-foreground">3.5+</p>
+                            <p className="text-2xl md:text-3xl font-bold text-foreground">{experienceYears}+</p>
                             <p className="text-[10px] uppercase tracking-wider text-secondary">Years Exp.</p>
                         </div>
                         <div className="hero-stat flex flex-col items-center lg:items-start">
@@ -203,10 +202,10 @@ export default function Hero() {
                 <div ref={marqueeRef} className="relative flex w-full overflow-hidden">
                     <div className="marquee-content flex gap-8 md:gap-16 min-w-full px-4 md:px-8">
                         {/* Doubled list for seamless loop - Tripled here to ensure coverage on ultrawide screens */}
-                        {[...TECH_STACK, ...TECH_STACK, ...TECH_STACK].map((tech, index) => (
+                        {[...TECH_STACK, ...TECH_STACK, ...TECH_STACK].map(({ name, icon: Icon, color }, index) => (
                             <div key={index} className="flex items-center gap-2 md:gap-3 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 cursor-default shrink-0">
-                                <span className="text-xl md:text-2xl" style={{ color: tech.color }}>{tech.icon}</span>
-                                <span className="text-xs md:text-sm font-semibold text-foreground whitespace-nowrap">{tech.name}</span>
+                                <Icon className="text-xl md:text-2xl" style={{ color: color }} />
+                                <span className="text-xs md:text-sm font-semibold text-foreground whitespace-nowrap">{name}</span>
                             </div>
                         ))}
                     </div>
@@ -227,12 +226,3 @@ const SocialButton = ({ href, icon }: { href: string, icon: React.ReactNode }) =
         {icon}
     </Link>
 );
-
-const TECH_STACK = [
-    { name: "React", icon: <FaReact />, color: "#61DAFB" },
-    { name: "Next.js", icon: <RiNextjsFill />, color: "#000000" },
-    { name: "TypeScript", icon: <SiTypescript />, color: "#3178C6" },
-    { name: "Tailwind", icon: <SiTailwindcss />, color: "#06B6D4" },
-    { name: "Flutter", icon: <RiFlutterFill />, color: "#02569B" },
-    { name: "PostgreSQL", icon: <SiPostgresql />, color: "#336791" },
-];

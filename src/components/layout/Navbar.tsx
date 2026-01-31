@@ -25,7 +25,7 @@ export default function Navbar() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Entrance
-      gsap.fromTo(navRef.current, 
+      gsap.fromTo(navRef.current,
         { y: -30, opacity: 0 },
         { y: 0, opacity: 1, duration: 1, ease: "expo.out", delay: 0.2 }
       );
@@ -54,7 +54,7 @@ export default function Navbar() {
     if (isMobileMenuOpen) {
       document.body.style.overflow = "hidden";
       gsap.to(mobileMenuRef.current, { x: 0, opacity: 1, duration: 0.6, ease: "expo.out" });
-      gsap.fromTo(".mobile-link", 
+      gsap.fromTo(".mobile-link",
         { y: 20, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.4, stagger: 0.1, delay: 0.2 }
       );
@@ -87,12 +87,12 @@ export default function Navbar() {
               >
                 {/* Background Pill */}
                 <span className={`absolute inset-0 transition-transform duration-500 ease-out rounded-full
-                  ${isActive ? 'bg-accent translate-y-0' : 'bg-secondary/10 translate-y-full group-hover:translate-y-0'}`} 
+                  ${isActive ? 'bg-accent translate-y-0' : 'bg-foreground/10 translate-y-full group-hover:translate-y-0'}`}
                 />
-                
+
                 {/* Label: Fixed the coloring here */}
                 <span className={`relative block font-bold text-[11px] uppercase tracking-[0.15em] transition-colors duration-300
-                  ${isActive 
+                  ${isActive
                     ? 'text-(--color-background)' // Active text uses background color for contrast
                     : 'text-foreground group-hover:text-foreground'}`}
                 >
@@ -113,7 +113,7 @@ export default function Navbar() {
         <div className="relative h-8 w-8">
           <Image src='/logo.png' alt="Logo" fill className="rounded-full" />
         </div>
-        
+
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           className="relative w-10 h-10 flex flex-col justify-center items-center gap-1.5 overflow-hidden"

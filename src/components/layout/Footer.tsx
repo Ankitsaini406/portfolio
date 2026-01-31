@@ -97,7 +97,7 @@ export default function Footer() {
                             href="mailto:as.ankitsaini406@gmail.com"
                             className="group relative inline-flex flex-col md:flex-row items-start md:items-center gap-6 p-1"
                         >
-                            <div className="w-20 h-20 rounded-full bg-foreground text-background flex items-center justify-center text-3xl group-hover:scale-110 group-hover:bg-primary transition-all duration-500">
+                            <div className="w-20 h-20 rounded-full border bg-foreground text-background flex items-center justify-center text-3xl group-hover:scale-110 group-hover:bg-background group-hover:text-foreground group-hover:border-foreground transition-all duration-500">
                                 <FiArrowUpRight className="group-hover:rotate-45 transition-transform duration-500" />
                             </div>
                             <div className="space-y-1">
