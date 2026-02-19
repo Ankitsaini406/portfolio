@@ -93,7 +93,7 @@ export default function RootLayout({
         {process.env.NODE_ENV === "production" && (
           <>
             <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=G-0PQLWEGNWL`}
+              src={`https://www.googletagmanager.com/gtag/js?id=G-0GR56X5HG7`}
               strategy="lazyOnload"
             />
             <Script id="google-analytics" strategy="lazyOnload">
@@ -101,7 +101,7 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-0PQLWEGNWL', {
+            gtag('config', 'G-0GR56X5HG7', {
               page_path: window.location.pathname,
             });
           `}
