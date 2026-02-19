@@ -112,7 +112,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-        // {/* {process.env.NODE_ENV === "production" && ( */}
-        //   <GoogleAnalytics gaId="G-0PQLWEGNWL" />
-        // {/* )} */}
