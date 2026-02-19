@@ -85,12 +85,12 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-background text-foreground selection:bg-primary/50">
-          <Navbar />
-          <ScrollButton />
-          <main>
-            {children}
-          </main>
-          <Footer />
+        <Navbar />
+        <ScrollButton />
+        <main>
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );

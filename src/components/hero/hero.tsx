@@ -114,9 +114,9 @@ export default function Hero() {
                         </Link>
 
                         <div className="flex gap-3 mt-4 sm:mt-0">
-                            <SocialButton href="https://github.com/Ankitsaini406" icon={<FaGithub />} />
-                            <SocialButton href="https://www.linkedin.com/in/web-ankit-saini/" icon={<FaLinkedinIn />} />
-                            <SocialButton href="mailto:as.ankitsaini406@gmail.com" icon={<IoMail />} />
+                            <SocialButton label="GitHub profile" href="https://github.com/Ankitsaini406" icon={<FaGithub />} />
+                            <SocialButton label="Linkedin profile" href="https://www.linkedin.com/in/web-ankit-saini/" icon={<FaLinkedinIn />} />
+                            <SocialButton label="Gmail profile" href="mailto:as.ankitsaini406@gmail.com" icon={<IoMail />} />
                         </div>
                     </div>
 
@@ -217,9 +217,10 @@ export default function Hero() {
 
 // --- Components & Data ---
 
-const SocialButton = ({ href, icon }: { href: string, icon: React.ReactNode }) => (
+const SocialButton = ({ href, label, icon }: { href: string, label: string, icon: React.ReactNode }) => (
     <Link
         href={href}
+        aria-label={label}
         target="_blank"
         className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-secondary/20 flex items-center justify-center text-secondary hover:bg-foreground hover:text-(--color-background) hover:border-transparent transition-all duration-300 text-lg md:text-xl"
     >

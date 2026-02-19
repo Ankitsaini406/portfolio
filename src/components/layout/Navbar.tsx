@@ -115,6 +115,7 @@ export default function Navbar() {
         </div>
 
         <button
+          aria-label="Open menu"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           className="relative w-10 h-10 flex flex-col justify-center items-center gap-1.5 overflow-hidden"
         >
