@@ -1,9 +1,11 @@
-'use client';
+"use client";
 
-import { useMemo } from "react";
+import { useState, useEffect } from "react";
 
 export function useExperienceYears(start = "2022-07-01") {
-    return useMemo(() => {
+    const [years, setYears] = useState<string | null>(null);
+
+    useEffect(() => {
         const startDate = new Date(start);
         const now = new Date();
 
@@ -12,7 +14,13 @@ export function useExperienceYears(start = "2022-07-01") {
             now.getMonth() -
             startDate.getMonth();
 
-        const years = monthsDiff / 12;
-        return years < 1 ? "<1" : years.toFixed(1).replace(/\.0$/, "");
+        const calculatedYears = monthsDiff / 12;
+        setYears(
+            calculatedYears < 1
+                ? "<1"
+                : calculatedYears.toFixed(1).replace(/\.0$/, "")
+        );
     }, [start]);
+
+    return years;
 }

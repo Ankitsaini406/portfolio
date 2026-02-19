@@ -23,12 +23,12 @@ export default function Footer() {
         // 1. Dynamic Clock logic
         const updateClock = () => {
             const now = new Date();
-            setTime(now.toLocaleTimeString('en-US', { 
-                hour: '2-digit', 
-                minute: '2-digit', 
+            setTime(now.toLocaleTimeString('en-US', {
+                hour: '2-digit',
+                minute: '2-digit',
                 second: '2-digit',
-                hour12: true, 
-                timeZone: 'Asia/Kolkata' 
+                hour12: true,
+                timeZone: 'Asia/Kolkata'
             }));
         };
         updateClock();
@@ -81,7 +81,7 @@ export default function Footer() {
 
             <div className="container mx-auto px-6 relative z-10">
                 <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-16 lg:gap-0">
-                    
+
                     {/* Brand & CTA Area */}
                     <div className="footer-reveal max-w-2xl space-y-10">
                         <div className="space-y-6">
@@ -143,7 +143,9 @@ export default function Footer() {
                 {/* --- Bottom Utility Bar --- */}
                 <div className="footer-reveal mt-24 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
                     <div className="flex items-center gap-8 text-[10px] font-bold uppercase tracking-[0.4em] text-muted-foreground/60">
-                        <p>© {new Date().getFullYear()} ALL RIGHTS RESERVED</p>
+                        <p suppressHydrationWarning>
+                            © {new Date().getFullYear()} ALL RIGHTS RESERVED
+                        </p>
                         <span className="hidden md:block w-1 h-1 bg-white/20 rounded-full" />
                         <p>DEVELOPED BY ANKIT</p>
                     </div>
@@ -179,7 +181,7 @@ function SocialButton({ href, icon }: { href: string; icon: React.ReactNode }) {
             const { left, top, width, height } = element.getBoundingClientRect();
             const x = clientX - (left + width / 2);
             const y = clientY - (top + height / 2);
-            
+
             gsap.to(element, {
                 x: x * 0.4,
                 y: y * 0.4,
