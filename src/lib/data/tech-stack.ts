@@ -1,55 +1,33 @@
-import {
-    FaReact,
-    FaNodeJs,
-} from "react-icons/fa";
-import {
-    SiNextdotjs,
-    SiTypescript,
-    SiTailwindcss,
-    SiFlutter,
-    SiPostgresql,
-    SiMysql,
-    SiFirebase,
-    SiJavascript,
-    SiVercel,
-    SiPrisma,
-    SiExpress,
-    SiNestjs,
-    SiRedux,
-    SiZod,
-    SiShadcnui,
-} from "react-icons/si";
-// import { TbBrandZustand } from "react-icons/tb";
 
 export const TECH_STACK = [
     /* ───────── FRONTEND ───────── */
     {
         name: "React",
-        icon: FaReact,
+        icon: "/tech/react.svg",
         color: "#61DAFB",
         category: "frontend",
     },
     {
         name: "Next.js",
-        icon: SiNextdotjs,
+        icon: "/tech/next-js.svg",
         color: "#000000",
         category: "frontend",
     },
     {
         name: "TypeScript",
-        icon: SiTypescript,
+        icon: "/tech/typescript.svg",
         color: "#3178C6",
         category: "frontend",
     },
     {
         name: "Tailwind",
-        icon: SiTailwindcss,
+        icon: "/tech/tailwindcss.svg",
         color: "#06B6D4",
         category: "frontend",
     },
     {
         name: "ShadcnUI",
-        icon: SiShadcnui,
+        icon: "/tech/shadcn-ui.svg",
         color: "#111827",
         category: "frontend",
     },
@@ -57,7 +35,7 @@ export const TECH_STACK = [
     /* ───────── MOBILE ───────── */
     {
         name: "Flutter",
-        icon: SiFlutter,
+        icon: "/tech/flutter.svg",
         color: "#02569B",
         category: "mobile",
     },
@@ -65,19 +43,19 @@ export const TECH_STACK = [
     /* ───────── BACKEND ───────── */
     {
         name: "Node.js",
-        icon: FaNodeJs,
+        icon: "/tech/node-js.svg",
         color: "#339933",
         category: "backend",
     },
     {
         name: "Express",
-        icon: SiExpress,
+        icon: "/tech/express.svg",
         color: "#000000",
         category: "backend",
     },
     {
         name: "NestJS",
-        icon: SiNestjs,
+        icon: "/tech/nest-js.svg",
         color: "#E0234E",
         category: "backend",
     },
@@ -85,25 +63,25 @@ export const TECH_STACK = [
     /* ───────── DATABASE ───────── */
     {
         name: "PostgreSQL",
-        icon: SiPostgresql,
+        icon: "/tech/postgresql.svg",
         color: "#336791",
         category: "database",
     },
     {
         name: "MySQL",
-        icon: SiMysql,
+        icon: "/tech/mysql.svg",
         color: "#4479A1",
         category: "database",
     },
     {
         name: "Firebase",
-        icon: SiFirebase,
+        icon: "/tech/firebase.svg",
         color: "#FFCA28",
         category: "database",
     },
     {
         name: "Prisma",
-        icon: SiPrisma,
+        icon: "/tech/prisma.svg",
         color: "#0C344B",
         category: "database",
     },
@@ -111,7 +89,7 @@ export const TECH_STACK = [
     /* ───────── STATE & TOOLS ───────── */
     {
         name: "Redux",
-        icon: SiRedux,
+        icon: "/tech/redux.svg",
         color: "#764ABC",
         category: "state",
     },
@@ -123,7 +101,7 @@ export const TECH_STACK = [
     // },
     {
         name: "Zod",
-        icon: SiZod,
+        icon: "/tech/zod.svg",
         color: "#3E67B1",
         category: "tools",
     },
@@ -131,7 +109,7 @@ export const TECH_STACK = [
     /* ───────── DEVOPS ───────── */
     {
         name: "Vercel",
-        icon: SiVercel,
+        icon: "/tech/vercel.svg",
         color: "#000000",
         category: "devops",
     },

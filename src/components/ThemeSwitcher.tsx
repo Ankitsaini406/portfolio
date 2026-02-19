@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { FiSun, FiMoon } from "react-icons/fi";
 import gsap from "gsap";
+import { Moon, Sun } from "lucide-react";
 
 export default function ThemeSwitcher() {
     // Initial state set to null to avoid hydration mismatch
@@ -67,14 +67,14 @@ export default function ThemeSwitcher() {
                     className="absolute z-10 w-6 h-6 rounded-full flex items-center justify-center shadow-lg pointer-events-none"
                 >
                     <div className={`theme-icon ${theme === "dark" ? 'text-foreground' : 'text-background bg-foreground' } `}>
-                        {theme === "dark" ? <FiSun size={12} /> : <FiMoon size={12} />}
+                        {theme === "dark" ? <Sun size={12} /> : <Moon size={12} />}
                     </div>
                 </div>
 
                 {/* Background Icons (Stationary) */}
                 <div className="flex justify-between w-full px-1.5 opacity-20 group-hover:opacity-40 transition-opacity">
-                    <FiMoon size={12} />
-                    <FiSun size={12} />
+                    <Moon size={12} />
+                    <Sun size={12} />
                 </div>
             </button>
         </div>

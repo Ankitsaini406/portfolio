@@ -4,7 +4,7 @@ import { useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { timelines } from "@/lib/data/timelines";
-import { FaLaptopCode, FaServer, FaMobileAlt, FaLayerGroup } from "react-icons/fa";
+import { Laptop, Layers, Server, Smartphone } from "lucide-react";
 
 if (typeof window !== "undefined") {
     gsap.registerPlugin(ScrollTrigger);
@@ -12,10 +12,10 @@ if (typeof window !== "undefined") {
 
 const getRoleIcon = (title: string) => {
   const t = title.toLowerCase();
-  if (t.includes("mobile") || t.includes("flutter")) return <FaMobileAlt />;
-  if (t.includes("backend") || t.includes("node")) return <FaServer />;
-  if (t.includes("lead") || t.includes("senior")) return <FaLayerGroup />;
-  return <FaLaptopCode />;
+  if (t.includes("mobile") || t.includes("flutter")) return <Smartphone />;
+  if (t.includes("backend") || t.includes("node")) return <Server />;
+  if (t.includes("lead") || t.includes("senior")) return <Layers />;
+  return <Laptop />;
 };
 
 export default function Timeline() {

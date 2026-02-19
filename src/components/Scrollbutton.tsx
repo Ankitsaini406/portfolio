@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { FaArrowUp } from "react-icons/fa6";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ArrowUp } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -147,7 +147,7 @@ const ScrollButton = () => {
         {/* The Arrow Icon */}
         <div className="relative overflow-hidden w-full h-full flex items-center justify-center rounded-full">
             <div ref={arrowRef} className="text-foreground text-sm md:text-base">
-                <FaArrowUp />
+                <ArrowUp />
             </div>
         </div>
 

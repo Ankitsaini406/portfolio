@@ -3,8 +3,8 @@
 import Image from "next/image";
 import { Projectsdetial } from "@/lib/types/types";
 import { projects } from "@/lib/data/projects";
-import { BiLink } from "react-icons/bi";
 import Link from "next/link";
+import { LinkIcon } from "lucide-react";
 
 export default function Projects() {
     const sortedProjects = [...projects].sort(
@@ -62,7 +62,7 @@ export default function Projects() {
                                     rel="noopener noreferrer"
                                     className="mt-4 inline-flex items-center gap-2 text-sm hover:text-foreground/50 transition-colors"
                                 >
-                                    View Project <BiLink className="text-lg" />
+                                    View Project <LinkIcon className="text-lg" />
                                 </Link>
                             )}
                         </div>

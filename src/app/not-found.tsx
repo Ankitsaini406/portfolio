@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { gsap } from "gsap";
-import { FiArrowLeft, FiHome, FiGrid, FiMail } from "react-icons/fi";
+import { ArrowLeft, Grid, Home, Mail } from "lucide-react";
 
 export default function NotFound() {
     const router = useRouter();
@@ -90,18 +90,18 @@ export default function NotFound() {
                         <div className="reveal grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <Link href="/" className="group flex items-center justify-between p-5 rounded-2xl bg-white/3 border border-white/5 hover:border-primary/40 transition-all">
                                 <div className="flex items-center gap-3">
-                                    <FiHome className="text-primary" />
+                                    <Home className="text-primary" />
                                     <span className="text-sm font-bold uppercase tracking-widest">Return Home</span>
                                 </div>
-                                <FiArrowLeft className="rotate-180 opacity-0 group-hover:opacity-100 transition-all" />
+                                <ArrowLeft className="rotate-180 opacity-0 group-hover:opacity-100 transition-all" />
                             </Link>
 
                             <Link href="/#projects" className="group flex items-center justify-between p-5 rounded-2xl bg-white/3 border border-white/5 hover:border-primary/40 transition-all">
                                 <div className="flex items-center gap-3">
-                                    <FiGrid className="text-primary" />
+                                    <Grid className="text-primary" />
                                     <span className="text-sm font-bold uppercase tracking-widest">Projects</span>
                                 </div>
-                                <FiArrowLeft className="rotate-180 opacity-0 group-hover:opacity-100 transition-all" />
+                                <ArrowLeft className="rotate-180 opacity-0 group-hover:opacity-100 transition-all" />
                             </Link>
                         </div>
 
@@ -121,7 +121,7 @@ export default function NotFound() {
 
                         <div className="reveal">
                             <Link href="mailto:as.ankitsaini406@gmail.com" className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-primary hover:text-foreground transition-colors">
-                                <FiMail /> Report Broken Link
+                                <Mail /> Report Broken Link
                             </Link>
                         </div>
                     </div>

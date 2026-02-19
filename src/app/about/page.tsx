@@ -2,10 +2,10 @@
 
 import { useRef, useLayoutEffect } from "react";
 import Image from 'next/image';
-import { FaRocket, FaMobile, FaCloud, FaDatabase, FaServer, FaLeaf } from "react-icons/fa6";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useExperienceYears } from "@/hooks/useExperienceYears";
+import { Cloud, Database, Leaf, Rocket, Server, Smartphone } from "lucide-react";
 
 if (typeof window !== "undefined") {
     gsap.registerPlugin(ScrollTrigger);
@@ -19,12 +19,12 @@ export default function About() {
 
     // Tech Stack Data
     const techStack = [
-        { icon: FaRocket, name: "Next.js" },
-        { icon: FaMobile, name: "React" },
-        { icon: FaCloud, name: "AWS" },
-        { icon: FaLeaf, name: "Flutter" },
-        { icon: FaServer, name: "Firebase" },
-        { icon: FaDatabase, name: "Mongo" }
+        { icon: Rocket, name: "Next.js" },
+        { icon: Smartphone, name: "React" },
+        { icon: Cloud, name: "AWS" },
+        { icon: Leaf, name: "Flutter" },
+        { icon: Server, name: "Firebase" },
+        { icon: Database, name: "Mongo" }
     ];
 
     useLayoutEffect(() => {

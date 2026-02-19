@@ -6,6 +6,7 @@ import gsap from "gsap";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
+import Image from "next/image";
 
 export default function Hero() {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -201,9 +202,15 @@ export default function Hero() {
                 <div ref={marqueeRef} className="relative flex w-full overflow-hidden">
                     <div className="marquee-content flex gap-8 md:gap-16 min-w-full px-4 md:px-8">
                         {/* Doubled list for seamless loop - Tripled here to ensure coverage on ultrawide screens */}
-                        {[...TECH_STACK, ...TECH_STACK, ...TECH_STACK].map(({ name, icon: Icon, color }, index) => (
+                        {[...TECH_STACK, ...TECH_STACK, ...TECH_STACK].map(({ name, icon }, index) => (
                             <div key={index} className="flex items-center gap-2 md:gap-3 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 cursor-default shrink-0">
-                                <Icon className="text-xl md:text-2xl" style={{ color: color }} />
+                                <Image
+                                    src={icon}
+                                    alt={name}
+                                    width={24}
+                                    height={24}
+                                    className="object-contain"
+                                />
                                 <span className="text-xs md:text-sm font-semibold text-foreground whitespace-nowrap">{name}</span>
                             </div>
                         ))}
