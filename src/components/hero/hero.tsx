@@ -66,12 +66,12 @@ export default function Hero() {
                 <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
 
                     {/* Availability Badge */}
-                    <div className="hero-text mb-6 flex items-center gap-3 px-4 py-1.5 rounded-full border border-secondary/30 bg-secondary/5 backdrop-blur-sm shadow-sm">
+                    <div className="hero-text mb-6 flex items-center gap-3 px-4 py-1.5 rounded-full border border-border bg-secondary/5 backdrop-blur-sm shadow-sm">
                         <span className="relative flex h-2.5 w-2.5">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
                         </span>
-                        <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-secondary">
+                        <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-muted">
                             Available for Hire
                         </span>
                     </div>
@@ -109,7 +109,7 @@ export default function Hero() {
                     </div>
 
                     {/* Senior Level Stats */}
-                    <div className="hero-text mt-12 w-full grid grid-cols-3 gap-4 md:gap-8 border-t lg:border-t-0 lg:border-l border-secondary/20 pt-8 lg:pt-0 lg:pl-6">
+                    <div className="hero-text mt-12 w-full grid grid-cols-3 gap-4 md:gap-8 border-t lg:border-t-0 lg:border-l border-border/20 pt-8 lg:pt-0 lg:pl-6">
                         <div className="hero-stat flex flex-col items-center lg:items-start">
                             <p className="text-2xl md:text-3xl font-bold text-foreground">{experienceYears}+</p>
                             <p className="text-[10px] uppercase tracking-wider text-secondary">Years Exp.</p>
@@ -186,7 +186,7 @@ export default function Hero() {
             </div>
 
             {/* --- Infinite Tech Marquee --- */}
-            <div className="mt-auto w-full border-t border-secondary/10 bg-background/50 backdrop-blur-sm pt-8 pb-4 overflow-hidden">
+            <div className="mt-auto w-full border-t border-border bg-background/50 backdrop-blur-sm pt-8 pb-4 overflow-hidden">
                 <div className="relative w-full overflow-hidden">
                     <div className="marquee-track flex gap-8 md:gap-16 px-4 md:px-8">
                         {[...TECH_STACK, ...TECH_STACK].map(({ name, icon }, index) => (
@@ -221,7 +221,7 @@ const SocialButton = ({ href, label, icon }: { href: string, label: string, icon
         href={href}
         aria-label={label}
         target="_blank"
-        className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-secondary/20 flex items-center justify-center text-secondary hover:bg-foreground hover:text-(--color-background) hover:border-transparent transition-all duration-300 text-lg md:text-xl"
+        className="w-10 h-10 md:w-12 md:h-12 rounded-full border bg-background border-border flex items-center justify-center text-secondary hover:bg-foreground hover:text-(--color-background) hover:border-transparent transition-all duration-300 text-lg md:text-xl"
     >
         {icon}
     </Link>
