@@ -21,10 +21,6 @@ const securityHeaders = [
 
 const nextConfig = {
     poweredByHeader: false,
-    swcMinify: true,
-    experimental: {
-        modern: true,
-    },
     async headers() {
         return [
             {
