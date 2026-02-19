@@ -14,34 +14,42 @@ export default function Hero() {
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+            const tl = gsap.timeline({
+                defaults: { ease: "power3.out" }
+            });
 
-            // 1. Staggered Text Reveal
-            tl.fromTo(".hero-text",
-                { y: 50, opacity: 0, rotateX: 10 },
-                { y: 0, opacity: 1, rotateX: 0, duration: 1, stagger: 0.1, delay: 0.2 }
-            );
+            // 1. Staggered Text (DO NOT hide LCP text)
+            tl.from(".hero-text", {
+                y: 30,
+                opacity: 0,
+                duration: 0.9,
+                stagger: 0.08,
+                clearProps: "transform"
+            });
 
-            // 2. Line Separator Expansion
-            tl.fromTo(".hero-line",
-                { scaleX: 0, transformOrigin: "left" },
-                { scaleX: 1, duration: 1.5, ease: "expo.out" },
-                "-=0.5"
-            );
+            // 2. Line Animation (transform only)
+            tl.from(".hero-line", {
+                scaleX: 0,
+                transformOrigin: "left",
+                duration: 1.2,
+                ease: "expo.out"
+            }, "-=0.4");
 
-            // 3. Stats Fade In
-            tl.fromTo(".hero-stat",
-                { y: 20, opacity: 0 },
-                { y: 0, opacity: 1, duration: 0.8, stagger: 0.1 },
-                "-=1"
-            );
+            // 3. Stats
+            tl.from(".hero-stat", {
+                y: 20,
+                opacity: 0,
+                duration: 0.7,
+                stagger: 0.08
+            }, "-=0.8");
 
-            // 4. Abstract Code Window Entrance
-            tl.fromTo(".code-window",
-                { y: 40, opacity: 0, scale: 0.95 },
-                { y: 0, opacity: 1, scale: 1, duration: 1.2, ease: "back.out(1.2)" },
-                "-=0.8"
-            );
+            // 4. Code Window (GPU safe)
+            tl.from(".code-window", {
+                y: 30,
+                opacity: 0,
+                duration: 1,
+                ease: "power3.out"
+            }, "-=0.6");
 
         }, containerRef);
 

@@ -165,8 +165,9 @@ export default function About() {
                                 src="/images/myimage.jpg"
                                 alt="Ankit Saini"
                                 fill
-                                className="object-cover rounded-2xl transform group-hover:scale-105 transition-transform duration-700"
                                 priority
+                                sizes="(max-width: 768px) 100vw, 500px"
+                                className="object-cover rounded-2xl will-change-transform transition-transform duration-700 group-hover:scale-105"
                             />
 
                             {/* Gradient overlay for better text contrast */}
