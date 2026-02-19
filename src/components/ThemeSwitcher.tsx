@@ -7,7 +7,6 @@ import gsap from "gsap";
 export default function ThemeSwitcher() {
     // Initial state set to null to avoid hydration mismatch
     const [theme, setTheme] = useState<"light" | "dark" | null>(null);
-    const toggleRef = useRef<HTMLDivElement>(null);
     const thumbRef = useRef<HTMLDivElement>(null);
 
     // 1. Initialize Theme (System Preference + LocalStorage)
@@ -67,7 +66,7 @@ export default function ThemeSwitcher() {
                     ref={thumbRef}
                     className="absolute z-10 w-6 h-6 rounded-full flex items-center justify-center shadow-lg pointer-events-none"
                 >
-                    <div className={`theme-icon ${theme === "dark" ? 'text-foreground' : 'text-background bg-forground' } `}>
+                    <div className={`theme-icon ${theme === "dark" ? 'text-foreground' : 'text-background bg-foreground' } `}>
                         {theme === "dark" ? <FiSun size={12} /> : <FiMoon size={12} />}
                     </div>
                 </div>

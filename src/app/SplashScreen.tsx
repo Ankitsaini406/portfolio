@@ -37,7 +37,7 @@ export default function SplashScreen({
         ease: "expo.out",
       }, "-=0.4")
       .to(".subtext", {
-        opacity: 0.4,
+        opacity: 0.8,
         y: 0,
         duration: 0.8,
         ease: "power2.out",
