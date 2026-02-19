@@ -2,7 +2,7 @@
 
 import React, { useRef, useEffect, useState } from "react";
 import { FaLinkedinIn, FaGithub } from "react-icons/fa";
-import { SiGmail } from "react-icons/si";
+import { IoMail } from "react-icons/io5";
 import { FiArrowUpRight, FiClock, FiMapPin } from "react-icons/fi";
 import Link from "next/link";
 import gsap from "gsap";
@@ -115,9 +115,9 @@ export default function Footer() {
                     <div className="footer-reveal flex flex-col items-start lg:items-end gap-12 w-full lg:w-auto">
                         {/* Social Stack */}
                         <div className="flex flex-wrap gap-4">
-                            <SocialButton href="https://www.linkedin.com/in/web-ankit-saini/" icon={<FaLinkedinIn />} />
-                            <SocialButton href="https://github.com/Ankitsaini406/" icon={<FaGithub />} />
-                            <SocialButton href="mailto:as.ankitsaini406@gmail.com" icon={<SiGmail />} />
+                            <SocialButton label="GitHub profile" href="https://github.com/Ankitsaini406" icon={<FaGithub />} />
+                            <SocialButton label="Linkedin profile" href="https://www.linkedin.com/in/web-ankit-saini/" icon={<FaLinkedinIn />} />
+                            <SocialButton label="Gmail profile" href="mailto:as.ankitsaini406@gmail.com" icon={<IoMail />} />
                         </div>
 
                         {/* Local Metadata */}
@@ -169,7 +169,7 @@ export default function Footer() {
 
 // --- High-Performance Magnetic Social Button ---
 
-function SocialButton({ href, icon }: { href: string; icon: React.ReactNode }) {
+function SocialButton({ href, label, icon }: { href: string; label: string; icon: React.ReactNode }) {
     const ref = useRef<HTMLAnchorElement>(null);
 
     useEffect(() => {
@@ -205,6 +205,7 @@ function SocialButton({ href, icon }: { href: string; icon: React.ReactNode }) {
     return (
         <Link
             ref={ref}
+            aria-label={label}
             href={href}
             className="w-16 h-16 rounded-full border border-foreground/10 flex items-center justify-center text-xl text-foreground hover:border-primary/50 transition-colors bg-white/2 backdrop-blur-md"
         >
