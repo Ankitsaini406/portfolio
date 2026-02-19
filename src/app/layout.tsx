@@ -84,29 +84,38 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-background text-foreground selection:bg-primary/50">
+
+        {/* GTM (noscript) – must be immediately after body */}
+        {process.env.NODE_ENV === "production" && (
+          <noscript>
+            <iframe
+              src="https://www.googletagmanager.com/ns.html?id=GTM-W7PQRWDR"
+              height="0"
+              width="0"
+              style={{ display: "none", visibility: "hidden" }}
+            />
+          </noscript>
+        )}
+
         <Navbar />
         <ScrollButton />
-        <main>
-          {children}
-        </main>
+        <main>{children}</main>
         <Footer />
+
+        {/* GTM Script – Non Blocking */}
         {process.env.NODE_ENV === "production" && (
-          <>
-            <Script
-              src="https://www.googletagmanager.com/gtag/js?id=G-0PQLWEGNWL"
-              strategy="lazyOnload"
-            />
-            <Script id="google-analytics" strategy="lazyOnload">
-              {`
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-0PQLWEGNWL', {
-          page_path: window.location.pathname,
-        });
-      `}
-            </Script>
-          </>
+          <Script id="gtm-script" strategy="afterInteractive">
+            {`
+              (function(w,d,s,l,i){w[l]=w[l]||[];
+              w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
+              var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+              j.async=true;
+              j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+              f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','GTM-W7PQRWDR');
+            `}
+          </Script>
         )}
       </body>
     </html>
