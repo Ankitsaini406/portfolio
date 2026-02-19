@@ -9,7 +9,7 @@ export const timelines = [
     },
     {
         "name": "Webraintech",
-        "jobtitle": "Full Stack Developer",
+        "jobtitle": "Next.js Developer",
         "joinDate": "September 2024",
         "endDate": "Present",
         "work": "Developing and maintaining full-stack web applications using modern technologies including React, Next.js, Node.js, and PostgreSQL. Building responsive user interfaces, implementing RESTful APIs, and optimizing database performance. Collaborating with cross-functional teams to deliver scalable solutions while following best practices in code quality and testing."

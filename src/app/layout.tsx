@@ -13,25 +13,48 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://ankitsaini.vercel.app"),
+
   title: "Ankit Saini | Full-Stack Developer & UI/UX Architect",
-  description: "Specializing in high-performance Next.js applications, GSAP animations, and scalable backend systems with AWS and Firebase.",
-  keywords: ["Full-Stack Developer", "Next.js Portfolio", "React Developer India", "GSAP Animations"],
+  description:
+    "Specializing in high-performance Next.js applications, GSAP animations, and scalable backend systems with AWS and Firebase.",
+
+  keywords: [
+    "Full-Stack Developer",
+    "Next.js Portfolio",
+    "React Developer India",
+    "GSAP Animations",
+  ],
+
   manifest: "/manifest.json",
+
   icons: {
-    icon: '/favicon.ico',
-    apple: '/icons/apple-touch-icon.png',
+    icon: "/favicon.ico",
+    apple: "/icons/apple-touch-icon.png",
   },
+
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
     title: "Ankit Saini",
   },
+
   openGraph: {
     title: "Ankit Saini | Engineering Digital Experiences",
-    description: "Explore my latest projects in Web and Mobile development.",
-    images: ["/icons/apple-touch-icon.png"], // This shows up when you share your link on LinkedIn/Twitter
+    description:
+      "Explore my latest projects in Web and Mobile development.",
+    images: ["/icons/apple-touch-icon.png"],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Ankit Saini | Engineering Digital Experiences",
+    description:
+      "Explore my latest projects in Web and Mobile development.",
+    images: ["/icons/apple-touch-icon.png"],
   },
 };
+
 
 export default function RootLayout({
   children,

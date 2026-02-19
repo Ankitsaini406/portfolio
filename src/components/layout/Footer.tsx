@@ -7,6 +7,7 @@ import { FiArrowUpRight, FiClock, FiMapPin } from "react-icons/fi";
 import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { usePathname } from "next/navigation";
 
 if (typeof window !== "undefined") {
     gsap.registerPlugin(ScrollTrigger);
@@ -16,6 +17,7 @@ export default function Footer() {
     const footerRef = useRef<HTMLElement>(null);
     const marqueeRef = useRef<HTMLDivElement>(null);
     const [time, setTime] = useState("");
+    const pathname = usePathname();
 
     useEffect(() => {
         // 1. Dynamic Clock logic
@@ -59,7 +61,7 @@ export default function Footer() {
             ctx.revert();
             clearInterval(interval);
         };
-    }, []);
+    }, [pathname]);
 
     return (
         <footer
