@@ -1,17 +1,28 @@
-let index = 0;
 
-export function getRouteDirection(path: string) {
+export function getRouteDirection(pathname: string) {
     if (typeof window === "undefined") return "forward";
 
-    const key = "__route_index__";
-    const state = history.state ?? {};
+    const stackKey = "__route_stack__";
+    const stack: string[] = JSON.parse(
+        sessionStorage.getItem(stackKey) || "[]"
+    );
 
-    if (!state[key]) {
-        history.replaceState({ ...state, [key]: ++index }, "");
+    const lastPath = stack[stack.length - 1];
+
+    if (!lastPath) {
+        sessionStorage.setItem(stackKey, JSON.stringify([pathname]));
         return "forward";
     }
 
-    const direction = state[key] < index ? "back" : "forward";
-    index = state[key];
-    return direction;
+    // Going back
+    if (stack.length > 1 && stack[stack.length - 2] === pathname) {
+        stack.pop();
+        sessionStorage.setItem(stackKey, JSON.stringify(stack));
+        return "back";
+    }
+
+    // Going forward
+    stack.push(pathname);
+    sessionStorage.setItem(stackKey, JSON.stringify(stack));
+    return "forward";
 }
