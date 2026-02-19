@@ -61,8 +61,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
 
-  const GA_TRACKING_ID = "G-0PQLWEGNWL";
-
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -79,6 +77,12 @@ export default function RootLayout({
 
   return (
     <html lang="en" className="scroll-smooth antialiased">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="bg-background text-foreground selection:bg-primary/50">
         <Navbar />
         <ScrollButton />
@@ -87,23 +91,19 @@ export default function RootLayout({
         </main>
         <Footer />
         {process.env.NODE_ENV === "production" && (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
-              strategy="lazyOnload"
-            />
-            <Script id="google-analytics" strategy="lazyOnload">
-              {`
+      <>
+        <Script id="google-analytics" strategy="lazyOnload">
+          {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', '${GA_TRACKING_ID}', {
+            gtag('config', 'G-0PQLWEGNWL', {
               page_path: window.location.pathname,
             });
           `}
-            </Script>
-          </>
-        )}
+        </Script>
+      </>
+    )}
       </body>
     </html>
   );
