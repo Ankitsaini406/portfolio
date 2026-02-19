@@ -9,10 +9,7 @@
     "lint": "next lint"
   },
   "browserslist": [
-    "last 2 Chrome versions",
-    "last 2 Firefox versions",
-    "last 2 Safari versions",
-    "not IE 11"
+    "defaults and supports es6-module"
   ],
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.18",

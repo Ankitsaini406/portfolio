@@ -10,7 +10,6 @@ import Image from "next/image";
 
 export default function Hero() {
     const containerRef = useRef<HTMLDivElement>(null);
-    const marqueeRef = useRef<HTMLDivElement>(null);
     const experienceYears = useExperienceYears("2022-07-01");
 
     useEffect(() => {
@@ -43,17 +42,6 @@ export default function Hero() {
                 { y: 0, opacity: 1, scale: 1, duration: 1.2, ease: "back.out(1.2)" },
                 "-=0.8"
             );
-
-            // Infinite Marquee Animation
-            const marqueeContent = marqueeRef.current?.querySelector(".marquee-content");
-            if (marqueeContent) {
-                gsap.to(marqueeContent, {
-                    xPercent: -50,
-                    repeat: -1,
-                    duration: 20, // Slightly faster for modern feel
-                    ease: "linear",
-                });
-            }
 
         }, containerRef);
 
@@ -198,12 +186,14 @@ export default function Hero() {
             </div>
 
             {/* --- Infinite Tech Marquee --- */}
-            <div className="mt-auto w-full border-t border-secondary/10 bg-(--color-background)/50 backdrop-blur-sm pt-8 pb-4 overflow-hidden">
-                <div ref={marqueeRef} className="relative flex w-full overflow-hidden">
-                    <div className="marquee-content flex gap-8 md:gap-16 min-w-full px-4 md:px-8">
-                        {/* Doubled list for seamless loop - Tripled here to ensure coverage on ultrawide screens */}
-                        {[...TECH_STACK, ...TECH_STACK, ...TECH_STACK].map(({ name, icon }, index) => (
-                            <div key={index} className="flex items-center gap-2 md:gap-3 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 cursor-default shrink-0">
+            <div className="mt-auto w-full border-t border-secondary/10 bg-background/50 backdrop-blur-sm pt-8 pb-4 overflow-hidden">
+                <div className="relative w-full overflow-hidden">
+                    <div className="marquee-track flex gap-8 md:gap-16 px-4 md:px-8">
+                        {[...TECH_STACK, ...TECH_STACK].map(({ name, icon }, index) => (
+                            <div
+                                key={index}
+                                className="flex items-center gap-2 md:gap-3 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 cursor-default shrink-0"
+                            >
                                 <Image
                                     src={icon}
                                     alt={name}
@@ -211,12 +201,15 @@ export default function Hero() {
                                     height={24}
                                     className="object-contain"
                                 />
-                                <span className="text-xs md:text-sm font-semibold text-foreground whitespace-nowrap">{name}</span>
+                                <span className="text-xs md:text-sm font-semibold text-foreground whitespace-nowrap">
+                                    {name}
+                                </span>
                             </div>
                         ))}
                     </div>
                 </div>
             </div>
+
         </section>
     );
 }

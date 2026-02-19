@@ -73,7 +73,7 @@ export default function Navbar() {
                    bg-primary-bg/70 backdrop-blur-xl border border-secondary/20 shadow-2xl rounded-full"
       >
         <Link ref={logoRef} href="/" className="relative h-9 w-9 ml-1 group flex items-center justify-center">
-          <Image src='/logo.png' alt="Logo" fill className="rounded-full transition-transform" />
+          <Image src='/logo.png' width={32} height={32} alt="Logo" priority={false} className="rounded-full transition-transform" />
         </Link>
 
         <div className="flex items-center gap-1 px-2">
