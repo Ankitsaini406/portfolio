@@ -1,9 +1,7 @@
 "use client";
 
 import React, { useRef, useEffect, useState } from "react";
-import { FaLinkedinIn, FaGithub } from "react-icons/fa";
-import { IoMail } from "react-icons/io5";
-import { FiArrowUpRight, FiClock, FiMapPin } from "react-icons/fi";
+import { ArrowUpRight, Clock, Github, Linkedin, Mail, MapPin } from "lucide-react";
 import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -100,7 +98,7 @@ export default function Footer() {
                             className="group relative inline-flex flex-col md:flex-row items-start md:items-center gap-6 p-1"
                         >
                             <div className="w-20 h-20 rounded-full border bg-foreground text-background flex items-center justify-center text-3xl group-hover:scale-110 group-hover:bg-background group-hover:text-foreground group-hover:border-foreground transition-all duration-500">
-                                <FiArrowUpRight className="group-hover:rotate-45 transition-transform duration-500" />
+                                <ArrowUpRight className="group-hover:rotate-45 transition-transform duration-500" />
                             </div>
                             <div className="space-y-1">
                                 <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground">Start a conversation</p>
@@ -115,23 +113,23 @@ export default function Footer() {
                     <div className="footer-reveal flex flex-col items-start lg:items-end gap-12 w-full lg:w-auto">
                         {/* Social Stack */}
                         <div className="flex flex-wrap gap-4">
-                            <SocialButton label="GitHub profile" href="https://github.com/Ankitsaini406" icon={<FaGithub />} />
-                            <SocialButton label="Linkedin profile" href="https://www.linkedin.com/in/web-ankit-saini/" icon={<FaLinkedinIn />} />
-                            <SocialButton label="Gmail profile" href="mailto:as.ankitsaini406@gmail.com" icon={<IoMail />} />
+                            <SocialButton label="GitHub profile" href="https://github.com/Ankitsaini406" icon={<Github />} />
+                            <SocialButton label="Linkedin profile" href="https://www.linkedin.com/in/web-ankit-saini/" icon={<Linkedin />} />
+                            <SocialButton label="Gmail profile" href="mailto:as.ankitsaini406@gmail.com" icon={<Mail />} />
                         </div>
 
                         {/* Local Metadata */}
                         <div className="grid grid-cols-2 lg:grid-cols-1 gap-8 text-left lg:text-right">
                             <div className="space-y-2">
                                 <div className="flex items-center lg:justify-end gap-2 text-foreground">
-                                    <FiClock className="animate-pulse" />
+                                    <Clock className="animate-pulse" />
                                     <span className="text-[10px] font-bold uppercase tracking-widest">Local Time</span>
                                 </div>
                                 <p className="text-2xl font-mono text-foreground">{time}</p>
                             </div>
                             <div className="space-y-2">
                                 <div className="flex items-center lg:justify-end gap-2 text-foreground">
-                                    <FiMapPin />
+                                    <MapPin />
                                     <span className="text-[10px] font-bold uppercase tracking-widest">Location</span>
                                 </div>
                                 <p className="text-lg text-muted-foreground">India — Worldwide</p>

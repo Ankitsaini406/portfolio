@@ -5,8 +5,7 @@ import { TECH_STACK } from "@/lib/data/tech-stack";
 import gsap from "gsap";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
-import { FaGithub, FaArrowRight, FaLinkedinIn } from "react-icons/fa6";
-import { IoMail } from "react-icons/io5";
+import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
 
 export default function Hero() {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -109,14 +108,14 @@ export default function Hero() {
                         >
                             <div className="absolute inset-0 bg-secondary translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out" />
                             <span className="relative font-semibold flex items-center justify-center gap-2">
-                                View Selected Works <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+                                View Selected Works <ArrowRight className="group-hover:translate-x-1 transition-transform" />
                             </span>
                         </Link>
 
                         <div className="flex gap-3 mt-4 sm:mt-0">
-                            <SocialButton label="GitHub profile" href="https://github.com/Ankitsaini406" icon={<FaGithub />} />
-                            <SocialButton label="Linkedin profile" href="https://www.linkedin.com/in/web-ankit-saini/" icon={<FaLinkedinIn />} />
-                            <SocialButton label="Gmail profile" href="mailto:as.ankitsaini406@gmail.com" icon={<IoMail />} />
+                            <SocialButton label="GitHub profile" href="https://github.com/Ankitsaini406" icon={<Github />} />
+                            <SocialButton label="Linkedin profile" href="https://www.linkedin.com/in/web-ankit-saini/" icon={<Linkedin />} />
+                            <SocialButton label="Gmail profile" href="mailto:as.ankitsaini406@gmail.com" icon={<Mail />} />
                         </div>
                     </div>
 
