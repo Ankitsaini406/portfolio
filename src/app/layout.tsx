@@ -4,7 +4,6 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ScrollButton from "@/components/Scrollbutton";
 import GoogleAnalytics from "@/analytics/GTag";
-import ChildLayOut from "./ChildLayout";
 
 export const viewport: Viewport = {
   themeColor: "#000000",
@@ -86,14 +85,12 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-background text-foreground selection:bg-primary/50">
-        <ChildLayOut>
           <Navbar />
           <ScrollButton />
           <main>
             {children}
           </main>
           <Footer />
-        </ChildLayOut>
       </body>
     </html>
   );
