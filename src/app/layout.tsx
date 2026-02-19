@@ -90,9 +90,9 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
-        {process.env.NODE_ENV === "production" && (
+        {/* {process.env.NODE_ENV === "production" && ( */}
           <GoogleAnalytics gaId="G-0PQLWEGNWL" />
-        )}
+        {/* )} */}
       </body>
     </html>
   );
