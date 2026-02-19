@@ -6,7 +6,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { timelines } from "@/lib/data/timelines";
 import { FaLaptopCode, FaServer, FaMobileAlt, FaLayerGroup } from "react-icons/fa";
 
-gsap.registerPlugin(ScrollTrigger);
+if (typeof window !== "undefined") {
+    gsap.registerPlugin(ScrollTrigger);
+}
 
 const getRoleIcon = (title: string) => {
   const t = title.toLowerCase();

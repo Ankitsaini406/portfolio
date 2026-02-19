@@ -5,7 +5,7 @@ import { TECH_STACK } from "@/lib/data/tech-stack";
 import gsap from "gsap";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
-import { FaGithub, FaArrowRight, FaLinkedinIn } from "react-icons/fa";
+import { FaGithub, FaArrowRight, FaLinkedinIn } from "react-icons/fa6";
 import { IoMail } from "react-icons/io5";
 
 export default function Hero() {
