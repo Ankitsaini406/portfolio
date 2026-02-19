@@ -3,7 +3,7 @@ import type { Metadata, Viewport } from "next";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ScrollButton from "@/components/Scrollbutton";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import Script from "next/script";
 
 export const viewport: Viewport = {
   themeColor: "#000000",
@@ -90,10 +90,29 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
-        {/* {process.env.NODE_ENV === "production" && ( */}
-          <GoogleAnalytics gaId="G-0PQLWEGNWL" />
-        {/* )} */}
+        {process.env.NODE_ENV === "production" && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=G-0PQLWEGNWL`}
+              strategy="lazyOnload"
+            />
+            <Script id="google-analytics" strategy="lazyOnload">
+              {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-0PQLWEGNWL', {
+              page_path: window.location.pathname,
+            });
+          `}
+            </Script>
+          </>
+        )}
       </body>
     </html>
   );
 }
+
+        // {/* {process.env.NODE_ENV === "production" && ( */}
+        //   <GoogleAnalytics gaId="G-0PQLWEGNWL" />
+        // {/* )} */}
