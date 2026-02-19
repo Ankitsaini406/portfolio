@@ -73,7 +73,7 @@ export default function SplashScreen({
       className="fixed inset-0 flex items-center justify-center z-(--z-index-max) bg-(--color-background) overflow-hidden"
     >
       {/* Background Texture */}
-      <div className="absolute inset-0 opacity-[0.02] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] pointer-events-none" />
+      <div className="absolute inset-0 opacity-[0.02] bg-[url('/svg/noise.svg')] pointer-events-none" />
 
       <div ref={containerRef} className="relative flex flex-col items-center">
         {/* Name Reveal */}

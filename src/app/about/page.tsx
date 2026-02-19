@@ -84,7 +84,7 @@ export default function About() {
             className="relative w-full min-h-screen py-24 px-6 md:px-12 bg-background overflow-hidden flex items-center"
         >
             {/* Ambient Background Noise/Grain */}
-            <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
+            <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('/svg/noise.svg')] mix-blend-overlay" />
 
             <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center z-10">
 

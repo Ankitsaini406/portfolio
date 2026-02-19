@@ -104,10 +104,7 @@ const Template = ({ children }: { children: React.ReactNode }) => {
 
             {/* Subtle Grain */}
             <div
-                className="fixed inset-0 z-0 pointer-events-none
-                   opacity-[0.035]
-                   bg-[url('https://grainy-gradients.vercel.app/noise.svg')]
-                   mix-blend-overlay"
+                className="fixed inset-0 z-0 pointer-events-none opacity-[0.035] bg-[url('/svg/noise.svg')] mix-blend-overlay"
             />
         </div>
     );
