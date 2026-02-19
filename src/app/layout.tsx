@@ -3,7 +3,7 @@ import type { Metadata, Viewport } from "next";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ScrollButton from "@/components/Scrollbutton";
-import GoogleAnalytics from "@/analytics/GTag";
+import Script from "next/script";
 
 export const viewport: Viewport = {
   themeColor: "#000000",
@@ -61,6 +61,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
 
+  const GA_TRACKING_ID = "G-0PQLWEGNWL";
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -77,13 +79,6 @@ export default function RootLayout({
 
   return (
     <html lang="en" className="scroll-smooth antialiased">
-      <head>
-        <GoogleAnalytics />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-      </head>
       <body className="bg-background text-foreground selection:bg-primary/50">
         <Navbar />
         <ScrollButton />
@@ -91,6 +86,24 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        {process.env.NODE_ENV === "production" && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+              strategy="lazyOnload"
+            />
+            <Script id="google-analytics" strategy="lazyOnload">
+              {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_TRACKING_ID}', {
+              page_path: window.location.pathname,
+            });
+          `}
+            </Script>
+          </>
+        )}
       </body>
     </html>
   );
