@@ -10,7 +10,7 @@ import Image from "next/image";
 
 export default function Hero() {
     const containerRef = useRef<HTMLDivElement>(null);
-    const experienceYears = useExperienceYears("2022-07-01");
+    // const experienceYears = useExperienceYears("2022-07-01");
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -119,7 +119,7 @@ export default function Hero() {
                     {/* Senior Level Stats */}
                     <div className="hero-text mt-12 w-full grid grid-cols-3 gap-4 md:gap-8 border-t lg:border-t-0 lg:border-l border-border/20 pt-8 lg:pt-0 lg:pl-6">
                         <div className="hero-stat flex flex-col items-center lg:items-start">
-                            <p className="text-2xl md:text-3xl font-bold text-foreground">{experienceYears}+</p>
+                            <p className="text-2xl md:text-3xl font-bold text-foreground">{3.5}+</p>
                             <p className="text-[10px] uppercase tracking-wider text-secondary">Years Exp.</p>
                         </div>
                         <div className="hero-stat flex flex-col items-center lg:items-start">

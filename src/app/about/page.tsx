@@ -4,7 +4,7 @@ import { useRef, useLayoutEffect } from "react";
 import Image from 'next/image';
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useExperienceYears } from "@/hooks/useExperienceYears";
+// import { useExperienceYears } from "@/hooks/useExperienceYears";
 import { Cloud, Database, Leaf, Rocket, Server, Smartphone } from "lucide-react";
 
 if (typeof window !== "undefined") {
@@ -15,7 +15,7 @@ export default function About() {
     const sectionRef = useRef<HTMLDivElement>(null);
     const contentRef = useRef<HTMLDivElement>(null);
     const imageWrapperRef = useRef<HTMLDivElement>(null);
-    const experienceYears = useExperienceYears("2022-07-01");
+    // const experienceYears = useExperienceYears("2022-07-01");
 
     // Tech Stack Data
     const techStack = [
@@ -113,7 +113,7 @@ export default function About() {
                     {/* Narrative */}
                     <div className="reveal-text space-y-6 text-lg text-secondary leading-relaxed max-w-xl">
                         <p>
-                            I don&apos;t just write code; I architect systems. With <strong className="text-foreground">{experienceYears}+ years</strong> of production experience, I bridge the gap between complex backend logic and pixel-perfect frontend design.
+                            I don&apos;t just write code; I architect systems. With <strong className="text-foreground">{3.5}+ years</strong> of production experience, I bridge the gap between complex backend logic and pixel-perfect frontend design.
                         </p>
                         <p>
                             Specializing in the <strong>React/Next.js</strong> ecosystem and <strong>Flutter</strong> mobile architecture, I build products that are robust, SEO-optimized, and ready to scale.
@@ -124,7 +124,7 @@ export default function About() {
                     <div className="reveal-text mt-12 pt-8 border-t border-secondary/20 grid grid-cols-3 gap-6">
                         <div>
                             <span className="block text-3xl font-bold text-foreground">
-                                <span className="stat-counter" data-target={experienceYears}>0</span>+
+                                <span className="stat-counter" data-target={3.5}>0</span>+
                             </span>
                             <span className="text-[10px] md:text-xs font-mono uppercase tracking-widest text-secondary">Years Exp.</span>
                         </div>
@@ -184,7 +184,7 @@ export default function About() {
                         {/* Experience badge on image */}
                         <div className="absolute bg-background -bottom-6 -right-6 px-4 py-2 rounded-xl shadow-lg border border-(--grid-color)">
                             <div className="text-center">
-                                <div className="font-bold text-2xl text-foreground">{experienceYears}+</div>
+                                <div className="font-bold text-2xl text-foreground">{3.5}+</div>
                                 <div className="text-xs uppercase tracking-wider text-secondary">Years</div>
                             </div>
                         </div>
