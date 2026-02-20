@@ -134,12 +134,12 @@ export default function Hero() {
                 </div>
 
                 {/* --- Right Column: Abstract Code Visual --- */}
-                <div className="relative w-full h-full flex items-center justify-center lg:justify-end perspective-[1000px] mt-8 lg:mt-0">
+                <div className="relative w-full h-full flex items-center justify-center lg:justify-end perspective-[1000px] mt-8 mb-10 lg:mb-0 lg:mt-0">
                     {/* Decorative Glow */}
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-62.5 md:w-100 aspect-square bg-foreground/5 blur-[60px] md:blur-[100px] rounded-full pointer-events-none" />
 
                     {/* Code Window */}
-                    <div className="code-window relative w-full max-w-85 md:max-w-md bg-(--color-background)/80 backdrop-blur-xl border border-(--grid-color) rounded-xl shadow-2xl overflow-hidden group hover:rotate-1 transition-transform duration-500">
+                    <div className="code-window relative w-full max-w-85 md:max-w-md bg-background/80 backdrop-blur-xl border border-(--grid-color) rounded-xl shadow-2xl overflow-hidden group hover:rotate-1 transition-transform duration-500">
                         {/* Window Header */}
                         <div className="flex items-center gap-2 px-4 py-3 border-b border-(--grid-color) bg-secondary/5">
                             <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />

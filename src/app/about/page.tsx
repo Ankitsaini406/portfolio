@@ -164,9 +164,10 @@ export default function About() {
                             <Image
                                 src="/images/myimage.jpg"
                                 alt="Ankit Saini"
-                                fill
+                                width={478}
+                                height={837}
                                 priority
-                                sizes="(max-width: 768px) 100vw, 500px"
+                                quality={60}
                                 className="object-cover rounded-2xl will-change-transform transition-transform duration-700 group-hover:scale-105"
                             />
 

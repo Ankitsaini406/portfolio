@@ -21,7 +21,7 @@ export default function Projects() {
                 <h2 className="text-4xl md:text-6xl font-extrabold uppercase tracking-tight">
                     My Projects
                 </h2>
-                <p className="text-gray-400 mt-3 text-sm md:text-base">
+                <p className="text-muted mt-3 text-sm md:text-base">
                     Scroll to explore my work
                 </p>
             </div>

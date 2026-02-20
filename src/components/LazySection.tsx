@@ -14,10 +14,10 @@ const Timeline = dynamic(() => import("../app/timeline/page"), {
 
 export default function LazySections() {
     return (
-        <div className="space-y-20 md:space-y-40">
+        <>
             <About />
             <Projects />
             <Timeline />
-        </div>
+        </>
     );
 }

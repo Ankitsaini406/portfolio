@@ -88,7 +88,7 @@ export default function Timeline() {
   }, []);
 
   return (
-    <section ref={containerRef} className="relative w-full py-20 md:py-32 bg-background overflow-hidden">
+    <section ref={containerRef} className="relative w-full py-20 md:py-32 overflow-hidden">
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
 
@@ -123,7 +123,7 @@ export default function Timeline() {
                       <span className="font-mono text-xs uppercase tracking-widest text-secondary opacity-70">
                         {item.joinDate} — {item.endDate}
                       </span>
-                      <div className="text-6xl font-black text-secondary/5 mt-2">
+                      <div className="text-6xl font-black text-muted mt-2">
                         {String(index + 1).padStart(2, "0")}
                       </div>
                     </div>
