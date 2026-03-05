@@ -1,6 +1,6 @@
 "use client";
 
-import { useExperienceYears } from "@/hooks/useExperienceYears";
+// import { useExperienceYears } from "@/hooks/useExperienceYears";
 import { TECH_STACK } from "@/lib/data/tech-stack";
 import gsap from "gsap";
 import Link from "next/link";

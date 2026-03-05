@@ -70,5 +70,13 @@ export const projects = [
         link: "https://citizenwatchbharat.com/",
         imageBase64: "",
         description: "Citizen Watch Bharat is an online news platform delivering timely and reliable updates across politics, society, and local governance. Designed for fast performance and mobile responsiveness, it allows users to read, share, and stay informed with credible journalism."
+    },
+    {
+        id: "10",
+        name: "Aqua Serve",
+        image: "aquaserve.png",
+        link: "https://aquaserve.vercel.app/",
+        imageBase64: "",
+        description: "Aqua Serve is a SaaS-based water service management platform that helps suppliers manage customers, subscriptions, deliveries, and billing from a centralized dashboard. Built with modern full-stack technologies, it focuses on automation, scalability, and real-time tracking to replace manual workflows with a secure digital system."
     }
 ];

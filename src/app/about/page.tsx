@@ -167,7 +167,7 @@ export default function About() {
                                 width={478}
                                 height={837}
                                 priority
-                                quality={60}
+                                quality={90}
                                 className="object-cover rounded-2xl will-change-transform transition-transform duration-700 group-hover:scale-105"
                             />
 

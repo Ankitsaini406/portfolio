@@ -27,25 +27,27 @@ export default function Projects() {
             </div>
 
             {/* Project Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
+            <div className="flex flex-wrap justify-center gap-10 max-w-7xl mx-auto">
                 {sortedProjects.map((project: Projectsdetial) => (
                     <article
                         key={project.id}
-                        className="group border border-white/10 rounded-2xl overflow-hidden shadow-xl transition-all duration-500 hover:shadow-2xl hover:border-white/30"
+                        /* The magic math: we calculate exact widths minus the gap sizes so they fit perfectly in rows of 2 or 3 */
+                        className="w-full sm:w-[calc(50%-1.25rem)] lg:w-[calc(33.333%-1.666rem)] group flex flex-col border border-white/10 rounded-2xl overflow-hidden shadow-xl transition-all duration-500 hover:shadow-2xl hover:border-white/30"
                     >
-                        {/* Image */}
+                        {/* Image Container */}
                         <div className="relative w-full h-56 overflow-hidden">
                             <Image
                                 src={`/projects/${project.image}`}
                                 alt={project.name}
                                 fill
-                                sizes="cover"
-                                className="object-cover transition-transform duration-700 group-hover:scale-110 "
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                /* Changed hover to group-hover for a better UX */
+                                className="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
                             />
                         </div>
 
-                        {/* Content */}
-                        <div className="p-6 flex flex-col justify-between h-55">
+                        {/* Content Container */}
+                        <div className="p-6 flex flex-col justify-between flex-1">
                             <div>
                                 <h3 className="text-2xl font-semibold mb-2 uppercase tracking-wider">
                                     {project.name}
@@ -60,7 +62,7 @@ export default function Projects() {
                                     href={project.link}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="mt-4 inline-flex items-center gap-2 text-sm hover:text-foreground/50 transition-colors"
+                                    className="mt-6 inline-flex items-center gap-2 text-sm hover:text-foreground/50 transition-colors"
                                 >
                                     View Project <LinkIcon className="text-lg" />
                                 </Link>
