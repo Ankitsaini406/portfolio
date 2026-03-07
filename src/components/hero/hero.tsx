@@ -59,7 +59,7 @@ export default function Hero() {
     return (
         <section
             ref={containerRef}
-            className="relative min-h-dvh flex flex-col justify-center overflow-x-hidden bg-(--color-background) pt-32 pb-12 lg:pt-20"
+            className="relative min-h-dvh 2xl:min-h-4/5 flex flex-col justify-center overflow-x-hidden gap-5 pt-32 pb-12 lg:pt-20"
             id="home"
         >
             {/* --- Background Noise & Grid --- */}

@@ -83,7 +83,7 @@ export default function About() {
         <section
             ref={sectionRef}
             id="about"
-            className="relative w-full min-h-screen py-24 px-6 md:px-12 bg-background overflow-hidden flex items-center"
+            className="relative w-full py-24 px-6 overflow-hidden flex items-center"
         >
             {/* Ambient Background Noise/Grain */}
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('/svg/noise.svg')] mix-blend-overlay" />
