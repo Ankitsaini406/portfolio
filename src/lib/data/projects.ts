@@ -73,6 +73,14 @@ export const projects = [
     },
     {
         id: "10",
+        name: "Consort Digital",
+        image: "consort.svg",
+        link: "https://www.consortdigital.com/",
+        imageBase64: "",
+         description: "Developed the Consort Digital website as a freelance Full Stack Developer using Next.js and Firebase. Built a fast, responsive, and SEO-friendly marketing website with modern UI components, dynamic content management, and optimized performance. Integrated Firebase for backend services, including data management and hosting, while leveraging Next.js features such as Server-Side Rendering (SSR), Static Site Generation (SSG), and image optimization to deliver a scalable, high-performance web experience."
+    },
+    {
+        id: "11",
         name: "Aqua Serve",
         image: "aquaserve.png",
         link: "https://aquaserve.vercel.app/",
