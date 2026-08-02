@@ -2,22 +2,22 @@
 
 import dynamic from "next/dynamic";
 
-const About = dynamic(() => import("../app/about/page"), {
+const AboutSection = dynamic(() => import("../app/about/AboutSection"), {
     loading: () => <div className="h-40 flex items-center justify-center">Loading About...</div>,
 });
-const Projects = dynamic(() => import("../app/projects/page"), {
+const ProjectSection = dynamic(() => import("../app/projects/ProjectSection"), {
     loading: () => <div className="h-40 flex items-center justify-center">Loading Projects...</div>,
 });
-const Timeline = dynamic(() => import("../app/timeline/page"), {
+const TimelineSection = dynamic(() => import("../app/timeline/TimelineSection"), {
     loading: () => <div className="h-40 flex items-center justify-center">Loading Timeline...</div>,
 });
 
 export default function LazySections() {
     return (
         <>
-            <About />
-            <Projects />
-            <Timeline />
+            <AboutSection />
+            <ProjectSection />
+            <TimelineSection />
         </>
     );
 }

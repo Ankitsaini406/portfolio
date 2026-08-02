@@ -1,76 +1,76 @@
-"use client";
+import { Metadata } from "next";
+import ProjectSection from "./ProjectSection";
 
-import Image from "next/image";
-import { Projectsdetial } from "@/lib/types/types";
-import { projects } from "@/lib/data/projects";
-import Link from "next/link";
-import { LinkIcon } from "lucide-react";
+export const metadata: Metadata = {
+    title: "Projects | Ankit Saini - Full-Stack Developer",
 
-export default function Projects() {
-    const sortedProjects = [...projects].sort(
-        (a, b) => Number(b.id) - Number(a.id)
-    );
+    description:
+        "Explore Ankit Saini's portfolio of web and mobile projects built with Next.js, React, Flutter, Node.js, Firebase, AWS, Prisma, and modern full-stack technologies.",
 
-    return (
-        <section
-            id="projects"
-            className="relative w-full min-h-screen py-20 px-6 md:px-12"
-        >
-            {/* Title */}
-            <div className="text-center mb-16">
-                <h2 className="text-4xl md:text-6xl font-extrabold uppercase tracking-tight">
-                    My Projects
-                </h2>
-                <p className="text-muted mt-3 text-sm md:text-base">
-                    Scroll to explore my work
-                </p>
-            </div>
+    keywords: [
+        // Personal / portfolio
+        "Ankit Saini Projects",
+        "Ankit Saini Portfolio",
+        "Ankit Saini Developer Portfolio",
+        "Ankit Saini Full Stack Projects",
 
-            {/* Project Grid */}
-            <div className="flex flex-wrap justify-center gap-10 max-w-7xl mx-auto">
-                {sortedProjects.map((project: Projectsdetial) => (
-                    <article
-                        key={project.id}
-                        /* The magic math: we calculate exact widths minus the gap sizes so they fit perfectly in rows of 2 or 3 */
-                        className="w-full sm:w-[calc(50%-1.25rem)] lg:w-[calc(33.333%-1.666rem)] group flex flex-col border border-white/10 rounded-2xl overflow-hidden shadow-xl transition-all duration-500 hover:shadow-2xl hover:border-white/30"
-                    >
-                        {/* Image Container */}
-                        <div className="relative w-full h-56 overflow-hidden">
-                            <Image
-                                src={`/projects/${project.image}`}
-                                alt={project.name}
-                                fill
-                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                /* Changed hover to group-hover for a better UX */
-                                className="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
-                            />
-                        </div>
+        // Developer / project intent
+        "Full Stack Developer Projects",
+        "Full Stack Developer Portfolio",
+        "Web Development Projects",
+        "Mobile App Development Projects",
+        "Software Development Projects",
 
-                        {/* Content Container */}
-                        <div className="p-6 flex flex-col justify-between flex-1">
-                            <div>
-                                <h3 className="text-2xl font-semibold mb-2 uppercase tracking-wider">
-                                    {project.name}
-                                </h3>
-                                <p className="text-secondary text-sm line-clamp-3 leading-relaxed">
-                                    {project.description}
-                                </p>
-                            </div>
+        // Technology-specific
+        "Next.js Projects",
+        "React Projects",
+        "Flutter Projects",
+        "Node.js Projects",
+        "Firebase Projects",
+        "AWS Projects",
+        "Prisma Projects",
+        "TypeScript Projects",
 
-                            {project.link && (
-                                <Link
-                                    href={project.link}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="mt-6 inline-flex items-center gap-2 text-sm hover:text-foreground/50 transition-colors"
-                                >
-                                    View Project <LinkIcon className="text-lg" />
-                                </Link>
-                            )}
-                        </div>
-                    </article>
-                ))}
-            </div>
-        </section>
-    );
+        // Location-specific
+        "Full Stack Developer Projects India",
+        "React Developer Portfolio India",
+        "Next.js Developer Portfolio India",
+    ],
+
+    alternates: {
+        canonical: "/projects",
+    },
+
+    openGraph: {
+        title: "Projects | Ankit Saini - Full-Stack Developer",
+        description:
+            "Explore web and mobile applications built by Ankit Saini using Next.js, React, Flutter, Node.js, Firebase, AWS, and modern full-stack technologies.",
+        url: "/projects",
+        type: "website",
+        images: [
+            {
+                url: "/images/projects-og.jpg",
+                width: 1200,
+                height: 630,
+                alt: "Ankit Saini - Full-Stack Developer Projects",
+            },
+        ],
+    },
+
+    twitter: {
+        card: "summary_large_image",
+        title: "Projects | Ankit Saini - Full-Stack Developer",
+        description:
+            "Explore Ankit Saini's web and mobile development projects built with modern full-stack technologies.",
+        images: ["/images/projects-og.jpg"],
+    },
+
+    robots: {
+        index: true,
+        follow: true,
+    },
+};
+
+export default function Page() {
+    return <ProjectSection />;
 }
