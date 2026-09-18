@@ -83,7 +83,7 @@ const ScrollButton = () => {
 
         {/* The Arrow Icon */}
         <div className="relative overflow-hidden w-full h-full flex items-center justify-center rounded-full">
-          <div className="text-foreground text-sm md:text-base group-hover:-translate-y-0.5 transition-transform">
+          <div className="text-foreground text-sm md:text-base group-hover:-translate-y-1 transition-transform duration-300">
             <ArrowUp className="w-5 h-5" />
           </div>
         </div>

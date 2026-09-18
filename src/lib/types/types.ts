@@ -6,15 +6,15 @@ export type Timelinedetial = {
     endDate: string;
     work: string;
     skills?: string[];
-}
+};
 
 export type Projectsdetial = {
     id: string;
     name: string;
     image: string;
     link: string;
-    imageBase64?: string;
+    appLink?: string;
     description: string;
     tags?: string[];
     github?: string;
-}
+};

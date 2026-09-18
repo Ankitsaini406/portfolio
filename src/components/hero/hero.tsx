@@ -21,7 +21,10 @@ export default function Hero() {
                 <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
 
                     {/* Availability Badge */}
-                    <div className="hero-text mb-6 flex items-center gap-3 px-4 py-1.5 rounded-full border border-border bg-secondary/5 backdrop-blur-sm shadow-sm">
+                    <div 
+                        className="animate-fade-in-up mb-6 flex items-center gap-3 px-4 py-1.5 rounded-full border border-border bg-secondary/5 backdrop-blur-sm shadow-sm"
+                        style={{ animationDelay: "100ms" }}
+                    >
                         <span className="relative flex h-2.5 w-2.5">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
@@ -31,21 +34,36 @@ export default function Hero() {
                         </span>
                     </div>
 
-                    <h1 className="hero-text text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-foreground leading-[0.95] mb-4 md:mb-6">
+                    <h1 
+                        className="animate-fade-in-up text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-foreground leading-[0.95] mb-4 md:mb-6"
+                        style={{ animationDelay: "200ms" }}
+                    >
                         ANKIT SAINI
                     </h1>
 
-                    <h2 className="hero-text text-xl md:text-3xl font-light text-secondary mb-8">
+                    <h2 
+                        className="animate-fade-in-up text-xl md:text-3xl font-light text-secondary mb-8"
+                        style={{ animationDelay: "300ms" }}
+                    >
                         Senior Full-Stack Engineer <br className="hidden md:block" /> & System Architect.
                     </h2>
 
-                    <div className="hero-line w-24 lg:w-full h-px bg-secondary/20 mb-8"></div>
+                    <div 
+                        className="animate-fade-in-up w-24 lg:w-full h-px bg-secondary/20 mb-8"
+                        style={{ animationDelay: "400ms" }}
+                    />
 
-                    <p className="hero-text text-base md:text-lg text-secondary max-w-md lg:max-w-xl leading-relaxed mb-10">
+                    <p 
+                        className="animate-fade-in-up text-base md:text-lg text-secondary max-w-md lg:max-w-xl leading-relaxed mb-10"
+                        style={{ animationDelay: "500ms" }}
+                    >
                         Translating complex business requirements into scalable, high-performance web and mobile solutions. Focused on clean architecture, type safety, and user-centric interaction design.
                     </p>
 
-                    <div className="hero-text flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
+                    <div 
+                        className="animate-fade-in-up flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto"
+                        style={{ animationDelay: "600ms" }}
+                    >
                         <Link
                             href="/projects"
                             className="w-full sm:w-auto group relative px-7 py-3.5 bg-foreground text-background rounded-full overflow-hidden transition-all hover:scale-105 shadow-lg hover:shadow-xl"
@@ -60,7 +78,7 @@ export default function Hero() {
                             href="/resume.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="w-full sm:w-auto group px-6 py-3.5 border border-border bg-secondary/5 rounded-full hover:border-foreground/50 transition-all text-sm font-semibold flex items-center justify-center gap-2 text-foreground"
+                            className="w-full sm:w-auto group px-6 py-3.5 border border-border bg-secondary/5 rounded-full hover:border-foreground/50 hover:scale-105 transition-all text-sm font-semibold flex items-center justify-center gap-2 text-foreground shadow-sm hover:shadow-md"
                         >
                             <FileText className="w-4 h-4 text-secondary group-hover:text-foreground transition-colors" />
                             <span>Resume</span>
@@ -74,29 +92,35 @@ export default function Hero() {
                     </div>
 
                     {/* Senior Level Stats */}
-                    <div className="hero-text mt-12 w-full grid grid-cols-3 gap-4 md:gap-8 border-t lg:border-t-0 lg:border-l border-border/20 pt-8 lg:pt-0 lg:pl-6">
-                        <div className="hero-stat flex flex-col items-center lg:items-start">
-                            <p className="text-2xl md:text-3xl font-bold text-foreground">3.5+</p>
+                    <div 
+                        className="animate-fade-in-up mt-12 w-full grid grid-cols-3 gap-4 md:gap-8 border-t lg:border-t-0 lg:border-l border-border/20 pt-8 lg:pt-0 lg:pl-6"
+                        style={{ animationDelay: "700ms" }}
+                    >
+                        <div className="flex flex-col items-center lg:items-start group cursor-default">
+                            <p className="text-2xl md:text-3xl font-bold text-foreground group-hover:scale-110 transition-transform duration-300">3.5+</p>
                             <p className="text-[10px] uppercase tracking-wider text-secondary">Years Exp.</p>
                         </div>
-                        <div className="hero-stat flex flex-col items-center lg:items-start">
-                            <p className="text-2xl md:text-3xl font-bold text-foreground">11+</p>
+                        <div className="flex flex-col items-center lg:items-start group cursor-default">
+                            <p className="text-2xl md:text-3xl font-bold text-foreground group-hover:scale-110 transition-transform duration-300">11+</p>
                             <p className="text-[10px] uppercase tracking-wider text-secondary">Projects</p>
                         </div>
-                        <div className="hero-stat flex flex-col items-center lg:items-start">
-                            <p className="text-2xl md:text-3xl font-bold text-foreground">100%</p>
+                        <div className="flex flex-col items-center lg:items-start group cursor-default">
+                            <p className="text-2xl md:text-3xl font-bold text-foreground group-hover:scale-110 transition-transform duration-300">100%</p>
                             <p className="text-[10px] uppercase tracking-wider text-secondary">Delivery</p>
                         </div>
                     </div>
                 </div>
 
                 {/* --- Right Column: Abstract Code Visual --- */}
-                <div className="relative w-full h-full flex items-center justify-center lg:justify-end perspective-[1000px] mt-8 mb-10 lg:mb-0 lg:mt-0">
+                <div 
+                    className="animate-fade-in-up relative w-full h-full flex items-center justify-center lg:justify-end perspective-[1000px] mt-8 mb-10 lg:mb-0 lg:mt-0"
+                    style={{ animationDelay: "400ms" }}
+                >
                     {/* Decorative Glow */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-62.5 md:w-100 aspect-square bg-foreground/5 blur-[60px] md:blur-[100px] rounded-full pointer-events-none" />
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-62.5 md:w-100 aspect-square bg-foreground/5 blur-[60px] md:blur-[100px] rounded-full pointer-events-none animate-pulse-slow" />
 
-                    {/* Code Window */}
-                    <div className="code-window relative w-full max-w-85 md:max-w-md bg-background/80 backdrop-blur-xl border border-(--grid-color) rounded-xl shadow-2xl overflow-hidden group hover:rotate-1 transition-transform duration-500">
+                    {/* Code Window with Float animation */}
+                    <div className="code-window animate-float relative w-full max-w-85 md:max-w-md bg-background/80 backdrop-blur-xl border border-(--grid-color) rounded-xl shadow-2xl overflow-hidden group hover:rotate-1 transition-transform duration-500">
                         {/* Window Header */}
                         <div className="flex items-center gap-2 px-4 py-3 border-b border-(--grid-color) bg-secondary/5">
                             <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
@@ -181,13 +205,17 @@ export default function Hero() {
 
 // --- Components & Data ---
 
-const SocialButton = ({ href, label, icon }: { href: string, label: string, icon: React.ReactNode }) => (
-    <Link
-        href={href}
-        aria-label={label}
-        target="_blank"
-        className="w-10 h-10 md:w-12 md:h-12 rounded-full border bg-background border-border flex items-center justify-center text-secondary hover:bg-foreground hover:text-(--color-background) hover:border-transparent transition-all duration-300 text-lg md:text-xl"
-    >
-        {icon}
-    </Link>
-);
+const SocialButton = ({ href, label, icon }: { href: string, label: string, icon: React.ReactNode }) => {
+    const isExternal = href.startsWith("http");
+    return (
+        <Link
+            href={href}
+            aria-label={label}
+            target={isExternal ? "_blank" : undefined}
+            rel={isExternal ? "noopener noreferrer" : undefined}
+            className="w-10 h-10 md:w-12 md:h-12 rounded-full border bg-background border-border flex items-center justify-center text-secondary hover:bg-foreground hover:text-(--color-background) hover:border-transparent transition-all duration-300 text-lg md:text-xl"
+        >
+            {icon}
+        </Link>
+    );
+};

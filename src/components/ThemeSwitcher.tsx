@@ -1,31 +1,38 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useSyncExternalStore } from "react";
 import { Moon, Sun } from "lucide-react";
 
+function subscribe(callback: () => void) {
+    const observer = new MutationObserver(callback);
+    observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ["data-theme", "class"],
+    });
+    window.addEventListener("storage", callback);
+    return () => {
+        observer.disconnect();
+        window.removeEventListener("storage", callback);
+    };
+}
+
+function getSnapshot(): "light" | "dark" {
+    return document.documentElement.classList.contains("dark") ? "dark" : "light";
+}
+
+function getServerSnapshot(): "light" | "dark" {
+    return "dark";
+}
+
 export default function ThemeSwitcher() {
-    const [theme, setTheme] = useState<"light" | "dark" | null>(null);
-
-    useEffect(() => {
-        const savedTheme = localStorage.getItem("theme") as "light" | "dark";
-        const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-        const initialTheme = savedTheme || systemTheme;
-
-        setTheme(initialTheme);
-        document.documentElement.setAttribute("data-theme", initialTheme);
-        document.documentElement.classList.toggle("dark", initialTheme === "dark");
-    }, []);
+    const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
     const toggleTheme = () => {
         const nextTheme = theme === "light" ? "dark" : "light";
-        setTheme(nextTheme);
-        
         document.documentElement.classList.toggle("dark", nextTheme === "dark");
         document.documentElement.setAttribute("data-theme", nextTheme);
         localStorage.setItem("theme", nextTheme);
     };
-
-    if (theme === null) return <div className="w-16 h-8" />;
 
     return (
         <div className="flex items-center gap-3">

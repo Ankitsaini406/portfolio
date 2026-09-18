@@ -36,8 +36,8 @@ export default function Navbar() {
         className="fixed top-6 left-1/2 -translate-x-1/2 hidden md:flex items-center gap-1 p-1.5 z-50 
                    bg-primary-bg/80 backdrop-blur-xl border border-border shadow-2xl rounded-full transition-all"
       >
-        <Link href="/" className="relative h-9 w-9 ml-1 group flex items-center justify-center hover:scale-105 transition-transform">
-          <Image src='/logo.png' width={56} height={56} alt="Logo" priority={false} className="rounded-full" />
+        <Link href="/" className="relative h-9 w-9 ml-1 group flex items-center justify-center hover:scale-110 transition-all duration-300">
+          <Image src='/logo.png' width={56} height={56} alt="Logo" priority={false} className="rounded-full group-hover:rotate-12 transition-transform duration-300" />
         </Link>
 
         <div className="flex items-center gap-1 px-2">

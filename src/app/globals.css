@@ -31,8 +31,6 @@
   --color-accent: #1a1a1a;
   --color-footer: #f5f5f5;
   --grid-color: rgba(0, 0, 0, 0.2);
-  --transition-overlay: oklch(0.15 0 0);
-  --transition-glow: oklch(0.65 0.02 250 / 0.12);
 }
 
 /* Dark theme triggered by .dark class on html */
@@ -47,8 +45,6 @@ html.dark {
   --color-accent: #f8f8f8;
   --color-footer: #141414;
   --grid-color: rgba(255, 255, 255, 0.2);
-  --transition-overlay: oklch(0.92 0 0);
-  --transition-glow: oklch(0.85 0.03 250 / 0.18);
 }
 
 
@@ -96,6 +92,10 @@ body {
   animation: marquee 25s linear infinite;
 }
 
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
 @keyframes marquee {
   from {
     transform: translateX(0);
@@ -104,4 +104,49 @@ body {
   to {
     transform: translateX(-50%);
   }
+}
+
+/* --- Lightweight Smooth Animations --- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  opacity: 0;
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes gentleFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-float {
+  animation: gentleFloat 5s ease-in-out infinite;
+}
+
+@keyframes pulseSlow {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(1.05);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulseSlow 4s ease-in-out infinite;
 }

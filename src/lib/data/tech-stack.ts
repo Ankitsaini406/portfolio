@@ -93,12 +93,6 @@ export const TECH_STACK = [
         color: "#764ABC",
         category: "state",
     },
-    // {
-    //     name: "Zustand",
-    //     icon: TbBrandZustand,
-    //     color: "#2D2D2D",
-    //     category: "state",
-    // },
     {
         name: "Zod",
         icon: "/tech/zod.svg",

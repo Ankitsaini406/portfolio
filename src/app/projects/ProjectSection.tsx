@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Projectsdetial } from "@/lib/types/types";
 import { projects } from "@/lib/data/projects";
 import Link from "next/link";
-import { ExternalLink, Layers, Sparkles, X } from "lucide-react";
+import { ExternalLink, Layers, Smartphone, Sparkles, X } from "lucide-react";
 
 export default function ProjectSection() {
     const [selectedProject, setSelectedProject] = useState<Projectsdetial | null>(null);
@@ -59,7 +59,7 @@ export default function ProjectSection() {
                 {sortedProjects.map((project: Projectsdetial) => (
                     <article
                         key={project.id}
-                        className="group flex flex-col bg-primary-bg/50 border border-border rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:shadow-2xl hover:border-foreground/30 hover:-translate-y-1"
+                        className="group flex flex-col bg-primary-bg/50 border border-border rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:shadow-2xl hover:border-foreground/40 hover:-translate-y-2"
                     >
                         {/* Image Container */}
                         <div
@@ -74,6 +74,8 @@ export default function ProjectSection() {
                                 className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
                             />
                             <div className="absolute inset-0 bg-background/0 group-hover:bg-background/20 transition-colors duration-300" />
+                            {/* Subtle diagonal shine effect */}
+                            <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out pointer-events-none" />
                         </div>
 
                         {/* Content Container */}
@@ -107,7 +109,7 @@ export default function ProjectSection() {
                             </div>
 
                             {/* Actions Bar */}
-                            <div className="mt-6 pt-4 border-t border-border flex items-center justify-between gap-4">
+                            <div className="mt-6 pt-4 border-t border-border flex flex-wrap items-center justify-between gap-2.5">
                                 <button
                                     onClick={() => setSelectedProject(project)}
                                     className="text-xs font-semibold uppercase tracking-wider text-secondary hover:text-foreground transition-colors cursor-pointer"
@@ -115,16 +117,30 @@ export default function ProjectSection() {
                                     Read Architecture →
                                 </button>
 
-                                {project.link && (
-                                    <Link
-                                        href={project.link}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-foreground px-3 py-1.5 rounded-full border border-border bg-secondary/5 hover:bg-foreground hover:text-background transition-all"
-                                    >
-                                        Live <ExternalLink className="w-3 h-3" />
-                                    </Link>
-                                )}
+                                <div className="flex items-center gap-2">
+                                    {project.appLink && (
+                                        <Link
+                                            href={project.appLink}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            title="View on Google Play"
+                                            className="inline-flex items-center gap-1.5 text-xs font-semibold text-foreground px-3 py-1.5 rounded-full border border-border bg-secondary/5 hover:bg-foreground hover:text-background transition-all"
+                                        >
+                                            <Smartphone className="w-3 h-3" /> App
+                                        </Link>
+                                    )}
+
+                                    {project.link && (
+                                        <Link
+                                            href={project.link}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="inline-flex items-center gap-1.5 text-xs font-semibold text-foreground px-3 py-1.5 rounded-full border border-border bg-secondary/5 hover:bg-foreground hover:text-background transition-all"
+                                        >
+                                            Live <ExternalLink className="w-3 h-3" />
+                                        </Link>
+                                    )}
+                                </div>
                             </div>
                         </div>
                     </article>
@@ -139,7 +155,7 @@ export default function ProjectSection() {
                 >
                     <div
                         onClick={(e) => e.stopPropagation()}
-                        className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-background border border-border rounded-3xl p-6 md:p-8 shadow-2xl space-y-6"
+                        className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-background border border-border rounded-3xl p-6 md:p-8 shadow-2xl space-y-6 transition-all duration-300 scale-100 animate-in zoom-in-95"
                     >
                         {/* Close Button */}
                         <button
@@ -188,17 +204,30 @@ export default function ProjectSection() {
                             </p>
                         </div>
 
-                        {/* Footer Link */}
-                        {selectedProject.link && (
-                            <div className="pt-4 border-t border-border flex justify-end">
-                                <Link
-                                    href={selectedProject.link}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-foreground text-background font-semibold text-sm hover:opacity-90 transition-opacity"
-                                >
-                                    Visit Live Deployment <ExternalLink className="w-4 h-4" />
-                                </Link>
+                        {/* Footer Links */}
+                        {(selectedProject.link || selectedProject.appLink) && (
+                            <div className="pt-4 border-t border-border flex flex-wrap justify-end gap-3">
+                                {selectedProject.appLink && (
+                                    <Link
+                                        href={selectedProject.appLink}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-border bg-secondary/5 text-foreground font-semibold text-sm hover:bg-secondary/15 transition-colors"
+                                    >
+                                        <Smartphone className="w-4 h-4" /> Google Play Store
+                                    </Link>
+                                )}
+
+                                {selectedProject.link && (
+                                    <Link
+                                        href={selectedProject.link}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-foreground text-background font-semibold text-sm hover:opacity-90 transition-opacity"
+                                    >
+                                        Visit Live Web <ExternalLink className="w-4 h-4" />
+                                    </Link>
+                                )}
                             </div>
                         )}
                     </div>

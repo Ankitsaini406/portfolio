@@ -89,7 +89,7 @@ export default function AboutSection() {
                     {/* START: Your Exact Image Code Block */}
                     <div className="relative group">
                         {/* Animated border gradient */}
-                        <div className="absolute -inset-4 rounded-3xl blur-lg opacity-20 group-hover:opacity-30 transition-all duration-1000 group-hover:duration-300 bg-foreground"></div>
+                        <div className="absolute -inset-4 rounded-3xl blur-lg opacity-20 group-hover:opacity-35 transition-all duration-1000 group-hover:duration-300 bg-foreground animate-pulse-slow"></div>
 
                         {/* Main image container */}
                         <div className="relative w-full max-w-[320px] h-120 rounded-2xl overflow-hidden shadow-2xl border border-(--grid-color) backdrop-blur-sm bg-background/50">
@@ -129,21 +129,3 @@ export default function AboutSection() {
         </section>
     );
 }
-
-/*
-
-                        <div className="relative w-[320px] h-[480px] rounded-2xl overflow-hidden shadow-2xl border border-border backdrop-blur-sm bg-card/50">
-                            <Image
-                                src="/images/myimage.jpg"
-                                alt="Ankit Saini"
-                                fill
-                                className="object-cover rounded-2xl transform group-hover:scale-105 transition-transform duration-700"
-                                priority
-                            />
-
-                            <div className="absolute inset-0 rounded-2xl" />
-
-                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-background/20 to-transparent -skew-x-12 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
-                        </div>
-
-*/

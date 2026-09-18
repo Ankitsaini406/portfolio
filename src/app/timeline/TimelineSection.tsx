@@ -61,7 +61,8 @@ export default function TimelineSection() {
 
                   {/* 2. The Dot (Center Anchor) */}
                   <div className="absolute left-5 md:left-1/2 -translate-x-1/2 top-0 w-10 h-10 flex items-center justify-center z-20">
-                    <div className="timeline-dot w-4 h-4 rounded-full bg-background border-2 border-foreground shadow-[0_0_20px_rgba(0,0,0,0.1)] transition-transform hover:scale-150" />
+                    <span className="animate-ping absolute inline-flex h-3.5 w-3.5 rounded-full bg-foreground/30 opacity-75" />
+                    <div className="relative timeline-dot w-4 h-4 rounded-full bg-background border-2 border-foreground shadow-[0_0_15px_rgba(0,0,0,0.1)] transition-transform duration-300 hover:scale-150 cursor-pointer" />
                   </div>
 
                   {/* 3. Content Side */}
@@ -75,7 +76,7 @@ export default function TimelineSection() {
                     </div>
 
                     {/* The Card */}
-                    <div className="timeline-card bg-primary-bg/80 border border-border p-6 md:p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 backdrop-blur-sm">
+                    <div className="timeline-card bg-primary-bg/80 border border-border hover:border-l-4 hover:border-l-foreground p-6 md:p-8 rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 backdrop-blur-sm">
                       <div className="flex items-center gap-4 mb-4">
                         <div className="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center text-foreground">
                           {getRoleIcon(item.jobtitle)}

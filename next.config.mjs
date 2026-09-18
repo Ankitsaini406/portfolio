@@ -17,10 +17,17 @@ const securityHeaders = [
         key: "Referrer-Policy",
         value: "strict-origin-when-cross-origin",
     },
+    {
+        key: "Permissions-Policy",
+        value: "camera=(), microphone=(), geolocation=()",
+    },
 ];
 
 const nextConfig = {
     poweredByHeader: false,
+    images: {
+        qualities: [75, 90],
+    },
     async headers() {
         return [
             {
