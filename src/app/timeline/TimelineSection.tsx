@@ -161,8 +161,8 @@ export default function TimelineSection() {
                       </p>
 
                       <div className="flex flex-wrap gap-2">
-                        {getSkillsForJob(item.jobtitle).map((tech, i) => (
-                          <span key={i} className="px-3 py-1 text-[10px] font-mono border border-(--grid-color) rounded-md text-secondary">
+                        {(item.skills || getSkillsForJob(item.jobtitle)).map((tech, i) => (
+                          <span key={i} className="px-3 py-1 text-[10px] font-mono border border-(--grid-color) rounded-md text-secondary bg-secondary/5">
                             {tech}
                           </span>
                         ))}

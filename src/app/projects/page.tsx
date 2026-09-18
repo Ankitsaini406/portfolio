@@ -49,9 +49,9 @@ export const metadata: Metadata = {
         type: "website",
         images: [
             {
-                url: "/images/projects-og.jpg",
-                width: 1200,
-                height: 630,
+                url: "/icons/apple-touch-icon.png",
+                width: 512,
+                height: 512,
                 alt: "Ankit Saini - Full-Stack Developer Projects",
             },
         ],
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
         title: "Projects | Ankit Saini - Full-Stack Developer",
         description:
             "Explore Ankit Saini's web and mobile development projects built with modern full-stack technologies.",
-        images: ["/images/projects-og.jpg"],
+        images: ["/icons/apple-touch-icon.png"],
     },
 
     robots: {

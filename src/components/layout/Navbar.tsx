@@ -19,6 +19,7 @@ export default function Navbar() {
     { title: "Timeline", path: "/timeline" },
     { title: "Projects", path: "/projects" },
     { title: "About", path: "/about" },
+    { title: "Resume", path: "/resume.pdf", external: true },
   ];
 
   // 1. Magnetic Logo & Entrance Animation
@@ -70,7 +71,7 @@ export default function Navbar() {
       <nav
         ref={navRef}
         className="fixed top-6 left-1/2 -translate-x-1/2 hidden md:flex items-center gap-1 p-1.5 z-50 
-                   bg-primary-bg/70 backdrop-blur-xl border border-secondary/20 shadow-2xl rounded-full"
+                   bg-primary-bg/80 backdrop-blur-xl border border-border shadow-2xl rounded-full"
       >
         <Link ref={logoRef} href="/" className="relative h-9 w-9 ml-1 group flex items-center justify-center">
           <Image src='/logo.png' width={56} height={56} alt="Logo" priority={false} className="rounded-full transition-transform" />
@@ -83,17 +84,19 @@ export default function Navbar() {
               <Link
                 key={item.title}
                 href={item.path}
-                className="relative px-5 py-2 rounded-full transition-all duration-300 group overflow-hidden"
+                target={item.external ? "_blank" : undefined}
+                rel={item.external ? "noopener noreferrer" : undefined}
+                className="relative px-4 py-2 rounded-full transition-all duration-300 group overflow-hidden"
               >
                 {/* Background Pill */}
                 <span className={`absolute inset-0 transition-transform duration-500 ease-out rounded-full
-                  ${isActive ? 'bg-accent translate-y-0' : 'bg-foreground/10 translate-y-full group-hover:translate-y-0'}`}
+                  ${isActive ? 'bg-foreground translate-y-0' : 'bg-foreground/10 translate-y-full group-hover:translate-y-0'}`}
                 />
 
-                {/* Label: Fixed the coloring here */}
+                {/* Label */}
                 <span className={`relative block font-bold text-[11px] uppercase tracking-[0.15em] transition-colors duration-300
                   ${isActive
-                    ? 'text-(--color-background)' // Active text uses background color for contrast
+                    ? 'text-background'
                     : 'text-foreground group-hover:text-foreground'}`}
                 >
                   {item.title}
@@ -103,13 +106,13 @@ export default function Navbar() {
           })}
         </div>
 
-        <div className="border-l border-secondary/20 ml-1 pl-2 pr-1">
+        <div className="border-l border-border ml-1 pl-2 pr-1">
           <ThemeSwitcher />
         </div>
       </nav>
 
       {/* --- Mobile Top Bar --- */}
-      <div className="fixed top-0 left-0 w-full md:hidden z-50 p-4 flex justify-between items-center bg-background/80 backdrop-blur-lg border-b border-secondary/10">
+      <div className="fixed top-0 left-0 w-full md:hidden z-50 p-4 flex justify-between items-center bg-background/80 backdrop-blur-lg border-b border-border">
         <div className="relative h-8 w-8">
           <Image src='/logo.png' width={56} height={56} alt="Logo" priority={false} className="rounded-full" />
         </div>
@@ -117,7 +120,7 @@ export default function Navbar() {
         <button
           aria-label="Open menu"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="relative w-10 h-10 flex flex-col justify-center items-center gap-1.5 overflow-hidden"
+          className="relative w-10 h-10 flex flex-col justify-center items-center gap-1.5 overflow-hidden cursor-pointer"
         >
           <span className={`h-0.5 w-6 bg-foreground rounded-full transition-all duration-300 ${isMobileMenuOpen ? "rotate-45 translate-y-2" : ""}`} />
           <span className={`h-0.5 w-6 bg-foreground rounded-full transition-all duration-300 ${isMobileMenuOpen ? "opacity-0" : ""}`} />
@@ -140,13 +143,15 @@ export default function Navbar() {
             <Link
               key={item.title}
               href={item.path}
+              target={item.external ? "_blank" : undefined}
+              rel={item.external ? "noopener noreferrer" : undefined}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="mobile-link text-5xl font-black uppercase tracking-tighter text-foreground hover:italic transition-all"
+              className="mobile-link text-4xl font-black uppercase tracking-tighter text-foreground hover:italic transition-all"
             >
               {item.title}
             </Link>
           ))}
-          <div className="pt-10 mobile-link">
+          <div className="pt-8 mobile-link">
             <ThemeSwitcher />
           </div>
         </div>

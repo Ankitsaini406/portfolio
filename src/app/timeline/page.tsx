@@ -40,24 +40,24 @@ export const metadata: Metadata = {
     ],
 
     alternates: {
-        canonical: "/experience",
+        canonical: "/timeline",
     },
 
     openGraph: {
-        title: "Experience | Ankit Saini - Full-Stack Developer",
+        title: "Experience & Timeline | Ankit Saini - Full-Stack Developer",
 
         description:
             "Explore Ankit Saini's professional journey, technical experience, and work building scalable web and mobile applications with modern full-stack technologies.",
 
-        url: "/experience",
+        url: "/timeline",
 
         type: "profile",
 
         images: [
             {
-                url: "/images/experience-og.jpg",
-                width: 1200,
-                height: 630,
+                url: "/icons/apple-touch-icon.png",
+                width: 512,
+                height: 512,
                 alt: "Ankit Saini - Professional Experience",
             },
         ],
@@ -66,12 +66,12 @@ export const metadata: Metadata = {
     twitter: {
         card: "summary_large_image",
 
-        title: "Experience | Ankit Saini - Full-Stack Developer",
+        title: "Experience & Timeline | Ankit Saini - Full-Stack Developer",
 
         description:
             "Explore Ankit Saini's professional journey and experience building web and mobile applications with Next.js, React, Node.js, Flutter, AWS, and Firebase.",
 
-        images: ["/images/experience-og.jpg"],
+        images: ["/icons/apple-touch-icon.png"],
     },
 
     robots: {

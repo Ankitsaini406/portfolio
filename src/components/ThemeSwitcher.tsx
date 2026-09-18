@@ -59,12 +59,12 @@ export default function ThemeSwitcher() {
             <button
                 onClick={toggleTheme}
                 aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
-                className="group relative flex items-center w-16 h-8 rounded-full bg-white/5 border border-white/10 p-1 transition-colors hover:border-primary/50 cursor-pointer"
+                className="group relative flex items-center w-16 h-8 rounded-full bg-secondary/10 border border-border p-1 transition-colors hover:border-foreground/40 cursor-pointer"
             >
                 {/* Visual Thumb/Slider */}
                 <div
                     ref={thumbRef}
-                    className="absolute z-10 w-6 h-6 rounded-full flex items-center justify-center shadow-lg pointer-events-none"
+                    className="absolute z-10 w-6 h-6 rounded-full flex items-center justify-center shadow-md pointer-events-none"
                 >
                     <div className={`theme-icon ${theme === "dark" ? 'text-foreground' : 'text-background bg-foreground' } `}>
                         {theme === "dark" ? <Sun size={12} /> : <Moon size={12} />}
@@ -72,7 +72,7 @@ export default function ThemeSwitcher() {
                 </div>
 
                 {/* Background Icons (Stationary) */}
-                <div className="flex justify-between w-full px-1.5 opacity-20 group-hover:opacity-40 transition-opacity">
+                <div className="flex justify-between w-full px-1.5 text-secondary opacity-50 group-hover:opacity-80 transition-opacity">
                     <Moon size={12} />
                     <Sun size={12} />
                 </div>

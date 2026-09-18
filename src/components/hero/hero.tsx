@@ -5,7 +5,7 @@ import { TECH_STACK } from "@/lib/data/tech-stack";
 import gsap from "gsap";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
-import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowRight, FileText, Github, Linkedin, Mail } from "lucide-react";
 import Image from "next/image";
 
 export default function Hero() {
@@ -98,18 +98,28 @@ export default function Hero() {
                         Translating complex business requirements into scalable, high-performance web and mobile solutions. Focused on clean architecture, type safety, and user-centric interaction design.
                     </p>
 
-                    <div className="hero-text flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+                    <div className="hero-text flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
                         <Link
                             href="/projects"
-                            className="w-full sm:w-auto group relative px-8 py-4 bg-foreground text-(--color-background) rounded-full overflow-hidden transition-all hover:scale-105 shadow-lg hover:shadow-xl"
+                            className="w-full sm:w-auto group relative px-7 py-3.5 bg-foreground text-background rounded-full overflow-hidden transition-all hover:scale-105 shadow-lg hover:shadow-xl"
                         >
                             <div className="absolute inset-0 bg-secondary translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out" />
-                            <span className="relative font-semibold flex items-center justify-center gap-2">
-                                View Selected Works <ArrowRight className="group-hover:translate-x-1 transition-transform" />
+                            <span className="relative font-semibold flex items-center justify-center gap-2 text-sm">
+                                View Selected Works <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                             </span>
                         </Link>
 
-                        <div className="flex gap-3 mt-4 sm:mt-0">
+                        <Link
+                            href="/resume.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-full sm:w-auto group px-6 py-3.5 border border-border bg-secondary/5 rounded-full hover:border-foreground/50 transition-all text-sm font-semibold flex items-center justify-center gap-2 text-foreground"
+                        >
+                            <FileText className="w-4 h-4 text-secondary group-hover:text-foreground transition-colors" />
+                            <span>Resume</span>
+                        </Link>
+
+                        <div className="flex gap-2.5 mt-2 sm:mt-0">
                             <SocialButton label="GitHub profile" href="https://github.com/Ankitsaini406" icon={<Github />} />
                             <SocialButton label="Linkedin profile" href="https://www.linkedin.com/in/web-ankit-saini/" icon={<Linkedin />} />
                             <SocialButton label="Gmail profile" href="mailto:as.ankitsaini406@gmail.com" icon={<Mail />} />
@@ -119,11 +129,11 @@ export default function Hero() {
                     {/* Senior Level Stats */}
                     <div className="hero-text mt-12 w-full grid grid-cols-3 gap-4 md:gap-8 border-t lg:border-t-0 lg:border-l border-border/20 pt-8 lg:pt-0 lg:pl-6">
                         <div className="hero-stat flex flex-col items-center lg:items-start">
-                            <p className="text-2xl md:text-3xl font-bold text-foreground">{3.5}+</p>
+                            <p className="text-2xl md:text-3xl font-bold text-foreground">3.5+</p>
                             <p className="text-[10px] uppercase tracking-wider text-secondary">Years Exp.</p>
                         </div>
                         <div className="hero-stat flex flex-col items-center lg:items-start">
-                            <p className="text-2xl md:text-3xl font-bold text-foreground">7+</p>
+                            <p className="text-2xl md:text-3xl font-bold text-foreground">11+</p>
                             <p className="text-[10px] uppercase tracking-wider text-secondary">Projects</p>
                         </div>
                         <div className="hero-stat flex flex-col items-center lg:items-start">

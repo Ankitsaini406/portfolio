@@ -130,7 +130,7 @@ export default function AboutSection() {
                         </div>
                         <div>
                             <span className="block text-3xl font-bold text-foreground">
-                                <span className="stat-counter" data-target="7">0</span>+
+                                <span className="stat-counter" data-target="11">0</span>+
                             </span>
                             <span className="text-[10px] md:text-xs font-mono uppercase tracking-widest text-secondary">Projects</span>
                         </div>
@@ -160,7 +160,7 @@ export default function AboutSection() {
                         <div className="absolute -inset-4 rounded-3xl blur-lg opacity-20 group-hover:opacity-30 transition-all duration-1000 group-hover:duration-300 bg-foreground"></div>
 
                         {/* Main image container */}
-                        <div className="relative w-[320px] h-120 rounded-2xl overflow-hidden shadow-2xl border border-(--grid-color) backdrop-blur-sm bg-background/50">
+                        <div className="relative w-full max-w-[320px] h-120 rounded-2xl overflow-hidden shadow-2xl border border-(--grid-color) backdrop-blur-sm bg-background/50">
                             <Image
                                 src="/images/myimage.jpg"
                                 alt="Ankit Saini"

@@ -38,15 +38,9 @@ const ScrollButton = () => {
 
       // Calculate Progress Offset
       if (progressRef.current && scrollTotal > 0) {
-        const progress = scrollCurrent / scrollTotal;
+        const progress = Math.min(Math.max(scrollCurrent / scrollTotal, 0), 1);
         const dashoffset = circumference - progress * circumference;
-        
-        // Use GSAP for smooth stroke update
-        gsap.to(progressRef.current, {
-          strokeDashoffset: dashoffset,
-          duration: 0.1,
-          ease: "none"
-        });
+        progressRef.current.style.strokeDashoffset = `${dashoffset}px`;
       }
     };
 
@@ -109,11 +103,11 @@ const ScrollButton = () => {
       onClick={scrollToTop}
       onMouseEnter={handleMouseEnter}
       aria-label="Scroll to top"
-      className="fixed bottom-8 right-8 w-12 h-12 md:w-14 md:h-14 z-50 group flex items-center justify-center cursor-pointer mix-blend-difference"
+      className="fixed bottom-8 right-8 w-12 h-12 md:w-14 md:h-14 z-50 group flex items-center justify-center cursor-pointer"
       style={{ transform: "translateY(60px)", opacity: 0 }}
     >
       {/* Container for SVG and Icon */}
-      <div className="relative w-full h-full flex items-center justify-center rounded-full bg-(--color-background) shadow-2xl transition-transform duration-300 group-hover:scale-110">
+      <div className="relative w-full h-full flex items-center justify-center rounded-full bg-background border border-border shadow-2xl transition-transform duration-300 group-hover:scale-110">
         
         {/* Progress Ring SVG */}
         <svg 
@@ -128,7 +122,7 @@ const ScrollButton = () => {
             fill="none"
             stroke="currentColor"
             strokeWidth="2"
-            className="text-color-secondary opacity-20"
+            className="text-secondary opacity-20"
           />
           {/* Progress Circle (fills up) */}
           <circle
@@ -139,7 +133,7 @@ const ScrollButton = () => {
             fill="none"
             stroke="currentColor"
             strokeWidth="2"
-            className="text-foreground transition-all"
+            className="text-foreground transition-all duration-75"
             strokeLinecap="round"
           />
         </svg>

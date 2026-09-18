@@ -95,12 +95,12 @@ const Template = ({ children }: { children: React.ReactNode }) => {
             />
 
             {/* Stream-safe Content */}
-            <main
+            <div
                 ref={contentRef}
                 className="relative z-10 will-change-transform"
             >
                 {children}
-            </main>
+            </div>
 
             {/* Subtle Grain */}
             <div

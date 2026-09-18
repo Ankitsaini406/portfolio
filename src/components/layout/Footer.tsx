@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useEffect, useState } from "react";
-import { ArrowUpRight, Clock, Github, Linkedin, Mail, MapPin } from "lucide-react";
+import { ArrowUpRight, Check, Clock, Copy, Github, Linkedin, Mail, MapPin } from "lucide-react";
 import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -15,7 +15,15 @@ export default function Footer() {
     const footerRef = useRef<HTMLElement>(null);
     const marqueeRef = useRef<HTMLDivElement>(null);
     const [time, setTime] = useState("");
+    const [copied, setCopied] = useState(false);
     const pathname = usePathname();
+
+    const handleCopyEmail = (e: React.MouseEvent) => {
+        e.preventDefault();
+        navigator.clipboard.writeText("as.ankitsaini406@gmail.com");
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+    };
 
     useEffect(() => {
         // 1. Dynamic Clock logic
@@ -64,7 +72,7 @@ export default function Footer() {
     return (
         <footer
             ref={footerRef}
-            className="relative w-full bg-(--color-background) pt-24 pb-8 overflow-hidden border-t border-white/5"
+            className="relative w-full bg-background pt-24 pb-8 overflow-hidden border-t border-border"
         >
             {/* Background Marquee - Using Clamp for Fluid Typography */}
             <div className="absolute inset-0 pointer-events-none select-none opacity-[0.03] flex items-end pb-20">
@@ -87,26 +95,46 @@ export default function Footer() {
                                 READY TO <br />
                                 <span className="text-foreground/20">EVOLVE?</span>
                             </h2>
-                            <p className="text-lg md:text-xl text-muted-foreground font-light max-w-md">
-                                Currently accepting high-impact projects and engineering collaborations.
+                            <p className="text-lg md:text-xl text-secondary font-light max-w-md">
+                                Currently accepting high-impact projects, engineering collaborations, and senior full-stack roles.
                             </p>
                         </div>
 
-                        {/* Interactive Email Pill */}
-                        <Link
-                            href="mailto:as.ankitsaini406@gmail.com"
-                            className="group relative inline-flex flex-col md:flex-row items-start md:items-center gap-6 p-1"
-                        >
-                            <div className="w-20 h-20 rounded-full border bg-foreground text-background flex items-center justify-center text-3xl group-hover:scale-110 group-hover:bg-background group-hover:text-foreground group-hover:border-foreground transition-all duration-500">
-                                <ArrowUpRight className="group-hover:rotate-45 transition-transform duration-500" />
-                            </div>
-                            <div className="space-y-1">
-                                <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground">Start a conversation</p>
-                                <p className="text-2xl md:text-4xl font-medium tracking-tight border-b border-white/10 group-hover:border-primary transition-colors">
-                                    as.ankitsaini406@gmail.com
-                                </p>
-                            </div>
-                        </Link>
+                        {/* Interactive Email Pill & Quick Copy */}
+                        <div className="flex flex-wrap items-center gap-4">
+                            <Link
+                                href="mailto:as.ankitsaini406@gmail.com"
+                                className="group relative inline-flex flex-col md:flex-row items-start md:items-center gap-5 p-1"
+                            >
+                                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full border border-border bg-foreground text-background flex items-center justify-center text-2xl md:text-3xl group-hover:scale-105 group-hover:bg-background group-hover:text-foreground group-hover:border-foreground transition-all duration-300">
+                                    <ArrowUpRight className="group-hover:rotate-45 transition-transform duration-300" />
+                                </div>
+                                <div className="space-y-1">
+                                    <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted">Start a conversation</p>
+                                    <p className="text-xl md:text-3xl font-medium tracking-tight border-b border-border group-hover:border-foreground transition-colors text-foreground">
+                                        as.ankitsaini406@gmail.com
+                                    </p>
+                                </div>
+                            </Link>
+
+                            <button
+                                onClick={handleCopyEmail}
+                                aria-label="Copy email address"
+                                className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-secondary/5 hover:bg-secondary/10 transition-colors text-xs font-mono text-secondary hover:text-foreground cursor-pointer"
+                            >
+                                {copied ? (
+                                    <>
+                                        <Check className="w-3.5 h-3.5 text-green-500" />
+                                        <span className="text-green-500">Copied!</span>
+                                    </>
+                                ) : (
+                                    <>
+                                        <Copy className="w-3.5 h-3.5" />
+                                        <span>Copy Email</span>
+                                    </>
+                                )}
+                            </button>
+                        </div>
                     </div>
 
                     {/* Meta Data Area (Right Side) */}
@@ -132,40 +160,38 @@ export default function Footer() {
                                     <MapPin />
                                     <span className="text-[10px] font-bold uppercase tracking-widest">Location</span>
                                 </div>
-                                <p className="text-lg text-muted-foreground">India — Worldwide</p>
+                                <p className="text-lg text-secondary">India — Worldwide</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 {/* --- Bottom Utility Bar --- */}
-                <div className="footer-reveal mt-24 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-                    <div className="flex items-center gap-8 text-[10px] font-bold uppercase tracking-[0.4em] text-muted-foreground/60">
+                <div className="footer-reveal mt-20 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-6">
+                    <div className="flex items-center gap-8 text-[10px] font-bold uppercase tracking-[0.3em] text-muted">
                         <p suppressHydrationWarning>
                             © {new Date().getFullYear()} ALL RIGHTS RESERVED
                         </p>
-                        <span className="hidden md:block w-1 h-1 bg-white/20 rounded-full" />
+                        <span className="hidden md:block w-1 h-1 bg-border rounded-full" />
                         <p>DEVELOPED BY ANKIT</p>
                     </div>
 
-                    {/* <div className="flex items-center gap-10">
-                        {["GitHub", "LinkedIn", "Resume"].map((item) => (
-                            <Link 
-                                key={item} 
-                                href="#" 
-                                className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground hover:text-foreground/50 transition-colors"
-                            >
-                                {item}
-                            </Link>
-                        ))}
-                    </div> */}
+                    <div className="flex items-center gap-8 text-[11px] font-mono uppercase tracking-widest text-secondary">
+                        <Link href="https://github.com/Ankitsaini406" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
+                            GitHub
+                        </Link>
+                        <Link href="https://www.linkedin.com/in/web-ankit-saini/" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
+                            LinkedIn
+                        </Link>
+                        <Link href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="text-foreground font-bold hover:underline transition-all">
+                            Resume ↗
+                        </Link>
+                    </div>
                 </div>
             </div>
         </footer>
     );
 }
-
-// --- High-Performance Magnetic Social Button ---
 
 function SocialButton({ href, label, icon }: { href: string; label: string; icon: React.ReactNode }) {
     const ref = useRef<HTMLAnchorElement>(null);
@@ -205,7 +231,9 @@ function SocialButton({ href, label, icon }: { href: string; label: string; icon
             ref={ref}
             aria-label={label}
             href={href}
-            className="w-16 h-16 rounded-full border border-foreground/10 flex items-center justify-center text-xl text-foreground hover:border-primary/50 transition-colors bg-white/2 backdrop-blur-md"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-14 h-14 md:w-16 md:h-16 rounded-full border border-border flex items-center justify-center text-xl text-foreground hover:border-foreground/40 transition-colors bg-secondary/5 backdrop-blur-md"
         >
             {icon}
         </Link>
