@@ -1,7 +1,15 @@
-import { MetadataRoute } from 'next'
+import { MetadataRoute } from 'next';
+import { projects } from '@/lib/data/projects';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://ankitsaini.vercel.app'
+    const baseUrl = 'https://ankitsaini.vercel.app';
+
+    const projectUrls: MetadataRoute.Sitemap = projects.map((p) => ({
+        url: `${baseUrl}/projects/${p.id}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly',
+        priority: 0.8,
+    }));
 
     return [
         {
@@ -14,8 +22,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
             url: `${baseUrl}/projects`,
             lastModified: new Date(),
             changeFrequency: 'weekly',
-            priority: 0.9, // Higher priority as it showcases your work
+            priority: 0.9,
         },
+        ...projectUrls,
         {
             url: `${baseUrl}/about`,
             lastModified: new Date(),
@@ -28,5 +37,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: 'monthly',
             priority: 0.6,
         },
-    ]
+    ];
 }

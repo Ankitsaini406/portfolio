@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { ArrowUpRight, Check, Clock, Copy, Github, Linkedin, Mail, MapPin } from "lucide-react";
+import { ArrowUpRight, Check, Clock, Copy, Mail, MapPin } from "lucide-react";
+import { Github, Linkedin } from "@/components/icons";
 import Link from "next/link";
 
 export default function Footer() {

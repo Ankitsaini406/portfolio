@@ -37,7 +37,7 @@ export default function Navbar() {
                    bg-primary-bg/80 backdrop-blur-xl border border-border shadow-2xl rounded-full transition-all"
       >
         <Link href="/" className="relative h-9 w-9 ml-1 group flex items-center justify-center hover:scale-110 transition-all duration-300">
-          <Image src='/logo.png' width={56} height={56} alt="Logo" priority={false} className="rounded-full group-hover:rotate-12 transition-transform duration-300" />
+          <Image src='/logo.png' width={56} height={56} alt="Logo" priority={false} className="w-full h-full object-cover rounded-full group-hover:rotate-12 transition-transform duration-300" />
         </Link>
 
         <div className="flex items-center gap-1 px-2">
@@ -77,7 +77,7 @@ export default function Navbar() {
       {/* --- Mobile Top Bar --- */}
       <div className="fixed top-0 left-0 w-full md:hidden z-50 p-4 flex justify-between items-center bg-background/80 backdrop-blur-lg border-b border-border">
         <div className="relative h-8 w-8">
-          <Image src='/logo.png' width={56} height={56} alt="Logo" priority={false} className="rounded-full" />
+          <Image src='/logo.png' width={56} height={56} alt="Logo" priority={false} className="w-full h-full object-cover rounded-full" />
         </div>
 
         <button

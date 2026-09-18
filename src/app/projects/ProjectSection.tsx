@@ -1,37 +1,14 @@
-"use client";
-
-import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Projectsdetial } from "@/lib/types/types";
 import { projects } from "@/lib/data/projects";
 import Link from "next/link";
-import { ExternalLink, Layers, Smartphone, Sparkles, X } from "lucide-react";
+import { ExternalLink, Smartphone, Sparkles } from "lucide-react";
 
 export default function ProjectSection() {
-    const [selectedProject, setSelectedProject] = useState<Projectsdetial | null>(null);
 
     const sortedProjects = [...projects].sort(
         (a, b) => Number(b.id) - Number(a.id)
     );
-
-    // Close modal on ESC key
-    useEffect(() => {
-        const handleKeyDown = (e: KeyboardEvent) => {
-            if (e.key === "Escape") {
-                setSelectedProject(null);
-            }
-        };
-        if (selectedProject) {
-            document.body.style.overflow = "hidden";
-            window.addEventListener("keydown", handleKeyDown);
-        } else {
-            document.body.style.overflow = "auto";
-        }
-        return () => {
-            document.body.style.overflow = "auto";
-            window.removeEventListener("keydown", handleKeyDown);
-        };
-    }, [selectedProject]);
 
     return (
         <section
@@ -62,9 +39,9 @@ export default function ProjectSection() {
                         className="group flex flex-col bg-primary-bg/50 border border-border rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:shadow-2xl hover:border-foreground/40 hover:-translate-y-2"
                     >
                         {/* Image Container */}
-                        <div
-                            onClick={() => setSelectedProject(project)}
-                            className="relative w-full h-52 overflow-hidden cursor-pointer bg-secondary/5"
+                        <Link
+                            href={`/projects/${project.id}`}
+                            className="relative w-full h-52 overflow-hidden cursor-pointer bg-secondary/5 block group/image"
                         >
                             <Image
                                 src={`/projects/${project.image}`}
@@ -76,7 +53,8 @@ export default function ProjectSection() {
                             <div className="absolute inset-0 bg-background/0 group-hover:bg-background/20 transition-colors duration-300" />
                             {/* Subtle diagonal shine effect */}
                             <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out pointer-events-none" />
-                        </div>
+                        </Link>
+
 
                         {/* Content Container */}
                         <div className="p-6 flex flex-col justify-between flex-1">
@@ -110,12 +88,12 @@ export default function ProjectSection() {
 
                             {/* Actions Bar */}
                             <div className="mt-6 pt-4 border-t border-border flex flex-wrap items-center justify-between gap-2.5">
-                                <button
-                                    onClick={() => setSelectedProject(project)}
+                                <Link
+                                    href={`/projects/${project.id}`}
                                     className="text-xs font-semibold uppercase tracking-wider text-secondary hover:text-foreground transition-colors cursor-pointer"
                                 >
                                     Read Architecture →
-                                </button>
+                                </Link>
 
                                 <div className="flex items-center gap-2">
                                     {project.appLink && (
@@ -146,93 +124,6 @@ export default function ProjectSection() {
                     </article>
                 ))}
             </div>
-
-            {/* In-Depth Project Detail Modal */}
-            {selectedProject && (
-                <div
-                    className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 bg-background/80 backdrop-blur-md animate-in fade-in duration-200"
-                    onClick={() => setSelectedProject(null)}
-                >
-                    <div
-                        onClick={(e) => e.stopPropagation()}
-                        className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-background border border-border rounded-3xl p-6 md:p-8 shadow-2xl space-y-6 transition-all duration-300 scale-100 animate-in zoom-in-95"
-                    >
-                        {/* Close Button */}
-                        <button
-                            onClick={() => setSelectedProject(null)}
-                            aria-label="Close modal"
-                            className="absolute top-6 right-6 w-9 h-9 rounded-full border border-border flex items-center justify-center text-secondary hover:text-foreground hover:bg-secondary/10 transition-colors cursor-pointer"
-                        >
-                            <X className="w-4 h-4" />
-                        </button>
-
-                        {/* Modal Image */}
-                        <div className="relative w-full h-64 md:h-80 rounded-2xl overflow-hidden border border-border bg-secondary/5">
-                            <Image
-                                src={`/projects/${selectedProject.image}`}
-                                alt={selectedProject.name}
-                                fill
-                                className="object-cover"
-                            />
-                        </div>
-
-                        {/* Title & Tags */}
-                        <div>
-                            <div className="flex flex-wrap gap-2 mb-3">
-                                {selectedProject.tags?.map((tag, idx) => (
-                                    <span
-                                        key={idx}
-                                        className="px-3 py-1 text-xs font-mono rounded-full border border-border bg-secondary/5 text-secondary"
-                                    >
-                                        {tag}
-                                    </span>
-                                ))}
-                            </div>
-                            <h3 className="text-3xl md:text-4xl font-black uppercase tracking-tight text-foreground">
-                                {selectedProject.name}
-                            </h3>
-                        </div>
-
-                        {/* Full Architecture Narrative */}
-                        <div className="space-y-4">
-                            <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-secondary">
-                                <Layers className="w-4 h-4 text-foreground" />
-                                <span>Architecture & Engineering Overview</span>
-                            </div>
-                            <p className="text-secondary text-base leading-relaxed whitespace-pre-line">
-                                {selectedProject.description}
-                            </p>
-                        </div>
-
-                        {/* Footer Links */}
-                        {(selectedProject.link || selectedProject.appLink) && (
-                            <div className="pt-4 border-t border-border flex flex-wrap justify-end gap-3">
-                                {selectedProject.appLink && (
-                                    <Link
-                                        href={selectedProject.appLink}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-border bg-secondary/5 text-foreground font-semibold text-sm hover:bg-secondary/15 transition-colors"
-                                    >
-                                        <Smartphone className="w-4 h-4" /> Google Play Store
-                                    </Link>
-                                )}
-
-                                {selectedProject.link && (
-                                    <Link
-                                        href={selectedProject.link}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-foreground text-background font-semibold text-sm hover:opacity-90 transition-opacity"
-                                    >
-                                        Visit Live Web <ExternalLink className="w-4 h-4" />
-                                    </Link>
-                                )}
-                            </div>
-                        )}
-                    </div>
-                </div>
-            )}
         </section>
     );
 }

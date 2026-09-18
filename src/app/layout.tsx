@@ -76,7 +76,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" suppressHydrationWarning className="scroll-smooth antialiased">
+    <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth" className="scroll-smooth antialiased">
       <head>
         <script
           dangerouslySetInnerHTML={{

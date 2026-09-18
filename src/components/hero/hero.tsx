@@ -1,6 +1,7 @@
 import { TECH_STACK } from "@/lib/data/tech-stack";
 import Link from "next/link";
-import { ArrowRight, FileText, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowRight, FileText, Mail } from "lucide-react";
+import { Github, Linkedin } from "@/components/icons";
 import Image from "next/image";
 
 export default function Hero() {
@@ -188,7 +189,7 @@ export default function Hero() {
                                     alt={name}
                                     width={24}
                                     height={24}
-                                    className="object-contain"
+                                    className="w-6 h-6 object-contain"
                                 />
                                 <span className="text-xs md:text-sm font-semibold text-foreground whitespace-nowrap">
                                     {name}
@@ -218,4 +219,4 @@ const SocialButton = ({ href, label, icon }: { href: string, label: string, icon
             {icon}
         </Link>
     );
-};
+};
