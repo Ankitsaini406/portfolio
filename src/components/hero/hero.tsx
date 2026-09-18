@@ -1,64 +1,11 @@
-"use client";
-
-// import { useExperienceYears } from "@/hooks/useExperienceYears";
 import { TECH_STACK } from "@/lib/data/tech-stack";
-import gsap from "gsap";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
 import { ArrowRight, FileText, Github, Linkedin, Mail } from "lucide-react";
 import Image from "next/image";
 
 export default function Hero() {
-    const containerRef = useRef<HTMLDivElement>(null);
-    // const experienceYears = useExperienceYears("2022-07-01");
-
-    useEffect(() => {
-        const ctx = gsap.context(() => {
-            const tl = gsap.timeline({
-                defaults: { ease: "power3.out" }
-            });
-
-            // 1. Staggered Text (DO NOT hide LCP text)
-            tl.from(".hero-text", {
-                y: 30,
-                opacity: 0,
-                duration: 0.9,
-                stagger: 0.08,
-                clearProps: "transform"
-            });
-
-            // 2. Line Animation (transform only)
-            tl.from(".hero-line", {
-                scaleX: 0,
-                transformOrigin: "left",
-                duration: 1.2,
-                ease: "expo.out"
-            }, "-=0.4");
-
-            // 3. Stats
-            tl.from(".hero-stat", {
-                y: 20,
-                opacity: 0,
-                duration: 0.7,
-                stagger: 0.08
-            }, "-=0.8");
-
-            // 4. Code Window (GPU safe)
-            tl.from(".code-window", {
-                y: 30,
-                opacity: 0,
-                duration: 1,
-                ease: "power3.out"
-            }, "-=0.6");
-
-        }, containerRef);
-
-        return () => ctx.revert();
-    }, []);
-
     return (
         <section
-            ref={containerRef}
             className="relative min-h-dvh 2xl:min-h-4/5 flex flex-col justify-center overflow-x-hidden gap-5 pt-32 pb-12 lg:pt-20"
             id="home"
         >

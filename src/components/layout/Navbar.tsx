@@ -1,16 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
-import { gsap } from "gsap";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
 import { usePathname } from "next/navigation";
 
 export default function Navbar() {
-  const navRef = useRef<HTMLDivElement>(null);
-  const mobileMenuRef = useRef<HTMLDivElement>(null);
-  const logoRef = useRef<HTMLAnchorElement>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
@@ -22,59 +18,26 @@ export default function Navbar() {
     { title: "Resume", path: "/resume.pdf", external: true },
   ];
 
-  // 1. Magnetic Logo & Entrance Animation
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Entrance
-      gsap.fromTo(navRef.current,
-        { y: -30, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1, ease: "expo.out", delay: 0.2 }
-      );
-
-      // Magnetic effect for Logo
-      const logo = logoRef.current;
-      const handleMouseMove = (e: MouseEvent) => {
-        const { clientX, clientY } = e;
-        const { left, top, width, height } = logo!.getBoundingClientRect();
-        const x = clientX - (left + width / 2);
-        const y = clientY - (top + height / 2);
-        gsap.to(logo, { x: x * 0.3, y: y * 0.3, duration: 0.4 });
-      };
-      const handleMouseLeave = () => {
-        gsap.to(logo, { x: 0, y: 0, duration: 0.4, ease: "elastic.out(1, 0.3)" });
-      };
-
-      logo?.addEventListener("mousemove", handleMouseMove);
-      logo?.addEventListener("mouseleave", handleMouseLeave);
-    });
-    return () => ctx.revert();
-  }, []);
-
-  // 2. Mobile Menu Animation
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = "hidden";
-      gsap.to(mobileMenuRef.current, { x: 0, opacity: 1, duration: 0.6, ease: "expo.out" });
-      gsap.fromTo(".mobile-link",
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.4, stagger: 0.1, delay: 0.2 }
-      );
     } else {
       document.body.style.overflow = "auto";
-      gsap.to(mobileMenuRef.current, { x: "100%", opacity: 0, duration: 0.4, ease: "expo.in" });
     }
+    return () => {
+      document.body.style.overflow = "auto";
+    };
   }, [isMobileMenuOpen]);
 
   return (
     <>
       {/* --- Desktop Navbar --- */}
       <nav
-        ref={navRef}
         className="fixed top-6 left-1/2 -translate-x-1/2 hidden md:flex items-center gap-1 p-1.5 z-50 
-                   bg-primary-bg/80 backdrop-blur-xl border border-border shadow-2xl rounded-full"
+                   bg-primary-bg/80 backdrop-blur-xl border border-border shadow-2xl rounded-full transition-all"
       >
-        <Link ref={logoRef} href="/" className="relative h-9 w-9 ml-1 group flex items-center justify-center">
-          <Image src='/logo.png' width={56} height={56} alt="Logo" priority={false} className="rounded-full transition-transform" />
+        <Link href="/" className="relative h-9 w-9 ml-1 group flex items-center justify-center hover:scale-105 transition-transform">
+          <Image src='/logo.png' width={56} height={56} alt="Logo" priority={false} className="rounded-full" />
         </Link>
 
         <div className="flex items-center gap-1 px-2">
@@ -89,7 +52,7 @@ export default function Navbar() {
                 className="relative px-4 py-2 rounded-full transition-all duration-300 group overflow-hidden"
               >
                 {/* Background Pill */}
-                <span className={`absolute inset-0 transition-transform duration-500 ease-out rounded-full
+                <span className={`absolute inset-0 transition-transform duration-300 ease-out rounded-full
                   ${isActive ? 'bg-foreground translate-y-0' : 'bg-foreground/10 translate-y-full group-hover:translate-y-0'}`}
                 />
 
@@ -130,10 +93,10 @@ export default function Navbar() {
 
       {/* --- Mobile Menu Overlay --- */}
       <div
-        ref={mobileMenuRef}
-        className="fixed inset-0 bg-background z-45 md:hidden flex flex-col items-center justify-center p-10 translate-x-full opacity-0"
+        className={`fixed inset-0 bg-background z-45 md:hidden flex flex-col items-center justify-center p-10 transition-all duration-300 ${
+          isMobileMenuOpen ? "opacity-100 translate-x-0 pointer-events-auto" : "opacity-0 translate-x-full pointer-events-none"
+        }`}
       >
-        {/* Subtle Background Text for a "Modern" look */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20vw] font-black text-secondary/5 pointer-events-none select-none">
           MENU
         </div>
@@ -146,12 +109,12 @@ export default function Navbar() {
               target={item.external ? "_blank" : undefined}
               rel={item.external ? "noopener noreferrer" : undefined}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="mobile-link text-4xl font-black uppercase tracking-tighter text-foreground hover:italic transition-all"
+              className="text-4xl font-black uppercase tracking-tighter text-foreground hover:italic transition-all"
             >
               {item.title}
             </Link>
           ))}
-          <div className="pt-8 mobile-link">
+          <div className="pt-8">
             <ThemeSwitcher />
           </div>
         </div>

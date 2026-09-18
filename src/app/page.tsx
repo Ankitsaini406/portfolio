@@ -1,12 +1,15 @@
 import Hero from "@/components/hero/hero";
-import LazySections from "@/components/LazySection";
+import AboutSection from "@/app/about/AboutSection";
+import ProjectSection from "@/app/projects/ProjectSection";
+import TimelineSection from "@/app/timeline/TimelineSection";
 
 export default async function Home() {
-
   return (
     <>
       <Hero />
-      <LazySections />
+      <AboutSection />
+      <ProjectSection />
+      <TimelineSection />
     </>
   );
 }

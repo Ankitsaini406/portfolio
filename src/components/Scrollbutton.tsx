@@ -1,42 +1,32 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowUp } from "lucide-react";
 
-gsap.registerPlugin(ScrollTrigger);
-
 const ScrollButton = () => {
-  const buttonRef = useRef<HTMLButtonElement>(null);
   const progressRef = useRef<SVGCircleElement>(null);
-  const arrowRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
   // SVG Configuration
   const radius = 20;
   const circumference = 2 * Math.PI * radius;
 
-  // 1. Scroll Progress Logic & Visibility
   useEffect(() => {
-    // Set initial state
     if (progressRef.current) {
       progressRef.current.style.strokeDasharray = `${circumference} ${circumference}`;
-      progressRef.current.style.strokeDashoffset = `${circumference}`;
+      progressRef.current.style.strokeDashoffset = `${circumference}px`;
     }
 
     const updateProgress = () => {
       const scrollTotal = document.documentElement.scrollHeight - window.innerHeight;
       const scrollCurrent = window.scrollY;
-      
-      // Calculate visibility
+
       if (scrollCurrent > 300) {
-        if (!isVisible) setIsVisible(true);
+        setIsVisible(true);
       } else {
-        if (isVisible) setIsVisible(false);
+        setIsVisible(false);
       }
 
-      // Calculate Progress Offset
       if (progressRef.current && scrollTotal > 0) {
         const progress = Math.min(Math.max(scrollCurrent / scrollTotal, 0), 1);
         const dashoffset = circumference - progress * circumference;
@@ -46,71 +36,24 @@ const ScrollButton = () => {
 
     window.addEventListener("scroll", updateProgress, { passive: true });
     return () => window.removeEventListener("scroll", updateProgress);
-  }, [circumference, isVisible]);
-
-  // 2. Button Entrance/Exit Animation
-  useEffect(() => {
-    const btn = buttonRef.current;
-    if (!btn) return;
-
-    if (isVisible) {
-      gsap.to(btn, {
-        y: 0,
-        opacity: 1,
-        scale: 1,
-        duration: 0.6,
-        ease: "power4.out",
-      });
-    } else {
-      gsap.to(btn, {
-        y: 60,
-        opacity: 0,
-        scale: 0.5,
-        duration: 0.4,
-        ease: "power3.in",
-      });
-    }
-  }, [isVisible]);
-
-  // 3. Hover Animation (Arrow Loop)
-  const handleMouseEnter = () => {
-    if (!arrowRef.current) return;
-    
-    // Animate current arrow up and out, then reset from bottom
-    const tl = gsap.timeline();
-    
-    tl.to(arrowRef.current, {
-      y: "-150%",
-      duration: 0.3,
-      ease: "power2.in"
-    })
-    .set(arrowRef.current, { y: "150%" }) // Instant jump to bottom
-    .to(arrowRef.current, {
-      y: "0%",
-      duration: 0.3,
-      ease: "power2.out"
-    });
-  };
+  }, [circumference]);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-    handleMouseEnter(); // Trigger animation on click too
   };
 
   return (
     <button
-      ref={buttonRef}
       onClick={scrollToTop}
-      onMouseEnter={handleMouseEnter}
       aria-label="Scroll to top"
-      className="fixed bottom-8 right-8 w-12 h-12 md:w-14 md:h-14 z-50 group flex items-center justify-center cursor-pointer"
-      style={{ transform: "translateY(60px)", opacity: 0 }}
+      className={`fixed bottom-8 right-8 w-12 h-12 md:w-14 md:h-14 z-50 group flex items-center justify-center cursor-pointer transition-all duration-300 ${
+        isVisible ? "opacity-100 translate-y-0 scale-100 pointer-events-auto" : "opacity-0 translate-y-8 scale-75 pointer-events-none"
+      }`}
     >
       {/* Container for SVG and Icon */}
       <div className="relative w-full h-full flex items-center justify-center rounded-full bg-background border border-border shadow-2xl transition-transform duration-300 group-hover:scale-110">
-        
         {/* Progress Ring SVG */}
-        <svg 
+        <svg
           className="absolute inset-0 w-full h-full -rotate-90 pointer-events-none"
           viewBox="0 0 44 44"
         >
@@ -140,11 +83,10 @@ const ScrollButton = () => {
 
         {/* The Arrow Icon */}
         <div className="relative overflow-hidden w-full h-full flex items-center justify-center rounded-full">
-            <div ref={arrowRef} className="text-foreground text-sm md:text-base">
-                <ArrowUp />
-            </div>
+          <div className="text-foreground text-sm md:text-base group-hover:-translate-y-0.5 transition-transform">
+            <ArrowUp className="w-5 h-5" />
+          </div>
         </div>
-
       </div>
     </button>
   );

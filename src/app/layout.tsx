@@ -16,13 +16,13 @@ export const metadata: Metadata = {
 
   title: "Ankit Saini | Full-Stack Developer & UI/UX Architect",
   description:
-    "Specializing in high-performance Next.js applications, GSAP animations, and scalable backend systems with AWS and Firebase.",
+    "Specializing in high-performance Next.js applications, clean UI/UX architectures, and scalable backend systems with AWS and Firebase.",
 
   keywords: [
     "Full-Stack Developer",
     "Next.js Portfolio",
     "React Developer India",
-    "GSAP Animations",
+    "TypeScript",
   ],
 
   manifest: "/manifest.json",
@@ -71,7 +71,7 @@ export default function RootLayout({
       "https://github.com/Ankitsaini406",
       "https://www.linkedin.com/in/web-ankit-saini/"
     ],
-    "knowsAbout": ["React", "Next.js", "Node.js", "GSAP", "AWS", "Flutter", "Firebase"],
+    "knowsAbout": ["React", "Next.js", "Node.js", "TypeScript", "AWS", "Flutter", "Firebase"],
     "image": "https://ankitsaini.vercel.app/icons/apple-touch-icon.png"
   };
 

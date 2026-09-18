@@ -1,22 +1,12 @@
 "use client";
 
-import React, { useRef, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ArrowUpRight, Check, Clock, Copy, Github, Linkedin, Mail, MapPin } from "lucide-react";
 import Link from "next/link";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { usePathname } from "next/navigation";
-
-if (typeof window !== "undefined") {
-    gsap.registerPlugin(ScrollTrigger);
-}
 
 export default function Footer() {
-    const footerRef = useRef<HTMLElement>(null);
-    const marqueeRef = useRef<HTMLDivElement>(null);
     const [time, setTime] = useState("");
     const [copied, setCopied] = useState(false);
-    const pathname = usePathname();
 
     const handleCopyEmail = (e: React.MouseEvent) => {
         e.preventDefault();
@@ -26,7 +16,6 @@ export default function Footer() {
     };
 
     useEffect(() => {
-        // 1. Dynamic Clock logic
         const updateClock = () => {
             const now = new Date();
             setTime(now.toLocaleTimeString('en-US', {
@@ -39,44 +28,16 @@ export default function Footer() {
         };
         updateClock();
         const interval = setInterval(updateClock, 1000);
-
-        const ctx = gsap.context(() => {
-            // 2. Entrance Animation
-            gsap.from(".footer-reveal", {
-                y: 100,
-                opacity: 0,
-                stagger: 0.15,
-                duration: 1.2,
-                ease: "expo.out",
-                scrollTrigger: {
-                    trigger: footerRef.current,
-                    start: "top 90%",
-                }
-            });
-
-            // 3. Optimized Marquee
-            gsap.to(marqueeRef.current, {
-                xPercent: -50,
-                repeat: -1,
-                duration: 25,
-                ease: "none",
-            });
-        }, footerRef);
-
-        return () => {
-            ctx.revert();
-            clearInterval(interval);
-        };
-    }, [pathname]);
+        return () => clearInterval(interval);
+    }, []);
 
     return (
         <footer
-            ref={footerRef}
             className="relative w-full bg-background pt-24 pb-8 overflow-hidden border-t border-border"
         >
-            {/* Background Marquee - Using Clamp for Fluid Typography */}
-            <div className="absolute inset-0 pointer-events-none select-none opacity-[0.03] flex items-end pb-20">
-                <div ref={marqueeRef} className="flex whitespace-nowrap will-change-transform">
+            {/* Background Marquee using CSS */}
+            <div className="absolute inset-0 pointer-events-none select-none opacity-[0.03] flex items-end pb-20 overflow-hidden">
+                <div className="marquee-track flex whitespace-nowrap will-change-transform">
                     {[...Array(4)].map((_, i) => (
                         <span key={i} className="text-[clamp(8rem,15vw,20rem)] font-black uppercase tracking-tighter px-10">
                             ANKIT SAINI — LET&apos;S CONNECT —
@@ -89,7 +50,7 @@ export default function Footer() {
                 <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-16 lg:gap-0">
 
                     {/* Brand & CTA Area */}
-                    <div className="footer-reveal max-w-2xl space-y-10">
+                    <div className="max-w-2xl space-y-10">
                         <div className="space-y-6">
                             <h2 className="text-5xl md:text-8xl font-black tracking-tighter leading-[0.85] text-foreground">
                                 READY TO <br />
@@ -138,7 +99,7 @@ export default function Footer() {
                     </div>
 
                     {/* Meta Data Area (Right Side) */}
-                    <div className="footer-reveal flex flex-col items-start lg:items-end gap-12 w-full lg:w-auto">
+                    <div className="flex flex-col items-start lg:items-end gap-12 w-full lg:w-auto">
                         {/* Social Stack */}
                         <div className="flex flex-wrap gap-4">
                             <SocialButton label="GitHub profile" href="https://github.com/Ankitsaini406" icon={<Github />} />
@@ -167,7 +128,7 @@ export default function Footer() {
                 </div>
 
                 {/* --- Bottom Utility Bar --- */}
-                <div className="footer-reveal mt-20 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-6">
+                <div className="mt-20 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-6">
                     <div className="flex items-center gap-8 text-[10px] font-bold uppercase tracking-[0.3em] text-muted">
                         <p suppressHydrationWarning>
                             © {new Date().getFullYear()} ALL RIGHTS RESERVED
@@ -194,46 +155,13 @@ export default function Footer() {
 }
 
 function SocialButton({ href, label, icon }: { href: string; label: string; icon: React.ReactNode }) {
-    const ref = useRef<HTMLAnchorElement>(null);
-
-    useEffect(() => {
-        const element = ref.current;
-        if (!element) return;
-
-        const handleMove = (e: MouseEvent) => {
-            const { clientX, clientY } = e;
-            const { left, top, width, height } = element.getBoundingClientRect();
-            const x = clientX - (left + width / 2);
-            const y = clientY - (top + height / 2);
-
-            gsap.to(element, {
-                x: x * 0.4,
-                y: y * 0.4,
-                duration: 0.4,
-                ease: "power2.out"
-            });
-        };
-
-        const handleLeave = () => {
-            gsap.to(element, { x: 0, y: 0, duration: 0.7, ease: "elastic.out(1, 0.3)" });
-        };
-
-        element.addEventListener("mousemove", handleMove);
-        element.addEventListener("mouseleave", handleLeave);
-        return () => {
-            element.removeEventListener("mousemove", handleMove);
-            element.removeEventListener("mouseleave", handleLeave);
-        };
-    }, []);
-
     return (
         <Link
-            ref={ref}
             aria-label={label}
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-14 h-14 md:w-16 md:h-16 rounded-full border border-border flex items-center justify-center text-xl text-foreground hover:border-foreground/40 transition-colors bg-secondary/5 backdrop-blur-md"
+            className="w-14 h-14 md:w-16 md:h-16 rounded-full border border-border flex items-center justify-center text-xl text-foreground hover:border-foreground/40 hover:scale-105 transition-all duration-300 bg-secondary/5 backdrop-blur-md"
         >
             {icon}
         </Link>
