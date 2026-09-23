@@ -1,6 +1,6 @@
 import { TECH_STACK } from "@/lib/data/tech-stack";
 import Link from "next/link";
-import { ArrowRight, FileText, Mail } from "lucide-react";
+import { ArrowRight, ExternalLink, FileText, Mail, ShieldCheck, Sparkles } from "lucide-react";
 import { Github, Linkedin } from "@/components/icons";
 import Image from "next/image";
 
@@ -21,18 +21,23 @@ export default function Hero() {
                 {/* --- Left Column: Authority & Narrative --- */}
                 <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
 
-                    {/* Availability Badge */}
-                    <div 
-                        className="animate-fade-in-up mb-6 flex items-center gap-3 px-4 py-1.5 rounded-full border border-border bg-secondary/5 backdrop-blur-sm shadow-sm"
-                        style={{ animationDelay: "100ms" }}
-                    >
-                        <span className="relative flex h-2.5 w-2.5">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
-                            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
-                        </span>
-                        <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-muted">
-                            Available for Hire
-                        </span>
+                    {/* Author Byline & Availability Badge */}
+                    <div className="animate-fade-in-up flex flex-wrap items-center justify-center lg:justify-start gap-2.5 mb-6" style={{ animationDelay: "100ms" }}>
+                        <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-border bg-secondary/5 backdrop-blur-sm shadow-sm">
+                            <span className="relative flex h-2 w-2">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                            </span>
+                            <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-muted">
+                                Available for Hire
+                            </span>
+                        </div>
+
+                        {/* Visible Author Byline & Content Freshness */}
+                        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-border/60 bg-secondary/5 text-[10px] md:text-xs font-medium text-secondary">
+                            <ShieldCheck className="w-3.5 h-3.5 text-green-500 shrink-0" />
+                            <span>By <strong>Ankit Saini</strong> • Updated Sept 2026</span>
+                        </div>
                     </div>
 
                     <h1 
@@ -43,23 +48,47 @@ export default function Hero() {
                     </h1>
 
                     <h2 
-                        className="animate-fade-in-up text-xl md:text-3xl font-light text-secondary mb-8"
+                        className="animate-fade-in-up text-xl md:text-3xl font-light text-secondary mb-6"
                         style={{ animationDelay: "300ms" }}
                     >
-                        Senior Full-Stack Engineer <br className="hidden md:block" /> & System Architect.
+                        Full-Stack Engineer <br className="hidden md:block" /> &amp; System Architect.
                     </h2>
 
                     <div 
-                        className="animate-fade-in-up w-24 lg:w-full h-px bg-secondary/20 mb-8"
+                        className="animate-fade-in-up w-24 lg:w-full h-px bg-secondary/20 mb-6"
                         style={{ animationDelay: "400ms" }}
                     />
 
+                    {/* DIRECT ANSWER FORMAT (Inverted Pyramid for Google AI Overviews & Citations) */}
                     <p 
-                        className="animate-fade-in-up text-base md:text-lg text-secondary max-w-md lg:max-w-xl leading-relaxed mb-10"
+                        className="animate-fade-in-up text-base md:text-lg text-secondary max-w-md lg:max-w-xl leading-relaxed mb-6 font-normal"
                         style={{ animationDelay: "500ms" }}
                     >
-                        Translating complex business requirements into scalable, high-performance web and mobile solutions. Focused on clean architecture, type safety, and user-centric interaction design.
+                        <strong>Ankit Saini</strong> is a Full-Stack Software Engineer and UI/UX Architect based in India with over 3.5 years of experience building high-performance web and mobile applications using <a href="https://nextjs.org" target="_blank" rel="noopener noreferrer" className="text-foreground underline decoration-border hover:decoration-foreground transition-colors font-medium">Next.js</a>, <a href="https://react.dev" target="_blank" rel="noopener noreferrer" className="text-foreground underline decoration-border hover:decoration-foreground transition-colors font-medium">React</a>, <a href="https://www.typescriptlang.org" target="_blank" rel="noopener noreferrer" className="text-foreground underline decoration-border hover:decoration-foreground transition-colors font-medium">TypeScript</a>, Node.js, and Cloud Infrastructure (<a href="https://aws.amazon.com" target="_blank" rel="noopener noreferrer" className="text-foreground underline decoration-border hover:decoration-foreground transition-colors font-medium">AWS</a>/Firebase). He architects enterprise systems with 99.9% production uptime and sub-second <a href="https://web.dev/vitals/" target="_blank" rel="noopener noreferrer" className="text-foreground underline decoration-border hover:decoration-foreground transition-colors font-medium">Core Web Vitals</a>.
                     </p>
+
+                    {/* Key Technical Competencies Checklist */}
+                    <div 
+                        className="animate-fade-in-up mb-8 grid grid-cols-2 gap-2 text-xs font-mono text-secondary max-w-lg"
+                        style={{ animationDelay: "550ms" }}
+                    >
+                        <div className="flex items-center gap-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
+                            <span>Next.js App Router &amp; RSC</span>
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
+                            <span>100/100 Lighthouse Web Vitals</span>
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
+                            <span>Cloud Services &amp; Serverless</span>
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
+                            <span>Flutter Mobile Engineering</span>
+                        </div>
+                    </div>
 
                     <div 
                         className="animate-fade-in-up flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto"
@@ -76,6 +105,14 @@ export default function Hero() {
                         </Link>
 
                         <Link
+                            href="/contact"
+                            className="w-full sm:w-auto group px-6 py-3.5 border border-border bg-secondary/5 rounded-full hover:border-foreground/50 hover:scale-105 transition-all text-sm font-semibold flex items-center justify-center gap-2 text-foreground shadow-sm hover:shadow-md"
+                        >
+                            <Mail className="w-4 h-4 text-secondary group-hover:text-foreground transition-colors" />
+                            <span>Contact Ankit</span>
+                        </Link>
+
+                        <Link
                             href="/resume.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
@@ -88,13 +125,12 @@ export default function Hero() {
                         <div className="flex gap-2.5 mt-2 sm:mt-0">
                             <SocialButton label="GitHub profile" href="https://github.com/Ankitsaini406" icon={<Github />} />
                             <SocialButton label="Linkedin profile" href="https://www.linkedin.com/in/web-ankit-saini/" icon={<Linkedin />} />
-                            <SocialButton label="Gmail profile" href="mailto:as.ankitsaini406@gmail.com" icon={<Mail />} />
                         </div>
                     </div>
 
-                    {/* Senior Level Stats */}
+                    {/* Senior Level Verifiable Metrics */}
                     <div 
-                        className="animate-fade-in-up mt-12 w-full grid grid-cols-3 gap-4 md:gap-8 border-t lg:border-t-0 lg:border-l border-border/20 pt-8 lg:pt-0 lg:pl-6"
+                        className="animate-fade-in-up mt-12 w-full grid grid-cols-4 gap-3 md:gap-6 border-t lg:border-t-0 lg:border-l border-border/20 pt-8 lg:pt-0 lg:pl-6"
                         style={{ animationDelay: "700ms" }}
                     >
                         <div className="flex flex-col items-center lg:items-start group cursor-default">
@@ -103,11 +139,15 @@ export default function Hero() {
                         </div>
                         <div className="flex flex-col items-center lg:items-start group cursor-default">
                             <p className="text-2xl md:text-3xl font-bold text-foreground group-hover:scale-110 transition-transform duration-300">11+</p>
-                            <p className="text-[10px] uppercase tracking-wider text-secondary">Projects</p>
+                            <p className="text-[10px] uppercase tracking-wider text-secondary">Shipped Apps</p>
                         </div>
                         <div className="flex flex-col items-center lg:items-start group cursor-default">
-                            <p className="text-2xl md:text-3xl font-bold text-foreground group-hover:scale-110 transition-transform duration-300">100%</p>
-                            <p className="text-[10px] uppercase tracking-wider text-secondary">Delivery</p>
+                            <p className="text-2xl md:text-3xl font-bold text-foreground group-hover:scale-110 transition-transform duration-300">99.9%</p>
+                            <p className="text-[10px] uppercase tracking-wider text-secondary">Uptime Rate</p>
+                        </div>
+                        <div className="flex flex-col items-center lg:items-start group cursor-default">
+                            <p className="text-2xl md:text-3xl font-bold text-foreground group-hover:scale-110 transition-transform duration-300">100</p>
+                            <p className="text-[10px] uppercase tracking-wider text-secondary">Lighthouse</p>
                         </div>
                     </div>
                 </div>
@@ -127,14 +167,14 @@ export default function Hero() {
                             <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
                             <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
                             <div className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
-                            <div className="ml-auto text-[10px] font-mono text-secondary">Ankit.tsx</div>
+                            <div className="ml-auto text-[10px] font-mono text-secondary">AnkitSaini.ts</div>
                         </div>
 
                         {/* Code Body */}
                         <div className="p-4 md:p-6 font-mono text-xs md:text-sm leading-loose text-secondary overflow-x-auto">
                             <div className="flex whitespace-nowrap">
                                 <span className="w-6 text-secondary/30 select-none">1</span>
-                                <span className="text-purple-500">const</span> <span className="text-blue-500 pl-2">Developer</span> = <span className="text-foreground">{`{`}</span>
+                                <span className="text-purple-500">export const</span> <span className="text-blue-500 pl-2">engineer</span> = <span className="text-foreground">{`{`}</span>
                             </div>
                             <div className="flex whitespace-nowrap">
                                 <span className="w-6 text-secondary/30 select-none">2</span>
@@ -142,26 +182,34 @@ export default function Hero() {
                             </div>
                             <div className="flex whitespace-nowrap">
                                 <span className="w-6 text-secondary/30 select-none">3</span>
-                                <span className="pl-4">skills:</span> <span className="text-foreground pl-2">[</span>
+                                <span className="pl-4">role:</span> <span className="text-green-600 pl-2">&apos;Full-Stack &amp; UI/UX Architect&apos;</span>,
                             </div>
                             <div className="flex whitespace-nowrap">
                                 <span className="w-6 text-secondary/30 select-none">4</span>
-                                <span className="pl-8 text-orange-500">&apos;Next.js&apos;</span>, <span className="text-orange-500">&apos;Flutter&apos;</span>, <span className="text-orange-500">&apos;Database&apos;</span>,
+                                <span className="pl-4">experience:</span> <span className="text-blue-500 pl-2">&apos;3.5+ Years&apos;</span>,
                             </div>
                             <div className="flex whitespace-nowrap">
                                 <span className="w-6 text-secondary/30 select-none">5</span>
-                                <span className="pl-4 text-foreground">]</span>,
+                                <span className="pl-4">stack:</span> <span className="text-foreground pl-2">[</span>
                             </div>
                             <div className="flex whitespace-nowrap">
                                 <span className="w-6 text-secondary/30 select-none">6</span>
-                                <span className="pl-4">hardWorker:</span> <span className="text-blue-500 pl-2">true</span>,
+                                <span className="pl-8 text-orange-500">&apos;Next.js&apos;</span>, <span className="text-orange-500">&apos;React&apos;</span>, <span className="text-orange-500">&apos;TypeScript&apos;</span>,
                             </div>
                             <div className="flex whitespace-nowrap">
                                 <span className="w-6 text-secondary/30 select-none">7</span>
-                                <span className="pl-4">problemSolver:</span> <span className="text-blue-500 pl-2">true</span>
+                                <span className="pl-8 text-orange-500">&apos;Node.js&apos;</span>, <span className="text-orange-500">&apos;AWS&apos;</span>, <span className="text-orange-500">&apos;Flutter&apos;</span>
                             </div>
                             <div className="flex whitespace-nowrap">
                                 <span className="w-6 text-secondary/30 select-none">8</span>
+                                <span className="pl-4 text-foreground">]</span>,
+                            </div>
+                            <div className="flex whitespace-nowrap">
+                                <span className="w-6 text-secondary/30 select-none">9</span>
+                                <span className="pl-4">coreWebVitals:</span> <span className="text-blue-500 pl-2">&apos;100/100&apos;</span>,
+                            </div>
+                            <div className="flex whitespace-nowrap">
+                                <span className="w-6 text-secondary/30 select-none">10</span>
                                 <span className="text-foreground">{`}`};</span>
                             </div>
 

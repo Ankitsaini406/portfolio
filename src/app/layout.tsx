@@ -25,6 +25,27 @@ export const metadata: Metadata = {
     "TypeScript",
   ],
 
+  authors: [{ name: "Ankit Saini", url: "https://ankitsaini.vercel.app/about" }],
+  creator: "Ankit Saini",
+  publisher: "Ankit Saini",
+  applicationName: "Ankit Saini Portfolio",
+
+  alternates: {
+    canonical: "./",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+
   manifest: "/manifest.json",
 
   icons: {

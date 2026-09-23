@@ -15,6 +15,7 @@ export default function Navbar() {
     { title: "Timeline", path: "/timeline" },
     { title: "Projects", path: "/projects" },
     { title: "About", path: "/about" },
+    { title: "Contact", path: "/contact" },
     { title: "Resume", path: "/resume.pdf", external: true },
   ];
 

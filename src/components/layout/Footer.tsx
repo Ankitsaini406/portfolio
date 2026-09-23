@@ -138,7 +138,16 @@ export default function Footer() {
                         <p>DEVELOPED BY ANKIT</p>
                     </div>
 
-                    <div className="flex items-center gap-8 text-[11px] font-mono uppercase tracking-widest text-secondary">
+                    <div className="flex flex-wrap items-center justify-center gap-6 md:gap-8 text-[11px] font-mono uppercase tracking-widest text-secondary">
+                        <Link href="/contact" className="hover:text-foreground transition-colors">
+                            Contact
+                        </Link>
+                        <Link href="/privacy" className="hover:text-foreground transition-colors">
+                            Privacy
+                        </Link>
+                        <Link href="/terms" className="hover:text-foreground transition-colors">
+                            Terms
+                        </Link>
                         <Link href="https://github.com/Ankitsaini406" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
                             GitHub
                         </Link>

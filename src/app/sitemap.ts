@@ -15,7 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         {
             url: baseUrl,
             lastModified: new Date(),
-            changeFrequency: 'monthly',
+            changeFrequency: 'weekly',
             priority: 1,
         },
         {
@@ -29,13 +29,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
             url: `${baseUrl}/about`,
             lastModified: new Date(),
             changeFrequency: 'monthly',
-            priority: 0.7,
+            priority: 0.85,
+        },
+        {
+            url: `${baseUrl}/contact`,
+            lastModified: new Date(),
+            changeFrequency: 'monthly',
+            priority: 0.85,
         },
         {
             url: `${baseUrl}/timeline`,
             lastModified: new Date(),
             changeFrequency: 'monthly',
             priority: 0.6,
+        },
+        {
+            url: `${baseUrl}/privacy`,
+            lastModified: new Date(),
+            changeFrequency: 'yearly',
+            priority: 0.3,
+        },
+        {
+            url: `${baseUrl}/terms`,
+            lastModified: new Date(),
+            changeFrequency: 'yearly',
+            priority: 0.3,
         },
     ];
 }
