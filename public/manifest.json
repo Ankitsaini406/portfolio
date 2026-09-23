@@ -1,13 +1,54 @@
 {
-    "name": "Ankit Saini | Full-Stack Engineer",
+    "id": "/",
+    "name": "Ankit Saini | Full-Stack Developer & UI/UX Architect",
     "short_name": "Ankit Saini",
-    "description": "Portfolio of Ankit Saini, specializing in Next.js and high-performance web architecture.",
+    "description": "Specializing in high-performance Next.js applications, clean UI/UX architectures, and scalable backend systems with AWS and Firebase.",
     "start_url": "/",
+    "scope": "/",
     "display": "standalone",
-    "background_color": "#ffffff",
-    "theme_color": "#0a0a0a",
-    "orientation": "portrait",
+    "orientation": "portrait-primary",
+    "background_color": "#0a0a0a",
+    "theme_color": "#000000",
+    "lang": "en",
+    "dir": "ltr",
+    "categories": [
+        "portfolio",
+        "technology",
+        "developer",
+        "productivity"
+    ],
     "icons": [
+        {
+            "src": "/icons/icon-72x72.png",
+            "sizes": "72x72",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/icon-96x96.png",
+            "sizes": "96x96",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/icon-128x128.png",
+            "sizes": "128x128",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/icon-144x144.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/icon-152x152.png",
+            "sizes": "152x152",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+        },
         {
             "src": "/icons/icon-192x192.png",
             "sizes": "192x192",
@@ -15,10 +56,62 @@
             "purpose": "maskable"
         },
         {
+            "src": "/icons/icon-384x384.png",
+            "sizes": "384x384",
+            "type": "image/png"
+        },
+        {
             "src": "/icons/icon-512x512.png",
             "sizes": "512x512",
             "type": "image/png",
             "purpose": "any"
+        },
+        {
+            "src": "/icons/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Projects",
+            "short_name": "Projects",
+            "description": "View featured full-stack projects",
+            "url": "/projects",
+            "icons": [
+                {
+                    "src": "/icons/icon-96x96.png",
+                    "sizes": "96x96",
+                    "type": "image/png"
+                }
+            ]
+        },
+        {
+            "name": "About",
+            "short_name": "About",
+            "description": "Learn more about Ankit Saini",
+            "url": "/about",
+            "icons": [
+                {
+                    "src": "/icons/icon-96x96.png",
+                    "sizes": "96x96",
+                    "type": "image/png"
+                }
+            ]
+        },
+        {
+            "name": "Timeline",
+            "short_name": "Timeline",
+            "description": "Career and education journey",
+            "url": "/timeline",
+            "icons": [
+                {
+                    "src": "/icons/icon-96x96.png",
+                    "sizes": "96x96",
+                    "type": "image/png"
+                }
+            ]
         }
     ]
 }

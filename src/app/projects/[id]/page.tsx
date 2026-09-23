@@ -11,9 +11,7 @@ import {
     Smartphone,
     Sparkles,
     CheckCircle2,
-    Calendar,
     Globe,
-    Code2,
 } from "lucide-react";
 
 type PageProps = {
