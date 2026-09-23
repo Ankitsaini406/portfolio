@@ -124,9 +124,17 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <Navbar />
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-5 focus:py-2.5 focus:bg-foreground focus:text-background focus:rounded-full focus:shadow-2xl focus:font-semibold focus:text-xs focus:uppercase focus:tracking-wider focus:outline-none focus:ring-2 focus:ring-foreground transition-all"
+        >
+          Skip to main content
+        </a>
+        <header role="banner">
+          <Navbar />
+        </header>
         <ScrollButton />
-        <main>
+        <main id="main-content" tabIndex={-1} className="outline-none">
           {children}
         </main>
         <Footer />

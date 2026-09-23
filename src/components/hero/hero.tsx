@@ -91,38 +91,38 @@ export default function Hero() {
                     </div>
 
                     <div 
-                        className="animate-fade-in-up flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto"
+                        className="animate-fade-in-up flex flex-wrap items-center justify-center lg:justify-start gap-3 w-full"
                         style={{ animationDelay: "600ms" }}
                     >
                         <Link
                             href="/projects"
-                            className="w-full sm:w-auto group relative px-7 py-3.5 bg-foreground text-background rounded-full overflow-hidden transition-all hover:scale-105 shadow-lg hover:shadow-xl"
+                            className="w-full sm:w-auto shrink-0 group relative px-6 md:px-7 py-3.5 bg-foreground text-background rounded-full overflow-hidden transition-all hover:scale-105 shadow-lg hover:shadow-xl text-center"
                         >
                             <div className="absolute inset-0 bg-secondary translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out" />
-                            <span className="relative font-semibold flex items-center justify-center gap-2 text-sm">
-                                View Selected Works <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                            <span className="relative font-semibold flex items-center justify-center gap-2 text-sm whitespace-nowrap">
+                                View Selected Works <ArrowRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
                             </span>
                         </Link>
 
                         <Link
                             href="/contact"
-                            className="w-full sm:w-auto group px-6 py-3.5 border border-border bg-secondary/5 rounded-full hover:border-foreground/50 hover:scale-105 transition-all text-sm font-semibold flex items-center justify-center gap-2 text-foreground shadow-sm hover:shadow-md"
+                            className="w-full sm:w-auto shrink-0 group px-5 md:px-6 py-3.5 border border-border bg-secondary/5 rounded-full hover:border-foreground/50 hover:scale-105 transition-all text-sm font-semibold flex items-center justify-center gap-2 text-foreground shadow-sm hover:shadow-md whitespace-nowrap"
                         >
-                            <Mail className="w-4 h-4 text-secondary group-hover:text-foreground transition-colors" />
-                            <span>Contact Ankit</span>
+                            <Mail className="w-4 h-4 shrink-0 text-secondary group-hover:text-foreground transition-colors" />
+                            <span className="whitespace-nowrap">Contact Ankit</span>
                         </Link>
 
                         <Link
                             href="/resume.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="w-full sm:w-auto group px-6 py-3.5 border border-border bg-secondary/5 rounded-full hover:border-foreground/50 hover:scale-105 transition-all text-sm font-semibold flex items-center justify-center gap-2 text-foreground shadow-sm hover:shadow-md"
+                            className="w-full sm:w-auto shrink-0 group px-5 md:px-6 py-3.5 border border-border bg-secondary/5 rounded-full hover:border-foreground/50 hover:scale-105 transition-all text-sm font-semibold flex items-center justify-center gap-2 text-foreground shadow-sm hover:shadow-md whitespace-nowrap"
                         >
-                            <FileText className="w-4 h-4 text-secondary group-hover:text-foreground transition-colors" />
-                            <span>Resume</span>
+                            <FileText className="w-4 h-4 shrink-0 text-secondary group-hover:text-foreground transition-colors" />
+                            <span className="whitespace-nowrap">Resume</span>
                         </Link>
 
-                        <div className="flex gap-2.5 mt-2 sm:mt-0">
+                        <div className="flex items-center gap-2.5 shrink-0">
                             <SocialButton label="GitHub profile" href="https://github.com/Ankitsaini406" icon={<Github />} />
                             <SocialButton label="Linkedin profile" href="https://www.linkedin.com/in/web-ankit-saini/" icon={<Linkedin />} />
                         </div>
@@ -262,7 +262,7 @@ const SocialButton = ({ href, label, icon }: { href: string, label: string, icon
             aria-label={label}
             target={isExternal ? "_blank" : undefined}
             rel={isExternal ? "noopener noreferrer" : undefined}
-            className="w-10 h-10 md:w-12 md:h-12 rounded-full border bg-background border-border flex items-center justify-center text-secondary hover:bg-foreground hover:text-(--color-background) hover:border-transparent transition-all duration-300 text-lg md:text-xl"
+            className="w-10 h-10 md:w-12 md:h-12 shrink-0 rounded-full border bg-background border-border flex items-center justify-center text-secondary hover:bg-foreground hover:text-(--color-background) hover:border-transparent transition-all duration-300 text-lg md:text-xl"
         >
             {icon}
         </Link>

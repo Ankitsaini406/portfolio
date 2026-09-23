@@ -163,7 +163,9 @@ export default function AboutSection() {
                                     width={478}
                                     height={837}
                                     priority
-                                    quality={90}
+                                    loading="eager"
+                                    sizes="(max-width: 640px) 280px, (max-width: 1024px) 320px, 400px"
+                                    quality={80}
                                     className="object-cover rounded-2xl will-change-transform transition-transform duration-700 group-hover:scale-105"
                                 />
 

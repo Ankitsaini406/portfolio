@@ -73,7 +73,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         projectIndex < projects.length - 1 ? projects[projectIndex + 1] : null;
 
     return (
-        <main className="min-h-screen pt-28 pb-20 px-6 md:px-12 bg-background relative overflow-hidden">
+        <div className="min-h-screen pt-28 pb-20 px-6 md:px-12 bg-background relative overflow-hidden">
             {/* Ambient Background Accents */}
             <div className="absolute top-20 left-1/2 -translate-x-1/2 w-full max-w-5xl h-96 bg-foreground/5 blur-3xl pointer-events-none rounded-full" />
             <div className="absolute inset-0 opacity-[0.025] bg-[url('/svg/noise.svg')] pointer-events-none" />
@@ -315,6 +315,6 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                     )}
                 </div>
             </div>
-        </main>
+        </div>
     );
 }

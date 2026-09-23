@@ -51,7 +51,7 @@ export const projects = [
         id: "7",
         name: "Edulibrary",
         image: "edulaibaray.png",
-        link: "http://edulibrary.net/",
+        link: "https://edulibrary.net/",
         tags: ["React", "REST API", "Database", "Digital Library"],
         description: "Edulibrary is a digital library application designed to provide easy access to e-books, research papers, and learning materials. Built for accessibility and scalability, it supports advanced search, categorization, and offline reading features."
     },
@@ -59,7 +59,7 @@ export const projects = [
         id: "8",
         name: "Minglebite",
         image: "minglebite.png",
-        link: "http://minglebite.in/",
+        link: "https://minglebite.in/",
         tags: ["React", "Firebase", "Prisma", "Real-time"],
         description: "Minglebite is a food discovery and restaurant review website where users can explore menus, read reviews, and find nearby dining spots. Integrated with real-time data from Firebase and backed by Prisma for database management, it delivers personalized recommendations and a social community for food lovers."
     },

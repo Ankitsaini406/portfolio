@@ -47,7 +47,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
     return (
-        <main className="relative min-h-screen pt-36 pb-24 px-6 overflow-hidden">
+        <div className="relative min-h-screen pt-36 pb-24 px-6 overflow-hidden">
             {/* Structured Schema */}
             <ContactPageSchema />
             <PersonSchema />
@@ -74,6 +74,6 @@ export default function ContactPage() {
 
                 <ContactForm />
             </div>
-        </main>
+        </div>
     );
 }

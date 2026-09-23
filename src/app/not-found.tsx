@@ -25,7 +25,7 @@ export default function NotFound() {
     }, [router]);
 
     return (
-        <main className="relative min-h-screen bg-background flex items-center justify-center overflow-hidden p-6">
+        <div className="relative min-h-screen bg-background flex items-center justify-center overflow-hidden p-6">
             {/* Background Decorative Element */}
             <div className="absolute top-0 left-0 w-full h-full opacity-[0.02] bg-[url('/svg/noise.svg')] pointer-events-none" />
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl aspect-video bg-foreground/5 rounded-full blur-[160px] pointer-events-none" />
@@ -95,6 +95,6 @@ export default function NotFound() {
 
                 </div>
             </div>
-        </main>
+        </div>
     );
 }

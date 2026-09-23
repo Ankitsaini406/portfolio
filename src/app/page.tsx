@@ -12,13 +12,13 @@ export default async function Home() {
       <WebSiteSchema />
       <PersonSchema />
 
-      <main>
+      <div className="w-full">
         <Hero />
         <AboutSection />
         <ProjectSection />
         <TimelineSection />
         <FAQSection />
-      </main>
+      </div>
     </>
   );
 }

@@ -55,7 +55,7 @@ export default function Footer() {
                         <div className="space-y-6">
                             <h2 className="text-5xl md:text-8xl font-black tracking-tighter leading-[0.85] text-foreground">
                                 READY TO <br />
-                                <span className="text-foreground/20">EVOLVE?</span>
+                                <span className="text-secondary">EVOLVE?</span>
                             </h2>
                             <p className="text-lg md:text-xl text-secondary font-light max-w-md">
                                 Currently accepting high-impact projects, engineering collaborations, and senior full-stack roles.
