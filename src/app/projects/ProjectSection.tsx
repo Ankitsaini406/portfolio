@@ -33,7 +33,7 @@ export default function ProjectSection() {
 
             {/* Responsive Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-                {sortedProjects.map((project: Projectsdetial) => (
+                {sortedProjects.map((project: Projectsdetial, index: number) => (
                     <article
                         key={project.id}
                         className="group flex flex-col bg-primary-bg/50 border border-border rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:shadow-2xl hover:border-foreground/40 hover:-translate-y-2"
@@ -43,14 +43,26 @@ export default function ProjectSection() {
                             href={`/projects/${project.id}`}
                             className="relative w-full h-52 overflow-hidden cursor-pointer bg-secondary/5 block group/image"
                         >
+                            {/* Ambient Background Blur to fill card edges nicely */}
+                            <Image
+                                src={`/projects/${project.image}`}
+                                alt=""
+                                fill
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                priority={index < 3}
+                                aria-hidden="true"
+                                className="object-cover blur-2xl opacity-20 dark:opacity-25 scale-125 pointer-events-none"
+                            />
+                            {/* Contained Showcase Image */}
                             <Image
                                 src={`/projects/${project.image}`}
                                 alt={project.name}
                                 fill
                                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                                priority={index < 3}
+                                className="w-full h-full object-contain p-4 object-center transition-transform duration-500 group-hover:scale-105"
                             />
-                            <div className="absolute inset-0 bg-background/0 group-hover:bg-background/20 transition-colors duration-300" />
+                            <div className="absolute inset-0 bg-background/0 group-hover:bg-background/10 transition-colors duration-300" />
                             {/* Subtle diagonal shine effect */}
                             <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out pointer-events-none" />
                         </Link>

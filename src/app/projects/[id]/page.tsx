@@ -1,6 +1,5 @@
 import { projects } from "@/lib/data/projects";
 import { notFound } from "next/navigation";
-import Image from "next/image";
 import Link from "next/link";
 import { Metadata } from "next";
 import {
@@ -12,7 +11,13 @@ import {
     Sparkles,
     CheckCircle2,
     Globe,
+    ShieldCheck,
+    Cpu,
+    Server,
+    Code2,
+    ChevronRight,
 } from "lucide-react";
+import ProjectShowcase from "./ProjectShowcase";
 
 type PageProps = {
     params: Promise<{ id: string }>;
@@ -72,62 +77,85 @@ export default async function ProjectDetailPage({ params }: PageProps) {
     const nextProject =
         projectIndex < projects.length - 1 ? projects[projectIndex + 1] : null;
 
+    // Helper to format long unstructured description text into readable paragraphs
+    const formatDescription = (text: string) => {
+        if (text.includes("\n")) {
+            return text.split("\n").filter((p) => p.trim().length > 0);
+        }
+        // If single large paragraph with sentences, split every ~2-3 sentences for readability
+        const sentences = text.match(/[^.!?]+[.!?]+/g) || [text];
+        if (sentences.length <= 2) return [text];
+
+        const chunks: string[] = [];
+        let current = "";
+        sentences.forEach((sentence, idx) => {
+            current += sentence + " ";
+            if ((idx + 1) % 2 === 0 || idx === sentences.length - 1) {
+                chunks.push(current.trim());
+                current = "";
+            }
+        });
+        return chunks;
+    };
+
+    const descriptionParagraphs = formatDescription(project.description);
+
     return (
-        <div className="min-h-screen pt-28 pb-20 px-6 md:px-12 bg-background relative overflow-hidden">
-            {/* Ambient Background Accents */}
-            <div className="absolute top-20 left-1/2 -translate-x-1/2 w-full max-w-5xl h-96 bg-foreground/5 blur-3xl pointer-events-none rounded-full" />
+        <div className="min-h-screen pt-28 pb-24 px-4 sm:px-6 md:px-12 bg-background relative overflow-hidden">
+            {/* Ambient Background Glows */}
+            <div className="absolute top-16 left-1/2 -translate-x-1/2 w-full max-w-6xl h-125 bg-foreground/5 blur-3xl pointer-events-none rounded-full" />
             <div className="absolute inset-0 opacity-[0.025] bg-[url('/svg/noise.svg')] pointer-events-none" />
 
             <div className="max-w-5xl mx-auto relative z-10">
-                {/* Navigation Bar */}
-                <div className="mb-10 flex items-center justify-between">
+                {/* Top Navigation Bar & Meta Header */}
+                <div className="mb-10 flex flex-wrap items-center justify-between gap-4">
                     <Link
                         href="/projects"
-                        className="group inline-flex items-center gap-2.5 text-xs font-semibold uppercase tracking-widest text-secondary hover:text-foreground transition-colors px-4 py-2 rounded-full border border-border bg-secondary/5 hover:bg-secondary/15"
+                        className="group inline-flex items-center gap-2.5 text-xs font-semibold uppercase tracking-widest text-secondary hover:text-foreground transition-all px-4 py-2 rounded-full border border-border bg-secondary/5 hover:bg-secondary/15"
                     >
                         <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
                         <span>All Projects</span>
                     </Link>
 
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-border bg-secondary/5 text-[11px] font-mono text-muted">
-                        <Sparkles className="w-3.5 h-3.5 text-foreground" />
-                        <span>Case Study #{project.id.padStart(2, "0")}</span>
-                    </div>
+                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border bg-secondary/5 text-[11px] font-mono text-muted">
+                            <Sparkles className="w-3.5 h-3.5 text-foreground" />
+                            <span>Case Study #{project.id.padStart(2, "0")}</span>
+                        </div>
                 </div>
 
                 {/* Hero Header */}
-                <div className="space-y-6 mb-12">
-                    <div className="flex flex-wrap items-center gap-2">
+                <div className="space-y-6 mb-12 text-center md:text-left">
+                    <div className="flex flex-wrap items-center justify-center md:justify-start gap-2">
                         {project.tags?.map((tag, idx) => (
                             <span
                                 key={idx}
-                                className="px-3 py-1 text-xs font-mono tracking-wider rounded-full border border-border bg-secondary/5 text-foreground/80"
+                                className="px-3 py-1 text-xs font-mono tracking-wider rounded-full border border-border bg-secondary/5 text-foreground/80 hover:border-foreground/40 transition-colors"
                             >
                                 {tag}
                             </span>
                         ))}
                     </div>
 
-                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-foreground uppercase leading-tight">
+                    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-foreground uppercase leading-[1.08]">
                         {project.name}
                     </h1>
 
-                    <p className="text-lg md:text-xl text-secondary max-w-3xl leading-relaxed">
+                    <p className="text-base sm:text-lg md:text-xl text-secondary max-w-3xl leading-relaxed">
                         In-depth engineering breakdown, technology stack, and architectural decisions behind {project.name}.
                     </p>
 
-                    {/* Action Links */}
-                    <div className="flex flex-wrap items-center gap-3 pt-2">
+                    {/* Action Links Bar */}
+                    <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 pt-2">
                         {project.link && (
                             <Link
                                 href={project.link}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-foreground text-background font-bold text-xs uppercase tracking-wider hover:opacity-90 transition-all shadow-md hover:scale-105"
+                                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-foreground text-background font-bold text-xs uppercase tracking-wider hover:opacity-90 transition-all shadow-md hover:scale-105 active:scale-95"
                             >
                                 <Globe className="w-4 h-4" />
                                 <span>Visit Live Web</span>
-                                <ExternalLink className="w-3.5 h-3.5 ml-1" />
+                                <ExternalLink className="w-3.5 h-3.5 ml-1 opacity-70" />
                             </Link>
                         )}
 
@@ -136,33 +164,32 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                                 href={project.appLink}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border bg-secondary/5 text-foreground font-bold text-xs uppercase tracking-wider hover:bg-secondary/15 transition-all hover:scale-105"
+                                className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border bg-secondary/5 text-foreground font-bold text-xs uppercase tracking-wider hover:bg-secondary/15 transition-all hover:scale-105 active:scale-95"
                             >
                                 <Smartphone className="w-4 h-4" />
                                 <span>Google Play Store</span>
-                                <ExternalLink className="w-3.5 h-3.5 ml-1" />
+                                <ExternalLink className="w-3.5 h-3.5 ml-1 opacity-70" />
                             </Link>
                         )}
+
+                        <Link
+                            href="/projects"
+                            className="inline-flex items-center gap-1.5 px-4 py-3 rounded-full text-xs font-mono text-muted hover:text-foreground transition-colors"
+                        >
+                            <span>Browse gallery</span>
+                            <ChevronRight className="w-3.5 h-3.5" />
+                        </Link>
                     </div>
                 </div>
 
-                {/* Main Showcase Image */}
-                <div className="relative w-full aspect-video md:aspect-21/9 rounded-3xl overflow-hidden border border-border bg-secondary/5 shadow-2xl mb-16 group">
-                    <Image
-                        src={`/projects/${project.image}`}
-                        alt={project.name}
-                        fill
-                        priority
-                        sizes="(max-width: 1200px) 100vw, 1200px"
-                        className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-linear-to-t from-background/40 via-transparent to-transparent pointer-events-none" />
-                </div>
+                {/* Showcase Stage (Balanced, fitted to true size, entire image visible) */}
+                <ProjectShowcase project={project} />
 
                 {/* Architecture & Engineering Details Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-20">
-                    {/* Left 2 Columns: Full Architecture Narrative */}
-                    <div className="lg:col-span-2 space-y-8">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 md:gap-12 mb-20">
+                    {/* Left 2 Columns: Full Architecture Narrative & Competencies */}
+                    <div className="lg:col-span-2 space-y-10">
+                        {/* Specifications Section */}
                         <div className="space-y-4">
                             <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-muted">
                                 <Layers className="w-4 h-4 text-foreground" />
@@ -171,35 +198,72 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                             <h2 className="text-2xl md:text-3xl font-bold text-foreground">
                                 Engineering Specifications
                             </h2>
-                            <div className="prose dark:prose-invert max-w-none text-secondary leading-relaxed text-base md:text-lg space-y-4 whitespace-pre-line">
-                                {project.description}
+
+                            <div className="space-y-4 text-secondary leading-relaxed text-base md:text-lg">
+                                {descriptionParagraphs.map((para, idx) => (
+                                    <p key={idx} className="leading-relaxed">
+                                        {para}
+                                    </p>
+                                ))}
                             </div>
                         </div>
 
-                        {/* Engineering Highlights */}
-                        <div className="p-6 md:p-8 rounded-2xl border border-border bg-primary-bg/50 backdrop-blur-sm space-y-4">
+                        {/* 4 Architectural Competency Pillars */}
+                        <div className="space-y-4">
                             <h3 className="text-sm font-mono uppercase tracking-widest text-foreground font-semibold flex items-center gap-2">
-                                <CheckCircle2 className="w-4 h-4 text-green-500" />
+                                <CheckCircle2 className="w-4 h-4 text-emerald-500" />
                                 Key Engineering Competencies Demonstrated
                             </h3>
-                            <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-secondary">
-                                <li className="flex items-start gap-2">
-                                    <span className="text-foreground font-bold">•</span>
-                                    <span>Type-safe component & data modeling</span>
-                                </li>
-                                <li className="flex items-start gap-2">
-                                    <span className="text-foreground font-bold">•</span>
-                                    <span>Scalable cloud deployment & HTTPS security</span>
-                                </li>
-                                <li className="flex items-start gap-2">
-                                    <span className="text-foreground font-bold">•</span>
-                                    <span>Responsive multi-viewport interaction design</span>
-                                </li>
-                                <li className="flex items-start gap-2">
-                                    <span className="text-foreground font-bold">•</span>
-                                    <span>High-throughput REST / Backend API integration</span>
-                                </li>
-                            </ul>
+
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div className="p-5 rounded-2xl border border-border bg-primary-bg/50 backdrop-blur-sm space-y-2">
+                                    <div className="w-8 h-8 rounded-lg bg-secondary/10 flex items-center justify-center text-foreground">
+                                        <Code2 className="w-4 h-4" />
+                                    </div>
+                                    <h4 className="text-sm font-bold text-foreground">
+                                        Type-Safe Component Architecture
+                                    </h4>
+                                    <p className="text-xs text-muted leading-relaxed">
+                                        Rigorous static type safety, reusable UI components, and maintainable state flows.
+                                    </p>
+                                </div>
+
+                                <div className="p-5 rounded-2xl border border-border bg-primary-bg/50 backdrop-blur-sm space-y-2">
+                                    <div className="w-8 h-8 rounded-lg bg-secondary/10 flex items-center justify-center text-foreground">
+                                        <ShieldCheck className="w-4 h-4" />
+                                    </div>
+                                    <h4 className="text-sm font-bold text-foreground">
+                                        Cloud Security & Protocol Integrity
+                                    </h4>
+                                    <p className="text-xs text-muted leading-relaxed">
+                                        End-to-end HTTPS encryption, secure data transmission, and reliable server-side security.
+                                    </p>
+                                </div>
+
+                                <div className="p-5 rounded-2xl border border-border bg-primary-bg/50 backdrop-blur-sm space-y-2">
+                                    <div className="w-8 h-8 rounded-lg bg-secondary/10 flex items-center justify-center text-foreground">
+                                        <Cpu className="w-4 h-4" />
+                                    </div>
+                                    <h4 className="text-sm font-bold text-foreground">
+                                        Multi-Viewport Interaction Design
+                                    </h4>
+                                    <p className="text-xs text-muted leading-relaxed">
+                                        Adaptive fluid layouts ensuring native-feeling responsiveness across mobile, tablet, and desktop.
+                                    </p>
+                                </div>
+
+                                <div className="p-5 rounded-2xl border border-border bg-primary-bg/50 backdrop-blur-sm space-y-2">
+                                    <div className="w-8 h-8 rounded-lg bg-secondary/10 flex items-center justify-center text-foreground">
+                                        <Server className="w-4 h-4" />
+                                    </div>
+                                    <h4 className="text-sm font-bold text-foreground">
+                                        High-Throughput API Integration
+                                    </h4>
+                                    <p className="text-xs text-muted leading-relaxed">
+                                        Optimized asynchronous REST/GraphQL client queries with caching, error resilience, and fast latency.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -208,7 +272,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                         <div className="p-6 rounded-2xl border border-border bg-primary-bg/50 backdrop-blur-sm space-y-6">
                             <div>
                                 <span className="block text-[11px] font-mono uppercase tracking-widest text-muted mb-1">
-                                    Role & Domain
+                                    Engineering Role
                                 </span>
                                 <span className="text-base font-semibold text-foreground">
                                     Full-Stack Development & Architecture
@@ -235,16 +299,19 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                                 <span className="block text-[11px] font-mono uppercase tracking-widest text-muted mb-1">
                                     Platform Links
                                 </span>
-                                <div className="flex flex-col gap-2 mt-2">
+                                <div className="flex flex-col gap-2.5 mt-2">
                                     {project.link && (
                                         <Link
                                             href={project.link}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="text-xs font-medium text-foreground hover:underline inline-flex items-center gap-1.5"
+                                            className="text-xs font-medium text-foreground hover:underline inline-flex items-center gap-1.5 group"
                                         >
-                                            <Globe className="w-3.5 h-3.5" />
-                                            {project.link.replace(/^https?:\/\//, "")}
+                                            <Globe className="w-3.5 h-3.5 text-muted group-hover:text-foreground transition-colors" />
+                                            <span className="truncate">
+                                                {project.link.replace(/^https?:\/\//, "")}
+                                            </span>
+                                            <ExternalLink className="w-3 h-3 text-muted" />
                                         </Link>
                                     )}
                                     {project.appLink && (
@@ -252,29 +319,35 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                                             href={project.appLink}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="text-xs font-medium text-foreground hover:underline inline-flex items-center gap-1.5"
+                                            className="text-xs font-medium text-foreground hover:underline inline-flex items-center gap-1.5 group"
                                         >
-                                            <Smartphone className="w-3.5 h-3.5" />
-                                            Google Play Store Listing
+                                            <Smartphone className="w-3.5 h-3.5 text-muted group-hover:text-foreground transition-colors" />
+                                            <span>Google Play Store</span>
+                                            <ExternalLink className="w-3 h-3 text-muted" />
                                         </Link>
                                     )}
                                 </div>
                             </div>
                         </div>
 
-                        {/* Back to Projects CTA Card */}
-                        <div className="p-6 rounded-2xl border border-border bg-secondary/5 text-center space-y-3">
-                            <h4 className="text-base font-bold text-foreground">
-                                Want to see more works?
-                            </h4>
+                        {/* Inquire / Hire CTA Card */}
+                        <div className="p-6 rounded-2xl border border-border bg-secondary/5 space-y-4">
+                            <div className="space-y-1">
+                                <span className="text-[10px] font-mono uppercase tracking-widest text-muted">
+                                    Collaborate
+                                </span>
+                                <h4 className="text-base font-bold text-foreground">
+                                    Need a similar system?
+                                </h4>
+                            </div>
                             <p className="text-xs text-secondary leading-relaxed">
-                                Browse through mobile applications, full-stack systems, and web architectures.
+                                Let&apos;s engineer scalable web architectures, cross-platform mobile apps, or high-throughput backend services.
                             </p>
                             <Link
-                                href="/projects"
-                                className="inline-flex items-center justify-center w-full py-2.5 px-4 rounded-xl border border-border text-xs font-bold uppercase tracking-wider text-foreground hover:bg-foreground hover:text-background transition-colors"
+                                href="/contact"
+                                className="inline-flex items-center justify-center w-full py-2.5 px-4 rounded-xl bg-foreground text-background text-xs font-bold uppercase tracking-wider hover:opacity-90 transition-opacity"
                             >
-                                View All Projects
+                                Contact Ankit Saini
                             </Link>
                         </div>
                     </div>
@@ -285,9 +358,9 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                     {prevProject ? (
                         <Link
                             href={`/projects/${prevProject.id}`}
-                            className="group flex flex-col p-6 rounded-2xl border border-border bg-secondary/5 hover:border-foreground/30 transition-all"
+                            className="group flex flex-col p-6 rounded-2xl border border-border bg-secondary/5 hover:border-foreground/30 hover:bg-secondary/10 transition-all"
                         >
-                            <span className="text-[10px] font-mono uppercase tracking-widest text-muted mb-1 flex items-center gap-1.5">
+                            <span className="text-[10px] font-mono uppercase tracking-widest text-muted mb-1.5 flex items-center gap-1.5">
                                 <ArrowLeft className="w-3 h-3 group-hover:-translate-x-1 transition-transform" />
                                 Previous Project
                             </span>
@@ -302,9 +375,9 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                     {nextProject && (
                         <Link
                             href={`/projects/${nextProject.id}`}
-                            className="group flex flex-col items-end text-right p-6 rounded-2xl border border-border bg-secondary/5 hover:border-foreground/30 transition-all sm:col-start-2"
+                            className="group flex flex-col items-end text-right p-6 rounded-2xl border border-border bg-secondary/5 hover:border-foreground/30 hover:bg-secondary/10 transition-all sm:col-start-2"
                         >
-                            <span className="text-[10px] font-mono uppercase tracking-widest text-muted mb-1 flex items-center gap-1.5">
+                            <span className="text-[10px] font-mono uppercase tracking-widest text-muted mb-1.5 flex items-center gap-1.5">
                                 Next Project
                                 <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                             </span>
