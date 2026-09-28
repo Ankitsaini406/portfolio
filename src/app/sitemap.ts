@@ -5,7 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = 'https://ankitsaini.vercel.app';
 
     const projectUrls: MetadataRoute.Sitemap = projects.map((p) => ({
-        url: `${baseUrl}/projects/${p.id}`,
+        url: `${baseUrl}/projects/${p.slug}`,
         lastModified: new Date(),
         changeFrequency: 'weekly',
         priority: 0.8,

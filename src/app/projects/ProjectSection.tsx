@@ -40,7 +40,7 @@ export default function ProjectSection() {
                     >
                         {/* Image Container */}
                         <Link
-                            href={`/projects/${project.id}`}
+                            href={`/projects/${project.slug}`}
                             className="relative w-full h-52 overflow-hidden cursor-pointer bg-secondary/5 block group/image"
                         >
                             {/* Ambient Background Blur to fill card edges nicely */}
@@ -101,7 +101,7 @@ export default function ProjectSection() {
                             {/* Actions Bar */}
                             <div className="mt-6 pt-4 border-t border-border flex flex-wrap items-center justify-between gap-2.5">
                                 <Link
-                                    href={`/projects/${project.id}`}
+                                    href={`/projects/${project.slug}`}
                                     className="text-xs font-semibold uppercase tracking-wider text-secondary hover:text-foreground transition-colors cursor-pointer"
                                 >
                                     Read Architecture →

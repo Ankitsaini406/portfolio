@@ -1,5 +1,5 @@
 import { projects } from "@/lib/data/projects";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import Link from "next/link";
 import { Metadata } from "next";
 import {
@@ -20,18 +20,18 @@ import {
 import ProjectShowcase from "./ProjectShowcase";
 
 type PageProps = {
-    params: Promise<{ id: string }>;
+    params: Promise<{ slug: string }>;
 };
 
 export async function generateStaticParams() {
     return projects.map((project) => ({
-        id: project.id,
+        slug: project.slug,
     }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-    const { id } = await params;
-    const project = projects.find((p) => p.id === id);
+    const { slug } = await params;
+    const project = projects.find((p) => p.slug === slug || p.id === slug);
 
     if (!project) {
         return {
@@ -42,10 +42,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return {
         title: `${project.name} | System Architecture & Case Study - Ankit Saini`,
         description: project.description.slice(0, 160) + "...",
+        alternates: {
+            canonical: `/projects/${project.slug}`,
+        },
         openGraph: {
             title: `${project.name} - Case Study | Ankit Saini`,
             description: project.description.slice(0, 160) + "...",
-            url: `/projects/${project.id}`,
+            url: `/projects/${project.slug}`,
             images: [
                 {
                     url: `/projects/${project.image}`,
@@ -65,14 +68,20 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function ProjectDetailPage({ params }: PageProps) {
-    const { id } = await params;
-    const projectIndex = projects.findIndex((p) => p.id === id);
+    const { slug } = await params;
+    const projectIndex = projects.findIndex((p) => p.slug === slug || p.id === slug);
 
     if (projectIndex === -1) {
         notFound();
     }
 
     const project = projects[projectIndex];
+
+    // If accessed via old numerical ID, redirect permanently to the SEO-friendly slug
+    if (slug === project.id && project.slug !== project.id) {
+        redirect(`/projects/${project.slug}`);
+    }
+
     const prevProject = projectIndex > 0 ? projects[projectIndex - 1] : null;
     const nextProject =
         projectIndex < projects.length - 1 ? projects[projectIndex + 1] : null;
@@ -357,7 +366,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                 <div className="border-t border-border pt-10 grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {prevProject ? (
                         <Link
-                            href={`/projects/${prevProject.id}`}
+                            href={`/projects/${prevProject.slug}`}
                             className="group flex flex-col p-6 rounded-2xl border border-border bg-secondary/5 hover:border-foreground/30 hover:bg-secondary/10 transition-all"
                         >
                             <span className="text-[10px] font-mono uppercase tracking-widest text-muted mb-1.5 flex items-center gap-1.5">
@@ -374,7 +383,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
                     {nextProject && (
                         <Link
-                            href={`/projects/${nextProject.id}`}
+                            href={`/projects/${nextProject.slug}`}
                             className="group flex flex-col items-end text-right p-6 rounded-2xl border border-border bg-secondary/5 hover:border-foreground/30 hover:bg-secondary/10 transition-all sm:col-start-2"
                         >
                             <span className="text-[10px] font-mono uppercase tracking-widest text-muted mb-1.5 flex items-center gap-1.5">

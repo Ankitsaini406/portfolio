@@ -1,6 +1,9 @@
-export const projects = [
+import { Projectsdetial } from "../types/types";
+
+export const projects: Projectsdetial[] = [
     {
         id: "1",
+        slug: "shri-umeshsons",
         name: "Shri Umeshsons",
         image: "shriumeshsons.jpeg",
         link: "https://www.shriumeshsons.com/home",
@@ -9,6 +12,7 @@ export const projects = [
     },
     {
         id: "2",
+        slug: "aaria",
         name: "Aaria",
         image: "Aaria.png",
         link: "https://www.aariagroup.in/",
@@ -17,6 +21,7 @@ export const projects = [
     },
     {
         id: "3",
+        slug: "17-looms",
         name: "17 Looms",
         image: "17looms.png",
         link: "https://17looms.in/",
@@ -25,6 +30,7 @@ export const projects = [
     },
     {
         id: "4",
+        slug: "tripway-holidays",
         name: "Tripway Holidays",
         image: "tripway-holidays.png",
         link: "https://tripwayholidays.in/",
@@ -33,6 +39,7 @@ export const projects = [
     },
     {
         id: "5",
+        slug: "webraintech",
         name: "WeBrainTech",
         image: "webraintech.png",
         link: "https://webraintech.in/",
@@ -41,6 +48,7 @@ export const projects = [
     },
     {
         id: "6",
+        slug: "eduengine",
         name: "Eduengine",
         image: "eduengine.webp",
         link: "https://eduengine.in/",
@@ -49,6 +57,7 @@ export const projects = [
     },
     {
         id: "7",
+        slug: "edulibrary",
         name: "Edulibrary",
         image: "edulaibaray.png",
         link: "https://edulibrary.net/",
@@ -57,6 +66,7 @@ export const projects = [
     },
     {
         id: "8",
+        slug: "minglebite",
         name: "Minglebite",
         image: "minglebite.png",
         link: "https://minglebite.in/",
@@ -65,6 +75,7 @@ export const projects = [
     },
     {
         id: "9",
+        slug: "citizen-watch-bharat",
         name: "Citizen Watch Bharat",
         image: "citizinwatchbharat.png",
         link: "https://citizenwatchbharat.com/",
@@ -73,6 +84,7 @@ export const projects = [
     },
     {
         id: "10",
+        slug: "consort-digital",
         name: "Consort Digital",
         image: "consort.svg",
         link: "https://www.consortdigital.com/",
@@ -81,6 +93,7 @@ export const projects = [
     },
     {
         id: "11",
+        slug: "aqua-serve",
         name: "Aqua Serve",
         image: "aquaserve.png",
         link: "https://aquaserve.vercel.app/",

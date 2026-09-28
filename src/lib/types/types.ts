@@ -17,4 +17,5 @@ export type Projectsdetial = {
     description: string;
     tags?: string[];
     github?: string;
+    slug: string;
 };
